@@ -48,7 +48,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-    <script src="script.js"></script>
+    <script src="validationEmail.js"></script>
 </head>
 <body>
     
@@ -63,11 +63,11 @@
         <input type="submit" name="submit" value="Enviar">
     </form>
     <br>
-    <form action="login.php" method="POST" id="userRegister" onsubmit= validarEmailDicente(this.id)>
+    <form action="#" method="POST" id="userRegister" onsubmit= validarEmailDicente(this.id)>
         <label for="nome">Nome</label> <br>
         <input type="text" name="userNome"> <br>
-        <label for="email">Email Dicente</label><br>
-        <input type="text" id='userEmail' name="userEmail" onchange="validarEmailDicente(this.id)" required autofocus> <br>
+        <label for="email">Email Discente</label><br>
+        <input type="text" id='userEmail' name="userEmail" onchange="validarEmailDiscente(this.id)" required autofocus> <br>
         <label for="nome">Senha</label><br>
         <input type="senha" name="userSenha"> <br>
 
