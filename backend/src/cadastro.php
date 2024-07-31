@@ -1,9 +1,7 @@
 
 <?php
-    //Ve se ele foi caregado com um submit
     if(isset($_POST['submit'])){
 /*
-    Se quiser ver os prints
     {
         print_r();
         print_r($_POST['email']);
@@ -13,9 +11,7 @@
     
 */
 
-            //Chama o metodo de configuração do banco
         include_once('config.php');
-            //Criação de variaveis dom os dados recebidos
         $nome = $_POST['userNome'];
         $genero = $_POST['Genero'];
         $email = $_POST['userEmail'];
@@ -25,7 +21,7 @@
 
         
         print($tipo);
-            //Criptação da senha
+            //Criptografia da senha
         $senha_cripto = password_hash($senha, PASSWORD_DEFAULT);
             //Execusão do banco de dados de inserção
         $result = mysqli_query($conexao, "INSERT INTO tb_usuario(nome_usuario ,email_usuario ,genero_usuario ,senha_usuario, tipo_usuario) VALUES ('$nome','$email','$genero','$senha_cripto', '$tipo[0]')");
@@ -56,28 +52,27 @@
 </head>
 <body>
     
-    <form action="cad.php" method="POST" id="userRegister" onsubmit=validarEmail(this.id)>
-        <label for="nome">Nome</label>
+    <form action="#" method="POST" id="userRegister" onsubmit= validarEmailDocente(this.id)>
+        <label for="nome">Nome</label> <br>
         <input type="text" name="userNome"> <br>
-        <label for="email">Email</label>
-        <input type="text" id='userEmail' name="userEmail" onchange="validarEmail(this.id)" required autofocus>
-        <label for="nome">Senha</label>
-        <input type="senha" name="userSenha" required> <br>
-        
-        <input type="radio" id="masculino" name="genero" value="masculino">
-        <label for="masculino">Masculino</label><br>
-        <input type="radio" id="feminino" name="genero" value="feminino">
-        <label for="feminino">Feminino</label><br>
-        <input type="radio" id="javascript" name="genero" value="outro">
-        <label for="outro">Outro</label><br>
+        <label for="email">Email Docente</label><br>
+        <input type="text" id='userEmail' name="userEmail" onchange="validarEmailDocente(this.id)" required autofocus> <br>
+        <label for="nome">Senha</label><br>
+        <input type="senha" name="userSenha"> <br>
 
-        <input type="radio" name="tipo" id="estudante" value="e"> 
-        <label for="estudante"> Estudante</label> <br>
-        <input type="radio" name="tipo" id="docente" value="d">
-        <label for="docente"> Docente</label> <br>
         <input type="submit" name="submit" value="Enviar">
     </form>
     <br>
+    <form action="login.php" method="POST" id="userRegister" onsubmit= validarEmailDicente(this.id)>
+        <label for="nome">Nome</label> <br>
+        <input type="text" name="userNome"> <br>
+        <label for="email">Email Dicente</label><br>
+        <input type="text" id='userEmail' name="userEmail" onchange="validarEmailDicente(this.id)" required autofocus> <br>
+        <label for="nome">Senha</label><br>
+        <input type="senha" name="userSenha"> <br>
+
+        <input type="submit" name="submit" value="Enviar">
+    </form>
     
 </body>
 </html>
