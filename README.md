@@ -1,6 +1,8 @@
 # oportunIF_IFPR 
 O portal de oportunidades do instituto Federal - campus pinhais
+
 Feito por: Alan Diego, Caio Roberto e Nicolas Czaikowski
+
 data da criação: 28/02/2024
 
 a. Objetivo do Projeto
