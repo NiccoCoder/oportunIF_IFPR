@@ -76,3 +76,33 @@ c. Link da Prototipação
    - **Mitigação:** Manter comunicação constante com a administração do campus e adaptar o projeto conforme necessário.
 
 ### 3. Organização dos projetos
+
+ **a. Cronograma**
+
+- **Março - Abril:** Planejamento Inicial e Desenvolvimento do MVP
+- **Maio:** Greve
+- **Junho:** Greve
+- **Julho:** Lançamento do Portal
+- **Agosto:** Monitoramento e Suporte
+- **Setembro:** Feedback e Melhorias
+- **Outubro:** Atualizações e Manutenção
+- **Novembro:** Avaliação Final
+- **Dezembro:** Relatório Final
+
+ **b. Organização da Equipe**
+
+- **Pre-Projeto:** Alan, Caio e Nicolas
+- **Levantamento de requisitos:** Alan, Caio e Nicolas
+- **Analise e projeto:** Alan, Caio e Nicolas
+- **Banco de dados:** Alan e Nicolas
+- **Front-end:** Caio e Nicolas
+- **Back-end:** Alan
+- **Artigo:** Alan, Caio, Nicolas
+- **SCITec:** Alan, Caio, Nicolas
+- **Correção artigo e projeto:** Alan, Caio, Nicolas
+- **Defesa do TCC:** Alan, Caio, Nicolas
+
+**c. Link do Trello/Jira**
+-Não possuimos
+
+
