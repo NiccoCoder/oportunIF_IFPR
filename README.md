@@ -79,15 +79,15 @@ c. Link da Prototipação
 
  **a. Cronograma**
 
-- **Março - Abril:** Planejamento Inicial e Desenvolvimento do MVP
+- **Março - Abril:** Pre-projeto, levantamento de requisitos, Analise e projeto, Banco de dados
 - **Maio:** Greve
 - **Junho:** Greve
-- **Julho:** Lançamento do Portal
-- **Agosto:** Monitoramento e Suporte
-- **Setembro:** Feedback e Melhorias
-- **Outubro:** Atualizações e Manutenção
-- **Novembro:** Avaliação Final
-- **Dezembro:** Relatório Final
+- **Julho:** Back-End e Front-End
+- **Agosto:** Apresentação pre-projeto
+- **Setembro:** 
+- **Outubro:** 
+- **Novembro:** 
+- **Dezembro:** 
 
  **b. Organização da Equipe**
 
@@ -103,6 +103,7 @@ c. Link da Prototipação
 - **Defesa do TCC:** Alan, Caio, Nicolas
 
 **c. Link do Trello/Jira**
--Não possuimos
+
+- **Não possuimos**
 
 
