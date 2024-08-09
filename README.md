@@ -5,7 +5,7 @@ Feito por: Alan Diego, Caio Roberto e Nicolas Czaikowski
 
 data da criação: 28/02/2024
 
-2. Introdução
+Introdução
 
 a. Objetivo do projeto:
 
