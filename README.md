@@ -106,4 +106,29 @@ c. Link da Prototipação
 
 - **Não possuimos**
 
+### 4. Conclusão
+
+**a. Recursos que serão utilizados**
+
+- **Visual Studio (v. 1.87.2):** Para escrever o código do portal web.
+- **MySQL WorkBench (v. 8.0.36):** Gerenciamento do banco de dados.
+- **JavaScript (v. 5.1.19):** Funcionalidades interativas e dinâmicas.
+- **PHP (v. 8.1):** Modificações em servidor e cookies.
+- **HTML (v. 5):** Marcação do website.
+- **CSS (v. CSS3):** Estilização dos elementos.
+- **GitHub:** Desenvolvimento colaborativo.
+- **Wampserver (v. 3.3.2):** Suporte para scripts PHP.
+- **SQL:** Programação do banco de dados.
+- **Bootstrap (v. 5.2.3):** Desenvolvimento da interface.
+
+**b. Resultados esperados**
+
+- **Facilitar a divulgação de projetos de extensão.**
+- **Centralizar oportunidades para alunos e professores.**
+- **Simplificar o acesso às informações.**
+
+**c. Recursos para monitoração e acompanhamento**
+
+-
+
 
