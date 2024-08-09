@@ -6,7 +6,7 @@ Feito por: Alan Diego, Caio Roberto e Nicolas Czaikowski
 data da criação: 28/02/2024
 
 
-1. Introdução
+**Introdução**
 
 a. Objetivo do projeto:
 
@@ -48,3 +48,35 @@ Descrição do produto (MVP) do projeto:
 
 c. Link da Prototipação
 - **ainda não possuimos**
+
+### 3. Matriz de Riscos
+
+1. **Falha no servidor**
+   - **Impacto:** Alto
+   - **Probabilidade:** Média
+   - **Mitigação:** Implementar redundância e backups regulares
+
+2. **Bugs no software**
+   - **Impacto:** Médio
+   - **Probabilidade:** Alta
+   - **Mitigação:** Realizar testes rigorosos e contínuos durante o desenvolvimento
+
+3. **Problemas de segurança**
+   - **Impacto:** Alto
+   - **Probabilidade:** Média
+   - **Mitigação:** Adotar práticas de segurança robustas e auditorias regulares
+
+4. **Atrasos no cronograma**
+   - **Impacto:** Alto
+   - **Probabilidade:** Média
+   - **Mitigação:** Estabelecer um cronograma realista e monitorar o progresso regularmente
+
+5. **Falta de adesão dos usuários**
+   - **Impacto:** Médio
+   - **Probabilidade:** Alta
+   - **Mitigação:** Realizar campanhas de engajamento e treinamento para alunos e professores
+
+6. **Mudanças nas políticas institucionais**
+   - **Impacto:** Alto
+   - **Probabilidade:** Baixa
+   - **Mitigação:** Manter comunicação constante com a administração do campus e adaptar o projeto conforme necessário.
