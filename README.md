@@ -36,9 +36,9 @@ Descrição do produto (MVP) do projeto:
 - **Base de Dados:** Centralização e acesso a informações relevantes.
 
 **Objetivos do projeto:**
-- **Usuários Ativos:** Alcançar 70% de adesão dos alunos e professores no primeiro semestre.
-- **Projetos Divulgados:** Ter pelo menos 50 projetos de extensão divulgados no portal no primeiro ano.
-- **Satisfação dos Usuários:** Obter uma taxa de satisfação de 80% dos usuários em pesquisas de feedback.
+- **Usuários Ativos:** Alcançar a adesão dos alunos e professores na utilização do projeto.
+- **Projetos Divulgados:** Os professores utilizarem o site, divulgando seus projetos.
+- **Satisfação dos Usuários:** Obter uma taxa de satisfação alta dos usuários em pesquisas de feedback.
 
 **Critérios de aceitação do produto:**
 - **Funcionalidade:** O portal deve ser funcional e acessível em diferentes dispositivos.
@@ -46,12 +46,5 @@ Descrição do produto (MVP) do projeto:
 - **Desempenho:** Tempo de carregamento rápido e sem falhas.
 - **Segurança:** Proteção de dados dos usuários e informações sensíveis.
 
-#### c. Link da Prototipação
-- [Link para a prototipação](#)
-
-Se precisar de mais detalhes ou ajustes, estou aqui para ajudar! 😊
-
-Fonte: conversa com o Copilot, 09/08/2024
-(1) Campus Pinhais – IFPR – Educação Pública, Gratuita e de Qualidade. https://ifpr.edu.br/pinhais/.
-(2) Processo Seletivo IFPR 2023/2024 para os cursos do Campus Pinhais .... https://ifpr.edu.br/pinhais/processo-seletivo-ifpr-2023-2024-para-os-cursos-do-campus-pinhais-periodo-de-matriculas-termina-dia-15-de-dezembro/.
-(3) Portal Acadêmico – Campus Pinhais. https://ifpr.edu.br/pinhais/institucional/portal-academico/.
+c. Link da Prototipação
+- **ainda não possuimos**
