@@ -70,12 +70,9 @@ c. Link da Prototipação
    - **Probabilidade:** Média
    - **Mitigação:** Estabelecer um cronograma realista e monitorar o progresso regularmente
 
-5. **Falta de adesão dos usuários**
-   - **Impacto:** Médio
-   - **Probabilidade:** Alta
-   - **Mitigação:** Realizar campanhas de engajamento e treinamento para alunos e professores
-
-6. **Mudanças nas políticas institucionais**
+5. **Mudanças nas políticas institucionais**
    - **Impacto:** Alto
    - **Probabilidade:** Baixa
    - **Mitigação:** Manter comunicação constante com a administração do campus e adaptar o projeto conforme necessário.
+
+### 3. Organização dos projetos
