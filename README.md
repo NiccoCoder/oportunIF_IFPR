@@ -5,8 +5,7 @@ Feito por: Alan Diego, Caio Roberto e Nicolas Czaikowski
 
 data da criação: 28/02/2024
 
-
-**Introdução**
+### 1. Introdução
 
 a. Objetivo do projeto:
 
@@ -49,7 +48,7 @@ Descrição do produto (MVP) do projeto:
 c. Link da Prototipação
 - **ainda não possuimos**
 
-### 3. Matriz de Riscos
+### 2. Matriz de Riscos
 
 1. **Falha no servidor**
    - **Impacto:** Alto
