@@ -104,7 +104,7 @@ c. Link da Prototipação
 
 **c. Link do Trello/Jira**
 
-- **Não possuimos**
+- **[Não possuimos](https://trello.com/invite/b/66bc9ceb48fe3d16883c9552/ATTI1482c13ad6fef680a2307db589f25bcf17FF737C/opurtunif)**
 
 ### 4. Conclusão
 
