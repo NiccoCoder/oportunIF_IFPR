@@ -5,8 +5,10 @@
 <html>
     <body>
         <br>
-        <a href = "login.php">Login</a>
+        <a href = "../../frontend/pages/login.html">Login</a>
         <br>
-        <a href = "cadastro.php">Cadastro</a>
+        <a href="../../frontend/pages/cadastroDocente.html">Cadastro Docente</a>
+        <br>
+        <a href = "../frontend/pages/cadastroDocente.html">Cadastro Discente</a>
     </body>
 <html>
