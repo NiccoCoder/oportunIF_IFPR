@@ -1,31 +1,19 @@
 <?php
-        //Dados basicos[NOME DO HOST,NOME DO USUARIO, SENHA DO BANCO, NOME DO BANCO]
-    $dbHost = 'Localhost';
-    $dbUserName = 'root';
-    $dbPassword = '';
-    $dbName = 'db_pepif';
-        //CONEXÂO COM O BANCO
-    $conexao = new mysqli($dbHost,$dbUserName,$dbPassword,$dbName);
+// Informações para o acesso no BD que devem sser encontradas no .env
+$dbHost = getenv('DB_HOST');
+$dbUserName = getenv('DB_USER'); 
+$dbPassword = getenv('DB_PASSWORD');
+$dbName = getenv('DB_NAME');
 
-    /*if($conexao->connect_errno){
-        echo "erro";
-    }
-    else{
-        echo "funfou poha";
-    }
+//... = getenv(Nome da Variavel); temos os valores das variaveis de ambiente
 
-    */
-        //FUNÇÂO PARA EXPULSAR E DESLOGAR O USUARIO
-    function expulsaUsuario(){
-            unset($_SESSION['email']);
-            unset($_SESSION['senha']);
-            header('Location: casa.php');
-    }
+// Conexão com o banco
+$conexao = new mysqli($dbHost, $dbUserName, $dbPassword, $dbName);
 
-        //FUNÇÃO PARA VERIFICAR SE O USUARIO ESTA OU NÃO EM UMA SESSION
-    function verificaUsuario(){
-        if((!isset($_SESSION['email']) == true) && (!isset($_SESSION['senha']) == true)){
-            expulsaUsuario();
-        }
-    }
+// Verifica se houve erro na conexão
+if ($conexao->connect_errno) {
+    die("Erro: " . $conexao->connect_error);
+} else {
+    echo "Conexão bem-sucedida!";
+}
 ?>

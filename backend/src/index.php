@@ -5,10 +5,10 @@
 <html>
     <body>
         <br>
-        <a href = "../../frontend/pages/login.html">Login</a>
+        <a href = "./config.php">Testar conexão com o BD</a>
         <br>
-        <a href="../../frontend/pages/cadastroDocente.html">Cadastro Docente</a>
+        <a href="#">Cadastro Docente</a>
         <br>
-        <a href = "../frontend/pages/cadastroDocente.html">Cadastro Discente</a>
+        <a href = "#">Cadastro Discente</a>
     </body>
 <html>

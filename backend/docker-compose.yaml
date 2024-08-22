@@ -1,7 +1,8 @@
-
 services:
   php-apache:
-    image: php:8.2-apache
+    build:
+      context: .
+      dockerfile: Dockerfile
     container_name: php_apache
     volumes:
       - ./src:/var/www/html
@@ -9,17 +10,18 @@ services:
       - "80:80"
     networks:
       - mynetwork
+    depends_on:
+      - mysql
+    env_file:
+      - .env
 
   mysql:
     image: mysql:8.0
     container_name: mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: mydatabase
-      MYSQL_USER: myuser
-      MYSQL_PASSWORD: mypassword
+    env_file:
+      - .env
     ports:
-      - "3306:3306"
+      - "3307:3306"
     networks:
       - mynetwork
 
