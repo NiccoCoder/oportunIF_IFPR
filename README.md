@@ -117,7 +117,8 @@ c. Link da Prototipação
 - **HTML (v. 5):** Marcação do website.
 - **CSS (v. CSS3):** Estilização dos elementos.
 - **GitHub:** Desenvolvimento colaborativo.
-- **Wampserver (v. 3.3.2):** Suporte para scripts PHP.
+- **Docker (v.25.0.4):** Software de virtualização e leitura de im
+agens, utilizado para interpretar php. 
 - **SQL:** Programação do banco de dados.
 - **Bootstrap (v. 5.2.3):** Desenvolvimento da interface.
 

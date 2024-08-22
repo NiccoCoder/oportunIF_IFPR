@@ -1,19 +1,16 @@
 <?php
 // Informações para o acesso no BD que devem sser encontradas no .env
-$dbHost = getenv('DB_HOST');
-$dbUserName = getenv('DB_USER'); 
-$dbPassword = getenv('DB_PASSWORD');
-$dbName = getenv('DB_NAME');
+
+$host = getenv('DB_HOST');
+$user = getenv('DB_USER');
+$password = getenv('DB_PASSWORD');
+$database = getenv('DB_NAME');
 
 //... = getenv(Nome da Variavel); temos os valores das variaveis de ambiente
-
-// Conexão com o banco
-$conexao = new mysqli($dbHost, $dbUserName, $dbPassword, $dbName);
+$conn = new mysqli($host, $user, $password, $database);
 
 // Verifica se houve erro na conexão
-if ($conexao->connect_errno) {
-    die("Erro: " . $conexao->connect_error);
-} else {
-    echo "Conexão bem-sucedida!";
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
 }
 ?>

@@ -1,43 +1,40 @@
-
 <?php
-    if(isset($_POST['submit'])){
-/*
-    {
-        print_r();
-        print_r($_POST['email']);
-        print_r($_POST['genero']);
-        print_r($_POST['senha']);
-    }
-    
-*/
+if (isset($_POST['submit'])) {
+    // Inclui o arquivo de configuração para conexão com o banco de dados
+    include_once('config.php');
 
-        include_once('config.php');
-        $nome = $_POST['userNome'];
-        $genero = $_POST['Genero'];
-        $email = $_POST['userEmail'];
-        $senha = $_POST['userSenha'];
-        $tipo = $_POST['tipo'];
+    // Obtém os dados do formulário
+    $nome = $_POST['userNome'];
+    $email = $_POST['userEmail'];
+    $senha = $_POST['userSenha'];
 
+    // Criptografa a senha
+    $senha_cripto = password_hash($senha, PASSWORD_DEFAULT);
 
-        
-        print($tipo);
-            //Criptografia da senha
-        $senha_cripto = password_hash($senha, PASSWORD_DEFAULT);
-            //Execusão do banco de dados de inserção
-        $result = mysqli_query($conexao, "INSERT INTO tb_usuario(nome_usuario ,email_usuario ,genero_usuario ,senha_usuario, tipo_usuario) VALUES ('$nome','$email','$genero','$senha_cripto', '$tipo[0]')");
-        $foto = mysqli_query($conexao, "INSERT INTO tb_foto(path, tb_usuario_email_usuario) VALUES ('arquivos/Default.png','$email')");
-
-        switch ($tipo) {
-            case "e":
-                $result_tipo = mysqli_query($conexao, "INSERT INTO tb_aluno(tb_usuario_email_usuario) VALUES('$email')");
-                echo "aluno po";
-                break;
-            case 'd':
-                $result_tipo = mysqli_query($conexao, "INSERT INTO tb_docente(tb_usuario_email_usuario) VALUES('$email')");
-                break;
-        }
+    // Insere o docente na tabela TB_DOCENTE
+    $sql_docente = "INSERT INTO TB_DOCENTE (NOME, EMAIL, SENHA) VALUES ('$nome', '$email', '$senha_cripto')";
+    if (mysqli_query($conn, $sql_docente)) {
+        echo "Docente inserido com sucesso!";
+    } else {
+        echo "Erro ao inserir docente: " . mysqli_error($conn);
     }
 
+    // Fecha a conexão
+    mysqli_close($conn);
+}
 ?>
-
-
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Inserir Docente</title>
+</head>
+<body>
+    <h1>Inserir Novo Docente</h1>
+    <form method="post" action="">
+        Nome: <input type="text" name="userNome" required><br>
+        Email: <input type="email" name="userEmail" required><br>
+        Senha: <input type="password" name="userSenha" required><br>
+        <input type="submit" name="submit" value="Enviar">
+    </form>
+</body>
+</html>
