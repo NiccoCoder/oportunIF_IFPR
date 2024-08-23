@@ -9,6 +9,6 @@
         <br>
         <a href="./cadastroDocente.php">Cadastro Docente</a>
         <br>
-        <a href = "#">Cadastro Discente</a>
+        <a href = "./cadastroDiscente.php">Cadastro Discente</a>
     </body>
 <html>
