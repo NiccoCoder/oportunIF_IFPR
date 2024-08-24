@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
     container_name: php_apache
     volumes:
-      - ./src:/var/www/html
+      - ./backend:/var/www/html
     ports:
       - "80:80"
     networks:
@@ -21,10 +21,16 @@ services:
     env_file:
       - .env
     ports:
-      - "3307:3306" # A porta do contêiner MySQL está exposta na porta 3307 do host
+      - "3307:3306"
     networks:
       - mynetwork
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./script-OportunIF.sql:/docker-entrypoint-initdb.d/script-OportunIF.sql
 
 networks:
   mynetwork:
     driver: bridge
+
+volumes:
+  mysql_data:
