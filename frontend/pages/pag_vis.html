@@ -8,6 +8,69 @@
     <link rel="stylesheet" href="../../front-end/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="../../front-end/css/style.css">
     <link rel="shortcut icon" href="../../front-end/images/favicon.png"/>
+    <style>
+      /* Estilos para a seção de projetos */
+      .projects-section {
+        margin: 20px 0;
+      }
+
+      .project-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        margin-bottom: 20px;
+        background-color: #f9f9f9;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, box-shadow 0.3s;
+      }
+
+      .project-card:hover {
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      }
+
+      .project-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .project-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+      }
+
+      .project-type {
+        font-size: 0.875rem;
+        color: #666;
+      }
+
+      .project-details {
+        font-size: 0.875rem;
+        color: #333;
+      }
+
+      .project-footer {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 10px;
+      }
+
+      .study-grant-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        background-color: #e9f7fc;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+      }
+
+      .study-grant-header {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+    </style>
   </head>
   <body>
     <div class="container-scroller">
@@ -17,103 +80,6 @@
           <a class="sidebar-brand brand-logo-mini" href="../../index.html"><img src="../../front-end/images/OportunIF.png" alt="logo" /></a>
         </div>
         <ul class="nav">
-          <li class="nav-item profile">
-            <div class="profile-desc">
-              <div class="profile-pic">
-                <div class="count-indicator">
-                </div>
-                <div class="profile-name">
-                  <h5 class="mb-0 font-weight-normal">Visitante</h5>
-                </div>
-              </div>
-              <a href="#" id="profile-dropdown" data-bs-toggle="dropdown"><i class="mdi mdi-dots-vertical"></i></a>
-              <div class="dropdown-menu dropdown-menu-right sidebar-dropdown preview-list" aria-labelledby="profile-dropdown">
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-settings text-primary"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small">Configurações</p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-onepassword text-info"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small">Perfil</p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-calendar-today text-success"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <p class="preview-subject ellipsis mb-1 text-small">Sair</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-          </li>
-          <li class="nav-item nav-category">
-            <span class="nav-link">Navegação</span>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="../../index.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-speedometer"></i>
-              </span>
-              <span class="menu-title">Painel</span>
-            </a>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-              <span class="menu-icon">
-                <i class="mdi mdi-laptop"></i>
-              </span>
-              <span class="menu-title">Projetos</span>
-              <i class="menu-arrow"></i>
-            </a>
-            <div class="collapse" id="ui-basic">
-              <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="../../public/pages/basic-table.html">Teatro</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../public/pages/dropdowns.html">Basquete</a></li>
-                <li class="nav-item"> <a class="nav-link" href="../../public/pages/typography.html">Matematica</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="../../public/pages/createProject.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-playlist-play"></i>
-              </span>
-              <span class="menu-title">Adicionar Projeto</span>
-            </a>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="../../public/pages/basic-table.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-table-large"></i>
-              </span>
-              <span class="menu-title">Cronograma</span>
-            </a>
-          </li>
-          <li class="nav-item menu-items">
-            <a class="nav-link" href="../../public/pages/chartjs.html">
-              <span class="menu-icon">
-                <i class="mdi mdi-chart-bar"></i>
-              </span>
-              <span class="menu-title">Descobrir</span>
-            </a>
-          </li>
           <li class="nav-item menu-items">
             <a class="nav-link" href="#">
               <span class="menu-icon">
@@ -197,6 +163,46 @@
               <h3 class="page-title"> Bem-vindo, Visitante! </h3>
             </div>
             <p style="color:black;">Aqui você pode explorar projetos e descobrir mais sobre as oportunidades disponíveis no OportunIF. Crie uma conta ou entre para acessar funcionalidades adicionais.</p>
+
+            <!-- Nova seção de projetos -->
+            <div class="projects-section">
+              <h4>Projetos</h4>
+
+              <div class="project-card">
+                <div class="project-header">
+                  <span class="project-title">Projeto de Matemática</span>
+                  <span class="project-type">Tipo: Pesquisa</span>
+                </div>
+                <div class="project-details">
+                  <p><strong>Professor:</strong> Prof. João Silva</p>
+                  <p><strong>Descrição:</strong> Um estudo avançado sobre métodos matemáticos aplicados.</p>
+                </div>
+                <div class="project-footer">
+                  <a href="#" class="btn btn-primary">Ver Detalhes</a>
+                </div>
+              </div>
+
+              <div class="project-card">
+                <div class="project-header">
+                  <span class="project-title">Teatro na Escola</span>
+                  <span class="project-type">Tipo: Atividade Cultural</span>
+                </div>
+                <div class="project-details">
+                  <p><strong>Professor:</strong> Prof. Maria Oliveira</p>
+                  <p><strong>Descrição:</strong> Projeto de teatro para engajamento cultural e artístico.</p>
+                </div>
+                <div class="project-footer">
+                  <a href="#" class="btn btn-primary">Ver Detalhes</a>
+                </div>
+              </div>
+
+              <!-- Seção para Bolsas de Estudo -->
+              <div class="study-grant-card">
+                <div class="study-grant-header">Bolsas de Estudo</div>
+                <p>Confira as oportunidades de bolsas de estudo disponíveis para projetos acadêmicos e culturais.</p>
+                <a href="#" class="btn btn-info">Ver Oportunidades</a>
+              </div>
+            </div>
           </div>
           <footer class="footer">
             <div class="d-sm-flex justify-content-center justify-content-sm-between">

@@ -3,9 +3,10 @@ FROM php:8.2-apache
 # Install necessary PHP extensions
 RUN docker-php-ext-install mysqli
 
+WORKDIR /var/www/html
+
 # Copy application files to Apache directory
-COPY backend/ /var/www/html/
-COPY frontend/ /var/www/html/
+COPY . .
 
 # Set environment variables for PHP
 ENV DB_HOST=${DB_HOST}
