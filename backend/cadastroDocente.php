@@ -4,37 +4,25 @@ if (isset($_POST['submit'])) {
     include_once('config.php');
 
     // Obtém os dados do formulário
-    $nome = $_POST['userNome'];
-    $email = $_POST['userEmail'];
-    $senha = $_POST['userSenha'];
+    $nome = $_POST['nomeDocente'];
+    $email = $_POST['emailDocente'];
+    $senha = $_POST['senhaDocente'];
 
     // Criptografa a senha
     $senha_cripto = password_hash($senha, PASSWORD_DEFAULT);
 
     // Insere o docente na tabela TB_DOCENTE
-    $sql_docente = "INSERT INTO TB_DOCENTE (NOME, EMAIL, SENHA) VALUES ('$nome', '$email', '$senha_cripto')";
-    if (mysqli_query($conn, $sql_docente)) {
-        echo "Docente inserido com sucesso!";
+    $insert_script = "INSERT INTO TB_DOCENTE (NOME, EMAIL, SENHA) VALUES ('$nome', '$email', '$senha_cripto')";
+   
+    $result = mysqli_query($conexao, $insert_script);
+    
+    if($result) {
+        header('index.php');
+        exit();
     } else {
-        echo "Erro ao inserir docente: " . mysqli_error($conn);
+        echo 'Falha ao registrar docente: ' . mysql_error($conexao);
     }
-
-    // Fecha a conexão
-    mysqli_close($conn);
-}
+} else {
+    echo 'Acesso não autorizado. <a href="/index.php">Voltar para a página inicial.</a>';
+    exit();}
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Inserir Docente</title>
-</head>
-<body>
-    <h1>Inserir Novo Docente</h1>
-    <form method="post" action="">
-        Nome: <input type="text" name="userNome" required><br>
-        Email: <input type="email" name="userEmail" required><br>
-        Senha: <input type="password" name="userSenha" required><br>
-        <input type="submit" name="submit" value="Enviar">
-    </form>
-</body>
-</html>

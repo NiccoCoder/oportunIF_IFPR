@@ -5,28 +5,44 @@ $password = getenv('DB_PASSWORD');
 $dbname = getenv('DB_NAME');
 
 // Criar conexão
-$conn = new mysqli($servername, $username, $password, $dbname);
+$conexao = new mysqli($servername, $username, $password, $dbname);
 
 // Checar conexão
-if ($conn->connect_error) {
+if ($conexao->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
 }
 
-//Executar consulta
-$sql = "SHOW TABLES";
-$result = $conn->query($sql);
+// //Executar consulta
+// $sql = "SHOW TABLES";
+// $result = $conexao->query($sql);
 
-if ($result->num_rows > 0) {
-    // Mostrar tabelas
-    while($row = $result->fetch_assoc()) {
-        echo "Tabela: " . $row["Tables_in_$dbname"] . "<br>";
-    }
-} else {
-    echo "Nenhuma tabela encontrada.";
-}
+// if ($result->num_rows > 0) {
+//     // Mostrar tabelas
+//     while($row = $result->fetch_assoc()) {
+//         echo "Tabela: " . $row["Tables_in_$dbname"] . "<br>";
+//     }
+// } else {
+//     echo "Nenhuma tabela encontrada.";
+// }
+
+// // Nome da tabela que você deseja consultar
+// $tabela = 'TB_DISCENTE';
+
+// // Executar consulta para obter colunas da tabela
+// $sql = "SHOW COLUMNS FROM $tabela";
+// $result = $conexao->query($sql);
+
+// if ($result->num_rows > 0) {
+//     // Mostrar colunas
+//     while ($row = $result->fetch_assoc()) {
+//         echo "Coluna: " . $row["Field"] . "<br>";
+//     }
+// } else {
+//     echo "Nenhuma coluna encontrada na tabela $tabela.";
+// }
 
 // $sql = "SELECT * FROM db_oportunif.TB_DISCENTE";
-// $result = $conn->query($sql);
+// $result = $conexao->query($sql);
 // 
 // if ($result->num_rows > 0) {
     // echo "<h2>Dados da Tabela TB_DISCENTE:</h2>";
@@ -44,6 +60,4 @@ if ($result->num_rows > 0) {
 // } else {
     // echo "Nenhum dado encontrado na tabela TB_DISCENTE.";
 // }
- 
-$conn->close();
 ?>

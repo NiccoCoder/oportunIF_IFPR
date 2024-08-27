@@ -112,18 +112,18 @@
           <div class="card col-lg-4">
             <div class="card-body">
               <h3 class="card-title" style= "color:black">Cadastro (Docente)</h3>
-              <form>
+              <form action="../../backend/cadastroDocente.php" method="POST" id="cadastroDocente" onsubmit=validarEmail(this.id)>
                 <div class="form-group">
                   <label>Nome:</label>
-                  <input type="text" class="form-control p_input" placeholder="Nome Completo">
+                  <input type="text" class="form-control p_input" placeholder="Nome Completo" id="nomeDocente" name="nomeDocente" required>
                 </div>
                 <div class="form-group">
                   <label>Email:</label>
-                  <input type="email" class="form-control p_input" placeholder="email.Institucional@ifpr.edu.br">
+                  <input type="email" class="form-control p_input" placeholder="email.Institucional@ifpr.edu.br" id="emailDocente" name="emailDocente" required>
                 </div>
                 <div class="form-group">
                   <label>Senha:</label>
-                  <input type="password" class="form-control p_input" placeholder="••••••••">
+                  <input type="password" class="form-control p_input" placeholder="••••••••" id="senhaDocente" name="senhaDocente" required>
                 </div>
                 <div class="form-group d-flex align-items-center justify-content-between">
                   <div class="form-check form-check-success">
@@ -135,7 +135,7 @@
                   <a href="#" class="forgot-pass">Esqueci minha Senha</a>
                 </div>
                 <div class="text-center">
-                  <button type="submit" class="btn btn-success btn-block enter-btn">Cadastrar</button>
+                  <button type="submit" name="submit" class="btn btn-success btn-block enter-btn">Cadastrar</button>
                 </div>
                 <p class="sign-up">Já tem uma conta? <a href="../../public/pages/samples/login.html">Login</a></p>
               </form>

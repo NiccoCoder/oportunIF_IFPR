@@ -14,7 +14,7 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema db_oportunif
 -- -----------------------------------------------------
-CREATE SCHEMA IF NOT EXISTS `db_oportunif` DEFAULT CHARACTER SET utf8mb3 ;
+CREATE SCHEMA IF NOT EXISTS `db_oportunif` ;
 USE `db_oportunif` ;
 
 -- -----------------------------------------------------
@@ -25,7 +25,7 @@ CREATE TABLE IF NOT EXISTS `db_oportunif`.`TB_DISCENTE` (
   `NOME` VARCHAR(100) NOT NULL,
   `EMAIL` VARCHAR(100) NOT NULL,
   `SENHA` VARCHAR(100) NOT NULL,
-  `TURMA` VARCHAR(45) NOT NULL,
+  `CURSO` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`ID`),
   UNIQUE INDEX `EMAIL_UNIQUE` (`EMAIL` ASC) VISIBLE)
 ENGINE = InnoDB;
@@ -46,7 +46,7 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `DB_OPORTUNIF`.`TB_PROJETO`
+-- Table `db_oportunif`.`TB_PROJETO`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `db_oportunif`.`TB_PROJETO` (
   `ID` INT NOT NULL AUTO_INCREMENT,
@@ -70,4 +70,3 @@ ENGINE = InnoDB;
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
