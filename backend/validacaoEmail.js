@@ -2,7 +2,7 @@
 function validarEmailDocente(userEmail) {
     
     //Regex para Dicentes que espera um padrão (nome.sobrenome.@ifpr.edu.br)
-    const emailRegexToDocentes = /.+[.].+[@]....+[.]...+[.]../;
+    const emailRegexToDocentes = /.+[.].+[@]ifpr+[.]edu+[.]br/;
     const email = document.getElementById(userEmail).value;
 
     //condição para evitar que o Email seja nulo ou vazio
@@ -11,7 +11,8 @@ function validarEmailDocente(userEmail) {
     } 
     
     if (emailRegexToDocentes.test(email) !== true) {
-        return alert('O email informado não esta em um formato válido.  ex:XXXX.XXXX@XXXX.XXX ');
+        alert('O email informado precisa ser institucional.  ex: nome.sobrenome@ifpr.edu.br ');
+        return false;
     }
     
 return true;
@@ -21,16 +22,18 @@ return true;
 function validarEmailDiscente(userEmail) {
 
     //Regex para Dicentes que espera um padrão (algumaCoisa.@algumacoisa.com)
-    const emailRegexToDiscentes = /.+[@].+[.].../;
+    const emailRegexToDiscentes = /^\d{11}@estudantes\.ifpr\.edu\.br$/;
     const email = document.getElementById(userEmail).value;
     
     //condição para evitar que o Email seja nulo ou vazio
     if(!email) {
-        return alert('O campo Email é obrigatório para docentes');
+        alert('O campo Email é obrigatório para docentes');
+        return false;
     }
 
     if(emailRegexToDiscentes.test(email) !== true) {
-        return alert('O email informado não esta em um formato válido. ex:XXXXXXXX@XXXX.XXX ');
+        alert('O email informado prescisa ser institucional. ');
+        return false;
     } 
 
 return true;

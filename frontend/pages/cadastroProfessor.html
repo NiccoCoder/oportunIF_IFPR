@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../css/vendor.bundle.base.css">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="shortcut icon" href="../images/favicon.png" />
+  <script src="../../backend/validacaoEmail.js"></script>
 
   <style>
     .content-wrapper {
@@ -112,7 +113,7 @@
           <div class="card col-lg-4">
             <div class="card-body">
               <h3 class="card-title" style= "color:black">Cadastro (Docente)</h3>
-              <form action="../../backend/cadastroDocente.php" method="POST" id="cadastroDocente" onsubmit=validarEmail(this.id)>
+              <form action="../../backend/cadastroDocente.php" method="POST" id="cadastroDocente" onsubmit="return validarEmailDocente('emailDocente')">
                 <div class="form-group">
                   <label>Nome:</label>
                   <input type="text" class="form-control p_input" placeholder="Nome Completo" id="nomeDocente" name="nomeDocente" required>

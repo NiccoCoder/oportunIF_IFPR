@@ -1,6 +1,4 @@
-
 <?php
-
     if(isset($_POST['submit'])){
 
         include_once('config.php');
@@ -9,6 +7,12 @@
         $email = $_POST['emailDiscente'];
         $senha = $_POST['senhaDiscente'];
         $curso = $_POST['cursoDiscente'];
+
+        if (!$nome || !$email || !$senha || !curso) {
+            // $_SESSION['message'] = 'Todos os campos são obrigatórios';
+            header("Location: ../frontend/pages/cadastroAluno.html?error=Todos os campos são obrigatórios");
+            exit;
+        }
 
         //Criptografia da senha
         $senha_cripto = password_hash($senha, PASSWORD_DEFAULT);
@@ -20,14 +24,14 @@
         $result = mysqli_query($conexao, $insert_script);
 
         if($result) {
-            header('index.php');
+            header("Location: ../frontend/pages/logindiscente.html");
             exit();
         } else {
             echo 'Falha ao registrar discente: ' . mysql_error($conexao);;
         }
          
     } else {
-
+        header("Location: ../frontend/pages/cadastroAluno.html");
         // $nome = $_POST['nomeDiscente'];
         // $email = $_POST['emailDiscente'];
         // $senha = $_POST['senhaDiscente'];
@@ -38,7 +42,6 @@
         // echo ' senha =>' . $senha;
         // echo ' curso =>' . $curso;
         // echo 'Nova senha =>' . $senha_cripto;
-        echo 'Acesso não autorizado. <a href="/index.php">Voltar para a página inicial.</a>';
         exit();
     }
 

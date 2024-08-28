@@ -6,6 +6,7 @@ services:
     container_name: php_apache
     volumes:
       - ./:/var/www/html
+      - ./validacaoEmail.js:/var/www/html/js/validacaoEmail.js
     ports:
       - "80:80"
     networks:

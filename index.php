@@ -7,9 +7,9 @@
         <br>
         <a href = "./backend/config.php">Testar conexão com o BD</a>
         <br>
-        <a href="./frontend/pages/cad_prof.html">Cadastro: Docente</a>
+        <a href="./frontend/pages/cadastroProfessor.html">Cadastro: Docente</a>
         <br>
-        <a href = "./frontend/pages/cad_alu.html">Cadastro: Discente</a>
+        <a href = "./frontend/pages/cadastroAluno.html">Cadastro: Discente</a>
         <br>
         <a href = "./frontend/pages/login_alu.html">Login: Discente</a>
         <br>

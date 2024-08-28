@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../css/vendor.bundle.base.css">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="shortcut icon" href="../images/favicon.png" />
+  <script src="../../backend/validacaoEmail.js"></script>
 
   <style>
     .content-wrapper {
@@ -109,19 +110,19 @@
           <div class="card col-lg-4">
             <div class="card-body">
               <h3 class="card-title" style="color: black;">Cadastro (Discente)</h3>
-                <form action="../../backend/cadastroDiscente.php" method="POST" id="cadastroDiscente" onsubmit=validarEmail(this.id)>
+                <form action="../../backend/cadastroDiscente.php" method="POST" id="cadastroDiscente" onsubmit="return validarEmailDiscente('emailDiscente')">
                   <div class="form-group">
                     <label>Nome Completo:</label>
-                    <input type="text" class="form-control p_input" placeholder="Nome completo" id="nomeDiscente" name ="nomeDiscente">
+                    <input type="text" class="form-control p_input" placeholder="Nome completo" id="nomeDiscente" name ="nomeDiscente" required>
                   </div>
                   <div class="form-group">
                     <label>Email:</label>
-                    <input type="email" class="form-control p_input" placeholder="email.Institucional@estudantes.ifpr.edu.br" id="emailDiscente" name="emailDiscente" required>
+                    <input type="email" class="form-control p_input" placeholder="email.Institucional@estudantes.ifpr.edu.br" id="emailDiscente" name="emailDiscente">
                   </div>
                   <div class="form-group">
                     <label>Curso:</label>
                     <select class="form-control" id="cursoDiscente" name="cursoDiscente" required>
-                      <option>Selecione um curso</option>
+                      <option></option>
                       <option>Técnico em Informática</option>
                       <option>Técnico em Administração</option>
                     </select>
@@ -142,8 +143,8 @@
                   <div class="text-center">
                     <button type="submit" class="btn btn-success btn-block enter-btn" name="submit">Cadastrar</button>
                   </div>
-                  <p class="sign-up">Já possui conta? <a href="../../public/pages/samples/login.html">Login</a></p>
                 </form>
+                <p class="sign-up">Já possui conta? <a href="../../public/pages/samples/login.html">Login</a></p>
             </div>
           </div>
         </div>
