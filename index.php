@@ -11,10 +11,10 @@
         <br>
         <a href = "./frontend/pages/cadastroAluno.html">Cadastro: Discente</a>
         <br>
-        <a href = "./frontend/pages/login_alu.html">Login: Discente</a>
+        <a href = "./frontend/pages/logindiscente.html">Login: Discente</a>
         <br>
-        <a href = "./frontend/pages/login_prof.html">Login: Docente</a>
+        <a href = "./frontend/pages/logindocente.html">Login: Docente</a>
         <br>
-        <a href = "./frontend/pages/pag_vis.html">Visualização Projetos</a>
+        <a href = "./frontend/pages/paginavisitante.html">Visualização Projetos</a>
     </body>
 <html>

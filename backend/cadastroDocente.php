@@ -19,7 +19,8 @@
 
         // Insere o docente na tabela TB_DOCENTE
         $insert_script = "INSERT INTO TB_DOCENTE (NOME, EMAIL, SENHA) VALUES ('$nome', '$email', '$senha_cripto')";
-    
+        
+        //Execução do banco de dados de inserção
         $result = mysqli_query($conexao, $insert_script);
         
         if($result) {
@@ -28,6 +29,7 @@
         } else {
             echo 'Falha ao registrar docente: ' . mysql_error($conexao);
         }
+
     } else {
         header("Location: ../frontend/pages/cadastroProfessor.html");
         exit();
