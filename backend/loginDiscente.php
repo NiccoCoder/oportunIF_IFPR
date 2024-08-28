@@ -10,6 +10,26 @@
             exit;
         }
 
+
+
+        $sql = "SELECT * FROM TB_DISCENTE WHERE EMAIL = '$email' LIMIT 1";
+
+        $result = $conexao->query($sql) or die($conexao->error);
+
+        $user = $result->fetch_assoc();
+
+        if(password_verify($senha, $user['SENHA'])){
+            $_SESSION['email'] = $email;
+            header("Location: ../frontend/pages/paginavisitante.html"); 
+        } else {
+            header("Location: ../frontend/pages/logindiscente.html");
+        }    
+
+
+
+
+
+        /* 
         //Criptografia da senha
         $senha_cripto = password_hash($senha, PASSWORD_DEFAULT);
 
@@ -23,7 +43,9 @@
             header("Location: ../frontend/pages/logindiscente.html");
         } else {
             header("Location: ../frontend/pages/paginavisitante.html");
-        }        
+        }    
+            
+        */
          
     } else {
         header("Location: ../frontend/pages/logindiscente.html");

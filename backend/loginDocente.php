@@ -10,6 +10,23 @@
             exit;
         }
 
+
+        $sql = "SELECT * FROM TB_DOCENTE WHERE EMAIL = '$email' LIMIT 1";
+
+        $result = $conexao->query($sql) or die($conexao->error);
+
+        $user = $result->fetch_assoc();
+
+        if(password_verify($senha, $user['SENHA'])){
+            $_SESSION['email'] = $email;
+            header("Location: ../frontend/pages/paginavisitante.html");
+        } else {
+            header("Location: ../frontend/pages/logindocente.html");
+        } 
+
+
+        /*
+
         //Criptografia da senha
         $senha_cripto = password_hash($senha, PASSWORD_DEFAULT);
 
@@ -18,12 +35,15 @@
 
         //Execução do banco de dados de inserção
         $result = mysqli_query($conexao, $insert_script);
-
+        $row = mysqli_fetch_array($result);
+        echo '=======>'. $row;
+        die ($row);
         if(mysqli_num_rows($result) > 1) {
             header("Location: ../frontend/pages/logindocente.html");
         } else {
             header("Location: ../frontend/pages/paginavisitante.html");
-        }        
+        }   
+            */     
          
     } else {
         header("Location: ../frontend/pages/logindocente.html");
