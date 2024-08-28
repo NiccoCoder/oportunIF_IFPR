@@ -60,4 +60,5 @@ if ($conexao->connect_error) {
 // } else {
     // echo "Nenhum dado encontrado na tabela TB_DISCENTE.";
 // }
+unset($_SESSION["id"]);
 ?>

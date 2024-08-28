@@ -1,6 +1,12 @@
 <?php
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
+
     if(isset($_POST['submit'])){
         include_once('config.php');
+
 
         $email = $_POST['emailDocente'];
         $senha = $_POST['senhaDocente'];
@@ -18,33 +24,12 @@
         $user = $result->fetch_assoc();
 
         if(password_verify($senha, $user['SENHA'])){
-            $_SESSION['email'] = $email;
-            header("Location: ../frontend/pages/paginavisitante.html");
+            $_SESSION['id'] = $user['ID'];
+           header("Location: ../frontend/pages/paginavisitante.html"); 
         } else {
-            header("Location: ../frontend/pages/logindocente.html");
+            header("Location: ../frontend/pages/paginavisitante.html");
         } 
-
-
-        /*
-
-        //Criptografia da senha
-        $senha_cripto = password_hash($senha, PASSWORD_DEFAULT);
-
-        // Query responsavel por comparar os valores na tabelas de Discentes
-        $insert_script = "SELECT * FROM TB_DOCENTE WHERE EMAIL = '$email' and SENHA = '$senha_cripto'";
-
-        //Execução do banco de dados de inserção
-        $result = mysqli_query($conexao, $insert_script);
-        $row = mysqli_fetch_array($result);
-        echo '=======>'. $row;
-        die ($row);
-        if(mysqli_num_rows($result) > 1) {
-            header("Location: ../frontend/pages/logindocente.html");
-        } else {
-            header("Location: ../frontend/pages/paginavisitante.html");
-        }   
-            */     
-         
+ 
     } else {
         header("Location: ../frontend/pages/logindocente.html");
         // $nome = $_POST['nomeDiscente'];
