@@ -30510,7 +30510,7 @@ div.tagsinput span.tag a {
   transition: width 0.25s ease, margin 0.25s ease;
   width: 100%;
   min-height: calc(100vh - 70px);
-  padding-top: 20px;
+  padding-top: 70px;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
