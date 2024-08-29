@@ -15318,7 +15318,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
   flex-direction: column;
   min-width: 0;
   word-wrap: break-word;
-  background-color: #191c24;
+  background-color: #ffffff;
   background-clip: border-box;
   border: 1px solid rgba(0, 0, 0, 0.125);
   border-radius: 0.25rem;
@@ -30510,7 +30510,7 @@ div.tagsinput span.tag a {
   transition: width 0.25s ease, margin 0.25s ease;
   width: 100%;
   min-height: calc(100vh - 70px);
-  padding-top: 70px;
+  padding-top: 20px;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;

@@ -1,14 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>OportunIF</title>
-  <link rel="stylesheet" href="../../frontend/vendors/mdi/css/materialdesignicons.min.css">
+  <title>OportunIF: Novo Projeto</title>
   <link rel="stylesheet" href="../../frontend/vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="../../frontend/css/style.css">
   <link rel="shortcut icon" href="../../frontend/images/favicon.png" />
+  <link rel="stylesheet" href="../css/materialdesignicons.min.css">
+  
+  
   <style>
     /* Estilos para a seção de projetos */
     .projects-section {
@@ -72,23 +74,65 @@
       margin-bottom: 10px;
     }
 
-    .main-panel-projetos {
-      transition: width 0.25s ease, margin 0.25s ease;
-      width: 100%;
-      min-height: calc(100vh - 70px);
-      padding-top: 25px;
-      display: -webkit-flex;
+    .card-projetos {
+      position: relative;
       display: flex;
-      -webkit-flex-direction: column;
       flex-direction: column;
+      min-width: 0;
+      word-wrap: break-word;
+      background-color: #ffffff;
+      background-clip: border-box;
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      border-radius: 0.25rem;
+      color: #000000;
+      /* Cor do texto */
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      /* Sombra leve para destaque */
     }
 
-    @media (max-width: 991px) {
-      .main-panel-projetos-projetos {
-        margin-left: 0;
-        width: 100%;
+    .form-control-projetos {
+      border: 1px solid #2c2e33;
+      height: calc(2.25rem + 2px);
+      /* Altura ajustada para campos de entrada */
+      font-weight: normal;
+      font-size: 0.875rem;
+      /* Tamanho da fonte ajustado */
+      padding: 0.625rem 0.6875rem;
+      /* Espaçamento interno */
+      background-color: #ffffff;
+      /* Cor de fundo dos campos */
+      border-radius: 0.25rem;
+      /* Bordas arredondadas */
+      color: #000000;
+      /* Cor do texto nos campos */
+      transition: border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+      /* Transição suave */
+    }
+
+    .form-control-projetos:focus {
+      border-color: #0056b3;
+      /* Cor da borda ao focar */
+      box-shadow: 0 0 0 0.2rem rgba(0, 86, 179, 0.25);
+      /* Sombra ao focar */
+      outline: 0;
+      /* Remove o contorno padrão */
+    }
+
+    .navbar-brand-wrapper .brand-logo-mini i {
+      font-size: 24px; /* Tamanho do ícone */
+      color: #ffffff; /* Cor do ícone, ajuste conforme necessário */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Estilo específico para dispositivos menores */
+    @media (max-width: 768px) {
+      .navbar-brand-wrapper .brand-logo-mini i {
+        font-size: 20px; /* Ajusta o tamanho do ícone em dispositivos menores */
       }
     }
+
   </style>
 </head>
 
@@ -96,10 +140,12 @@
   <div class="container-scroller">
     <nav class="sidebar sidebar-offcanvas" id="sidebar">
       <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
-        <a class="sidebar-brand brand-logo" href="../../index.html"><img src="../../frontend/images/OportunIF.png"
-            alt="logo" /></a>
-        <a class="sidebar-brand brand-logo-mini" href="../../index.html"><img src="../../frontend/images/OportunIF.png"
-            alt="logo" /></a>
+        <a class="sidebar-brand brand-logo" href="../../index.html">
+          <img src="../images/OportunIF.png" alt="logo" />
+        </a>
+        <a class="sidebar-brand brand-logo-mini" href="../../index.html">
+          <img src="../../frontend/images/OportunIF.png" alt="logo" />
+        </a>
       </div>
       <ul class="nav">
         <li class="nav-item menu-items">
@@ -115,9 +161,10 @@
     <div class="container-fluid page-body-wrapper">
       <nav class="navbar p-0 fixed-top d-flex flex-row">
         <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
-          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../../frontend/images/OportunIF.jpg"
-              alt="logo" /></a>
-        </div>
+         <a class="navbar-brand brand-logo-mini" href="index.php">
+           <i class="mdi mdi-home"></i>
+         </a>
+       </div>   
         <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
           <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
             <span class="mdi mdi-menu"></span>
@@ -125,7 +172,7 @@
           <ul class="navbar-nav w-100">
             <li class="nav-item w-100">
               <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                <input type="text" class="form-control" placeholder="Pesquisar">
+                <input type="text" class="form-control-projetos-projetos" placeholder="Pesquisar">
               </form>
             </li>
           </ul>
@@ -182,52 +229,74 @@
           </button>
         </div>
       </nav>
-      <div class="main-panel-projetos">
+      <div class="main-panel">
         <div class="content-wrapper">
-          <div class="page-header">
-            <h3 class="page-title"> Bem-vindo, Visitante! </h3>
-          </div>
-          <p style="color:black;">Aqui você pode explorar projetos e descobrir mais sobre as oportunidades disponíveis
-            no OportunIF. Crie uma conta ou entre para acessar funcionalidades adicionais.</p>
+          <div class="col-12 grid-margin">
+            <div class="card-projetos">
+              <div class="card-body">
+                <h4 class="card-title">Cadastrar Projeto</h4>
+                <p class="description-text">Use o formulário abaixo para registrar um novo projeto de extensão, inovação ou pesquisa do campus Pinhais.</p>
+                <form class="form-sample">
+                  <!-- Título do Projeto -->
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Título do Projeto</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control-projetos" placeholder="Título do Projeto" />
+                    </div>
+                  </div>
 
-          <!-- Nova seção de projetos -->
-          <div class="projects-section">
-            <h4>Projetos</h4>
+                  <!-- Descrição -->
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Descrição</label>
+                    <div class="col-sm-9">
+                      <textarea class="form-control-projetos" rows="4" placeholder="Descrição do Projeto"></textarea>
+                    </div>
+                  </div>
 
-            <div class="project-card">
-              <div class="project-header">
-                <span class="project-title">Projeto de Matemática</span>
-                <span class="project-type">Tipo: Pesquisa</span>
-              </div>
-              <div class="project-details">
-                <p><strong>Professor:</strong> Prof. João Silva</p>
-                <p><strong>Descrição:</strong> Um estudo avançado sobre métodos matemáticos aplicados.</p>
-              </div>
-              <div class="project-footer">
-                <a href="#" class="btn btn-primary" style="background-color: green;">Ver Detalhes</a>
-              </div>
-            </div>
+                  <!-- Tipo de Projeto -->
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Tipo de Projeto</label>
+                    <div class="col-sm-9">
+                      <select class="form-control-projetos">
+                        <option value="extensao">Extensão</option>
+                        <option value="inovacao">Inovação</option>
+                        <option value="pesquisa">Pesquisa</option>
+                      </select>
+                    </div>
+                  </div>
 
-            <div class="project-card">
-              <div class="project-header">
-                <span class="project-title">Teatro na Escola</span>
-                <span class="project-type">Tipo: Atividade Cultural</span>
-              </div>
-              <div class="project-details">
-                <p><strong>Professor:</strong> Prof. Maria Oliveira</p>
-                <p><strong>Descrição:</strong> Projeto de teatro para engajamento cultural e artístico.</p>
-              </div>
-              <div class="project-footer">
-                <a href="#" class="btn btn-primary" style="background-color: green;">Ver Detalhes</a>
-              </div>
-            </div>
+                  <!-- Resumo -->
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Resumo</label>
+                    <div class="col-sm-9">
+                      <textarea class="form-control-projetos" rows="4" placeholder="Resumo do Projeto"></textarea>
+                    </div>
+                  </div>
 
-            <!-- Seção para Bolsas de Estudo -->
-            <div class="study-grant-card">
-              <div class="study-grant-header" style="color: black;">Bolsas de Estudo</div>
-              <p style="color: black;">Confira as oportunidades de bolsas de estudo disponíveis para projetos acadêmicos
-                e culturais.</p>
-              <a href="#" class="btn btn-info" style="background-color: green;">Ver Oportunidades</a>
+                  <!-- Bolsa Descrição -->
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Descrição da Bolsa (se aplicável)</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control-projetos" placeholder="Descrição da Bolsa" />
+                    </div>
+                  </div>
+
+                  <!-- Bolsa Valor -->
+                  <div class="form-group row">
+                    <label class="col-sm-3 col-form-label">Valor da Bolsa (se aplicável)</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control-projetos" placeholder="Valor da Bolsa" />
+                    </div>
+                  </div>
+
+                  <!-- Botão de Submissão -->
+                  <div class="form-group row">
+                    <div class="col-sm-12 text-right">
+                      <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -235,9 +304,10 @@
           <div class="d-sm-flex justify-content-center justify-content-sm-between">
             <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com
               2021</span>
-            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Free <a
-                href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin
-                template</a> from Bootstrapdash.com</span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">
+              Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin
+                template</a> from Bootstrapdash.com
+            </span>
           </div>
         </footer>
       </div>

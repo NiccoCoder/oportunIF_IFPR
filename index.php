@@ -1,5 +1,7 @@
 <?php
+    header("Location: ./frontend/pages/projetoCadastrar.html"); 
     echo "Paginas:"
+
 ?>
 <!DOCTYPE html>
 <html>
