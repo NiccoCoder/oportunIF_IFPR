@@ -1,5 +1,5 @@
 <?php
-    header("Location: ./frontend/pages/projetoCadastrar.html"); 
+    // header("Location: ./frontend/pages/projetoCadastrar.html"); 
     echo "Paginas:"
 
 ?>
@@ -18,5 +18,11 @@
         <a href = "./frontend/pages/logindocente.html">Login: Docente</a>
         <br>
         <a href = "./frontend/pages/paginavisitante.html">Visualização Projetos</a>
+        <br>
+        <a href = "./frontend/pages/projetoCadastrar.html">Cadastrar Projetos</a>
+        <br>
+        <a href = "./frontend/pages/projetoEditar.html">Editar Projetos</a>
+        <br>
+        <a href = "./frontend/pages/projetoVisualizar.html">Visualizar Projetos</a>
     </body>
 <html>

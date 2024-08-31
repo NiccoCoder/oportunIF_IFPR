@@ -12,18 +12,18 @@ if ($conexao->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
 }
 
-// //Executar consulta
-// $sql = "SHOW TABLES";
-// $result = $conexao->query($sql);
+//Executar consulta
+$sql = "SHOW TABLES";
+$result = $conexao->query($sql);
 
-// if ($result->num_rows > 0) {
-//     // Mostrar tabelas
-//     while($row = $result->fetch_assoc()) {
-//         echo "Tabela: " . $row["Tables_in_$dbname"] . "<br>";
-//     }
-// } else {
-//     echo "Nenhuma tabela encontrada.";
-// }
+if ($result->num_rows > 0) {
+    // Mostrar tabelas
+    while($row = $result->fetch_assoc()) {
+        echo "Tabela: " . $row["Tables_in_$dbname"] . "<br>";
+    }
+} else {
+    echo "Nenhuma tabela encontrada.";
+}
 
 // // Nome da tabela que você deseja consultar
 // $tabela = 'TB_DISCENTE';
