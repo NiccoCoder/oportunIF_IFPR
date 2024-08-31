@@ -4,9 +4,7 @@ $username = getenv('DB_USER');
 $password = getenv('DB_PASSWORD');
 $dbname = getenv('DB_NAME');
 
-// Criar conexão
-$conexao = new mysqli($servername, $username, $password, $dbname);
-
+//atualizado
 // Checar conexão
 if ($conexao->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
