@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="../../frontend/css/style.css">
     <link rel="shortcut icon" href="../../frontend/images/favicon.png"/>
     <style>
-    body
-      {
+      body {
         background-color: #f4f4f4;
         font-family: Arial, sans-serif;
       }
@@ -19,7 +18,7 @@
         margin: 20px 0;
       }
 
-      .report-form {
+      .project-form {
         background: #fff;
         border-radius: 8px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -28,7 +27,7 @@
         margin: 0 auto;
       }
 
-      .report-form h4 {
+      .project-form h4 {
         margin-bottom: 20px;
         font-size: 1.5rem;
         color: #333;
@@ -44,7 +43,7 @@
         color: #333;
       }
 
-      .form-group input, .form-group textarea {
+      .form-group input, .form-group textarea, .form-control-projetos {
         width: 100%;
         padding: 10px;
         border-radius: 4px;
@@ -54,6 +53,14 @@
       .form-group textarea {
         height: 150px;
         resize: vertical;
+      }
+
+      .form-control-projetos {
+        border-radius: 5px; 
+        width: 150px; 
+        height: 30px; 
+        background-color: #fff;
+        border: 1px solid #ccc;
       }
 
       .btn-submit {
@@ -78,14 +85,6 @@
         border-top: 1px solid #ddd;
         text-align: center;
       }
-      .form-control-projetos {
-        border-radius: 5px; 
-        width: 150px; 
-        height: 30px; 
-        background-color: #fff;
-        border: 1px solid #ccc;
-      }
-    
     </style>
   </head>
   <body>
@@ -182,7 +181,7 @@
             </div>
             <div class="project-form">
               <h4 style="color:black">Sobre o projeto:</h4>
-              <form>
+              <form id="projectForm">
                 <div class="form-group">
                   <label for="project-title">Título</label>
                   <input type="text" id="project-title" name="project-title" required>
@@ -191,31 +190,31 @@
                   <label for="project-description">Resumo</label>
                   <textarea id="project-description" name="project-description" required></textarea>
                 </div>
-                  <div class="form-group" id="selection-criteria">
-                    <label for="selection-criteria">Criterios de seleção</label>
-                    <textarea id="selection-criteria" name="selection-criteria"></textarea>  
+                <div class="form-group">
+                  <label for="selection-criteria">Criterios de seleção</label>
+                  <textarea id="selection-criteria" name="selection-criteria"></textarea>
                 </div>
-                <div class="form-group col-md-4">
-                  <label for="col-sm-3 col-form-label">Tipo de projeto</label>
-                    <select class="form-control-projetos">
-                      <option value=""></option>
-                      <option value="extensao">Extensão</option>
-                      <option value="inovacao">Inovação</option>
-                      <option value="pesquisa">Pesquisa</option>
-                    </select>
+                <div class="form-group">
+                  <label for="project-type">Tipo de projeto</label>
+                  <select id="project-type" class="form-control-projetos">
+                    <option value=""></option>
+                    <option value="extensao">Extensão</option>
+                    <option value="inovacao">Inovação</option>
+                    <option value="pesquisa">Pesquisa</option>
+                  </select>
                 </div>
-                    <div class="form-group">
-                      <label for="scholarship-description">Descrição da bolsa(caso o projeto possua uma bolsa)</label>
-                      <textarea id="scholarship-description" name="scholarship-description" required></textarea>
+                <div class="form-group">
+                  <label for="scholarship-description">Descrição da bolsa (caso o projeto possua uma bolsa)</label>
+                  <textarea id="scholarship-description" name="scholarship-description" required></textarea>
                 </div>
                 <div class="form-group">
                   <label for="scholarship-requisition">Requisito para bolsa</label>
                   <textarea id="scholarship-requisition" name="scholarship-requisition" required></textarea>
-                  </div>
-                  <div class="form-group">
-                    <label for="hourly-charge">Carga horaria da bolsa</label>
-                    <textarea id="hourly-charge" name="hourly-charge" required></textarea>
-                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="hourly-charge">Carga horaria da bolsa</label>
+                  <textarea id="hourly-charge" name="hourly-charge" required></textarea>
+                </div>
                 <button type="submit" class="btn-submit">Cadastrar projeto</button>
               </form>
             </div>
@@ -237,6 +236,3 @@
     <script src="../../frontend/js/todolist.js"></script>
   </body>
 </html>
-
-
-
