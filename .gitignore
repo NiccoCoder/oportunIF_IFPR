@@ -1,0 +1,2 @@
+# arquivos a serem ignoradas no git push
+.env

@@ -12,5 +12,7 @@ $conn = new mysqli($host, $user, $password, $database);
 // Verifica se houve erro na conexão
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
+} else{
+    echo $conn;
 }
 ?>
