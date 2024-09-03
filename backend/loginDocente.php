@@ -1,7 +1,19 @@
 <?php
+<<<<<<< HEAD
     if(isset($_POST['submit'])){
         include_once('config.php');
 
+=======
+if(!isset($_SESSION)) 
+{ 
+    session_start(); 
+} 
+
+    if(isset($_POST['submit'])){
+        include_once('config.php');
+
+
+>>>>>>> 4e7b1338c7ef9c85ac774950202d9a8a2b44051f
         $email = $_POST['emailDocente'];
         $senha = $_POST['senhaDocente'];
 
@@ -10,6 +22,7 @@
             exit;
         }
 
+<<<<<<< HEAD
         //Criptografia da senha
         $senha_cripto = password_hash($senha, PASSWORD_DEFAULT);
 
@@ -25,6 +38,22 @@
             header("Location: ../frontend/pages/paginavisitante.html");
         }        
          
+=======
+
+        $sql = "SELECT * FROM TB_DOCENTE WHERE EMAIL = '$email' LIMIT 1";
+
+        $result = $conexao->query($sql) or die($conexao->error);
+
+        $user = $result->fetch_assoc();
+
+        if(password_verify($senha, $user['SENHA'])){
+            $_SESSION['id'] = $user['ID'];
+           header("Location: ../frontend/pages/paginavisitante.html"); 
+        } else {
+            header("Location: ../frontend/pages/paginavisitante.html");
+        } 
+ 
+>>>>>>> 4e7b1338c7ef9c85ac774950202d9a8a2b44051f
     } else {
         header("Location: ../frontend/pages/logindocente.html");
         // $nome = $_POST['nomeDiscente'];

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -144,4 +145,161 @@
   <script src="../js/settings.js"></script>
   <script src="../js/todolist.js"></script>
 </body>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Cadastro (Docente)</title>
+  <link rel="stylesheet" href="../css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="shortcut icon" href="../images/favicon.png" />
+  <script src="../../backend/validacaoEmail.js"></script>
+
+  <style>
+    .content-wrapper {
+      background-color: rgba(60, 221, 60, 0.767); 
+      height: 100vh; 
+      display: flex;
+      justify-content: flex-start; 
+      align-items: center;
+      padding: 0 20px; 
+    }
+
+    .card {
+      background: rgba(253, 255, 254, 0.856); 
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+      width: 50%;
+      max-height: 500px; 
+      max-width: 400px; 
+      overflow: auto;
+      margin: auto; 
+    }
+
+    .card-body {
+      color: black;
+      text-align: left; 
+      padding: 10px 20px; 
+    }
+
+    .form-control::placeholder {
+      color: black; 
+      opacity: 1; 
+    }
+
+    .form-control {
+      color: black; 
+      background-color: white;
+      border: 1px solid black; 
+      border-radius: 5px; 
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+      width: 100%; 
+      max-width: 100%; 
+      padding: 8px; 
+    }
+
+    .form-control:focus {
+      background-color: #f2f2f2; 
+      border-color: #2f9e41; 
+    }
+
+    .btn-success {
+      color: black; 
+      border-radius: 5px; 
+      width: 100%; 
+      max-width: 100%; 
+      padding: 10px; 
+      cursor: pointer; 
+    }
+
+    .form-group {
+      margin-bottom: 15px; 
+    }
+
+    .form-check-label {
+      display: flex; 
+      align-items: center; 
+    }
+
+    .forgot-pass {
+      margin-left: auto; 
+      color: black; 
+      text-decoration: none;
+    }
+
+    .card-title {
+      color: black; 
+      font-size: 24px; 
+      margin-bottom: 15px; 
+      text-align: left; 
+    }
+
+    .sign-up {
+      margin-top: 10px; 
+      text-align: left; 
+    }
+
+    .sign-up a {
+      color: black; 
+      text-decoration: none;
+    }
+
+    .sign-up a:hover {
+      text-decoration: underline; 
+    }
+  </style>
+</head>
+<body>
+  <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="row w-100 m-0">
+        <div class="content-wrapper full-page-wrapper d-flex align-items-center auth">
+          <div class="card col-lg-4">
+            <div class="card-body">
+              <h3 class="card-title" style= "color:black">Cadastro (Docente)</h3>
+              <form action="../../backend/cadastroDocente.php" method="POST" id="cadastroDocente" onsubmit="return validarEmailDocente('emailDocente')">
+                <div class="form-group">
+                  <label>Nome:</label>
+                  <input type="text" class="form-control p_input" placeholder="Nome Completo" id="nomeDocente" name="nomeDocente" required>
+                </div>
+                <div class="form-group">
+                  <label>Email:</label>
+                  <input type="email" class="form-control p_input" placeholder="email.Institucional@ifpr.edu.br" id="emailDocente" name="emailDocente" required>
+                </div>
+                <div class="form-group">
+                  <label>Senha:</label>
+                  <input type="password" class="form-control p_input" placeholder="••••••••" id="senhaDocente" name="senhaDocente" required>
+                </div>
+                <div class="form-group d-flex align-items-center justify-content-between">
+                  <div class="form-check form-check-success">
+                    <input type="checkbox" class="form-checkbox form-check-input" id="inpMeLembre">
+                    <label class="form-check-label" for="inpMeLembre">
+                       Me lembre
+                    </label>
+                  </div>
+                  <a href="#" class="forgot-pass">Esqueci minha Senha</a>
+                </div>
+                <div class="text-center">
+                  <button type="submit" name="submit" class="btn btn-success btn-block enter-btn">Cadastrar</button>
+                </div>
+                <p class="sign-up">Já tem uma conta? <a href="../../frontend/pages/logindocente.html">Login</a></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <script src="../js/vendor.bundle.base.js"></script>
+  <script src="../js/off-canvas.js"></script>
+  <script src="../js/hoverable-collapse.js"></script>
+  <script src="../js/misc.js"></script>
+  <script src="../js/settings.js"></script>
+  <script src="../js/todolist.js"></script> -->
+</body>
+>>>>>>> 4e7b1338c7ef9c85ac774950202d9a8a2b44051f
 </html>

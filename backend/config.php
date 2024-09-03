@@ -4,9 +4,13 @@ $username = getenv('DB_USER');
 $password = getenv('DB_PASSWORD');
 $dbname = getenv('DB_NAME');
 
+<<<<<<< HEAD
 // Criar conexão
 $conexao = new mysqli($servername, $username, $password, $dbname);
 
+=======
+//atualizado
+>>>>>>> 4e7b1338c7ef9c85ac774950202d9a8a2b44051f
 // Checar conexão
 if ($conexao->connect_error) {
     die("Conexão falhou: " . $conn->connect_error);
@@ -60,4 +64,8 @@ if ($conexao->connect_error) {
 // } else {
     // echo "Nenhum dado encontrado na tabela TB_DISCENTE.";
 // }
+<<<<<<< HEAD
+=======
+unset($_SESSION["id"]);
+>>>>>>> 4e7b1338c7ef9c85ac774950202d9a8a2b44051f
 ?>
