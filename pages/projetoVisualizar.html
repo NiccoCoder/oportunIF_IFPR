@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Projetos Docente - OportunIF</title>
+  <link rel="stylesheet" href="../../frontend/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../frontend/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../../frontend/css/style.css">
+  <link rel="shortcut icon" href="../../frontend/images/favicon.png"/>
+  <style>
+    body {
+      background-color: #f4f4f4;
+      font-family: Arial, sans-serif;
+    }
+
+    .page-header {
+      margin: 20px 0;
+    }
+
+    .project-card {
+      background: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+      margin-bottom: 20px;
+    }
+
+    .project-card h4 {
+      margin-bottom: 20px;
+      font-size: 1.5rem;
+      color: #333;
+    }
+
+    .project-card .project-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: #333;
+    }
+
+    .project-card .project-type {
+      font-size: 0.875rem;
+      color: #666;
+    }
+
+    .project-card .project-details {
+      font-size: 0.875rem;
+      color: #333;
+      margin-bottom: 10px;
+    }
+
+    .project-card .btn-edit {
+      background-color: #28a745;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .project-card .btn-edit:hover {
+      background-color: #218838;
+    }
+
+    .project-card .btn-delete {
+      background-color: #dc3545;
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .project-card .btn-delete:hover {
+      background-color: #c82333;
+    }
+
+    .project-card .btn-details {
+      background-color: #006400; /* Dark green */
+      color: #fff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.875rem;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .project-card .btn-details:hover {
+      background-color: #004d00; /* Darker green */
+    }
+
+    .footer {
+      padding: 20px;
+      background-color: #fff;
+      border-top: 1px solid #ddd;
+      text-align: center;
+    }
+
+    .form-control-projects {
+      border-radius: 5px;
+      width: 150px;
+      height: 30px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-scroller">
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+        <a class="sidebar-brand brand-logo" href="../../index.html"><img src="../../frontend/images/OportunIF.png" alt="logo" /></a>
+        <a class="sidebar-brand brand-logo-mini" href="../../index.html"><img src="../../frontend/images/OportunIF.png" alt="logo" /></a>
+      </div>
+      <ul class="nav">
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="#">
+            <span class="menu-icon">
+              <i class="mdi mdi-book"></i>
+            </span>
+            <span class="menu-title">Projetos</span>
+          </a>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="#">
+            <span class="menu-icon">
+              <i class="mdi mdi-briefcase text-warning"></i>
+            </span>
+            <span class="menu-title">Bolsas</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="container-fluid page-body-wrapper">
+      <nav class="navbar p-0 fixed-top d-flex flex-row">
+        <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../../frontend/images/OportunIF.jpg" alt="logo" /></a>
+        </div>
+        <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+          <ul class="navbar-nav w-100">
+            <li class="nav-item w-100">
+              <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                <input type="text" style="color: white;" class="form-control" placeholder="Pesquisar">
+              </form>
+            </li>
+          </ul>
+          <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item dropdown d-none d-lg-block">
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">
+                <h6 class="p-3 mb-0">Projetos</h6>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
+                <div class="navbar-profile">
+                  <p class="mb-0 d-none d-sm-block navbar-profile-name">Usuario docente</p>
+                  <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+                </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+                <h6 class="p-3 mb-0">Opções</h6>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-dark rounded-circle">
+                      <i class="mdi mdi-account text-success"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <p class="preview-subject mb-1">Perfil</p>
+                  </div>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-dark rounded-circle">
+                      <i class="mdi mdi-exit-to-app text-danger"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <p class="preview-subject mb-1">Sair</p>
+                  </div>
+                </a>
+              </div>
+            </li>
+          </ul>
+          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+            <span class="mdi mdi-format-line-spacing"></span>
+          </button>
+        </div>
+      </nav>
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <div class="page-header">
+            <h3 class="page-title">Projetos Docente</h3>
+          </div>
+          <div class="projects-section">
+            <!-- Example project card -->
+            <div class="project-card">
+              <div class="project-header">
+                <div class="project-title">Título do Projeto 1</div>
+                <div class="project-type">Tipo: Pesquisa</div>
+              </div>
+              <div class="project-details">
+                <strong>Resumo:</strong> Projeto focado em inovação pedagógica e implementação de técnicas modernas de ensino.
+                <br><br>
+                <strong>Descrição da Bolsa:</strong> Bolsa de pesquisa com foco em pedagogia e novas metodologias de ensino.
+                <br><br>
+                <strong>Valor da Bolsa:</strong> R$ 10.000,00
+              </div>
+              <div class="project-footer">
+                <div class="project-actions">
+                  <a href="project-details.html" class="btn-details">Ver Detalhes</a>
+                  <a href="#" class="btn-edit">Editar</a>
+                  <a href="#" class="btn-delete">Excluir</a>
+                </div>
+              </div>
+            </div>
+            <!-- Another example project card -->
+            <div class="project-card">
+              <div class="project-header">
+                <div class="project-title">Título do Projeto 2</div>
+                <div class="project-type">Tipo: Extensão</div>
+              </div>
+              <div class="project-details">
+                <strong>Resumo:</strong> Projeto voltado para a integração entre a universidade e a comunidade através de eventos e atividades educacionais.
+                <br><br>
+                <strong>Descrição da Bolsa:</strong> Bolsa para atividades de extensão e organização de eventos comunitários.
+                <br><br>
+                <strong>Valor da Bolsa:</strong> R$ 8.000,00
+              </div>
+              <div class="project-footer">
+                <div class="project-actions">
+                  <a href="project-details.html" class="btn-details">Ver Detalhes</a>
+                  <a href="#" class="btn-edit">Editar</a>
+                  <a href="#" class="btn-delete">Excluir</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer class="footer" style="background-color: black;">
+          <div class="d-sm-flex justify-content-center justify-content-sm-between">
+            <span></span>
+            <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center text-white">oportunifreport@gmail.com</span>
+          </div>
+        </footer>
+      </div>
+    </div>
+  </div>
+  <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
+  <script src="../../frontend/js/off-canvas.js"></script>
+  <script src="../../frontend/js/hoverable-collapse.js"></script>
+  <script src="../../frontend/js/misc.js"></script>
+</body>
+</html>
