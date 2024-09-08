@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>OportunIF</title>
+  <title>Coordenação - OportunIF</title>
   <link rel="stylesheet" href="../../frontend/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../../frontend/vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="../../frontend/css/style.css">
@@ -79,67 +79,6 @@
       margin-bottom: 10px;
     }
 
-    .projects-section {
-      margin: 20px 0;
-    }
-
-    .project-card {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 15px;
-      margin-bottom: 20px;
-      background-color: #f9f9f9;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s, box-shadow 0.3s;
-    }
-
-    .project-card:hover {
-      background-color: #fff;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-
-    .project-header {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
-    }
-
-    .project-title {
-      font-size: 1.25rem;
-      font-weight: bold;
-    }
-
-    .project-type {
-      font-size: 0.875rem;
-      color: #666;
-    }
-
-    .project-details {
-      font-size: 0.875rem;
-      color: #333;
-    }
-
-    .project-footer {
-      display: flex;
-      justify-content: flex-end;
-      margin-top: 10px;
-    }
-
-    .study-grant-card {
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      padding: 15px;
-      background-color: #e9f7fc;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      margin-bottom: 20px;
-    }
-
-    .study-grant-header {
-      font-size: 1.25rem;
-      font-weight: bold;
-      margin-bottom: 10px;
-    }
-
     .card-project {
       position: relative;
       display: flex;
@@ -150,34 +89,75 @@
       background-clip: border-box;
       border: 1px solid rgba(0, 0, 0, 0.125);
       border-radius: 0.25rem;
-      color:#000000;
+      color: #000000;
     }
+
     .action-buttons {
       display: flex;
       gap: 10px;
     }
+
     .action-buttons button {
       background: none;
       border: none;
       cursor: pointer;
       transition: color 0.3s;
     }
+
     .action-buttons .icon {
-      font-size: 24px; /* Adjust size as needed */
-      color: #333; /* Default color */
+      font-size: 24px;
+      color: #333;
       transition: color 0.3s;
     }
+
     .action-buttons .icon:hover {
-      color: #007bff; /* Color on hover */
+      color: #007bff;
     }
+
     .text-success {
-      color: #28a745; /* Bootstrap success color */
+      color: #28a745;
     }
+
     .ml-auto {
       margin-left: auto;
     }
-  </style>
-</head>
+
+      .modal {
+        display: none; /* Oculto por padrão */
+        position: fixed; /* Ficar no lugar */
+        z-index: 1050; /* Ficar acima de outros elementos */
+        left: 0;
+        top: 0;
+        width: 100%; /* Largura total */
+        height: 100%; /* Altura total */
+        overflow: auto; /* Habilitar rolagem se necessário */
+        background-color: rgba(0, 0, 0, 0.4); /* Preto com opacidade */
+      }
+    
+      .modal-content {
+        background-color: #fefefe;
+        margin: 10% auto; /* 10% do topo e centralizado */
+        padding: 20px;
+        border: 1px solid #888;
+        width: 50%; /* Largura menor do modal */
+        max-width: 600px; /* Largura máxima */
+        border-radius: 8px; /* Bordas arredondadas */
+      }
+    
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 24px; /* Tamanho menor */
+        font-weight: bold;
+      }
+    
+      .close:hover,
+      .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
 
 <body>
   <div class="container-scroller">
@@ -196,7 +176,7 @@
             </span>
             <span class="menu-title">Projetos</span>
           </a>
-          </span>
+        </li>
         <li class="nav-item menu-items">
           <a class="nav-link" href="#">
             <span class="menu-icon">
@@ -237,13 +217,12 @@
             <li class="nav-item dropdown">
               <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
                 <div class="navbar-profile">
-                  <p class="mb-0 d-none d-sm-block navbar-profile-name">Visitante</p>
+                  <p class="mb-0 d-none d-sm-block navbar-profile-name">Usuario Master</p>
                   <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                 </div>
               </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-                aria-labelledby="profileDropdown">
-                <h6 class="p-3 mb-0">opções</h6>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+                <h6 class="p-3 mb-0">Opções</h6>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
@@ -252,18 +231,18 @@
                     </div>
                   </div>
                   <div class="preview-item-content">
-                    <p class="preview-subject mb-1">Login discente</p>
+                    <p class="preview-subject mb-1">Report</p>
                   </div>
                 </a>
                 <div class="dropdown-divider"></div>
                 <a class="dropdown-item preview-item">
                   <div class="preview-thumbnail">
                     <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-account text-danger"></i>
+                      <i class="mdi mdi-exit-to-app text-danger"></i>
                     </div>
                   </div>
                   <div class="preview-item-content">
-                    <p class="preview-subject mb-1">Login docente</p>
+                    <p class="preview-subject mb-1">Saida</p>
                   </div>
                 </a>
               </div>
@@ -338,7 +317,7 @@
                 </div>
               </div>
             </div>
-            <div class="row ">
+            <div class="row">
               <div class="col-12 grid-margin">
                 <div class="card-project">
                   <div class="card-body">
@@ -376,16 +355,14 @@
                             <td> Não </td>
                             <td>
                               <div class="action-buttons">
-                                <button title="Visualizar" onclick="viewProject(1)">
+                                <button title="Visualizar" onclick="openModal('IF Esportes: Basquete', 'Extensão', 'Mariana', 'Não')">
                                   <i class="mdi mdi-eye icon text-success ml-auto"></i>
-                                </button>
-                                <button title="Editar" onclick="editProject(1)">
-                                  <i class="mdi mdi-brush icon text-success ml-auto"></i>
                                 </button>
                                 <button title="Deletar" onclick="deleteProject(1)">
                                   <i class="mdi mdi-delete icon text-success ml-auto"></i>
                                 </button>
                               </div>
+                            </td>
                           </tr>
                         </tbody>
                       </table>
@@ -396,12 +373,55 @@
             </div>
           </div>
         </div>
+        <!-- Modal -->
+        <div id="projectModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 style="color: #000000;">Detalhes do Projeto</h2>
+            <p style="color:#000000"><strong>Título:</strong> <span id="modalTitle"></span></p>
+            <p style="color: #000000;"><strong>Tipo:</strong> <span id="modalType"></span></p>
+            <p style="color: #000000;"><strong>Responsável:</strong> <span id="modalResponsible"></span></p>
+            <p style="color: #000000;"><strong>Com Bolsa:</strong> <span id="modalGrant"></span></p>
+          </div>
+          <div id="deletmodal" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="closeModal()">&times;</span>
+              <h2>Confirmar Exclusão</h2>
+              <p>Você tem certeza que deseja excluir o projeto <span id="projectTitle"></span>?</p>
+              <button class="btn btn-danger" id="confirmDelete">Excluir</button>
+              <button class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
+            </div>
+        </div>
         <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
         <script src="../../frontend/js/off-canvas.js"></script>
         <script src="../../frontend/js/hoverable-collapse.js"></script>
         <script src="../../frontend/js/misc.js"></script>
         <script src="../../frontend/js/settings.js"></script>
         <script src="../../frontend/js/todolist.js"></script>
+        <script>
+          // Modal
+          var modal = document.getElementById("projectModal");
+          var span = document.getElementsByClassName("close")[0];
+
+          function openModal(title, type, responsible, grant) {
+            document.getElementById("modalTitle").textContent = title;
+            document.getElementById("modalType").textContent = type;
+            document.getElementById("modalResponsible").textContent = responsible;
+            document.getElementById("modalGrant").textContent = grant;
+            modal.style.display = "block";
+          }
+
+          span.onclick = function() {
+            modal.style.display = "none";
+          }
+
+          window.onclick = function(event) {
+            if (event.target == modal) {
+              modal.style.display = "none";
+            }
+          }
+        </script>
+        
 </body>
 
 </html>
