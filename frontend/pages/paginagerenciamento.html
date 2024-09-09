@@ -358,8 +358,8 @@
                                 <button title="Visualizar" onclick="openModal('IF Esportes: Basquete', 'Extensão', 'Mariana', 'Não')">
                                   <i class="mdi mdi-eye icon text-success ml-auto"></i>
                                 </button>
-                                <button title="Deletar" onclick="deleteProject(1)">
-                                  <i class="mdi mdi-delete icon text-success ml-auto"></i>
+                                <button title="Deletar" onclick="openDeleteModal('IF Esportes: Basquete')">
+                                  <i class="mdi mdi-delete icon text-danger ml-auto"></i>
                                 </button>
                               </div>
                             </td>
@@ -383,44 +383,65 @@
             <p style="color: #000000;"><strong>Responsável:</strong> <span id="modalResponsible"></span></p>
             <p style="color: #000000;"><strong>Com Bolsa:</strong> <span id="modalGrant"></span></p>
           </div>
-          <div id="deletmodal" class="modal">
-            <div class="modal-content">
-              <span class="close" onclick="closeModal()">&times;</span>
-              <h2>Confirmar Exclusão</h2>
-              <p>Você tem certeza que deseja excluir o projeto <span id="projectTitle"></span>?</p>
-              <button class="btn btn-danger" id="confirmDelete">Excluir</button>
-              <button class="btn btn-secondary" onclick="closeModal()">Cancelar</button>
-            </div>
-        </div>
+        </div> 
+        <!-- Modal de Confirmação de Exclusão -->
+        <div id="deleteModal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 style="color: #000000;">Confirmar Exclusão</h2>
+            <p style="color:#000000">Tem certeza que deseja excluir o projeto <strong><span id="deleteTitle"></span></strong>?</p>
+            <div style="display: flex; justify-content: flex-end; gap: 10px;">
+              <button style="padding: 8px 16px; background-color: #64ec9d; color: #fff; border: none; border-radius: 5px; cursor: pointer;" onclick="confirmDelete()">Sim, excluir</button>
+              <button style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;" onclick="closeDeleteModal()">Cancelar</button>
+              </div>
         <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
         <script src="../../frontend/js/off-canvas.js"></script>
         <script src="../../frontend/js/hoverable-collapse.js"></script>
         <script src="../../frontend/js/misc.js"></script>
         <script src="../../frontend/js/settings.js"></script>
         <script src="../../frontend/js/todolist.js"></script>
-        <script>
-          // Modal
-          var modal = document.getElementById("projectModal");
-          var span = document.getElementsByClassName("close")[0];
+      
+      <script>
+         const projectModal = document.getElementById("projectModal");
+    const deleteModal = document.getElementById("deleteModal");
 
-          function openModal(title, type, responsible, grant) {
-            document.getElementById("modalTitle").textContent = title;
-            document.getElementById("modalType").textContent = type;
-            document.getElementById("modalResponsible").textContent = responsible;
-            document.getElementById("modalGrant").textContent = grant;
-            modal.style.display = "block";
-          }
+    function openModal(title, type, responsible, grant) {
+      document.getElementById("modalTitle").textContent = title;
+      document.getElementById("modalType").textContent = type;
+      document.getElementById("modalResponsible").textContent = responsible;
+      document.getElementById("modalGrant").textContent = grant;
+      projectModal.style.display = "block";
+    }
 
-          span.onclick = function() {
-            modal.style.display = "none";
-          }
+    function openDeleteModal(title) {
+      document.getElementById("deleteTitle").textContent = title;
+      deleteModal.style.display = "block";
+    }
 
-          window.onclick = function(event) {
-            if (event.target == modal) {
-              modal.style.display = "none";
-            }
-          }
-        </script>
+    function closeDeleteModal() {
+      deleteModal.style.display = "none";
+    }
+
+    function confirmDelete() {
+      alert("Projeto excluído com sucesso!");
+      closeDeleteModal();
+    }
+
+    const closeButtons = document.getElementsByClassName("close");
+    Array.from(closeButtons).forEach(function (btn) {
+      btn.onclick = function () {
+        projectModal.style.display = "none";
+        deleteModal.style.display = "none";
+      }
+    });
+
+    window.onclick = function (event) {
+      if (event.target == projectModal || event.target == deleteModal) {
+        projectModal.style.display = "none";
+        deleteModal.style.display = "none";
+      }
+    };
+  </script>
         
 </body>
 

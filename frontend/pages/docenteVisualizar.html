@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Coordenação - OportunIF</title>
+  <link rel="stylesheet" href="../../frontend/vendors/mdi/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../../frontend/vendors/css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../../frontend/css/style.css">
+  <link rel="shortcut icon" href="../../frontend/images/favicon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    /* Estilos para a seção de projetos */
+    .projects-section {
+      margin: 20px 0;
+    }
+
+    .action-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .project-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      margin-bottom: 20px;
+      background-color: #f9f9f9;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s, box-shadow 0.3s;
+    }
+
+    .project-card:hover {
+      background-color: #fff;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .project-title {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+
+    .project-type {
+      font-size: 0.875rem;
+      color: #666;
+    }
+
+    .project-details {
+      font-size: 0.875rem;
+      color: #333;
+    }
+
+    .project-footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 10px;
+    }
+
+    .text-success {
+      color: #28a745;
+    }
+
+    .ml-auto {
+      margin-left: auto;
+    }
+
+    .modal {
+      display: none; /* Oculto por padrão */
+      position: fixed; /* Ficar no lugar */
+      z-index: 1050; /* Ficar acima de outros elementos */
+      left: 0;
+      top: 0;
+      width: 100%; /* Largura total */
+      height: 100%; /* Altura total */
+      overflow: auto; /* Habilitar rolagem se necessário */
+      background-color: rgba(0, 0, 0, 0.4); /* Preto com opacidade */
+    }
+
+    .modal-content {
+      background-color: #fefefe;
+      margin: 10% auto; /* 10% do topo e centralizado */
+      padding: 20px;
+      border: 1px solid #888;
+      width: 50%; /* Largura menor do modal */
+      max-width: 600px; /* Largura máxima */
+      border-radius: 8px; /* Bordas arredondadas */
+    }
+
+    .close {
+      color: #aaa;
+      float: right;
+      font-size: 24px; /* Tamanho menor */
+      font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: black;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .floating-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      font-size: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-scroller">
+    <nav class="sidebar sidebar-offcanvas" id="sidebar">
+      <div class="sidebar-brand-wrapper d-none d-lg-flex align-items-center justify-content-center fixed-top">
+        <a class="sidebar-brand brand-logo" href="../../index.html"><img src="../../frontend/images/OportunIF.png" alt="logo" /></a>
+        <a class="sidebar-brand brand-logo-mini" href="../../index.html"><img src="../../frontend/images/OportunIF.png" alt="logo" /></a>
+      </div>
+      <ul class="nav">
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="#">
+            <span class="menu-icon">
+              <i class="mdi mdi-book"></i>
+            </span>
+            <span class="menu-title">Projetos</span>
+          </a>
+        </li>
+        <li class="nav-item menu-items">
+          <a class="nav-link" href="#">
+            <span class="menu-icon">
+              <i class="mdi mdi-briefcase text-warning"></i>
+            </span>
+            <span class="menu-title">Bolsas</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+    <div class="container-fluid page-body-wrapper">
+      <nav class="navbar p-0 fixed-top d-flex flex-row">
+        <div class="navbar-brand-wrapper d-flex d-lg-none align-items-center justify-content-center">
+          <a class="navbar-brand brand-logo-mini" href="index.html"><img src="../../frontend/images/OportunIF.jpg" alt="logo" /></a>
+        </div>
+        <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+            <span class="mdi mdi-menu"></span>
+          </button>
+          <ul class="navbar-nav w-100">
+            <li class="nav-item w-100">
+              <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                <input type="text" style="color: white;" class="form-control" placeholder="Pesquisar">
+              </form>
+            </li>
+          </ul>
+          <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item dropdown d-none d-lg-block">
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">
+                <h6 class="p-3 mb-0">Projetos</h6>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
+                <div class="navbar-profile">
+                  <p class="mb-0 d-none d-sm-block navbar-profile-name">Docente</p>
+                  <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+                </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+                <h6 class="p-3 mb-0">Opções</h6>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-dark rounded-circle">
+                      <i class="mdi mdi-account text-success"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <p class="preview-subject ellipsis mb-1">Perfil</p>
+                  </div>
+                </a>
+                <a class="dropdown-item preview-item">
+                  <div class="preview-thumbnail">
+                    <div class="preview-icon bg-dark rounded-circle">
+                      <i class="mdi mdi-logout text-danger"></i>
+                    </div>
+                  </div>
+                  <div class="preview-item-content">
+                    <p class="preview-subject ellipsis mb-1">Sair</p>
+                  </div>
+                </a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <div class="main-panel">
+        <div class="content-wrapper">
+          <h4 class="page-title">Gerenciamento de Projetos</h4>
+          <div class="row">
+            <div class="col-md-4 grid-margin stretch-card">
+              <div class="card card-body text-center">
+                <div class="card-header">
+                  <i class="fas fa-user-graduate fa-2x text-primary"></i>
+                  <h5 class="my-2">Total de Discentes</h5>
+                  <p class="h1">120</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 grid-margin stretch-card">
+              <div class="card card-body text-center">
+                <div class="card-header">
+                  <i class="fas fa-chalkboard-teacher fa-2x text-danger"></i>
+                  <h5 class="my-2">Total de Docentes</h5>
+                  <p class="h1">15</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 grid-margin stretch-card">
+              <div class="card card-body text-center">
+                <div class="card-header">
+                  <i class="fas fa-project-diagram fa-2x text-success"></i>
+                  <h5 class="my-2">Total de Projetos</h5>
+                  <p class="h1">25</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="projects-section">
+            <h5 class="mb-4">Projetos Cadastrados</h5>
+            <div class="project-card">
+              <div class="project-header">
+                <div class="project-title">Título do Projeto 1</div>
+                <div class="project-type text-success">Tipo: Pesquisa</div>
+              </div>
+              <div class="project-details">
+                <p><strong>Descrição:</strong> Descrição breve do projeto.</p>
+                <p><strong>Resumo:</strong> Resumo do projeto.</p>
+                <p><strong>Descrição da Bolsa:</strong> Bolsa do projeto.</p>
+                <p><strong>Valor da Bolsa:</strong> R$ 10.000,00</p>
+              </div>
+              <div class="project-footer">
+                <div class="action-buttons">
+                  <button class="icon" onclick="openEditModal()"><i class="fas fa-edit"></i></button>
+                  <button class="icon text-danger" onclick="openDeleteModal()"><i class="fas fa-trash"></i></button>
+                  <button class="icon text-success" onclick="viewDetails()"><i class="fas fa-eye"></i></button>
+                </div>
+              </div>
+            </div>
+            <!-- Adicione mais cartões de projeto aqui -->
+          </div>
+
+          <!-- Modal para visualização de projeto -->
+          <div id="viewDetailsModal" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="closeViewDetailsModal()">&times;</span>
+              <h2>Detalhes do Projeto</h2>
+              <p><strong>Título:</strong> Título do Projeto 1</p>
+              <p><strong>Descrição:</strong> Descrição breve do projeto.</p>
+              <p><strong>Resumo:</strong> Resumo do projeto.</p>
+              <p><strong>Descrição da Bolsa:</strong> Bolsa do projeto.</p>
+              <p><strong>Valor da Bolsa:</strong> R$ 10.000,00</p>
+            </div>
+          </div>
+
+          <!-- Modal para exclusão de projeto -->
+          <div id="deleteModal" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="closeDeleteModal()">&times;</span>
+              <h2>Confirmar Exclusão</h2>
+              <p>Tem certeza de que deseja excluir este projeto?</p>
+              <button onclick="confirmDelete()">Excluir</button>
+              <button onclick="closeDeleteModal()">Cancelar</button>
+            </div>
+          </div>
+
+          <!-- Botão flutuante -->
+          <button class="floating-button" onclick="window.location.href='projetoCadastro.html'">+</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
+  <script src="../../frontend/js/off-canvas.js"></script>
+  <script src="../../frontend/js/hoverable-collapse.js"></script>
+  <script src="../../frontend/js/template.js"></script>
+  <script src="../../frontend/js/todolist.js"></script>
+
+  <script>
+    function openEditModal() {
+      // Lógica para abrir o modal de edição
+      window.location.href = 'projetoEditar.html';
+    }
+
+    function openDeleteModal() {
+      document.getElementById('deleteModal').style.display = 'block';
+    }
+
+    function closeDeleteModal() {
+      document.getElementById('deleteModal').style.display = 'none';
+    }
+
+    function confirmDelete() {
+      // Lógica para confirmar exclusão
+      alert('Projeto excluído com sucesso!');
+      closeDeleteModal();
+    }
+
+    function viewDetails() {
+      document.getElementById('viewDetailsModal').style.display = 'block';
+    }
+
+    function closeViewDetailsModal() {
+      document.getElementById('viewDetailsModal').style.display = 'none';
+    }
+  </script>
+</body>
+
+</html>
