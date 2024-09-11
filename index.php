@@ -37,7 +37,7 @@
         <br>
         <a href = "./frontend/pages/cadastroAluno.html">Cadastro: Discente</a>
         <br>
-        <a href = "./frontend/pages/logindiscente.html">Login: Discente</a>
+        <a href = "./backend/enviar_email.php">Enviar email</a>
         <br>
         <a href = "./frontend/pages/logindocente.html">Login: Docente</a>
         <br>

@@ -1,21 +1,27 @@
 FROM php:8.2-apache
 
-# Install necessary PHP extensions
+# Instale o Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Instale extensões PHP necessárias
 RUN docker-php-ext-install mysqli
 
 WORKDIR /var/www/html
 
-# Copy application files to Apache directory
+# Copie os arquivos da aplicação para o diretório do Apache
 COPY . .
 
-# Set environment variables for PHP
+# Instale as dependências do Composer
+RUN composer install
+
+# Defina variáveis de ambiente para o PHP
 ENV DB_HOST=${DB_HOST}
 ENV DB_USER=${DB_USER}
 ENV DB_PASSWORD=${DB_PASSWORD}
 ENV DB_NAME=${DB_NAME}
 
-# Adjust file permissions
+# Ajuste as permissões dos arquivos
 RUN chown -R www-data:www-data /var/www/html
 
-# Expose port 80
+# Exponha a porta 80
 EXPOSE 80
