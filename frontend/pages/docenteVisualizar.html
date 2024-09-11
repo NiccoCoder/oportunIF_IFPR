@@ -17,9 +17,9 @@
       margin: 20px 0;
     }
 
-    .action-buttons {
-      display: flex;
-      gap: 10px;
+     .action-buttons {
+    display: flex;
+    gap: 10px;
     }
 
     .project-card {
@@ -318,149 +318,145 @@
                   </div>
                 </div>
               </div>
-                        </div>
-                      </div>
-          <div class="projects-section">
-            <h5 class="mb-4" style="color: #000000;">Seus projetos.</h5>
-            <div class="project-card">
-              <div class="project-header">
-                <div class="project-title">Título do Projeto 1</div>
-                <div class="project-type text-success">Tipo: Pesquisa</div>
+<div class="row">
+    <div class="col-12 grid-margin">
+      <div class="card-project">
+        <div class="card-body">
+          <h4 class="card-title" style="text-align: center">Projetos </h4>
+          <div class="table-responsive">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>
+                    <div class="form-check form-check-muted m-0">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input">
+                      </label>
+                    </div>
+                  </th>
+                  <th> Titulo </th>
+                  <th> Tipo   </th>
+                  <th> Responsável </th>
+                  <th> C/ Bolsa</th>
+                  <th> Opções </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="form-check form-check-muted m-0">
+                      <label class="form-check-label">
+                        <input type="checkbox" class="form-check-input">
+                      </label>
+                    </div>
+                  </td>
+                  <td> IF Esportes: Basquete </td>
+                  <td> Extensão </td>
+                  <td> Mariana </td>
+                  <td> Não </td>
+                  <td>
+                    <div class="action-buttons">
+                      <button title="Visualizar" onclick="openModal('IF Esportes: Basquete', 'Extensão', 'Mariana', 'Não')">
+                        <i class="mdi mdi-eye icon text-success ml-auto"></i>
+                      </button>
+                      <button title="Deletar" onclick="openDeleteModal('IF Esportes: Basquete')">
+                        <i class="mdi mdi-delete icon text-danger ml-auto"></i>
+                      </button>
+                      <button title="Editar" onclick="window.location.href=('projetoEditar.html')" style="display: flex; justify-content: center; align-items: center;">
+                        <i class="mdi mdi-border-color icon text-primary ml-auto"></i>
+                      </button>
+                  </div>
+                </div>
               </div>
-              <div class="project-details">
-                <p><strong>Descrição:</strong> Descrição breve do projeto.</p>
-                <p><strong>Resumo:</strong> Resumo do projeto.</p>
-                <p><strong>Descrição da Bolsa:</strong> Bolsa do projeto.</p>
-                <p><strong>Valor da Bolsa:</strong> R$ 10.000,00</p>
-              </div>
-              <div class="project-footer">
-                <div class="action-buttons">
-                  <button class="icon" onclick="openEditModal()"><i class="fas fa-edit"></i></button>
-                  <button class="icon text-danger" onclick="openDeleteModal()"><i class="fas fa-trash"></i></button>
-                  <button class="icon text-success" onclick="viewDetails()"><i class="fas fa-eye"></i></button>
+                    <div class="floating-button" onclick="window.location.href='projetoCadastrar.html'">
+                      <i class="fas fa-plus"></i>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="project-card">
-              <div class="project-header">
-                <div class="project-title">Título do Projeto 2</div>
-                <div class="project-type text-success">Tipo: Desenvolvimento</div>
-              </div>
-              <div class="project-details">
-                <p><strong>Descrição:</strong> Descrição breve do projeto.</p>
-                <p><strong>Resumo:</strong> Resumo do projeto.</p>
-                <p><strong>Descrição da Bolsa:</strong> Bolsa do projeto.</p>
-                <p><strong>Valor da Bolsa:</strong> R$ 15.000,00</p>
-              </div>
-              <div class="project-footer">
-                <div class="action-buttons">
-                  <button class="icon" onclick="openEditModal()"><i class="fas fa-edit"></i></button>
-                  <button class="icon text-danger" onclick="openDeleteModal()"><i class="fas fa-trash"></i></button>
-                  <button class="icon text-success" onclick="viewDetailsmodal()"><i class="fas fa-eye"></i></button>
-                </div>
-              </div>
-            </div>
-          </div>
-                <div class="floating-button" onclick="window.location.href='projetoCadastrar.html'">
-                  <i class="fas fa-plus"></i>
-                </div>
-              </div>
-            </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
-      
-            <!-- Adicione mais cartões de projeto aqui -->
-          </div>
-
-          <!-- Modal para visualização de projeto -->
-          <div id="viewDetailsmodal" class="modal">
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <h2 style="color: #000000;">Detalhes do Projeto</h2>
-              <p style="color:#000000"><strong>Título:</strong> <span id="modalTitle"></span></p>
-              <p style="color: #000000;"><strong>Tipo:</strong> <span id="modalType"></span></p>
-              <p style="color: #000000;"><strong>Responsável:</strong> <span id="modalResponsible"></span></p>
-              <p style="color: #000000;"><strong>Com Bolsa:</strong> <span id="modalGrant"></span></p>
-            </div>
-          </div> 
-          <!-- Modal de Confirmação de Exclusão -->
-          <div id="deleteModal" class="modal">
-            <div class="modal-content">
-              <span class="close">&times;</span>
-              <h2 style="color: #000000;">Confirmar Exclusão</h2>
-              <p style="color:#000000">Tem certeza que deseja excluir o projeto <strong><span id="deleteTitle"></span></strong>?</p>
-              <div style="display: flex; justify-content: flex-end; gap: 10px;">
-                <button style="padding: 8px 16px; background-color: #64ec9d; color: #fff; border: none; border-radius: 5px; cursor: pointer;" onclick="confirmDelete()">Sim, excluir</button>
-                <button style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;" onclick="closeDeleteModal()">Cancelar</button>
-                </div>
-                <!-- Botão flutuante -->
-<div class="floating-button" onclick="window.location.href='projetoCadastrar.html'">
-  <i class="fas fa-plus"></i>
-</div>
-</div>
-</div>
-</div>
-<footer class="footer" style="background-color: black;">
-  <div class="d-sm-flex justify-content-center justify-content-sm-between">
-    <span></span>
-    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">oportunifreport@gmail.com</span>
+      </div>
+    </div>
   </div>
-</footer>
 </div>
 </div>
+<!-- Modal -->
+<div id="projectModal" class="modal">
+<div class="modal-content">
+  <span class="close">&times;</span>
+  <h2 style="color: #000000;">Detalhes do Projeto</h2>
+  <p style="color:#000000"><strong>Título:</strong> <span id="modalTitle"></span></p>
+  <p style="color: #000000;"><strong>Tipo:</strong> <span id="modalType"></span></p>
+  <p style="color: #000000;"><strong>Responsável:</strong> <span id="modalResponsible"></span></p>
+  <p style="color: #000000;"><strong>Com Bolsa:</strong> <span id="modalGrant"></span></p>
 </div>
+</div> 
+<!-- Modal de Confirmação de Exclusão -->
+<div id="deleteModal" class="modal">
+<div class="modal-content">
+  <span class="close">&times;</span>
+  <h2 style="color: #000000;">Confirmar Exclusão</h2>
+  <p style="color:#000000">Tem certeza que deseja excluir o projeto <strong><span id="deleteTitle"></span></strong>?</p>
+  <div style="display: flex; justify-content: flex-end; gap: 10px;">
+    <button style="padding: 8px 16px; background-color: #64ec9d; color: #fff; border: none; border-radius: 5px; cursor: pointer;" onclick="confirmDelete()">Sim, excluir</button>
+    <button style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;" onclick="closeDeleteModal()">Cancelar</button>
+    </div>
+<script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
+<script src="../../frontend/js/off-canvas.js"></script>
+<script src="../../frontend/js/hoverable-collapse.js"></script>
+<script src="../../frontend/js/misc.js"></script>
+<script src="../../frontend/js/settings.js"></script>
+<script src="../../frontend/js/todolist.js"></script>
 
+<script>
+const projectModal = document.getElementById("projectModal");
+const deleteModal = document.getElementById("deleteModal");
 
-          <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
-          <script src="../../frontend/js/off-canvas.js"></script>
-          <script src="../../frontend/js/hoverable-collapse.js"></script>
-          <script src="../../frontend/js/misc.js"></script>
-          <script src="../../frontend/js/settings.js"></script>
-          <script src="../../frontend/js/todolist.js"></script>    
-          <script src="../../frontend/js/dashboard.js"></script>
-  
-        <script>
-           const viewDetailsmodal= document.getElementById("viewDetailsmodal");
-      const deleteModal = document.getElementById("deleteModal");
-  
-      function openModal(title, type, responsible, grant) {
-        document.getElementById("modalTitle").textContent = title;
-        document.getElementById("modalType").textContent = type;
-        document.getElementById("modalResponsible").textContent = responsible;
-        document.getElementById("modalGrant").textContent = grant;
-        viewDetailsmodal.style.display = "block";
-      }
-  
-      function openDeleteModal(title) {
-        document.getElementById("deleteTitle").textContent = title;
-        deleteModal.style.display = "block";
-      }
-  
-      function closeDeleteModal() {
-        deleteModal.style.display = "none";
-      }
-  
-      function confirmDelete() {
-        alert("Projeto excluído com sucesso!");
-        closeDeleteModal();
-      }
-  
-      const closeButtons = document.getElementsByClassName("close");
-      Array.from(closeButtons).forEach(function (btn) {
-        btn.onclick = function () {
-            viewDetailsmodal.style.display = "none";
-          deleteModal.style.display = "none";
-        }
-      });
-  
-      window.onclick = function (event) {
-        if (event.target == viewDetailsmodal || event.target == deleteModal) {
-            viewDetailsmodal.style.display = "none";
-          deleteModal.style.display = "none";
-        }
-      };
-    </script>
-          
+function openModal(title, type, responsible, grant) {
+document.getElementById("modalTitle").textContent = title;
+document.getElementById("modalType").textContent = type;
+document.getElementById("modalResponsible").textContent = responsible;
+document.getElementById("modalGrant").textContent = grant;
+projectModal.style.display = "block";
+}
+
+function openDeleteModal(title) {
+document.getElementById("deleteTitle").textContent = title;
+deleteModal.style.display = "block";
+}
+
+function closeDeleteModal() {
+deleteModal.style.display = "none";
+}
+
+function confirmDelete() {
+alert("Projeto excluído com sucesso!");
+closeDeleteModal();
+}
+
+const closeButtons = document.getElementsByClassName("close");
+Array.from(closeButtons).forEach(function (btn) {
+btn.onclick = function () {
+projectModal.style.display = "none";
+deleteModal.style.display = "none";
+}
+});
+
+window.onclick = function (event) {
+if (event.target == projectModal || event.target == deleteModal) {
+projectModal.style.display = "none";
+deleteModal.style.display = "none";
+}
+};
+</script>
+
 </body>
 
 </html>
