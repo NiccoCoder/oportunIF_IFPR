@@ -85,6 +85,35 @@
         border-top: 1px solid #ddd;
         text-align: center;
       }
+
+      .hidden {
+        display: none;
+      }
+
+      .form-check {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+      }
+
+      .form-check-input {
+        width: 1em;
+        height: 1em;
+        margin-top: 0em;
+        vertical-align: top;
+        background-color: #fff;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        border: 1px solid rgba(0, 0, 0, 0.25);
+        appearance: none;
+        color-adjust: exact;
+      }
+
+      .form-check-label {
+        color: black;
+        font-size: 1rem;
+      }
     </style>
   </head>
   <body>
@@ -138,7 +167,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
                   <div class="navbar-profile">
-                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Usuario docente</p>
+                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Docente</p>
                     <i class="mdi mdi-menu-down d-none d-sm-block"></i>
                   </div>
                 </a>
@@ -203,17 +232,25 @@
                     <option value="pesquisa">Pesquisa</option>
                   </select>
                 </div>
-                <div class="form-group">
-                  <label for="scholarship-description">Descrição da bolsa (caso o projeto possua uma bolsa)</label>
-                  <textarea id="scholarship-description" name="scholarship-description" required></textarea>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" id="has-scholarship" name="has-scholarship" onclick="toggleScholarshipFields()">
+                  <label class="form-check-label" for="has-scholarship">
+                    O projeto possui bolsa
+                  </label>
                 </div>
-                <div class="form-group">
-                  <label for="scholarship-requisition">Requisito para bolsa</label>
-                  <textarea id="scholarship-requisition" name="scholarship-requisition" required></textarea>
-                </div>
-                <div class="form-group">
-                  <label for="hourly-charge">Carga horaria da bolsa</label>
-                  <textarea id="hourly-charge" name="hourly-charge" required></textarea>
+                <div id="scholarship-fields" class="hidden">
+                  <div class="form-group">
+                    <label for="scholarship-description">Descrição da bolsa</label>
+                    <textarea id="scholarship-description" name="scholarship-description"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="scholarship-requisition">Requisito para bolsa</label>
+                    <textarea id="scholarship-requisition" name="scholarship-requisition"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="hourly-charge">Carga horária da bolsa</label>
+                    <textarea id="hourly-charge" name="hourly-charge"></textarea>
+                  </div>
                 </div>
                 <button type="submit" class="btn-submit">Cadastrar projeto</button>
               </form>
@@ -234,5 +271,12 @@
     <script src="../../frontend/js/misc.js"></script>
     <script src="../../frontend/js/settings.js"></script>
     <script src="../../frontend/js/todolist.js"></script>
+    <script>
+      function toggleScholarshipFields() {
+        const hasScholarship = document.getElementById('has-scholarship').checked;
+        const scholarshipFields = document.getElementById('scholarship-fields');
+        scholarshipFields.classList.toggle('hidden', !hasScholarship);
+      }
+    </script>
   </body>
 </html>
