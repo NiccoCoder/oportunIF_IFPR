@@ -1,34 +1,54 @@
 <?php
+
+require '../PHPMailer/src/Exception.php';
+require '../PHPMailer/src/PHPMailer.php';
+require '../PHPMailer/src/SMTP.php';
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-require '../vendor/autoload.php'; // Certifique-se de que está usando Composer para carregar as dependências
+use PHPMailer\PHPMailer\SMTP;
 
-$mail = new PHPMailer(true);
+if(isset($_POST['submit'])){
+    
+    function sendEmail($email) {
+        $mail = new PHPMailer(true);
 
-try {
-    // Configurações do servidor
-    $mail->isSMTP();
-    $mail->SMTPAuth   = true;
-    $mail->Username   = 'oportunifreport@gmail.com'; // Seu e-mail
-    $mail->Password   = 'Oportunif2500';           // Sua senha de e-mail ou senha de aplicativo
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Criptografia TLS
-    $mail->Port       = 587; // Porta para TLS
+        try {
+            // Configurações do servidor
+            $mail->isSMTP();
+            $mail->Host = 'smtp.gmail.com'; 
+            $mail->SMTPAuth = true;
+            $mail->Username = getenv('USERNAME'); 
+            $mail->Password = getenv('PASSWORD'); 
+            $mail->SMTPSecure = 'tls';
+            $mail->Port = 587;
 
-    // Defina o remetente
-    $mail->setFrom('oportunifreport@gmail.com', 'baaa');
-    // Defina o destinatário
-    $mail->addAddress('nicolasczaikowski@gmail.com', 'Nicolas');
+            // Remetente e destinatário
+            $mail->setFrom(getenv('SEND_FROM'), getenv('SEND_FROM_NAME'));
+            $mail->addAddress($email);
+            
+            $subject = 'Código de verficação';
+            $codigoSeguranca = '123456'; 
+            $message = '<h1>Olá!</h1><p>Você solicitou um código de verificação para seu cadastro no OportunIF.</p><p style="text-align: center; font-size: 24px; font-weight: bold;">' . $codigoSeguranca . '</p><p>Se você não solicitou este código, por favor ignore este email. Não responda a este email, ele é gerado automaticamente.</p><p>Atenciosamente,</p><p>Equipe OportunIF</p>';
 
-    // Conteúdo da mensagem
-    $mail->isHTML(true);
-    $mail->Subject = 'Teste Envio de Email';
-    $mail->Body    = 'Este é o corpo da mensagem <b>Olá!</b>';
-    $mail->AltBody = 'Este é o corpo da mensagem para clientes de e-mail que não reconhecem HTML';
+            // Conteúdo do email
+            $mail->isHTML(true);
+            $mail->Subject = $subject;
+            $mail->Body = $message;
+            $mail->AltBody = strip_tags($message);
 
-    // Enviar
-    $mail->send();
-    echo 'A mensagem foi enviada!';
-} catch (Exception $e) {
-    echo "Mensagem não pode ser enviada. Erro do Mailer: {$mail->ErrorInfo}";
+            // Envia o e-mail
+            $mail->send();
+            return "Email enviado com sucesso!";
+        } catch (Exception $e) {
+            return "Erro ao enviar email: {$mail->ErrorInfo}";
+        }
+    }
+    // Exemplo de chamada da função
+    // $email = 'nicolasczaikowski@gmail.com';
+    // echo sendEmail($email);
+} else {
+    header("Location: ../frontend/pages/cadastroAluno.html");
+    exit();
 }
 ?>
