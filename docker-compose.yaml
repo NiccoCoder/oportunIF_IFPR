@@ -6,7 +6,7 @@ services:
     container_name: php_apache
     volumes:
       - ./:/var/www/html
-      - ./validacaoEmail.js:/var/www/html/js/validacaoEmail.js
+      - ./frontend/js:/var/www/html/js  # Mapeando a pasta frontend/js para /var/www/html/js
     ports:
       - "80:80"
     networks:
@@ -33,8 +33,8 @@ services:
     image: mailhog/mailhog
     container_name: mailhog
     ports:
-      - "8025:8025"  # Interface web do MailHog
-      - "1025:1025"  # Porta SMTP para envio de emails
+      - "8025:8025"
+      - "1025:1025"
     networks:
       - mynetwork
 

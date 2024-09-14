@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verification UI using Bootstrap</title>
+
+    <!-- Bootstrap 5 stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/css/bootstrap.min.css" 
+        integrity="anonymous" referrerpolicy="no-referrer" />
+    <!-- FontAwesome 6 stylesheet -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" 
+        integrity="anonymous" referrerpolicy="no-referrer" />
+
+    <style>
+        body {
+            background-color: rgba(60, 221, 60, 0.767);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .btn {
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container p-3">
+        <div class="row justify-content-center">
+            <div class="col-md-8 col-lg-6 mt-5">
+                <div class="bg-white p-5 rounded-3 shadow-sm border">
+                    <div class="text-center">
+                        <p class="text-success" style="font-size: 5.5rem;"><i class="fa-solid fa-envelope-circle-check"></i></p>
+                        <p class="h5">Olá, Usuário!</p>
+                        <p class="text-muted">Seja bem-vindo ao Oportunif! Recebemos uma tentativa de criação de conta com o e-mail [Email]. Por favor, confirme se foi você quem fez essa solicitação.</p>
+                        <div class="row pt-5">
+                            <div class="col-6">
+                                <button class="btn btn-outline-danger w-100">Rejeitar</button>
+                            </div>
+                            <div class="col-6">
+                                <button class="btn btn-success w-100" id="confirm">Confirmar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link para o JS logo antes do fechamento da tag body -->
+    <script src="../js/utils.js"></script>
+</body>
+
+</html>
