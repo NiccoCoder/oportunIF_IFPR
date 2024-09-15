@@ -11489,7 +11489,7 @@ progress {
 .tt-query,
 .tt-hint {
   display: block;
-  width: 100%;
+  width: 50%;
   padding: 0.56rem 0.75rem;
   font-size: 0.875rem;
   font-weight: 400;
@@ -30510,7 +30510,6 @@ div.tagsinput span.tag a {
   transition: width 0.25s ease, margin 0.25s ease;
   width: 100%;
   min-height: calc(100vh - 70px);
-  padding-top: 70px;
   display: -webkit-flex;
   display: flex;
   -webkit-flex-direction: column;
