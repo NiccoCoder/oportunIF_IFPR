@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <title>Visualização dos docentes - OportunIF</title>
+  <title>Visualização dos discentes - OportunIF</title>
   <link rel="stylesheet" href="../../frontend/vendors/mdi/css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../../frontend/vendors/css/vendor.bundle.base.css">
   <link rel="stylesheet" href="../../frontend/css/style.css">
@@ -196,183 +196,164 @@
 </head>
 
 <body>
-        <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
-          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-            <span class="mdi mdi-menu"></span>
-          </button>
-          <ul class="navbar-nav w-100">
-            <li class="nav-item w-100">
-              <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                <input type="text" style="color: white;" class="form-control" placeholder="Pesquisar">
-              </form>
-            </li>
-          </ul>
-          <ul class="navbar-nav navbar-nav-right">
-            <li class="nav-item dropdown d-none d-lg-block">
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-                aria-labelledby="createbuttonDropdown">
-                <h6 class="p-3 mb-0">Projetos</h6>
-              </div>
-            </li>
-            </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
-                <div class="navbar-profile">
-                  <p class="mb-0 d-none d-sm-block navbar-profile-name">Discente</p>
-                  <i class="mdi mdi-menu-down d-none d-sm-block"></i>
-                </div>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
-                <h6 class="p-3 mb-0">Opções</h6>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-account text-success"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <p class="preview-subject mb-1">Report</p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-exit-to-app text-danger"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <p class="preview-subject mb-1">Saida</p>
-                  </div>
-                </a>
-              </div>
-            </li>
-          </ul>
-          <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
-            data-toggle="offcanvas">
-            <span class="mdi mdi-format-line-spacing"></span>
-          </button>
+  <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+      <span class="mdi mdi-menu"></span>
+    </button>
+    <ul class="navbar-nav w-100">
+      <li class="nav-item w-100">
+        <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+          <input type="text" style="color: white;" class="form-control" placeholder="Pesquisar">
+        </form>
+      </li>
+    </ul>
+    <ul class="navbar-nav navbar-nav-right">
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+          aria-labelledby="createbuttonDropdown">
+          <h6 class="p-3 mb-0">Projetos</h6>
         </div>
-      </nav>
-      <div class="main-panel">
-        <div class="content-wrapper">
-          <div class="page-header">
-            <h3 class="page-title"> Bem-vindo, Discentes </h3>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
+          <div class="navbar-profile d-flex align-items-center">
+            <p class="mb-0 d-none d-sm-block navbar-profile-name">Discente</p>
+            <i class="mdi mdi-menu-down d-none d-sm-block ml-2"></i>
           </div>
-<div class="row">
-    <div class="col-12 grid-margin">
-      <div class="card-project">
-        <div class="card-body">
-          <h4 class="card-title" style="text-align: center">Projetos </h4>
-          <div class="table-responsive">
-            <table class="table">
-              <thead>
-                <tr>
-                  <th>
-                    <div class="form-check form-check-muted m-0">
-                      <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input">
-                      </label>
-                    </div>
-                  </th>
-                  <th> Titulo </th>
-                  <th> Tipo   </th>
-                  <th> Responsável </th>
-                  <th> C/ Bolsa</th>
-                  <th> Opções </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>
-                    <div class="form-check form-check-muted m-0">
-                      <label class="form-check-label">
-                        <input type="checkbox" class="form-check-input">
-                      </label>
-                    </div>
-                  </td>
-                  <td> IF Esportes: Basquete </td>
-                  <td> Extensão </td>
-                  <td> Mariana </td>
-                  <td> Não </td>
-                  <td>
-                    <div class="action-buttons">
-                      <button title="Visualizar" onclick="openModal('IF Esportes: Basquete', 'Extensão', 'Mariana', 'Não')">
-                        <i class="mdi mdi-eye icon text-success ml-auto"></i>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+          <h6 class="p-3 mb-0">Opções</h6>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-dark rounded-circle">
+                <i class="mdi mdi-account text-success"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <p class="preview-subject mb-1">Report</p>
+            </div>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item preview-item">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-dark rounded-circle">
+                <i class="mdi mdi-exit-to-app text-danger"></i>
+              </div>
+            </div>
+            <div class="preview-item-content">
+              <p class="preview-subject mb-1">Saida</p>
+            </div>
+          </a>
+        </div>
+      </li>
+    </ul>
+    <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button"
+      data-toggle="offcanvas">
+      <span class="mdi mdi-format-line-spacing"></span>
+    </button>
+  </div>
+  </nav>
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h3 class="page-title"> Bem-vindo, Discentes </h3>
+      </div>
+      <div class="row">
+        <div class="col-12 grid-margin">
+          <div class="card-project">
+            <div class="card-body">
+              <h4 class="card-title" style="text-align: center">Projetos </h4>
+              <div class="table-responsive">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th>
+                        <div class="form-check form-check-muted m-0">
+                          <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input">
+                          </label>
+                        </div>
+                      </th>
+                      <th> Titulo </th>
+                      <th> Tipo   </th>
+                      <th> Responsável </th>
+                      <th> C/ Bolsa</th>
+                      <th> Opções </th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <div class="form-check form-check-muted m-0">
+                          <label class="form-check-label">
+                            <input type="checkbox" class="form-check-input">
+                          </label>
+                        </div>
+                      </td>
+                      <td> IF Esportes: Basquete </td>
+                      <td> Extensão </td>
+                      <td> Mariana </td>
+                      <td> Não </td>
+                      <td>
+                        <div class="action-buttons">
+                          <button title="Visualizar" onclick="openModal('IF Esportes: Basquete', 'Extensão', 'Mariana', 'Não')">
+                            <i class="mdi mdi-eye icon text-success ml-auto"></i>
+                          </button>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
-</div>
-<!-- Modal -->
-<div id="projectModal" class="modal">
-<div class="modal-content">
-  <span class="close">&times;</span>
-  <h2 style="color: #000000;">Detalhes do Projeto</h2>
-  <p style="color:#000000"><strong>Título:</strong> <span id="modalTitle"></span></p>
-  <p style="color: #000000;"><strong>Tipo:</strong> <span id="modalType"></span></p>
-  <p style="color: #000000;"><strong>Responsável:</strong> <span id="modalResponsible"></span></p>
-  <p style="color: #000000;"><strong>Com Bolsa:</strong> <span id="modalGrant"></span></p>
-</div>
-</div> 
-<script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
-<script src="../../frontend/js/off-canvas.js"></script>
-<script src="../../frontend/js/hoverable-collapse.js"></script>
-<script src="../../frontend/js/misc.js"></script>
-<script src="../../frontend/js/settings.js"></script>
-<script src="../../frontend/js/todolist.js"></script>
+  <!-- Modal -->
+  <div id="projectModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 style="color: #000000;">Detalhes do Projeto</h2>
+      <p style="color:#000000"><strong>Título:</strong> <span id="modalTitle"></span></p>
+      <p style="color: #000000;"><strong>Tipo:</strong> <span id="modalType"></span></p>
+      <p style="color: #000000;"><strong>Responsável:</strong> <span id="modalResponsible"></span></p>
+      <p style="color: #000000;"><strong>Com Bolsa:</strong> <span id="modalGrant"></span></p>
+    </div>
+  </div>
+  <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
+  <script src="../../frontend/js/off-canvas.js"></script>
+  <script src="../../frontend/js/hoverable-collapse.js"></script>
+  <script src="../../frontend/js/misc.js"></script>
+  <script src="../../frontend/js/settings.js"></script>
+  <script src="../../frontend/js/todolist.js"></script>
 
-<script>
-const projectModal = document.getElementById("projectModal");
-const deleteModal = document.getElementById("deleteModal");
+  <script>
+    const projectModal = document.getElementById("projectModal");
 
-function openModal(title, type, responsible, grant) {
-document.getElementById("modalTitle").textContent = title;
-document.getElementById("modalType").textContent = type;
-document.getElementById("modalResponsible").textContent = responsible;
-document.getElementById("modalGrant").textContent = grant;
-projectModal.style.display = "block";
-}
+    function openModal(title, type, responsible, grant) {
+      document.getElementById("modalTitle").textContent = title;
+      document.getElementById("modalType").textContent = type;
+      document.getElementById("modalResponsible").textContent = responsible;
+      document.getElementById("modalGrant").textContent = grant;
+      projectModal.style.display = "block";
+    }
 
-function openDeleteModal(title) {
-document.getElementById("deleteTitle").textContent = title;
-deleteModal.style.display = "block";
-}
+    const closeButtons = document.getElementsByClassName("close");
+    Array.from(closeButtons).forEach(function (btn) {
+      btn.onclick = function () {
+        projectModal.style.display = "none";
+      }
+    });
 
-function closeDeleteModal() {
-deleteModal.style.display = "none";
-}
-
-function confirmDelete() {
-alert("Projeto excluído com sucesso!");
-closeDeleteModal();
-}
-
-const closeButtons = document.getElementsByClassName("close");
-Array.from(closeButtons).forEach(function (btn) {
-btn.onclick = function () {
-projectModal.style.display = "none";
-deleteModal.style.display = "none";
-}
-});
-
-window.onclick = function (event) {
-if (event.target == projectModal || event.target == deleteModal) {
-projectModal.style.display = "none";
-deleteModal.style.display = "none";
-}
-};
-</script>
+    window.onclick = function (event) {
+      if (event.target == projectModal) {
+        projectModal.style.display = "none";
+      }
+    };
+  </script>
 
 </body>
 
