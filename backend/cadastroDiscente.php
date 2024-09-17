@@ -15,13 +15,6 @@ if (isset($_POST['submit'])) {
         exit();
     }
 
-    // Atualizar o valor de $curso com base no valor selecionado
-    if ($curso === 'Técnico em Informática') {
-        $curso = 3;
-    } elseif ($curso === 'Técnico em Administração') {
-        $curso = 4;
-    }
-
     // Chamar a função para cadastrar o discente
     $resultado = cadastrarDiscente($nome, $email, $senha, $curso, $conexao);
 

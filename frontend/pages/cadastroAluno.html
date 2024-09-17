@@ -10,6 +10,27 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="shortcut icon" href="../images/favicon.png" />
     <script src="../../backend/validacaoEmail.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script>
+        
+        $(document).ready(function ( ){
+            $.ajax({  
+      url: "../../backend/requisicoes/req_cursos.php",
+      dataType: "json",
+      success: function(data) {
+        if (data.length > 0) {
+          $.each(data, function(index, item) {
+            $("#cursoDiscente").append('<option value="'+item.ID+'">' + item.NOME_CURSO + '</option>');
+          });
+        } else {
+          $("#resultado").append("<p>Nenhum projeto encontrado para o ID informado.</p>");
+        }
+      },
+    });
+        });
+
+    </script>
     <style>
         .content-wrapper {
             background-color: rgba(60, 221, 60, 0.767);
@@ -128,8 +149,7 @@
                                     <label>Curso:</label>
                                     <select class="form-control" id="cursoDiscente" name="cursoDiscente" required>
                                         <option></option>
-                                        <option>Técnico em Informática</option>
-                                        <option>Técnico em Administração</option>
+                                       
                                     </select>
                                 </div>
                                 <div class="form-group">
