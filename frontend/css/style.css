@@ -9459,7 +9459,6 @@ sup {
 }
 
 a {
-  color: #0d6efd;
   text-decoration: underline;
 }
 
@@ -14778,7 +14777,6 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
 }
 
 .navbar-nav .nav-link {
-  padding-right: 0;
   padding-left: 0;
 }
 
@@ -18118,7 +18116,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
 }
 
 .w-100 {
-  width: 100% !important;
+  width: 80% !important;
 }
 
 .w-auto {
