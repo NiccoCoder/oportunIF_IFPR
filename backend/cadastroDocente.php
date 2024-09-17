@@ -1,37 +1,34 @@
 <?php
-    if (isset($_POST['submit'])) {
-        // Inclui o arquivo de configuração para conexão com o banco de dados
-        include_once('config.php');
+include_once('config.php');
+include_once('funcoes.php');
 
-        // Obtém os dados do formulário
-        $nome = $_POST['nomeDocente'];
-        $email = $_POST['emailDocente'];
-        $senha = $_POST['senhaDocente'];
-        
-        if (!$nome || !$email || !$senha) {
-            // $_SESSION['message'] = 'Todos os campos são obrigatórios';
-            header("Location: ../frontend/pages/cadastroAluno.html?error=Todos os campos são obrigatórios");
-            exit;
-        }
-
-        // Criptografa a senha
-        $senha_cripto = password_hash($senha, PASSWORD_DEFAULT);
-
-        // Insere o docente na tabela TB_DOCENTE
-        $insert_script = "INSERT INTO TB_DOCENTE (NOME, EMAIL, SENHA) VALUES ('$nome', '$email', '$senha_cripto')";
-        
-        //Execução do banco de dados de inserção
-        $result = mysqli_query($conexao, $insert_script);
-        
-        if($result) {
-            header("Location: ../frontend/pages/logindocente.html");
-            exit();
-        } else {
-            echo 'Falha ao registrar docente: ' . mysql_error($conexao);
-        }
-
-    } else {
-        header("Location: ../frontend/pages/cadastroProfessor.html");
-        exit();
+if (isset($_POST['submit'])) {
+    // Obtém os dados do formulário
+    $nome = $_POST['nomeDocente'];
+    $email = $_POST['emailDocente'];
+    $senha = $_POST['senhaDocente'];
+    
+    if (!$nome || !$email || !$senha) {
+        header("Location: ../frontend/pages/cadastroProfessor.html?error=Todos os campos são obrigatórios");
+        exit;
     }
+
+    // Chama a função para cadastrar o docente
+    $resultado = cadastrarDocente($nome, $email, $senha, $conexao);
+
+    // Verifica se o resultado é um array e tem a chave 'status'
+    if (is_array($resultado) && isset($resultado['status']) && $resultado['status']) {
+        $assunto = 'Valide sua conta';
+        $resposta = enviarEmail($email, $assunto);
+
+        // Verifica se a resposta é um array e tem a chave 'status'
+        if (is_array($resposta) && isset($resposta['status']) && $resposta['status']) {
+            header("Location: ../frontend/pages/login.html");
+        } else {
+            header("Location: ../frontend/pages/cadastroProfessor.html?error=" . urlencode($resposta['message']));
+        }
+    } else {
+        header("Location: ../frontend/pages/cadastroProfessor.html?error=" . urlencode($resultado['message']));
+    }
+}
 ?>

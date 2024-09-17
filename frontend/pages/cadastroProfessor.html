@@ -103,6 +103,30 @@
     .sign-up a:hover {
       text-decoration: underline; 
     }
+
+    .error-message {
+      color: #721c24;
+      background-color: #f8d7da;
+      border-color: #f5c6cb;
+      padding: 10px;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      font-size: 14px;
+      margin-bottom: 10px;
+      display: none; /* Esconde por padrão */
+    }
+
+    .success-message {
+      color: #155724;
+      background-color: #d4edda;
+      border-color: #c3e6cb;
+      padding: 10px;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      font-size: 14px;
+      margin-bottom: 10px;
+      display: none; /* Esconde por padrão */
+    }
   </style>
 </head>
 <body>
@@ -112,7 +136,14 @@
         <div class="content-wrapper full-page-wrapper d-flex align-items-center auth">
           <div class="card col-lg-4">
             <div class="card-body">
-              <h3 class="card-title" style= "color:black">Cadastro (Docente)</h3>
+              <h3 class="card-title" style="color:black">Cadastro (Docente)</h3>     
+
+              <!-- Exibe o erro quando necessário -->
+              <div id="error-message" class="error-message"></div>
+              
+              <!-- Exibe a mensagem de sucesso quando necessário -->
+              <div id="success-message" class="success-message"></div>
+
               <form action="../../backend/cadastroDocente.php" method="POST" id="cadastroDocente" onsubmit="return validarEmailDocente('emailDocente')">
                 <div class="form-group">
                   <label>Nome:</label>
@@ -137,6 +168,26 @@
       </div>
     </div>
   </div>
+
+  <!-- JavaScript para exibir erro e sucesso -->
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const errorMessage = urlParams.get('error');
+    const successMessage = urlParams.get('success');
+
+    if (errorMessage) {
+      const errorDiv = document.getElementById('error-message');
+      errorDiv.textContent = errorMessage;
+      errorDiv.style.display = 'block';  // Exibe a mensagem de erro
+    }
+
+    if (successMessage) {
+      const successDiv = document.getElementById('success-message');
+      successDiv.textContent = successMessage;
+      successDiv.style.display = 'block';  // Exibe a mensagem de sucesso
+    }
+  </script>
+
   <script src="../js/vendor.bundle.base.js"></script>
   <script src="../js/off-canvas.js"></script>
   <script src="../js/hoverable-collapse.js"></script>
@@ -144,3 +195,4 @@
   <script src="../js/settings.js"></script>
   <script src="../js/todolist.js"></script>
 </body>
+</html>

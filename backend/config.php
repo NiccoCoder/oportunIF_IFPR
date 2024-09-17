@@ -4,11 +4,18 @@ $username = getenv('DB_USER');
 $password = getenv('DB_PASSWORD');
 $dbname = getenv('DB_NAME');
 
+
+
 // Criar conexão
-$conexao = new mysqli($servername, $username, $password, $dbname);
-if ($conexao->connect_error) {
-    die("Conexão falhou: " . $conn->connect_error);
+mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT); // Desativa relatórios de erros
+try {
+	$conexao = new mysqli($servername, $username, $password, $dbname);
+	$conexao->set_charset("utf8mb4");
+} catch (Exception $e) {
+	error_log($e->getMessage());
+	exit('Alguma coisa estranha aconteceu...');
 }
+
 
 // //Executar consulta
 // $sql = "SHOW TABLES";
@@ -63,4 +70,27 @@ if ($conexao->connect_error) {
 // unset($_SESSION["id"]);
 // >>>>>>> 4e7b1338c7ef9c85ac774950202d9a8a2b44051f
 // 
+
+// // Query para contar o número total de registros na tabela TB_CURSO
+// $query = "SELECT COUNT(*) AS total FROM TB_CURSO";
+
+// // Execute a consulta
+// $result = mysqli_query($conexao, $query);
+
+// // Verifique se a consulta foi bem-sucedida
+// if ($result) {
+//     // Obtenha o resultado da consulta
+//     $row = mysqli_fetch_assoc($result);
+//     $total = $row['total'];
+
+//     // Verifique se há registros na tabela
+//     if ($total > 0) {
+//         echo "Há $total registros na tabela TB_CURSO.";
+//     } else {
+//         echo "A tabela TB_CURSO está vazia.";
+//     }
+// } else {
+//     // Se a consulta falhar, exiba o erro
+//     echo "Erro na consulta: " . mysqli_error($conexao);
+// }
 ?>
