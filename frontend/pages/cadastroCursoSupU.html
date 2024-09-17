@@ -3,14 +3,18 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Cadastro de projeto e bolsa - OportunIF</title>
+    <title>Cadastro de Curso - OportunIF</title>
     <link rel="stylesheet" href="../../frontend/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../../frontend/vendors/css/vendor.bundle.base.css">
     <link rel="stylesheet" href="../../frontend/css/style.css">
     <link rel="shortcut icon" href="../../frontend/images/favicon.png"/>
     <style>
+      /* Adicione o mesmo estilo usado na página de projetos, se desejado */
+      .page-header {
+        margin: 20px 0;
+      }
 
-      .project-form {
+      .course-form {
         background: #fff;
         border-radius: 8px;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -19,7 +23,7 @@
         margin: 0 auto;
       }
 
-      .project-form h4 {
+      .course-form h4 {
         margin-bottom: 20px;
         font-size: 1.5rem;
         color: #333;
@@ -72,7 +76,7 @@
       }
 
       .footer {
-        padding: 20px;
+        padding: 10px;
         background-color: #000;
         color: #fff;
         border-top: 1px solid #ddd;
@@ -80,6 +84,7 @@
         position: absolute;
         bottom: 0;
         width: 100%;
+        font-size: 0.9rem;
       }
 
       .hidden {
@@ -124,14 +129,11 @@
         margin-left: 4px;
       }
 
-      /* Adjusted dropdown */
-      .dropdown-menu {
-        top: 100%; /* Position below the navbar */
-        margin-top: 10px; /* Small margin between navbar and dropdown */
-        z-index: 999; /* Ensure it stays on top */
+      .element.style {
+        top: 100%;
+        z-index: 999;
       }
 
-      /* Fix footer to the bottom of the page */
       html, body {
         height: 100%;
         margin: 0;
@@ -165,13 +167,13 @@
       <ul class="navbar-nav navbar-nav-right">
         <li class="nav-item dropdown d-none d-lg-block">
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">
-            <h6 class="p-3 mb-0">Projetos</h6>
+            <h6 class="p-3 mb-0">Recursos</h6>
           </div>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
             <div class="navbar-profile">
-              <p class="mb-0 d-none d-sm-block navbar-profile-name">Docente</p>
+              <p class="mb-0 d-none d-sm-block navbar-profile-name">Super Usuário</p>
               <i class="mdi mdi-menu-down d-none d-sm-block"></i>
             </div>
           </a>
@@ -196,7 +198,7 @@
                 </div>
               </div>
               <div class="preview-item-content">
-                <p class="preview-subject mb-1">Saida</p>
+                <p class="preview-subject mb-1">Saída</p>
               </div>
             </a>
           </div>
@@ -209,81 +211,40 @@
     <div class="main-panel">
       <div class="content-wrapper">
         <div class="page-header">
-          <h3 class="page-title">Cadastro de projetos</h3>
+          <h3 class="page-title">Cadastro de Curso</h3>
         </div>
-        <div class="project-form">
-          <h4 style="color:black">Sobre o projeto:</h4>
-          <form id="projectForm">
+        <div class="course-form">
+          <h4 style="color:black">Sobre o curso:</h4>
+          <form id="courseForm">
             <div class="form-group">
-              <label for="project-title">Título</label>
-              <input type="text" id="project-title" name="project-title" required>
+              <label for="course-title">Título</label>
+              <input type="text" id="course-title" name="course-title" required>
             </div>
             <div class="form-group">
-              <label for="project-description">Resumo</label>
-              <textarea id="project-description" name="project-description" required></textarea>
+              <label for="course-description">Descrição</label>
+              <textarea id="course-description" name="course-description" required></textarea>
             </div>
             <div class="form-group">
-              <label for="selection-criteria">Criterios de seleção</label>
-              <textarea id="selection-criteria" name="selection-criteria"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="project-type">Tipo de projeto</label>
-              <select id="project-type" class="form-control-projetos">
+              <label for="course-type">Tipo</label>
+              <select id="course-type" class="form-control-projetos">
                 <option value=""></option>
-                <option value="extensao">Extensão</option>
-                <option value="inovacao">Inovação</option>
-                <option value="pesquisa">Pesquisa</option>
+                <option value="presencial">Presencial</option>
+                <option value="online">Online</option>
               </select>
             </div>
-            <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="has-scholarship" name="has-scholarship" onclick="toggleScholarshipFields()">
-              <label class="form-check-label" for="has-scholarship">
-                O projeto possui bolsa
-              </label>
-            </div>
-            <div id="scholarship-fields" class="hidden">
-              <div class="form-group">
-                <label for="scholarship-description">Descrição da bolsa</label>
-                <textarea id="scholarship-description" name="scholarship-description"></textarea>
-              </div>
-              <div class="form-group">
-                <label for="scholarship-requisition">Requisito para bolsa</label>
-                <textarea id="scholarship-requisition" name="scholarship-requisition"></textarea>
-              </div>
-              <div class="form-group">
-                <label for="hourly-charge">Carga horária do bolsista</label>
-                <input type="text" id="hourly-charge" name="hourly-charge">
-              </div>
-              <div class="form-group">
-                <label for="scholarship-amount">Valor da bolsa</label>
-                <input type="text" id="scholarship-amount" name="scholarship-amount">
-              </div>
-            </div>
-            <button type="submit" class="btn-submit">Enviar</button>
+            <button type="submit" class="btn-submit">Cadastrar</button>
           </form>
         </div>
       </div>
-      <footer class="footer" style="background-color: black;">
-        Para contato envie Email para oportunif@gmail.com
-      </footer>
     </div>
->
+    <footer class="footer" style="background-color: black;">
+        Para contato envie Email para oportunif@gmail.com
+    </footer>
     <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
     <script src="../../frontend/js/off-canvas.js"></script>
     <script src="../../frontend/js/hoverable-collapse.js"></script>
     <script src="../../frontend/js/misc.js"></script>
     <script src="../../frontend/js/dashboard.js"></script>
     <script src="../../frontend/js/todolist.js"></script>
-    <script>
-      function toggleScholarshipFields() {
-        const checkbox = document.getElementById('has-scholarship');
-        const scholarshipFields = document.getElementById('scholarship-fields');
-        if (checkbox.checked) {
-          scholarshipFields.classList.remove('hidden');
-        } else {
-          scholarshipFields.classList.add('hidden');
-        }
-      }
-    </script>
   </body>
 </html>
