@@ -26,6 +26,6 @@
         <a href = "./frontend/pages/teladereport.html">Pagina report</a>
         <br>
         <a href = "./frontend/pages/paginagerenciamento.html">Pagina Gerenciamento</a>
-        
+        <a href= " ./backend/requisicoes/req_cursos.php">req 1</a>
     </body>
 <html>
