@@ -3,12 +3,12 @@
 include_once('config.php');
 include_once('funcoes.php');
 
-// Verificar se o formulário foi enviado
+
 if (isset($_POST['submit'])) {
-    // Receber os dados do formulário
+
     $email = $_POST['email'];
     $senha = $_POST['senha'];
-    $tipoUsuario = $_POST['tipoUsuario']; // Receber o tipo de usuário
+    $tipoUsuario = $_POST['tipoUsuario']; 
 
     // Verificar credenciais com base no tipo de usuário
     if ($tipoUsuario === 'discente') {

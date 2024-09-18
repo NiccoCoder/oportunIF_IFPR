@@ -11,18 +11,31 @@ use PHPMailer\PHPMailer\SMTP;
 include_once('config.php');
 
 function cadastrarDiscente($nome, $email, $senha, $curso, $conexao) {
+    
+    //Verificação de Registros duplicados com email 
+    $check_email_query = "SELECT * FROM TB_DISCENTE WHERE EMAIL = ?";
+    $stmt = $conexao->prepare($check_email_query);
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+    
+    if ($resultado->num_rows > 0) {
+        return ['status' => false, 'message' => 'Este e-mail já está cadastrado.'];
+    }
+    
     // Criptografia da senha
     $senha_cripto = password_hash($senha, PASSWORD_DEFAULT);
-
-    // Query para inserir os valores na tabela de discentes
-    $insert_script = "INSERT INTO TB_DISCENTE (NOME, EMAIL, SENHA, ID_CURSO) VALUES (?, ?, ?, ?)";
-
+    $chave = password_hash($email . date("Y-m-d H:i:s"), PASSWORD_DEFAULT);
+    
+    // Criptografia da senha e criação de uma chave para a validação
+    $insert_script = "INSERT INTO TB_DISCENTE (NOME, EMAIL, SENHA, ID_CURSO, CHAVE) VALUES (?, ?, ?, ?, ?)";
+    
     // Preparar e executar a query de forma segura
     $stmt = $conexao->prepare($insert_script);
-    $stmt->bind_param("sssi", $nome, $email, $senha_cripto, $curso);
+    $stmt->bind_param("sssis", $nome, $email, $senha_cripto, $curso, $chave);
     
     if ($stmt->execute()) {
-        return ['status' => true, 'message' => 'Cadastro realizado com sucesso'];
+        return ['status' => true, 'message' => 'Cadastro realizado com sucesso', 'chave' => $chave];
     } else {
         return ['status' => false, 'message' => 'Falha ao registrar discente: ' . $stmt->error];
     }
@@ -40,24 +53,25 @@ function cadastrarDocente($nome, $email, $senha, $conexao) {
         return ['status' => false, 'message' => 'Este e-mail já está cadastrado.'];
     }
 
-    // Criptografia da senha
+    // Criptografia da senha e criação de uma chave para a validação
     $senha_cripto = password_hash($senha, PASSWORD_DEFAULT);
+    $chave = password_hash($email . date("Y-m-d H:i:s"), PASSWORD_DEFAULT);
 
     // Query para inserir os valores na tabela de discentes
-    $insert_script = "INSERT INTO TB_DOCENTE (NOME, EMAIL, SENHA) VALUES (?, ?, ?)";
+    $insert_script = "INSERT INTO TB_DOCENTE (NOME, EMAIL, SENHA, CHAVE) VALUES (?, ?, ?, ?)";
 
     // Preparar e executar a query de forma segura
     $stmt = $conexao->prepare($insert_script);
-    $stmt->bind_param("sss", $nome, $email, $senha_cripto);
+    $stmt->bind_param("ssss", $nome, $email, $senha_cripto, $chave);
     
     if ($stmt->execute()) {
-        return ['status' => true, 'message' => 'Cadastro realizado com sucesso'];
+        return ['status' => true, 'message' => 'Cadastro realizado com sucesso', 'chave' => $chave];
     } else {
         return ['status' => false, 'message' => 'Falha ao registrar docente: ' . $stmt->error];
     }
 }
 
-function enviarEmail($email, $assunto) {
+function enviarEmail($nome, $email, $chave, $tipoUsuario) {
     $mail = new PHPMailer(true);
     $mail->CharSet = 'UTF-8';
     
@@ -73,21 +87,22 @@ function enviarEmail($email, $assunto) {
 
         // Remetente e destinatário
         $mail->setFrom(getenv('SEND_FROM'), getenv('SEND_FROM_NAME'));
-        $mail->addAddress('nicolasczaikowski@gmail.com');
+        $mail->addAddress($email);
         
         // Links de confirmação
-        $link = 'http://localhost/frontend/pages/verificacaoEmailCodigo.html'; // Defina o link correto
+        $link = "http://localhost/backend/ativarConta.php?chave=$chave&tipoUsuario=$tipoUsuario"; 
+        $assunto = 'Valide sua conta';
             
         // Conteúdo do e-mail
         $mail->isHTML(true);
         $mail->Subject = $assunto;
         $mail->Body = '
-        Olá, Usuário!<br><br>
+        Olá, ' . htmlspecialchars($nome) . ' <br><br>
         Seja bem-vindo ao OportunIF! Recebemos uma tentativa de criação de conta com o e-mail ' . htmlspecialchars($email) . '. Por favor, confirme se foi você quem fez essa solicitação.<br><br>
         <a href="' . htmlspecialchars($link) . '">Validar</a><br>
         ';
         
-        $mail->AltBody = 'Olá, Usuário!\n\n' .
+        $mail->AltBody = 'Olá ,' . htmlspecialchars($nome) . '\n\n' .
         'Seja bem-vindo ao OportunIF! Recebemos uma tentativa de criação de conta com o e-mail ' . htmlspecialchars($email) . '. Por favor, confirme se foi você quem fez essa solicitação.\n\n' .
         'Validar: ' . htmlspecialchars($link) . '\n';
         
