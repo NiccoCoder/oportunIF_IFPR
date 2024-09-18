@@ -13,19 +13,18 @@ if (isset($_POST['submit'])) {
         exit;
     }
 
-    // Chama a função para cadastrar o docente
     $resultado = cadastrarDocente($nome, $email, $senha, $conexao);
-
+    
     // Verifica se o resultado é um array e tem a chave 'status'
     if (is_array($resultado) && isset($resultado['status']) && $resultado['status']) {
+        // Chama a função para cadastrar o docente
         $assunto = 'Valide sua conta';
         $resposta = enviarEmail($email, $assunto);
-
         // Verifica se a resposta é um array e tem a chave 'status'
         if (is_array($resposta) && isset($resposta['status']) && $resposta['status']) {
             header("Location: ../frontend/pages/login.html");
         } else {
-            header("Location: ../frontend/pages/cadastroProfessor.html?error=" . urlencode($resposta['message']));
+            header("Location: ../frontend/pages/cadastroProfessor.html" . urlencode($resposta['message']));
         }
     } else {
         header("Location: ../frontend/pages/cadastroProfessor.html?error=" . urlencode($resultado['message']));

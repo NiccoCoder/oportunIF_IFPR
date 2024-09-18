@@ -60,7 +60,7 @@ function cadastrarDocente($nome, $email, $senha, $conexao) {
 function enviarEmail($email, $assunto) {
     $mail = new PHPMailer(true);
     $mail->CharSet = 'UTF-8';
-
+    
     try {
         // Configurações do servidor
         $mail->isSMTP();
@@ -76,24 +76,21 @@ function enviarEmail($email, $assunto) {
         $mail->addAddress('nicolasczaikowski@gmail.com');
         
         // Links de confirmação
-        $link_rejeitar = 'https://seusite.com/rejeitar?email=' . urlencode($email); // Defina o link correto
-        $link_confirmar = 'https://seusite.com/confirmar?email=' . urlencode($email); // Defina o link correto
-        
+        $link = 'http://localhost/frontend/pages/verificacaoEmailCodigo.html'; // Defina o link correto
+            
         // Conteúdo do e-mail
         $mail->isHTML(true);
         $mail->Subject = $assunto;
         $mail->Body = '
         Olá, Usuário!<br><br>
         Seja bem-vindo ao OportunIF! Recebemos uma tentativa de criação de conta com o e-mail ' . htmlspecialchars($email) . '. Por favor, confirme se foi você quem fez essa solicitação.<br><br>
-        <a href="' . htmlspecialchars($link_rejeitar) . '">Rejeitar</a><br>
-        <a href="' . htmlspecialchars($link_confirmar) . '">Confirmar</a>
+        <a href="' . htmlspecialchars($link) . '">Validar</a><br>
         ';
-
+        
         $mail->AltBody = 'Olá, Usuário!\n\n' .
         'Seja bem-vindo ao OportunIF! Recebemos uma tentativa de criação de conta com o e-mail ' . htmlspecialchars($email) . '. Por favor, confirme se foi você quem fez essa solicitação.\n\n' .
-        'Rejeitar: ' . htmlspecialchars($link_rejeitar) . '\n' .
-        'Confirmar: ' . htmlspecialchars($link_confirmar);
-
+        'Validar: ' . htmlspecialchars($link) . '\n';
+        
         $mail->send();
         return ['status' => true, 'message' => 'E-mail enviado com sucesso!'];
     } catch (Exception $e) {

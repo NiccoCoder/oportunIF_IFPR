@@ -4,11 +4,10 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Cadastro (Docente)</title>
-  <link rel="stylesheet" href="../css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../css/vendor.bundle.base.css">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="shortcut icon" href="../images/favicon.png" />
-  <script src="../../backend/validacaoEmail.js"></script>
+  <script src="../js/validacaoEmail.js"></script>
 
   <style>
     .content-wrapper {
@@ -144,7 +143,7 @@
               <!-- Exibe a mensagem de sucesso quando necessário -->
               <div id="success-message" class="success-message"></div>
 
-              <form action="../../backend/cadastroDocente.php" method="POST" id="cadastroDocente" onsubmit="return validarEmailDocente('emailDocente')">
+              <form action="../../backend/cadastroDocente.php" method="POST" id="cadastroDocente" onsubmit="return validarEmailDocente(emailDocente.value)">
                 <div class="form-group">
                   <label>Nome:</label>
                   <input type="text" class="form-control p_input" placeholder="Nome Completo" id="nomeDocente" name="nomeDocente" required>
@@ -188,11 +187,5 @@
     }
   </script>
 
-  <script src="../js/vendor.bundle.base.js"></script>
-  <script src="../js/off-canvas.js"></script>
-  <script src="../js/hoverable-collapse.js"></script>
-  <script src="../js/misc.js"></script>
-  <script src="../js/settings.js"></script>
-  <script src="../js/todolist.js"></script>
 </body>
 </html>

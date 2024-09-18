@@ -1,9 +1,8 @@
 //Função para validar o email Docente 
 function validarEmailDocente(userEmail) {
-    
     //Regex para Dicentes que espera um padrão (nome.sobrenome.@ifpr.edu.br)
     const emailRegexToDocentes = /.+[.].+[@]ifpr+[.]edu+[.]br/;
-    const email = document.getElementById(userEmail).value;
+    const email = document.getElementById('emailDocente').value;
     
     //condição para evitar que o Email seja nulo ou vazio
     if(!email) {

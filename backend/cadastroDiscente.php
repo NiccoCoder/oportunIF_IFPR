@@ -9,6 +9,7 @@ if (isset($_POST['submit'])) {
     $senha = $_POST['senhaDiscente'];
     $curso = $_POST['cursoDiscente'];
 
+
     // Verificar se todos os campos foram preenchidos
     if (!$nome || !$email || !$senha || !$curso) {
         header("Location: ../frontend/pages/cadastroAluno.html?error=" . urlencode('Todos os campos são obrigatórios'));

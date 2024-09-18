@@ -5,23 +5,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Cadastro (Estudante)</title>
-    <link rel="stylesheet" href="../css/materialdesignicons.min.css">
     <link rel="stylesheet" href="../css/vendor.bundle.base.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="shortcut icon" href="../images/favicon.png" />
-    <script src="../../backend/validacaoEmail.js"></script>
+    <script src="../js/validacaoEmail.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <script>
         
         $(document).ready(function ( ){
             $.ajax({  
-      url: "../../backend/requisicoes/req_cursos.php",
+      url: "../../backend/requisicoes/req_cursos.php",  
       dataType: "json",
       success: function(data) {
         if (data.length > 0) {
           $.each(data, function(index, item) {
-            $("#cursoDiscente").append('<option value="'+item.ID+'">' + item.NOME_CURSO + '</option>');
+            $("#cursoDiscente").append('<option value="'+item.ID_CURSO+'">' + item.NOME_CURSO + '</option>');
+            console.log(item.ID_CURSO);
           });
         } else {
           $("#resultado").append("<p>Nenhum projeto encontrado para o ID informado.</p>");
@@ -132,8 +132,7 @@
                     <div class="card col-lg-4">
                         <div class="card-body">
                             <h3 class="card-title" style="color: black;">Cadastro (Discente)</h3>
-                            <form action="../../backend/cadastroDiscente.php" method="POST" id="cadastroDiscente"
-                                onsubmit="return validarEmailDiscente('emailDiscente')">
+                            <form action="../../backend/cadastroDiscente.php" method="POST" id="cadastroDiscente" onsubmit="return validarEmailDiscente('emailDiscente')">
                                 <div class="form-group">
                                     <label>Nome Completo:</label>
                                     <input type="text" class="form-control p_input" placeholder="Nome completo"
@@ -162,21 +161,13 @@
                                         name="submit">Cadastrar</button>
                                 </div>
                             </form>
-                            <p class="sign-up">Já tem uma conta como discente? <a
-                                    href="../../frontend/pages/login.html">Login</a></p>
+                            <p class="sign-up">Já tem uma conta como discente? <a href="../../frontend/pages/login.html">Login</a></p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script src="../js/vendor.bundle.base.js"></script>
-    <script src="../js/off-canvas.js"></script>
-    <script src="../js/hoverable-collapse.js"></script>
-    <script src="../js/misc.js"></script>
-    <script src="../js/settings.js"></script>
-    <script src="../js/todolist.js"></script>
-
 </body>
 
 </html>
