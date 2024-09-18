@@ -172,3 +172,72 @@
 .form-group {
   margin-bottom: 25px; /* Maior separação entre os campos do formulário */
 }
+
+/* CSS para organizar a página "Esqueceu a senha" */
+
+/* Estilo geral da página */
+body {
+  background-color: #2f9e41; /* Fundo verde */
+  color: black; /* Cor do texto */
+  font-family: Arial, sans-serif; /* Fonte padrão */
+}
+
+.content-wrapper {
+  display: flex;
+  justify-content: center; /* Centraliza o card horizontalmente */
+  align-items: center; /* Centraliza o card verticalmente */
+  height: 100vh;
+  padding: 0 20px; 
+}
+
+.card {
+  background: rgba(253, 255, 254, 0.856); 
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+  width: 100%;
+  max-width: 400px; /* Largura máxima do card */
+}
+
+.card-body {
+  padding: 20px; /* Padding interno do card */
+}
+
+.card-title {
+  font-size: 24px; /* Tamanho do título */
+  margin-bottom: 20px; /* Espaçamento abaixo do título */
+  color: black; 
+}
+
+p {
+  font-size: 16px; /* Tamanho da fonte do parágrafo */
+  margin-bottom: 20px; /* Espaçamento abaixo do parágrafo */
+}
+
+.form-group {
+  margin-bottom: 20px; /* Espaçamento entre o campo de formulário */
+}
+
+.btn-success {
+  background-color: #3e9643; /* Verde mais claro para o botão */
+  border-radius: 25px; /* Bordas arredondadas do botão */
+  border: 1px solid #4caf50; /* Borda do botão */
+  padding: 12px; /* Padding do botão */
+}
+
+.btn-success:hover {
+  background-color: #81c784; /* Cor do botão ao passar o mouse */
+}
+
+.sign-up {
+  margin-top: 20px; /* Espaçamento acima do texto de "Voltar ao Login" */
+}
+
+.sign-up a {
+  color: black;
+  text-decoration: none;
+}
+
+.sign-up a:hover {
+  text-decoration: underline; /* Sublinha o link ao passar o mouse */
+}
