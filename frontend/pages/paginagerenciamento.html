@@ -183,8 +183,9 @@
             <li class="nav-item dropdown">
               <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
                 <div class="navbar-profile">
-                  <p class="mb-0 d-none d-sm-block navbar-profile-name">Usuario Master</p>
-                  <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+                  <!--Além de colocar a tag <i> dentro da tag <p>, troquei a class d-sm-block para d-sm-inline-block-->
+                  <p class="mb-0 d-none d-sm-block navbar-profile-name">Usuario Master <i class="mdi mdi-menu-down d-none d-sm-inline-block"></i></p>
+                  
                 </div>
               </a>
               <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
@@ -265,7 +266,7 @@
                 </button>
               </div>
               <div class="col-sm-4 grid-margin">
-                <button class="card card-statistics" style="background-color: #ffffff; border: 1px solid #ddd;" onclick="window.location.href='#'">
+                <button class="card card-statistics" style="background-color: #ffffff; border: 1px solid #ddd;" onclick="buscarProjetosGerenciamento()">
                   <div class="card-body">
                     <h5>Total de Projetos</h5>
                     <div class="row">
@@ -287,11 +288,12 @@
               <div class="col-12 grid-margin">
                 <div class="card-project">
                   <!-- Aqui irei pegar e colocar um ajax essa div -->
+
                   <div class="card-body" id="divTabela">
                     <h4 class="card-title" style="text-align: center" id="tituloTabela">Projetos </h4>            
                     <div class="table-responsive">
-                      <table class="table">
-                        <thead>
+                      <table class="table" >
+                        <thead id="tabelaInfo">
                           <tr>
                             <th>
                               <div class="form-check form-check-muted m-0">
@@ -307,7 +309,7 @@
                             <th> Opções </th>
                           </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="linhaTabela">
                           <tr>
                             <td>
                               <div class="form-check form-check-muted m-0">
@@ -351,6 +353,7 @@
             <p style="color: #000000;"><strong>Tipo:</strong> <span id="modalType"></span></p>
             <p style="color: #000000;"><strong>Responsável:</strong> <span id="modalResponsible"></span></p>
             <p style="color: #000000;"><strong>Com Bolsa:</strong> <span id="modalGrant"></span></p>
+            <p style="color: #000000;"><strong>Resumo:</strong> <span id="modalSummary"></span></p>
           </div>
         </div> 
         <!-- Modal de Confirmação de Exclusão -->
@@ -360,7 +363,7 @@
             <h2 style="color: #000000;">Confirmar Exclusão</h2>
             <p style="color:#000000">Tem certeza que deseja excluir o projeto <strong><span id="deleteTitle"></span></strong>?</p>
             <div style="display: flex; justify-content: flex-end; gap: 10px;">
-              <button style="padding: 8px 16px; background-color: #64ec9d; color: #fff; border: none; border-radius: 5px; cursor: pointer;" onclick="confirmDelete()">Sim, excluir</button>
+              <button style="padding: 8px 16px; background-color: #64ec9d; color: #fff; border: none; border-radius: 5px; cursor: pointer;" id="botaoDeletarProjeto" onclick="deletarProjeto()" >Sim, excluir</button>
               <button style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;" onclick="closeDeleteModal()">Cancelar</button>
               </div>
         <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
@@ -370,9 +373,13 @@
         <script src="../../frontend/js/settings.js"></script>
         <script src="../../frontend/js/todolist.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script>
+        <script src="../js/req.js"></script>
         
+<script>
+    
+var idSelecionado;
     $(document).ready(function ( ){
+
         $.ajax({  
   url: "../../backend/requisicoes/req_gerenciamento.php",  
   dataType: "json",
@@ -395,27 +402,29 @@
          const projectModal = document.getElementById("projectModal");
     const deleteModal = document.getElementById("deleteModal");
 
-    function openModal(title, type, responsible, grant) {
+    function openModal(title, type, responsible, grant, summary) {
       document.getElementById("modalTitle").textContent = title;
       document.getElementById("modalType").textContent = type;
       document.getElementById("modalResponsible").textContent = responsible;
       document.getElementById("modalGrant").textContent = grant;
+      document.getElementById("modalSummary").textContent = summary;
       projectModal.style.display = "block";
     }
 
-    function openDeleteModal(title) {
-      document.getElementById("deleteTitle").textContent = title;
-      deleteModal.style.display = "block";
-    }
+    function openDeleteModal(title, id) {
+    console.log(id);
+    idSelecionado = id;
+    document.getElementById("deleteTitle").textContent = title;
+    botaoDeletarProjeto.removeEventListener("onclick", deletarProjeto);
+
+    botaoDeletarProjeto.addEventListener("onclick", deletarProjeto.bind(id));
+    deleteModal.style.display = "block";
+}
 
     function closeDeleteModal() {
       deleteModal.style.display = "none";
     }
 
-    function confirmDelete() {
-      alert("Projeto excluído com sucesso!");
-      closeDeleteModal();
-    }
 
     const closeButtons = document.getElementsByClassName("close");
     Array.from(closeButtons).forEach(function (btn) {

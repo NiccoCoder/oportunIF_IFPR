@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Login de Alunos OportunIF</title>
+  <link rel="stylesheet" href="../css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="shortcut icon" href="../images/favicon.png"> 
+  <style>
+    .content-wrapper {
+      background-color: rgba(60, 221, 60, 0.767); 
+    }
+    .card {
+      background: rgba(253, 255, 254, 0.856); 
+      border: none; 
+      border-radius: 10px; 
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+      margin: auto; 
+    }
+    .card-body {
+      color: black; 
+    }
+    .form-control::placeholder {
+      color: black; 
+      opacity: 1; 
+    }
+    .form-control {
+      color: black; 
+      background-color: white; 
+      border: 1px solid black; 
+      border-radius: 5px; 
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+      width: 100%; 
+      max-width: 100%; 
+    }
+    .form-control:focus {
+      background-color: #f2f2f2; 
+      border-color: #2f9e41; 
+    }
+    .btn-success {
+      color: black; 
+      border-radius: 5px; 
+      width: 100%; 
+      max-width: 100%; 
+    }
+    .form-group {
+      display: flex;
+      align-items: center; 
+      justify-content: space-between; 
+    }
+    .form-check-label {
+      display: flex;
+      align-items: center; 
+    }
+    .forgot-pass {
+      margin-left: auto; 
+      color: black; 
+    }
+  </style>
+</head>
+<body>
+  <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="row w-100 m-0">
+        <div class="content-wrapper full-page-wrapper d-flex align-items-center auth" style="color: #2f9e41;">
+          <div class="card col-lg-4">
+            <div class="card-body px-5 py-5">
+              <h3 class="card-title text-left mb-3" style="color: black;">Esqueceu sua senha?</h3>
+              <p>Para redefinir sua senha, informe seu email cadastrado na sua conta, e enviaremos um email com as instruções!</p>
+              <form action="../../backend/loginDiscente.php" method="POST" id="loginDiscente">
+                
+                <div class="form-group">
+                  <label for="esqueciSenha">E-mail</label>
+                  <input type="email" class="form-control p_input" style="color: black;" placeholder="Email" id="esqueciSenha" name ="esqueciSenha" required>
+                </div>
+                <div class="form-group d-flex align-items-center justify-content-between">
+                </div>
+                <div class="text-center">
+                  <button type="submit" name = "submit" class="btn btn-success btn-block enter-btn">Enviar</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- <script src="../js/vendor.bundle.base.js"></script>
+  <script src="../js/off-canvas.js"></script>
+  <script src="../js/hoverable-collapse.js"></script>
+  <script src="../js/misc.js"></script>
+  <script src="../js/settings.js"></script>
+  <script src="../js/todolist.js"></script> -->
+</body>
+</html>
