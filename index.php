@@ -26,6 +26,16 @@
         <a href = "./frontend/pages/teladereport.html">Pagina report</a>
         <br>
         <a href = "./frontend/pages/paginagerenciamento.html">Pagina Gerenciamento</a>
-        <a href= " ./backend/requisicoes/req_cursos.php">req 1</a>
+        <br>
+        <a href= " ./backend/requisicoes/req_cursos.php">req cursos</a>
+        <br>
+        <a href= " ./backend/requisicoes/req_docente_confirmado.php">req docentes confirmados</a>
+        <br>
+        <a href= " ./backend/requisicoes/req_gerenciamento.php">req gerenciamento</a>
+        <br>
+        <a href= " ./backend/requisicoes/req_projeto.php">req projetos</a>
+        <br>
+        <a href= " ./backend/requisicoes/req_tipo_projeto.php">req tipo projetos</a>
+
     </body>
 <html>

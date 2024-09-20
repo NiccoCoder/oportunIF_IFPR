@@ -4,8 +4,8 @@
 
     $idProjeto = $_POST['id'];
 
-    $sql = "DELETE FROM tb_projeto WHERE ID_PROJETO = ?";
-    $stmt = $conn->prepare($sql);
+    $sql = "DELETE FROM TB_PROJETO WHERE ID_PROJETO = ?";
+    $stmt = $conexao->prepare($sql);
     $stmt->bind_param("i", $idProjeto);
         
     $stmt->execute();
