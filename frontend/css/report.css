@@ -61,3 +61,22 @@
   border-top: 1px solid #ddd;
   text-align: center;
 }
+
+/* Alinhamento dos botões no dropdown */
+.dropdown-item {
+  display: flex; /* Flex para alinhar verticalmente */
+  align-items: center; /* Alinha os itens no centro */
+  padding: 10px; /* Espaçamento interno */
+  width: 100%; /* Largura total do botão */
+  text-align: left; /* Alinha o texto à esquerda */
+}
+
+/* Estilo do ícone do dropdown */
+.preview-icon {
+  margin-right: 10px; /* Espaço entre o ícone e o texto */
+}
+
+/* Estilo das opções do dropdown ao passar o mouse */
+.dropdown-item:hover {
+  color: #ffffff; /* Cor do texto */
+}

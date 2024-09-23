@@ -14774,6 +14774,7 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
+  justify-content: center;
 }
 
 .navbar-nav .nav-link {
