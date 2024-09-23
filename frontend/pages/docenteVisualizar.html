@@ -14,61 +14,80 @@
  
 </head>
 <body>
-        <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
-          <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
-            <span class="mdi mdi-menu"></span>
-          </button>
-          <ul class="navbar-nav w-100">
-            <li class="nav-item w-100">
-              <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                <input type="text" style="color: white;" class="form-control" placeholder="Pesquisar">
-              </form>
-            </li>
-          </ul>
-          <ul class="navbar-nav navbar-nav-right">
-            <li class="nav-item dropdown d-none d-lg-block">
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-                aria-labelledby="createbuttonDropdown">
-                <h6 class="p-3 mb-0">Projetos</h6>
-              </div>
-            </li>
-            </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
-                <div class="d-flex align-items-center">
-                  <p class="mb-0 d-none d-sm-block navbar-profile-name">Docente</p>
-                  <i class="mdi mdi-menu-down d-none d-sm-block ml-2"></i>
-                </div>
-              </a>
-              <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
-                <h6 class="p-3 mb-0">Opções</h6>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-account text-success"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <p class="preview-subject mb-1">Report</p>
-                  </div>
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item preview-item">
-                  <div class="preview-thumbnail">
-                    <div class="preview-icon bg-dark rounded-circle">
-                      <i class="mdi mdi-exit-to-app text-danger"></i>
-                    </div>
-                  </div>
-                  <div class="preview-item-content">
-                    <p class="preview-subject mb-1">Saida</p>
-                  </div>
-                </a>
-              </div>
-            </li>
-          </ul>
+  <div style="justify-content: space-between;" class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+    <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      <span class="mdi mdi-menu text-white"></span>
+    </button>
+    <ul class="dropdown-menu" aria-labelledby="menuDropdown">
+      <li>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="option1">
+          <label class="form-check-label" for="option1">Opção 1</label>
         </div>
+      </li>
+      <li>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="option2">
+          <label class="form-check-label" for="option2">Opção 2</label>
+        </div>
+      </li>
+      <li>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="option3">
+          <label class="form-check-label" for="option3">Opção 3</label>
+        </div>
+      </li>
+    </ul>
+  
+    <ul class="navbar-nav w-100">
+      <li class="nav-item w-100">
+        <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+          <input type="text" style="color: white;" class="form-control" placeholder="Pesquisar">
+        </form>
+      </li>
+    </ul>
+    <ul class="navbar-nav navbar-nav-right">
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+          aria-labelledby="createbuttonDropdown">
+          <h6 class="p-3 mb-0">Projetos</h6>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
+          <div class="navbar-profile d-flex align-items-center">
+            <p class="mb-0 d-none d-sm-block navbar-profile-name">Docente</p>
+            <i class="mdi mdi-menu-down d-none d-sm-block ml-2"></i>
+          </div>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+          <h6 class="p-3 mb-0">Opções</h6>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item preview-item d-flex align-items-center">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-dark rounded-circle">
+                <i class="mdi mdi-account text-success"></i>
+              </div>
+            </div>
+            <div class="preview-item-content ml-2">
+              <p class="preview-subject mb-1">Report</p>
+            </div>
+          </a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item preview-item d-flex align-items-center">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-dark rounded-circle">
+                <i class="mdi mdi-exit-to-app text-danger"></i>
+              </div>
+            </div>
+            <div class="preview-item-content ml-2">
+              <p class="preview-subject mb-1">Saída</p>
+            </div>
+          </a>
+        </div>
+      </li>
+    </ul>
+  </div>
       </nav>
       <div class="main-panel">
         <div class="content-wrapper">
