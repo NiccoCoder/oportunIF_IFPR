@@ -1,0 +1,180 @@
+/* Estilos para a seção de projetos */
+.projects-section {
+  margin: 20px 0;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.project-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 20px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.project-card:hover {
+  background-color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.project-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #000000;
+}
+
+.project-type {
+  font-size: 0.875rem;
+  color: #666;
+}
+
+.project-details {
+  font-size: 0.875rem;
+  color: #333;
+}
+
+.project-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.study-grant-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  background-color: #e9f7fc;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.study-grant-header {
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.card-project {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #ffffff;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  color: #000000;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.action-buttons button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.action-buttons .icon {
+  font-size: 24px;
+  color: #333;
+  transition: color 0.3s;
+}
+
+.action-buttons .icon:hover {
+  color: #007bff;
+}
+
+.text-success {
+  color: #28a745;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.modal {
+  display: none;
+  /* Oculto por padrão */
+  position: fixed;
+  /* Ficar no lugar */
+  z-index: 1050;
+  /* Ficar acima de outros elementos */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Largura total */
+  height: 100%;
+  /* Altura total */
+  overflow: auto;
+  /* Habilitar rolagem se necessário */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Preto com opacidade */
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 10% auto;
+  /* 10% do topo e centralizado */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 50%;
+  /* Largura menor do modal */
+  max-width: 600px;
+  /* Largura máxima */
+  border-radius: 8px;
+  /* Bordas arredondadas */
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 24px;
+  /* Tamanho menor */
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.floating-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.search-bar {
+  padding: 8px 10px;
+}
