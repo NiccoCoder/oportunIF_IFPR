@@ -1,4 +1,6 @@
-/* Estilos para a seção de projetos */
+.body{
+  font-family: Arial, sans-serif;
+}
 .projects-section {
     margin: 20px 0;
   }
