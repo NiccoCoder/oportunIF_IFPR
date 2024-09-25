@@ -134,13 +134,6 @@ function buscarDocentesGerenciamento() {
       var possui = null;
       if (data.length > 0) {
         $.each(data, function (index, item) {
-
-          if (item.POSSUI_BOLSA == '0') {
-            possui = 'Não';
-          }
-          else {
-            possui = 'Sim';
-          }
           $("#linhaTabela").append(
             `
               <tr>                  

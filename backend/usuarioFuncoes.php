@@ -131,7 +131,7 @@ function buscarCursos($conexao) {
 
 function verificarCredenciaisDiscente($email, $senha, $conexao) {
     // Prepara a consulta SQL para buscar a senha e a situação
-    $query = "SELECT senha, situacao FROM TB_DISCENTE WHERE EMAIL = ?";
+    $query = "SELECT id_discente, senha, situacao FROM TB_DISCENTE WHERE EMAIL = ?";
     $stmt = $conexao->prepare($query);
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -144,21 +144,24 @@ function verificarCredenciaisDiscente($email, $senha, $conexao) {
     }
 
     // Verifica a situação do usuário (Pendente ou Confirmado)
-    if ($row['situacao'] === 'Pendente') {
+    if ($row['situacao'] === 'pendente') {
         return ['status' => false, 'message' => 'Seu cadastro está pendente.'];
     }
 
     // Verifica se a senha está correta
     if (password_verify($senha, $row['senha'])) {
-        return ['status' => true];
+        return [
+            'status' => true,
+            'id' => $row['id_discente'], // Retorna o ID do discente
+        ];
     } else {
         return ['status' => false, 'message' => 'Senha incorreta'];
     }
 }
 
 function verificarCredenciaisDocente($email, $senha, $conexao) {
-    // Prepara a consulta SQL para buscar a senha e a situação
-    $query = "SELECT senha, situacao FROM TB_DOCENTE WHERE EMAIL = ?";
+    // Prepara a consulta SQL para buscar a senha, situação e super usuário
+    $query = "SELECT id_docente, senha, situacao, super_usuario FROM TB_DOCENTE WHERE email = ?";
     $stmt = $conexao->prepare($query);
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -171,13 +174,17 @@ function verificarCredenciaisDocente($email, $senha, $conexao) {
     }
 
     // Verifica a situação do usuário (Pendente ou Confirmado)
-    if ($row['situacao'] === 'Pendente') {
+    if ($row['situacao'] === 'pendente') {
         return ['status' => false, 'message' => 'Seu cadastro está pendente.'];
     }
 
     // Verifica se a senha está correta
     if (password_verify($senha, $row['senha'])) {
-        return ['status' => true];
+        return [
+            'status' => true,
+            'id' => $row['id_docente'], // Pegando o ID do Docente
+            'super_usuario' => $row['super_usuario'] // Pegando o status de super usuário
+        ];
     } else {
         return ['status' => false, 'message' => 'Senha incorreta'];
     }

@@ -1,6 +1,6 @@
 <?php
 include_once('config.php');
-include_once('funcoes.php');
+include_once('usuarioFuncoes.php');
 
 if (isset($_POST['submit'])) {
 

@@ -4,30 +4,38 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <br>
-        <a href = "./backend/config.php">Testar conexão com o BD</a>
-        <br>
-        <a href="./frontend/pages/cadastroProfessor.html">Cadastro: Docente</a>
-        <br>
-        <a href = "./frontend/pages/cadastroAluno.html">Cadastro: Discente</a>
-        <br>
-        <a href = "./backend/enviar_email.php">Enviar email</a>
-        <br>
-        <a href = "./frontend/pages/login.html">Login: Docente</a>
-        <br>
-        <a href = "./frontend/pages/paginavisitante.html">Visualização Projetos</a>
-        <br>
-        <a href = "./frontend/pages/paginadebolsavisitante.html">Pagina de bolsa (visitante)</a>
-        <br>
-        <a href = "./frontend/pages/projetoEditar.html">Pagina editar projetos (Docente) </a>
-        <br>
-        <a href = "./frontend/pages/projetoVisualizar.html">Pagina visualizar projetos </a>
-        <br>
-        <a href = "./frontend/pages/teladereport.html">Pagina report</a>
-        <br>
-        <a href = "./frontend/pages/paginagerenciamento.html">Pagina Gerenciamento</a>
-        <br>
-        <a href= " ./backend/requisicoes/req_cursos.php">req cursos</a>
+    <br>
+    <a href="./frontend/pages/cadastroAluno.html" class="button">Cadastro: Discente</a><br>
+
+    <a href="./frontend/pages/cadastroCursoSupU.html" class="button">Cadastro: Curso Superior</a><br>
+    
+    <a href="./frontend/pages/cadastroProfessor.html" class="button">Cadastro: Docente</a><br>
+    
+    <a href="./frontend/pages/discenteVisualizar.html" class="button">Visualizar Discente</a><br>
+    
+    <a href="./frontend/pages/docenteVisualizar.html" class="button">Visualizar Docente</a><br>
+    
+    <a href="./frontend/pages/esqueceuSenha.html" class="button">Esqueceu a Senha</a><br>
+    
+    <a href="./frontend/pages/esqueciSenha.html" class="button">Esqueci a Senha</a><br>
+    
+    <a href="./frontend/pages/login.html" class="button">Login</a><br>
+    
+    <a href="./frontend/pages/paginadebolsavisitante.html" class="button">Página de Bolsa (Visitante)</a><br>
+    
+    <a href="./frontend/pages/paginagerenciamento.html" class="button">Página de Gerenciamento</a><br>
+    
+    <a href="./frontend/pages/paginavisitante.html" class="button">Página Visitante</a><br>
+    
+    <a href="./frontend/pages/projetoCadastrar.html" class="button">Cadastrar Projeto</a><br>
+    
+    <a href="./frontend/pages/projetoEditar.html" class="button">Editar Projeto</a><br>
+    
+    <a href="./frontend/pages/teladereport.html" class="button">Tela de Report</a><br>
+    
+    <a href="./frontend/pages/verificacaoEmailCodigo.html" class="button">Verificação de Email</a><br>
+
+        <!-- <a href= " ./backend/requisicoes/req_cursos.php">req cursos</a>
         <br>
         <a href= " ./backend/requisicoes/req_docente_confirmado.php">req docentes confirmados</a>
         <br>
@@ -35,7 +43,7 @@
         <br>
         <a href= " ./backend/requisicoes/req_projeto.php">req projetos</a>
         <br>
-        <a href= " ./backend/requisicoes/req_tipo_projeto.php">req tipo projetos</a>
+        <a href= " ./backend/requisicoes/req_tipo_projeto.php">req tipo projetos</a> -->
 
     </body>
 <html>

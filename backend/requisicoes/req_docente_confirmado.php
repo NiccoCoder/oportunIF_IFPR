@@ -3,19 +3,15 @@
     include_once('../config.php');
 
     $sql = "SELECT 
-        `TB_DOCENTE`.`NOME` AS `NOME`,
-        `TB_DOCENTE`.`EMAIL` AS `EMAIL`,
-        (SELECT 
-                COUNT(0)
-            FROM
-                `TB_PROJETO`
-            WHERE
-                (0 <> `TB_PROJETO`.`ID_DOCENTE`)) AS `NUMERO_PROJETOS`
+        `d`.`ID_DOCENTE` AS `ID_DOCENTE`,
+        `d`.`EMAIL` AS `EMAIL`,
+        `d`.`SITUACAO` AS `SITUACAO`,
+        `d`.`NOME` AS `NOME`,
+        COUNT(0) AS `TOTAL_PROJETOS`
     FROM
-        `TB_DOCENTE`
-    WHERE
-        ((`TB_DOCENTE`.`SITUACAO` = 'confirmado')
-            AND (`TB_DOCENTE`.`ID_DOCENTE` = 2))";
+        (`TB_DOCENTE` `d`
+        JOIN `TB_PROJETO` `dp` ON ((`d`.`ID_DOCENTE` = `dp`.`ID_DOCENTE`)))
+    GROUP BY `d`.`ID_DOCENTE` , `d`.`NOME`";
     $result = $conexao->query($sql);
 
     $dados = array();
