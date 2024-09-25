@@ -4,6 +4,7 @@
 <!DOCTYPE html>
 <html>
     <body>
+        <h3>Paginas</h3>
     <br>
     <a href="./frontend/pages/cadastroAluno.html" class="button">Cadastro: Discente</a><br>
 
@@ -35,7 +36,9 @@
     
     <a href="./frontend/pages/verificacaoEmailCodigo.html" class="button">Verificação de Email</a><br>
 
-        <!-- <a href= " ./backend/requisicoes/req_cursos.php">req cursos</a>
+    <h3>Requisições</h3>
+
+        <a href= " ./backend/requisicoes/req_cursos.php">req cursos</a>
         <br>
         <a href= " ./backend/requisicoes/req_docente_confirmado.php">req docentes confirmados</a>
         <br>
@@ -43,7 +46,7 @@
         <br>
         <a href= " ./backend/requisicoes/req_projeto.php">req projetos</a>
         <br>
-        <a href= " ./backend/requisicoes/req_tipo_projeto.php">req tipo projetos</a> -->
+        <a href= " ./backend/requisicoes/req_tipo_projeto.php">req tipo projetos</a>
 
     </body>
 <html>

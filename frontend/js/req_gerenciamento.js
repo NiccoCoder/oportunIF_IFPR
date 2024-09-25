@@ -1,4 +1,5 @@
 var idSelecionado;
+
 $(document).ready(function () {
   $.ajax({
     url: "../../backend/requisicoes/req_gerenciamento.php",
@@ -19,7 +20,6 @@ $(document).ready(function () {
 
 //  PROJETOS
 function buscarProjetosGerenciamento() {
-  //alert("opa");
   $.ajax({
     url: "../../backend/requisicoes/req_projeto.php",
     dataType: "json",
@@ -129,9 +129,9 @@ function buscarDocentesGerenciamento() {
                             <th> Email   </th>
                             <th> Numero de projetos </th>
                             <th> Opções </th>
+                            
                           </tr>
         `);
-      var possui = null;
       if (data.length > 0) {
         $.each(data, function (index, item) {
           $("#linhaTabela").append(
@@ -144,10 +144,9 @@ function buscarDocentesGerenciamento() {
                                 </label>
                               </div>
                             </td>
-                            <td>` + item.TITULO + `</td>
-                            <td>`+ item.NOME_TIPO_PROJETO + `</td>
-                            <td>`+ item.NOME + `</td>
-                            <td>`+ possui + `</td>
+                            <td>` + item.NOME + `</td>
+                            <td>`+ item.EMAIL + `</td>
+                            <td>`+ item.TOTAL_PROJETOS + `</td>
                             <td>
                               <div class="action-buttons">
                                 <button title="Visualizar" onclick="openModal('`+ item.TITULO + `', '` + item.NOME_TIPO_PROJETO + `','` + item.NOME + `','` + possui + `','` + item.RESUMO + `')">

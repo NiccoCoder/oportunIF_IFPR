@@ -97,7 +97,7 @@
                 </button>
               </div>
               <div class="col-sm-4 grid-margin">
-                <button class="card card-statistics" style="background-color: #ffffff; border: 1px solid #ddd;" onclick="window.location.href='#'">
+                <button class="card card-statistics" style="background-color: #ffffff; border: 1px solid #ddd;" onclick="buscarDocentesGerenciamento()">
                   <div class="card-body">
                     <h5>Total de Docentes</h5>
                     <div class="row">
@@ -222,29 +222,9 @@
         <script src="../../frontend/js/settings.js"></script>
         <script src="../../frontend/js/todolist.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <script src="../js/req.js"></script>
+        <script src="../js/req_gerenciamento.js"></script>
         
-<script>
-    
-var idSelecionado;
-    $(document).ready(function ( ){
 
-        $.ajax({  
-  url: "../../backend/requisicoes/req_gerenciamento.php",  
-  dataType: "json",
-  success: function(data) {
-    if (data.length > 0) {
-      $.each(data, function(index, item) {
-        $("#totalDiscente").append(item.NUMERO_DISCENTES);
-        $("#totalDocente").append(item.NUMERO_DOCENTES);
-        $("#totalProjeto").append(item.NUMERO_PROJETOS);
-      });
-    }
-  },
-});
-    });
-
-</script>
 
       
       <script>

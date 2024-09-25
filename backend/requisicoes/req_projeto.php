@@ -14,7 +14,7 @@
         JOIN `TB_PROJETO`)
         JOIN `TB_TIPO_PROJETO`)
     WHERE
-        ((`TB_DOCENTE`.`ID_DOCENTE` = `TB_DOCENTE`.`ID_DOCENTE`)
+        ((`TB_DOCENTE`.`ID_DOCENTE` = `TB_PROJETO`.`ID_DOCENTE`)
             AND (`TB_TIPO_PROJETO`.`ID_TIPO_PROJETO` = `TB_PROJETO`.`ID_TIPO_PROJETO`))";
     $result = $conexao->query($sql);
 
