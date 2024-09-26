@@ -22,10 +22,11 @@ if (isset($_POST['submit'])) {
 
     if ($resultado['status']) {
         // Armazenar informações do usuário na sessão
-        $_SESSION['id'] = $resultado['id']; // Verifique se a chave 'id' está correta
+        $_SESSION['id'] = $resultado['id'];
         $_SESSION['email'] = $email;
         $_SESSION['tipoUsuario'] = $tipoUsuario;
-        $_SESSION['super_usuario'] = $resultado['super_usuario'] ?? 0; // Certifique-se de que o padrão é 0
+        $_SESSION['super_usuario'] = $resultado['super_usuario'] ?? 0;
+        $_SESSION['sessao_ativa'] = true; 
 
         // Redirecionar com base no tipo de usuário
         if ($tipoUsuario === 'discente') {
@@ -33,19 +34,22 @@ if (isset($_POST['submit'])) {
         } elseif ($tipoUsuario === 'docente') {
             // Verifica se é super usuário
             if ($_SESSION['super_usuario'] == 1) {
-                header("Location: ../frontend/pages/paginagerenciamento.html"); // Página para super usuários
+                header("Location: ../frontend/pages/paginagerenciamento.html");
             } else {
                 header("Location: ../frontend/pages/docenteVisualizar.html");
             }
         }
         exit(); 
     } else {
-        // Redirecionar com a mensagem de erro
+        //Finaliza a seção e redireciona em caso de falha
+        session_destroy();
         header("Location: ../frontend/pages/login.html?error=" . urlencode($resultado['message']));
         exit(); 
     }
 } else {
-    header("Location: ../frontend/pages/login.html");
+    //Caso ocorra algum erro finaliza a seção que foi iniciada e direciona para o login
+    session_destroy();
+    header("Location: ../frontend/pages/login.html?error=" . urlencode('Ocorreu um erro. Porfavor tente novamente'));
     exit(); 
 }
 ?>
