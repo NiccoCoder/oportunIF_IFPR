@@ -7,10 +7,10 @@
         `d`.`EMAIL` AS `EMAIL`,
         `d`.`SITUACAO` AS `SITUACAO`,
         `d`.`NOME` AS `NOME`,
-        COUNT(0) AS `TOTAL_PROJETOS`
+        COALESCE(COUNT(`dp`.`ID_PROJETO`), 0) AS `TOTAL_PROJETOS`
     FROM
-        (`TB_DOCENTE` `d`
-        JOIN `TB_PROJETO` `dp` ON ((`d`.`ID_DOCENTE` = `dp`.`ID_DOCENTE`)))
+        (`tb_docente` `d`
+        LEFT JOIN `tb_projeto` `dp` ON ((`d`.`ID_DOCENTE` = `dp`.`ID_DOCENTE`)))
     GROUP BY `d`.`ID_DOCENTE` , `d`.`NOME`";
     $result = $conexao->query($sql);
 

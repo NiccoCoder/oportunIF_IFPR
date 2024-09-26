@@ -143,20 +143,7 @@
                     <div class="table-responsive">
                       <table class="table" >
                         <thead id="tabelaInfo">
-                          <tr>
-                            <th>
-                              <div class="form-check form-check-muted m-0">
-                                <label class="form-check-label">
-                                  <input type="checkbox" class="form-check-input">
-                                </label>
-                              </div>
-                            </th>
-                            <th> Titulo </th>
-                            <th> Tipo   </th>
-                            <th> Responsável </th>
-                            <th> C/ Bolsa</th>
-                            <th> Opções </th>
-                          </tr>
+                          
                         </thead>
                         <tbody id="linhaTabela">
                           <tr>
@@ -166,18 +153,13 @@
                                   <input type="checkbox" class="form-check-input">
                                 </label>
                               </div>
-                            </td>
-                            <td> IF Esportes: Basquete </td>
-                            <td> Extensão </td>
-                            <td> Mariana </td>
-                            <td> Não </td>
-                            <td>
+                           
                               <div class="action-buttons">
                                 <button title="Visualizar" onclick="openModal('IF Esportes: Basquete', 'Extensão', 'Mariana', 'Não')">
-                                  <i class="mdi mdi-eye icon text-success ml-auto"></i>
+                                  
                                 </button>
                                 <button title="Deletar" onclick="openDeleteModal('IF Esportes: Basquete')">
-                                  <i class="mdi mdi-delete icon text-danger ml-auto"></i>
+                                 
                                 </button>
                               </div>
                             </td>
@@ -197,12 +179,12 @@
         <div id="projectModal" class="modal">
           <div class="modal-content">
             <span class="close">&times;</span>
-            <h2 style="color: #000000;">Detalhes do Projeto</h2>
-            <p style="color:#000000"><strong>Título:</strong> <span id="modalTitle"></span></p>
-            <p style="color: #000000;"><strong>Tipo:</strong> <span id="modalType"></span></p>
-            <p style="color: #000000;"><strong>Responsável:</strong> <span id="modalResponsible"></span></p>
-            <p style="color: #000000;"><strong>Com Bolsa:</strong> <span id="modalGrant"></span></p>
-            <p style="color: #000000;"><strong>Resumo:</strong> <span id="modalSummary"></span></p>
+            <h2 style="color: #000000;" id="nomeModal">Detalhes do Projeto</h2>
+            <p style="color:#000000" ><strong id="tituloModal">Título:</strong> <span id="modalTitle"></span></p>
+            <p style="color: #000000;" ><strong id="tipoModal">Tipo:</strong> <span id="modalType"></span></p>
+            <p style="color: #000000;" ><strong id="responsavelModal">Responsável:</strong> <span id="modalResponsible"></span></p>
+            <p style="color: #000000;" ><strong id="bolsaModal">Com Bolsa:</strong> <span id="modalGrant"></span></p>
+            <p style="color: #000000;" ><strong id="resumoModal">Resumo:</strong> <span id="modalSummary"></span></p>
           </div>
         </div> 
         <!-- Modal de Confirmação de Exclusão -->
