@@ -16,14 +16,7 @@
         <div class="content-wrapper full-page-wrapper d-flex align-items-center auth">
           <div class="card col-lg-4">
             <div class="card-body">
-              <h3 class="card-title" style="color:black">Cadastro (Docente)</h3>     
-
-              <!-- Exibe o erro quando necessário -->
-              <div id="error-message" class="error-message"></div>
-              
-              <!-- Exibe a mensagem de sucesso quando necessário -->
-              <div id="success-message" class="success-message"></div>
-
+              <h3 class="card-title" style="color:black">Cadastro (Docente)</h3>
               <form action="../../backend/cadastroDocente.php" method="POST" id="cadastroDocente" onsubmit="return validarEmailDocente(emailDocente.value)">
                 <div class="form-group">
                   <label>Nome:</label>
@@ -33,9 +26,13 @@
                   <label>Email:</label>
                   <input type="email" class="form-control p_input" placeholder="email.Institucional@ifpr.edu.br" id="emailDocente" name="emailDocente" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="margin-bottom: 5px;">
                   <label>Senha:</label>
                   <input type="password" class="form-control p_input" placeholder="••••••••" id="senhaDocente" name="senhaDocente" required>
+                </div>
+                <div class="form-group" style="margin-bottom: 5px;">
+                  <div id="error-message" class="error-message" style="display: none;"></div>
+                  <div id="success-message" class="success-message" style="display: none;"></div>
                 </div>
                 <div class="text-center">
                   <button type="submit" name="submit" class="btn btn-success btn-block enter-btn">Cadastrar</button>
@@ -57,14 +54,20 @@
 
     if (errorMessage) {
       const errorDiv = document.getElementById('error-message');
-      errorDiv.textContent = errorMessage;
+      errorDiv.textContent = decodeURIComponent(errorMessage);
       errorDiv.style.display = 'block';  // Exibe a mensagem de erro
+      setTimeout(() => {
+        errorDiv.style.display = 'none'; // Esconde a mensagem após 3 segundos
+      }, 3000);
     }
 
     if (successMessage) {
       const successDiv = document.getElementById('success-message');
-      successDiv.textContent = successMessage;
+      successDiv.textContent = decodeURIComponent(successMessage);
       successDiv.style.display = 'block';  // Exibe a mensagem de sucesso
+      setTimeout(() => {
+        successDiv.style.display = 'none'; // Esconde a mensagem após 3 segundos
+      }, 3000);
     }
   </script>
 

@@ -5,7 +5,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Login - OportunIF</title>
-  <link rel="stylesheet" href="../css/materialdesignicons.min.css">
   <link rel="stylesheet" href="../css/vendor.bundle.base.css">
   <link rel="stylesheet" href="../css/cadelog.css">
   <link rel="shortcut icon" href="../images/favicon.png">  
@@ -18,25 +17,25 @@
         <div class="content-wrapper full-page-wrapper d-flex align-items-center auth" style="color: #2f9e41;">
           <div class="card col-lg-4">
             <div class="card-body px-5 py-5">
-              <h3 class="card-title text-left mb-3" style="color: black;">Login </h3>
+              <h3 class="card-title text-left mb-3" style="color: black;">Login</h3>
               <form action="../../backend/login.php" method="POST" id="login">
                 <input type="hidden" id="tipoUsuario" name="tipoUsuario" value="">
                 <div class="form-group">
                   <label style="color: black;">Email:</label>
-                  <input type="email" class="form-control p_input" style="color: black;"
-                    placeholder="email.Institucional@ifpr.edu.br" id="email" name="email" required>
+                  <input type="email" class="form-control p_input" style="color: black;" placeholder="email.Institucional@ifpr.edu.br" id="email" name="email" required>
                 </div>
                 <div class="form-group">
                   <label style="color: black;">Senha:</label>
-                  <input type="password" class="form-control p_input" style="color: black;" placeholder="••••••••"
-                    id="senha" name="senha" required>
+                  <input type="password" class="form-control p_input" style="color: black;" placeholder="••••••••" id="senha" name="senha" required>
+                </div>
+                <div class="form-group">
+                  <div id="error-message" class="error-message" style="display: none;"></div>
+                  <div id="success-message" class="success-message" style="display: none;"></div>
                 </div>
                 <div class="form-group d-flex align-items-center justify-content-between">
                   <div class="form-check form-check-success">
                     <input type="checkbox" class="form-checkbox form-check-input" id="inpMeLembre">
-                    <label class="form-check-label" for="inpMeLembre">
-                      Me lembre
-                    </label>
+                    <label class="form-check-label" for="inpMeLembre">Me lembre</label>
                   </div>
                   <a href="../../frontend/pages/esqueceuSenha.html" class="forgot-pass">Esqueceu sua senha?</a>
                 </div>
@@ -44,10 +43,8 @@
                   <button type="submit" name="submit" class="btn btn-success btn-block enter-btn">Login</button>
                   <button type="button" class="btn btn-success btn-block enter-btn" onclick="window.location.href='paginavisitante.html'">Visitante</button>
                 </div>
-                <p class="sign-up text-center" style="margin-top:0%">Não possui conta?<a
-                    href="../../frontend/pages/cadastroAluno.html" style="color: black;"> Discente cadastro</a></p>
-                <p class="sign-up text-center" style="margin-top:0%">Não possui conta?<a
-                    href="../../frontend/pages/cadastroProfessor.html" style="color: black;"> Docentes Cadastro</a></p>
+                <p class="sign-up text-center" style="margin-top:0%">Não possui conta?<a href="../../frontend/pages/cadastroAluno.html" style="color: black;"> Discente cadastro</a></p>
+                <p class="sign-up text-center" style="margin-top:0%">Não possui conta?<a href="../../frontend/pages/cadastroProfessor.html" style="color: black;"> Docentes Cadastro</a></p>
               </form>
             </div>
           </div>
@@ -73,7 +70,7 @@
       
       // Verifica se o tipo de usuário é conhecido
       if (tipoUsuario === 'desconhecido') {
-        alert('Tipo de usuário não reconhecido.');
+        alert('Tipo de usuário não reconhecido. Insira um email institucional válido.');
         event.preventDefault();
       }
     });
@@ -88,22 +85,29 @@
       }
     }
 
-    // Verifica a presença de parâmetros na URL
     const urlParams = new URLSearchParams(window.location.search);
     const errorMessage = urlParams.get('error');
+    const successMessage = urlParams.get('success');
 
-    // Se houver uma mensagem de erro, exibe no elemento
     if (errorMessage) {
-      document.getElementById('message').textContent = decodeURIComponent(errorMessage);
+      const errorDiv = document.getElementById('error-message');
+      errorDiv.textContent = decodeURIComponent(errorMessage);
+      errorDiv.style.display = 'block';  // Exibe a mensagem de erro
+      setTimeout(() => {
+        errorDiv.style.display = 'none'; // Esconde a mensagem após 3 segundos
+      }, 3000);
+    }
+
+    if (successMessage) {
+      const successDiv = document.getElementById('success-message');
+      successDiv.textContent = decodeURIComponent(successMessage);
+      successDiv.style.display = 'block';  // Exibe a mensagem de sucesso
+      setTimeout(() => {
+        successDiv.style.display = 'none'; // Esconde a mensagem após 3 segundos
+      }, 3000);
     }
   </script>
-  
-  <script src="../js/vendor.bundle.base.js"></script>
-  <script src="../js/off-canvas.js"></script>
-  <script src="../js/hoverable-collapse.js"></script>
-  <script src="../js/misc.js"></script>
-  <script src="../js/settings.js"></script>
-  <script src="../js/todolist.js"></script>
+
 </body>
 
 </html>

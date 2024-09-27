@@ -27,7 +27,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['tipoUsuario'] = $tipoUsuario;
         $_SESSION['super_usuario'] = $resultado['super_usuario'] ?? 0;
         $_SESSION['sessao_ativa'] = true; 
-
+        
         // Redirecionar com base no tipo de usuário
         if ($tipoUsuario === 'discente') {
             header("Location: ../frontend/pages/discenteVisualizar.html");

@@ -33,6 +33,9 @@
 
   </head>
   <body>
+    <div id="loader" style="display: none;">Carregando...</div>
+    <div id="content" style="display: none;">
+    <div id="mensagem"></div>
     <div style ="justify-content: space-between;" class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
       <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
         <span class="mdi mdi-menu text-white"></span>
@@ -60,7 +63,7 @@
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
             <h6 class="p-2 mb-0">Opções</h6>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item preview-item d-flex align-items-center">
+            <a class="dropdown-item preview-item d-flex align-items-center" href="./teladereport.html">
               <div class="preview-thumbnail">
                 <div class="preview-icon bg-dark rounded-circle">
                   <i class="mdi mdi-account text-success"></i>
@@ -71,7 +74,7 @@
               </div>
             </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item preview-item d-flex align-items-center">
+            <a  class="dropdown-item preview-item d-flex align-items-center" href="../../backend/logout.php">
               <div class="preview-thumbnail">
                 <div class="preview-icon bg-dark rounded-circle">
                   <i class="mdi mdi-exit-to-app text-danger"></i>
@@ -143,10 +146,10 @@
 >
     <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
     <script src="../../frontend/js/off-canvas.js"></script>
-    <script src="../../frontend/js/hoverable-collapse.js"></script>
-    <script src="../../frontend/js/misc.js"></script>
-    <script src="../../frontend/js/dashboard.js"></script>
+    <script src="../../frontend/js/verificaSessao.js"></script>
     <script src="../../frontend/js/todolist.js"></script>
+    <script src="../../frontend/js/verificaSessao.js"></script>
+    
     <script>
       function toggleScholarshipFields() {
         const checkbox = document.getElementById('has-scholarship');

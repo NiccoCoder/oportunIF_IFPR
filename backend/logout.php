@@ -1,12 +1,13 @@
-<?php 
-try {
-    session_destroy();
+<?php
+session_start(); // Inicia a sessão
 
-    header("Location: ../frontend/pages/login.html?error=" . urlencode('Sessão finalizada com sucesso'));
-    exit();
-} catch (Exception $e) {
-    // Você pode logar o erro ou redirecionar para uma página de erro
-    header("Location: ../frontend/pages/login.html?error=" . urlencode('Erro ao finalizar a sessão.'));
-    exit();
+// Verifica se a sessão está ativa
+if (isset($_SESSION['sessao_ativa'])) {
+    // Destrói a sessão
+    session_destroy();
 }
+
+// Redireciona para a página de login ou outra página desejada
+header("Location: ../frontend/pages/login.html?message=" . urlencode('Você foi desconectado com sucesso.'));
+exit();
 ?>

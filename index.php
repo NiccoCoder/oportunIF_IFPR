@@ -18,8 +18,6 @@
     
     <a href="./frontend/pages/esqueceuSenha.html" class="button">Esqueceu a Senha</a><br>
     
-    <a href="./frontend/pages/esqueciSenha.html" class="button">Esqueci a Senha</a><br>
-    
     <a href="./frontend/pages/login.html" class="button">Login</a><br>
     
     <a href="./frontend/pages/paginadebolsavisitante.html" class="button">Página de Bolsa (Visitante)</a><br>
