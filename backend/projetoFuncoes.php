@@ -1,16 +1,6 @@
 <?php
 
-// require '../PHPMailer/src/Exception.php';
-// require '../PHPMailer/src/PHPMailer.php';
-// require '../PHPMailer/src/SMTP.php';
-
-// use PHPMailer\PHPMailer\PHPMailer;
-// use PHPMailer\PHPMailer\Exception;
-// use PHPMailer\PHPMailer\SMTP;
-
-include_once('config.php');
-
-function cadastrarProjeto($id_docente, $titulo, $id_tipo_projeto, $criterios_selecao, $resumo, $conexao) {
+function cadastrarProjeto($id_docente, $titulo, $id_tipo_projeto, $criterios_selecao, $resumo, $conexao, $bolsa_disponivel, $descricao_bolsa = null, $requisito_bolsa = null) {
     
     // Verificação de registros vazios com id 
     $check_docente_query = "SELECT * FROM TB_DOCENTE WHERE ID_DOCENTE = ?";
@@ -23,12 +13,22 @@ function cadastrarProjeto($id_docente, $titulo, $id_tipo_projeto, $criterios_sel
         return ['status' => false, 'message' => 'Este docente não está cadastrado.'];
     }
     
-    $insert_script = "INSERT INTO TB_PROJETO (ID_DOCENTE, TITULO_PROJETO, ID_TIPO_PROJETO, CRITERIOS_SELECAO, RESUMO) VALUES (?, ?, ?, ?, ?)";
+    // Prepare a query de inserção com os novos campos
+    $insert_script = "INSERT INTO TB_PROJETO (ID_DOCENTE, TITULO, ID_TIPO_PROJETO, CRITERIOS_SELECAO, RESUMO, POSSUI_BOLSA, BOLSA_DESCRICAO, BOLSA_REQUISITOS) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     
-    // Preparar e executar a query de forma segura
-    $stmt = $conexao->prepare($insert_script);
-    $stmt->bind_param("isiss", $id_docente, $titulo, $id_tipo_projeto, $criterios_selecao, $resumo);
-    
+    // Se a bolsa não estiver disponível, passar null para os campos relacionados à bolsa
+    if ($bolsa_disponivel == '1') {
+        $stmt = $conexao->prepare($insert_script);
+        $stmt->bind_param("issssssss", $id_docente, $titulo, $id_tipo_projeto, $criterios_selecao, $resumo, $bolsa_disponivel, $descricao_bolsa, $requisito_bolsa);
+    } else {
+        // Se não há bolsa, os campos de descrição e requisitos ficam nulos
+        $descricao_bolsa = null;
+        $requisito_bolsa = null;
+        $insert_script = "INSERT INTO TB_PROJETO (ID_DOCENTE, TITULO, ID_TIPO_PROJETO, CRITERIOS_SELECAO, RESUMO, POSSUI_BOLSA, BOLSA_DESCRICAO, BOLSA_REQUISITOS) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $stmt = $conexao->prepare($insert_script);
+        $stmt->bind_param("isssssss", $id_docente, $titulo, $id_tipo_projeto, $criterios_selecao, $resumo, $bolsa_disponivel, $descricao_bolsa, $requisito_bolsa);
+    }
+
     if ($stmt->execute()) {
         $stmt->close(); // Fechar o stmt
         return ['status' => true, 'message' => 'Projeto cadastrado com sucesso'];
@@ -36,32 +36,4 @@ function cadastrarProjeto($id_docente, $titulo, $id_tipo_projeto, $criterios_sel
         return ['status' => false, 'message' => 'Falha ao registrar projeto: ' . $stmt->error];
     } 
 }
-
-function cadastrarBolsaProjeto($bolsaDescricao, $bolsaRequisitos, $conexao) {
-    
-    // Verificar se a conexão é válida
-    if ($conexao === null) {
-        return ['status' => false, 'message' => 'Conexão inválida.'];
-    }
-
-    $insert_script = "INSERT INTO TB_PROJETO (BOLSA_DESCRICAO, BOLSA_REQUISITOS) VALUES (?, ?)";
-
-    // Preparar e executar a query de forma segura
-    $stmt = $conexao->prepare($insert_script);
-    
-    if ($stmt === false) {
-        return ['status' => false, 'message' => 'Erro ao preparar a query: ' . $conexao->error];
-    }
-
-    $stmt->bind_param("ss", $bolsaDescricao, $bolsaRequisitos);
-    
-    if ($stmt->execute()) {
-        $stmt->close(); // Fechar o stmt
-        return ['status' => true];
-    } else {
-        return ['status' => false, 'message' => 'Falha ao registrar bolsa do projeto: ' . $stmt->error];
-    } 
-}
-
-
 ?>

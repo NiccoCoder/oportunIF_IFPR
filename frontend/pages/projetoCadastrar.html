@@ -98,58 +98,58 @@
           <form id="cadastroProjeto" action="../../backend/cadastroProjeto.php" method="POST">
             <div class="form-group">
               <label for="project-title">Título</label>
-              <input type="text" id="project-title" name="project-title" required>
+              <input type="text" id="id_titulo" name="titulo" required>
             </div>
             <div class="form-group">
               <label for="project-description">Resumo</label>
-              <textarea id="project-description" name="project-description" required></textarea>
+              <textarea id="id_resumo" name="resumo" required></textarea>
             </div>
             <div class="form-group">
               <label for="selection-criteria">Criterios de seleção</label>
-              <textarea id="selection-criteria" name="selection-criteria"></textarea>
+              <textarea id="id_criterios_selecao" name="criterios_selecao"></textarea>
             </div>
             <div class="form-group">
               <label for="project-type">Tipo de projeto</label>
-              <select id="project-type" class="form-control-projetos">
+              <select id="project-type" name="id_tipo_projeto" class="form-control-projetos" required>
                 <option value=""></option>
               </select>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="checkbox" value="" id="has-scholarship" name="has-scholarship" onclick="toggleScholarshipFields()">
-              <label class="form-check-label" for="has-scholarship">
+              <input class="form-check-input" type="checkbox" value="" id="id_bolsa_disponivel" name="bolsa_disponivel" onclick="toggleScholarshipFields()">
+              <label class="form-check-label" for="id_bolsa_disponivel">
                 O projeto possui bolsa
               </label>
             </div>
             <div id="scholarship-fields" class="hidden">
               <div class="form-group">
                 <label for="scholarship-description">Descrição da bolsa</label>
-                <textarea id="scholarship-description" name="scholarship-description"></textarea>
+                <textarea id="id_descricao_bolsa" name="descricao_bolsa"></textarea>
               </div>
               <div class="form-group">
                 <label for="scholarship-requisition">Requisito para bolsa</label>
-                <textarea id="scholarship-requisition" name="scholarship-requisition"></textarea>
+                <textarea id="id_requisito_bolsa" name="requisito_bolsa"></textarea>
               </div>
               <div class="form-group">
                 <label for="hourly-charge">Carga horária do bolsista</label>
-                <input type="text" id="hourly-charge" name="hourly-charge">
+                <input type="text" id="id_carga_horaria" name="carga_horaria">
               </div>
               <div class="form-group">
                 <label for="scholarship-amount">Valor da bolsa</label>
-                <input type="text" id="scholarship-amount" name="scholarship-amount">
+                <input type="text" id="id_valor_bolsa" name="valor_bolsa">
               </div>
             </div>
-            <button type="submit" class="btn-submit">Enviar</button>
+            <button type="submit" class="btn-submit" name="submit">Enviar</button>
           </form>
         </div>
       </div>
     </div>
->
+
     <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
     <script src="../../frontend/js/verificaSessao.js"></script>
     
     <script>
       function toggleScholarshipFields() {
-        const checkbox = document.getElementById('has-scholarship');
+        const checkbox = document.getElementById('id_bolsa_disponivel');
         const scholarshipFields = document.getElementById('scholarship-fields');
         if (checkbox.checked) {
           scholarshipFields.classList.remove('hidden');

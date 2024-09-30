@@ -1,6 +1,6 @@
 <?php
-header('Content-Type: application/json');
 session_start(); // Inicia a sessão para acessar as variáveis
+header('Content-Type: application/json');
 
 $response = array();
 
