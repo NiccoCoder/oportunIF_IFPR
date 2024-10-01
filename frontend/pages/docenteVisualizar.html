@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 
 <head>
   <meta charset="utf-8">
@@ -11,7 +11,6 @@
   <link rel="stylesheet" href="../../frontend/css/docentevs.css">
   <link rel="shortcut icon" href="../../frontend/images/favicon.png" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
 </head>
 
 <body>
@@ -19,31 +18,6 @@
   <div id="content" style="display: none;">
     <div id="mensagem"></div>
     <div style="justify-content: space-between;" class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
-      <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-bs-toggle="dropdown"
-        aria-expanded="false">
-        <span class="mdi mdi-menu text-white"></span>
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="menuDropdown">
-        <li>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="option1">
-            <label class="form-check-label" for="option1">Opção 1</label>
-          </div>
-        </li>
-        <li>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="option2">
-            <label class="form-check-label" for="option2">Opção 2</label>
-          </div>
-        </li>
-        <li>
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="option3">
-            <label class="form-check-label" for="option3">Opção 3</label>
-          </div>
-        </li>
-      </ul>
-
       <ul class="navbar-nav w-100">
         <li class="nav-item w-100">
           <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
@@ -165,11 +139,15 @@
                                 <button title="Deletar" onclick="openDeleteModal('IF Esportes: Basquete')">
                                   <i class="mdi mdi-delete icon text-danger ml-auto"></i>
                                 </button>
-                                <button title="Editar" onclick="window.location.href=('projetoEditar.html')"
+                                <button title="Editar" onclick="openEditModal('IF Esportes: Basquete', 'Extensão', 'Mariana', 'Não')"
                                   style="display: flex; justify-content: center; align-items: center;">
                                   <i class="mdi mdi-pencil icon text-primary ml-auto"></i>
                                 </button>
                               </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
                     </div>
                   </div>
                   <div class="floating-button" onclick="window.location.href='projetoCadastrar.html'">
@@ -191,6 +169,7 @@
   </div>
   </div>
   </div>
+
   <!-- Modal -->
   <div id="projectModal" class="modal">
     <div class="modal-content">
@@ -202,6 +181,7 @@
       <p style="color: #000000;"><strong>Com Bolsa:</strong> <span id="modalGrant"></span></p>
     </div>
   </div>
+
   <!-- Modal de Confirmação de Exclusão -->
   <div id="deleteModal" class="modal">
     <div class="modal-content">
@@ -214,54 +194,101 @@
           style="padding: 8px 16px; background-color: #64ec9d; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
           onclick="confirmDelete()">Sim, excluir</button>
         <button
-          style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+          style="padding: 8px 16px; background-color: #f44336; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
           onclick="closeDeleteModal()">Cancelar</button>
       </div>
-      <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
-      <script src="../../frontend/js/verificaSessao.js"></script>
+    </div>
+  </div>
 
-      <script>
-        const projectModal = document.getElementById("projectModal");
-        const deleteModal = document.getElementById("deleteModal");
+  <!-- Modal de Edição -->
+  <div id="editModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeEditModal()">&times;</span>
+      <h2 style="color: #000000;">Editar Projeto</h2>
+      <form id="editForm">
+        <label for="editTitle" style="color: #000000;">Título:</label>
+        <input type="text" id="editTitle" style="width: 100%;"><br>
+        <label for="editType" style="color: #000000;">Tipo:</label>
+        <input type="text" id="editType" style="width: 100%;"><br>
+        <label for="editResponsible" style="color: #000000;">Responsável:</label>
+        <input type="text" id="editResponsible" style="width: 100%;"><br>
+        <label for="editGrant" style="color: #000000;">Com Bolsa:</label>
+        <input type="text" id="editGrant" style="width: 100%;"><br>
+        <button type="button" style="padding: 8px 16px; background-color: #64ec9d; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+          onclick="saveChanges()">Salvar</button>
+      </form>
+    </div>
+  </div>
 
-        function openModal(title, type, responsible, grant) {
-          document.getElementById("modalTitle").textContent = title;
-          document.getElementById("modalType").textContent = type;
-          document.getElementById("modalResponsible").textContent = responsible;
-          document.getElementById("modalGrant").textContent = grant;
-          projectModal.style.display = "block";
-        }
+  <script src="../../frontend/js/vendor.bundle.base.js"></script>
+  <script src="../../frontend/js/scripts.js"></script>
+  <script>
+    // Função para abrir o modal de visualização
+    function openModal(title, type, responsible, grant) {
+      document.getElementById("modalTitle").innerText = title;
+      document.getElementById("modalType").innerText = type;
+      document.getElementById("modalResponsible").innerText = responsible;
+      document.getElementById("modalGrant").innerText = grant;
+      document.getElementById("projectModal").style.display = "block";
+    }
 
-        function openDeleteModal(title) {
-          document.getElementById("deleteTitle").textContent = title;
-          deleteModal.style.display = "block";
-        }
+    // Função para fechar o modal de visualização
+    function closeModal() {
+      document.getElementById("projectModal").style.display = "none";
+    }
 
-        function closeDeleteModal() {
-          deleteModal.style.display = "none";
-        }
+    // Funções para abrir e fechar o modal de exclusão
+    function openDeleteModal(title) {
+      document.getElementById("deleteTitle").innerText = title;
+      document.getElementById("deleteModal").style.display = "block";
+    }
 
-        function confirmDelete() {
-          alert("Projeto excluído com sucesso!");
-          closeDeleteModal();
-        }
+    function closeDeleteModal() {
+      document.getElementById("deleteModal").style.display = "none";
+    }
 
-        const closeButtons = document.getElementsByClassName("close");
-        Array.from(closeButtons).forEach(function (btn) {
-          btn.onclick = function () {
-            projectModal.style.display = "none";
-            deleteModal.style.display = "none";
-          }
-        });
+    function confirmDelete() {
+      // Lógica para confirmar a exclusão do projeto
+      closeDeleteModal();
+    }
 
-        window.onclick = function (event) {
-          if (event.target == projectModal || event.target == deleteModal) {
-            projectModal.style.display = "none";
-            deleteModal.style.display = "none";
-          }
-        };
-      </script>
+    // Funções para abrir e fechar o modal de edição
+    function openEditModal(title, type, responsible, grant) {
+      document.getElementById("editTitle").value = title;
+      document.getElementById("editType").value = type;
+      document.getElementById("editResponsible").value = responsible;
+      document.getElementById("editGrant").value = grant;
+      document.getElementById("editModal").style.display = "block";
+    }
 
+    function closeEditModal() {
+      document.getElementById("editModal").style.display = "none";
+    }
+
+    function saveChanges() {
+      // Aqui você pode adicionar a lógica para salvar as alterações
+      closeEditModal();
+    }
+
+    // Fechar modais ao clicar no 'X'
+    var modalCloseButtons = document.querySelectorAll(".close");
+    modalCloseButtons.forEach(button => {
+      button.onclick = function () {
+        closeModal();
+        closeDeleteModal();
+        closeEditModal();
+      };
+    });
+
+    // Fechar modais ao clicar fora deles
+    window.onclick = function (event) {
+      if (event.target == document.getElementById("projectModal") || event.target == document.getElementById("deleteModal") || event.target == document.getElementById("editModal")) {
+        closeModal();
+        closeDeleteModal();
+        closeEditModal();
+      }
+    };
+  </script>
 </body>
 
 </html>
