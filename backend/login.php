@@ -43,7 +43,8 @@ if (isset($_POST['submit'])) {
     } else {
         //Finaliza a seção e redireciona em caso de falha
         session_destroy();
-        header("Location: ../frontend/pages/login.html?error=" . urlencode($resultado['message']) . "&id=" . urlencode($resultado['id']));
+        $id = isset($resultado['id']) ? $resultado['id'] : '';
+        header("Location: ../frontend/pages/login.html?error=" . urlencode($resultado['message']) . "&id=" . urlencode($id));
         exit();
     }
 } else {

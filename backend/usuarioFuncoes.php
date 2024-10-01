@@ -35,7 +35,7 @@ function cadastrarDiscente($nome, $email, $senha, $curso, $conexao) {
     $stmt->bind_param("sssis", $nome, $email, $senha_cripto, $curso, $chave);
     
     if ($stmt->execute()) {
-        return ['status' => true, 'message' => 'Cadastro realizado com sucesso'];
+        return ['status' => true, 'message' => 'Cadastro realizado com sucesso', 'chave' => $chave];
     } else {
         return ['status' => false, 'message' => 'Falha ao registrar discente: ' . $stmt->error];
     }
@@ -50,7 +50,7 @@ function cadastrarDocente($nome, $email, $senha, $conexao) {
     $resultado = $stmt->get_result();
 
     if ($resultado->num_rows > 0) {
-        return ['status' => false, 'message' => 'Este e-mail já está cadastrado.'];
+        return ['status' => false, 'message' => 'Este e-mail já está cadastrado.', 'chave' => $chave];
     }
 
     // Criptografia da senha e criação de uma chave para a validação
@@ -160,20 +160,47 @@ function enviarEmail($nome, $email, $chave, $tipoUsuario) {
     }
 }
 
-function buscarCursos($conexao) {
-    $query = "SELECT ID_CURSO, NOME_CURSO FROM TB_CURSO";
-    $result = mysqli_query($conexao, $query);
+function reenviarEmailRedefinicaoSenha($nome, $email, $id, $tipoUsuario) {
+    $mail = new PHPMailer(true);
+    $mail->CharSet = 'UTF-8';
 
-    // Verifica se existem cursos
-    if (!$result || mysqli_num_rows($result) == 0) {
-        return [];
-    }
+    try {
+        // Configurações do servidor
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = getenv('USERNAME');
+        $mail->Password = getenv('PASSWORD');
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS; // Usar o formato mais legível
+        $mail->Port = 587;
 
-    $cursos = [];
-    while ($curso = mysqli_fetch_assoc($result)) {
-        $cursos[] = $curso;
+        // Remetente e destinatário
+        $mail->setFrom(getenv('SEND_FROM'), getenv('SEND_FROM_NAME'));
+        $mail->addAddress($email);
+
+        // Link para redefinir a senha
+        $link = "http://localhost/frontend/pages/redefinirSenha.html?id=" . urlencode($id) . "&tipoUsuario=" . urlencode($tipoUsuario);
+        $assunto = 'Redefinição de senha';
+
+        // Conteúdo do e-mail
+        $mail->isHTML(true);
+        $mail->Subject = $assunto;
+        $mail->Body = '
+            Olá, ' . htmlspecialchars($nome) . '<br><br>
+            Recebemos uma solicitação para redefinir sua senha. Por favor, clique no link abaixo para redefinir sua senha:<br>
+            <a href="' . htmlspecialchars($link) . '">Redefinir senha</a><br>
+        ';
+
+        $mail->AltBody = 'Olá, ' . htmlspecialchars($nome) . '\n\n' .
+                         'Recebemos uma solicitação para redefinir sua senha. Por favor, clique no link abaixo para redefinir sua senha:\n' .
+                         'Redefinir senha: ' . htmlspecialchars($link) . '\n';
+
+        // Enviar o e-mail
+        $mail->send();
+        return ['status' => true, 'message' => 'E-mail de redefinição de senha enviado com sucesso!'];
+    } catch (Exception $e) {
+        return ['status' => false, 'message' => 'Erro ao enviar o e-mail: ' . $mail->ErrorInfo];
     }
-    return $cursos;
 }
 
 function verificarCredenciaisDiscente($email, $senha, $conexao) {
