@@ -43,8 +43,8 @@ if (isset($_POST['submit'])) {
     } else {
         //Finaliza a seção e redireciona em caso de falha
         session_destroy();
-        header("Location: ../frontend/pages/login.html?error=" . urlencode($resultado['message']));
-        exit(); 
+        header("Location: ../frontend/pages/login.html?error=" . urlencode($resultado['message']) . "&id=" . urlencode($resultado['id']));
+        exit();
     }
 } else {
     //Caso ocorra algum erro finaliza a seção que foi iniciada e direciona para o login

@@ -35,7 +35,7 @@ function cadastrarDiscente($nome, $email, $senha, $curso, $conexao) {
     $stmt->bind_param("sssis", $nome, $email, $senha_cripto, $curso, $chave);
     
     if ($stmt->execute()) {
-        return ['status' => true, 'message' => 'Cadastro realizado com sucesso', 'chave' => $chave];
+        return ['status' => true, 'message' => 'Cadastro realizado com sucesso'];
     } else {
         return ['status' => false, 'message' => 'Falha ao registrar discente: ' . $stmt->error];
     }
@@ -65,9 +65,52 @@ function cadastrarDocente($nome, $email, $senha, $conexao) {
     $stmt->bind_param("ssss", $nome, $email, $senha_cripto, $chave);
     
     if ($stmt->execute()) {
-        return ['status' => true, 'message' => 'Cadastro realizado com sucesso', 'chave' => $chave];
+        return ['status' => true, 'message' => 'Cadastro realizado com sucesso'];
     } else {
         return ['status' => false, 'message' => 'Falha ao registrar docente: ' . $stmt->error];
+    }
+}
+
+function reenviarEmailValidacao($nome, $email, $chave, $tipoUsuario) {
+    $mail = new PHPMailer(true);
+    $mail->CharSet = 'UTF-8';
+
+    try {
+        // Configurações do servidor
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com'; 
+        $mail->SMTPAuth = true;
+        $mail->Username = getenv('USERNAME'); 
+        $mail->Password = getenv('PASSWORD'); 
+        $mail->SMTPSecure = 'tls';
+        $mail->Port = 587;
+
+        // Remetente e destinatário
+        $mail->setFrom(getenv('SEND_FROM'), getenv('SEND_FROM_NAME'));
+        $mail->addAddress($email);
+        // $mail->addAddress('nicolasczaikowski@gmail.com');
+        // Link de validação
+        $link = "http://localhost/backend/ativarConta.php?chave=$chave&tipoUsuario=$tipoUsuario";
+        $assunto = 'Reenvio de validação de conta';
+        
+        // Conteúdo do e-mail
+        $mail->isHTML(true);
+        $mail->Subject = $assunto;
+        $mail->Body = '
+            Olá, ' . htmlspecialchars($nome) . '<br><br>
+            Recebemos uma solicitação para reenviar a validação da sua conta. Por favor, valide sua conta clicando no link abaixo:<br><br>
+            <a href="' . htmlspecialchars($link) . '">Validar</a><br>
+        ';
+
+        $mail->AltBody = 'Olá, ' . htmlspecialchars($nome) . '\n\n' .
+                         'Recebemos uma solicitação para reenviar a validação da sua conta. Por favor, valide sua conta clicando no link abaixo:\n\n' .
+                         'Validar: ' . htmlspecialchars($link) . '\n';
+
+        // Envio do e-mail
+        $mail->send();
+        return ['status' => true, 'message' => 'E-mail de validação reenviado com sucesso!'];
+    } catch (Exception $e) {
+        return ['status' => false, 'message' => 'Erro ao enviar o e-mail: ' . $mail->ErrorInfo];
     }
 }
 
@@ -88,9 +131,11 @@ function enviarEmail($nome, $email, $chave, $tipoUsuario) {
         // Remetente e destinatário
         $mail->setFrom(getenv('SEND_FROM'), getenv('SEND_FROM_NAME'));
         $mail->addAddress($email);
+        // $mail->addAddress('nicolasczaikowski@gmail.com');
         
         // Links de confirmação
         $link = "http://localhost/backend/ativarConta.php?chave=$chave&tipoUsuario=$tipoUsuario"; 
+        $rejeitar_link = "http://localhost/backend/rejeitarConta.php?chave=$chave&tipoUsuario=$tipoUsuario"; 
         $assunto = 'Valide sua conta';
             
         // Conteúdo do e-mail
@@ -100,11 +145,13 @@ function enviarEmail($nome, $email, $chave, $tipoUsuario) {
         Olá, ' . htmlspecialchars($nome) . ' <br><br>
         Seja bem-vindo ao OportunIF! Recebemos uma tentativa de criação de conta com o e-mail ' . htmlspecialchars($email) . '. Por favor, confirme se foi você quem fez essa solicitação.<br><br>
         <a href="' . htmlspecialchars($link) . '">Validar</a><br>
+        <a href="' . htmlspecialchars($rejeitar_link) . '">Recusar</a><br>
         ';
         
         $mail->AltBody = 'Olá ,' . htmlspecialchars($nome) . '\n\n' .
         'Seja bem-vindo ao OportunIF! Recebemos uma tentativa de criação de conta com o e-mail ' . htmlspecialchars($email) . '. Por favor, confirme se foi você quem fez essa solicitação.\n\n' .
-        'Validar: ' . htmlspecialchars($link) . '\n';
+        'Validar: ' . htmlspecialchars($link) . '\n' .
+        'Recusar: ' . htmlspecialchars($rejeitar_link) . '\n';
         
         $mail->send();
         return ['status' => true, 'message' => 'E-mail enviado com sucesso!'];
@@ -145,7 +192,7 @@ function verificarCredenciaisDiscente($email, $senha, $conexao) {
 
     // Verifica a situação do usuário (Pendente ou Confirmado)
     if ($row['situacao'] === 'pendente') {
-        return ['status' => false, 'message' => 'Seu cadastro está pendente.'];
+        return ['status' => false, 'message' => 'Seus cadastro está pendente.', 'id' => $row['id_discente']];
     }
 
     // Verifica se a senha está correta
@@ -175,7 +222,9 @@ function verificarCredenciaisDocente($email, $senha, $conexao) {
 
     // Verifica a situação do usuário (Pendente ou Confirmado)
     if ($row['situacao'] === 'pendente') {
-        return ['status' => false, 'message' => 'Seu cadastro está pendente.'];
+        $idDocente = $row['id_docente']; // Armazena o ID
+        // die("ID do Docente: " . $idDocente);
+        return ['status' => false, 'message' => 'Seu cadastro está pendente.', 'id' => $idDocente];
     }
 
     // Verifica se a senha está correta
