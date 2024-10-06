@@ -14,20 +14,42 @@
 </head>
 
 <body>
-  <div id="loader" style="display: none;">Carregando...</div>
-  <div id="content" style="display: none;">
-    <div id="mensagem"></div>
+  
     <div style="justify-content: space-between;" class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
       <a class="navbar-brand" href="#">
         <img src="../../frontend/images/OportunIF.png" alt="OportunIF" style="height: 40px;">
       </a>  
       <ul class="navbar-nav w-100">
         <li class="nav-item w-100">
-          <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-            <input type="text" style="color: white;" class="form-control" placeholder="Pesquisar">
-          </form>
+          <div class="search-dropdown">
+            <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+              <input type="text" style="color: white;" class="form-control" placeholder="Pesquisar" onclick="toggleDropdown()">
+            </form>
+            <div class="dropdown-menu" id="filterDropdown" style="display: none; position: absolute; top: 50px; left: 0; width: 80%; background-color: #191c24; padding: 10px; z-index: 1000;" onclick="event.stopPropagation();">
+              <div style="display: flex; justify-content: space-between;">
+                <label class="dropdown-item" style="color: white;">
+                  <input type="checkbox" value="Pesquisa"> Pesquisa
+                </label>
+                <label class="dropdown-item" style="color: white;">
+                  <input type="checkbox" value="Inovação"> Inovação
+                </label>
+                <label class="dropdown-item" style="color: white;">
+                  <input type="checkbox" value="Ensino"> Ensino
+                </label>
+                <label class="dropdown-item" style="color: white;">
+                  <input type="checkbox" value="Extensão"> Extensão
+                </label>
+                <label class="dropdown-item" style="color: white;">
+                  <input type="checkbox" value="Possui Bolsa"> Possui Bolsa
+                </label>
+              </div>
+            </div>
+          </div>
         </li>
       </ul>
+      <button title="Criar curso" class="btn" id="criarCursoBtn" style="background-color: transparent; border: none; display: flex; align-items: center;" onclick="openCursoModal()">
+        <i class="mdi mdi-book-open-page-variant" style="color: white; margin-right: 5px;"></i>
+      </button>
       <ul class="navbar-nav navbar-nav-right">
         <li class="nav-item dropdown d-none d-lg-block">
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
@@ -232,6 +254,19 @@
               style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
               onclick="closeDeleteModal()">Cancelar</button>
           </div>
+          </div>
+      </div>
+          <div id="cursoModal" class="modal">
+            <div class="modal-content">
+              <span class="close" onclick="closeCursoModal()">&times;</span>
+              <h2 style="color: #000000;">Criação de Curso</h2>
+              <form id="cursoForm">
+                <label for="nomeCurso" style="color: #000000;">Nome do Curso:</label>
+                <input type="text" id="nomeCurso" style="width: 100%;" placeholder="Digite o nome do curso"><br>
+                <button type="button" style="padding: 8px 16px; background-color: #64ec9d; color: #fff; border: none; border-radius: 5px; cursor: pointer;" onclick="criarCurso()">Criar Curso</button>
+              </form>
+            </div>
+          </div>
 
           <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
           <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -281,6 +316,65 @@
               }
             };
           </script>
+           <script>
+            // Função para abrir/fechar o dropdown
+            function toggleDropdown() {
+              var dropdown = document.getElementById('filterDropdown');
+              dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
+            }
+        
+            // Fechar o dropdown ao clicar fora
+            window.onclick = function(event) {
+              if (!event.target.matches('.form-control')) {
+                var dropdown = document.getElementById('filterDropdown');
+                if (dropdown.style.display === 'block') {
+                  dropdown.style.display = 'none';
+                }
+              }
+            }
+          </script>
+        
+        <script>
+          function toggleDropdown() {
+            var dropdown = document.getElementById("filterDropdown");
+            if (dropdown.style.display === "none") {
+              dropdown.style.display = "block";
+            } else {
+              dropdown.style.display = "none";
+            }
+          }
+        
+          // Prevent dropdown from closing on checkbox click
+          document.querySelector('.dropdown-menu').addEventListener('click', function (e) {
+            e.stopPropagation();
+          });
+        </script>
+        <script>
+          function openCursoModal() {
+            document.getElementById('cursoModal').style.display = 'block';
+          }
+        
+          function closeCursoModal() {
+            document.getElementById('cursoModal').style.display = 'none';
+          }
+        
+          function criarCurso() {
+            var nomeCurso = document.getElementById('nomeCurso').value;
+            if (nomeCurso) {
+              alert('Curso "' + nomeCurso + '" criado com sucesso!');
+              closeCursoModal();
+            } else {
+              alert('Por favor, insira o nome do curso.');
+            }
+          }
+        
+          // Fechar modal ao clicar fora dele
+          window.onclick = function(event) {
+            if (event.target == document.getElementById('cursoModal')) {
+              closeCursoModal();
+            }
+          };
+        </script>
 
 </body>
 

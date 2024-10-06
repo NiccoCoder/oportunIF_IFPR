@@ -42,9 +42,30 @@
       </a>  
       <ul class="navbar-nav w-100">
         <li class="nav-item w-100">
-          <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-            <input type="text" style="color: white;" class="form-control" placeholder="Pesquisar">
-          </form>
+          <div class="search-dropdown">
+            <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+              <input type="text" style="color: white;" class="form-control" placeholder="Pesquisar" onclick="toggleDropdown()">
+            </form>
+            <div class="dropdown-menu" id="filterDropdown" style="display: none; position: absolute; top: 50px; left: 0; width: 80%; background-color: #191c24; padding: 10px; z-index: 1000;" onclick="event.stopPropagation();">
+              <div style="display: flex; justify-content: space-between;">
+                <label class="dropdown-item" style="color: white;">
+                  <input type="checkbox" value="Pesquisa"> Pesquisa
+                </label>
+                <label class="dropdown-item" style="color: white;">
+                  <input type="checkbox" value="Inovação"> Inovação
+                </label>
+                <label class="dropdown-item" style="color: white;">
+                  <input type="checkbox" value="Ensino"> Ensino
+                </label>
+                <label class="dropdown-item" style="color: white;">
+                  <input type="checkbox" value="Extensão"> Extensão
+                </label>
+                <label class="dropdown-item" style="color: white;">
+                  <input type="checkbox" value="Possui Bolsa"> Possui Bolsa
+                </label>
+              </div>
+            </div>
+          </div>
         </li>
       </ul>
       <ul class="navbar-nav navbar-nav-right">
@@ -157,6 +178,36 @@
           scholarshipFields.classList.add('hidden');
         }
       }
+    </script>
+     <script>
+      // Função para abrir/fechar o dropdown
+      function toggleDropdown() {
+        var dropdown = document.getElementById('filterDropdown');
+        dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
+      }
+    
+      // Fechar o dropdown ao clicar fora
+      window.onclick = function(event) {
+        if (!event.target.matches('.form-control')) {
+          var dropdown = document.getElementById('filterDropdown');
+          if (dropdown.style.display === 'block') {
+            dropdown.style.display = 'none';
+          }
+        }
+      }
+    </script>
+    <script>
+      function toggleDropdown() {
+        var dropdown = document.getElementById("filterDropdown");
+        if (dropdown.style.display === "none") {
+          dropdown.style.display = "block";
+        } else {
+          dropdown.style.display = "none";
+        }
+      }
+      document.querySelector('.dropdown-menu').addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
     </script>
   </body>
 </html>
