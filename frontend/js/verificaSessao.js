@@ -1,4 +1,5 @@
 function verificarSessao() {
+    alert('PASSEI');
     document.getElementById("loader").style.display = "block"; // Mostra o loader
 
     fetch('../../backend/verificaSessao.php')

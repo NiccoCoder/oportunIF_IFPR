@@ -1,5 +1,4 @@
 var idSelecionado;
-
 $(document).ready(function () {
   $.ajax({
     url: "../../backend/requisicoes/req_gerenciamento.php",
@@ -112,9 +111,8 @@ function buscarProjetosGerenciamento() {
 
 
 function buscarDocentesGerenciamento() {
-  //alert("opa");
   $.ajax({
-    url: "../../backend/requisicoes/req_docente_confirmado.php",
+    url: "../../backend/requisicoes/req_docente.php",
     dataType: "json",
     success: function (data) {
       console.log(data);
@@ -144,8 +142,8 @@ function buscarDocentesGerenciamento() {
                           </tr>
         `);
 
-        //Modal
-        $("#nomeModal").text("Detalhes do Docente");
+      //Modal
+      $("#nomeModal").text("Detalhes do Docente");
       $("#tituloModal").text("Nome:");
       $("#tipoModal").text("Email:");
       $("#responsavelModal").text("Numero de projetos:");
@@ -195,6 +193,83 @@ function buscarDocentesGerenciamento() {
   });
 }
 
+function buscarDiscentesGerenciamento() {
+  $.ajax({
+      url: "../../backend/requisicoes/req_discente.php", // Verifique se o caminho está correto
+      dataType: "json",
+      success: function (data) {
+          console.log(data);
+          // Zerar o título
+          $("#tituloTabela").empty();
+          // Zerar a tabela
+          $('#tabelaInfo').empty();
+          $('#linhaTabela').empty();
+          // Dando nome à tabela
+          $("#tituloTabela").append("Discentes");
+          // Começar a tabela
+          $('#tabelaInfo').append(`
+              <tr>
+                  <th>
+                      <div class="form-check form-check-muted m-0">
+                          <label class="form-check-label">
+                              <input type="checkbox" class="form-check-input">
+                          </label>
+                      </div>
+                  </th>
+                  <th> Nome </th>
+                  <th> Email </th>
+                  <th> Situação </th>
+                  <th> Opções </th>
+              </tr>
+          `);
+
+          // Modal
+          $("#nomeModal").text("Detalhes do Discente");
+          $("#tituloModal").text("Nome:");
+          $("#tipoModal").text("Email:");
+          $("#bolsaModal").text("Situação");
+          $("#resumoModal").empty();
+
+          if (data.length > 0) {
+              $.each(data, function (index, item) {
+                  $("#linhaTabela").append(
+                      `
+                      <tr>
+                          <td>
+                              <div class="form-check form-check-muted m-0">
+                                  <label class="form-check-label">
+                                      <input type="checkbox" class="form-check-input">
+                                  </label>
+                              </div>
+                          </td>
+                          <td>${item.NOME}</td>
+                          <td>${item.EMAIL}</td>
+                          <td>${item.SITUACAO}</td>
+                          <td>
+                              <div class="action-buttons">
+                                  <button title="Visualizar" onclick="openModal('${item.NOME}', '${item.EMAIL}', '${item.SITUACAO}', null)">
+                                      <i class="mdi mdi-eye icon text-success ml-auto"></i>
+                                  </button>
+                                  <button title="Deletar" onclick="openDeleteModal('${item.NOME}', ${item.ID_DISCENTE})">
+                                      <i class="mdi mdi-delete icon text-danger ml-auto"></i>
+                                  </button>
+                              </div>
+                          </td>
+                      </tr>
+                      `
+                  );
+              });
+          } else {
+              $("#tituloTabela").empty();
+              $("#tituloTabela").append("Nenhum discente encontrado!");
+              $('#tabelaInfo').empty();
+          }
+      },
+      error: function (jqXHR, textStatus, errorThrown) {
+          $("#resultado").append("<p>Erro ao buscar os discentes: " + errorThrown + "</p>");
+      }
+  });
+}
 
 
 function openDeleteModal(title, id) {
@@ -219,7 +294,7 @@ function openDeleteModal(title, id) {
 
 
 function deletarProjeto() {
-  
+
   $.ajax({
     type: "POST",
     url: "../../backend/requisicoes/req_deletar_projeto.php",

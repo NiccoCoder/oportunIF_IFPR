@@ -14,18 +14,23 @@
 </head>
 
 <body>
-  
-    <div style="justify-content: space-between;" class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+  <div id="loader" style="display: none;">Carregando...</div>
+  <div id="content" style="display: none;">
+    <div id="mensagem"></div>
+    <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch" style="justify-content: space-between;">
       <a class="navbar-brand" href="#">
         <img src="../../frontend/images/OportunIF.png" alt="OportunIF" style="height: 40px;">
-      </a>  
+      </a>
       <ul class="navbar-nav w-100">
         <li class="nav-item w-100">
           <div class="search-dropdown">
             <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-              <input type="text" style="color: white;" class="form-control" placeholder="Pesquisar" onclick="toggleDropdown()">
+              <input type="text" style="color: white;" class="form-control" placeholder="Pesquisar"
+                onclick="toggleDropdown()">
             </form>
-            <div class="dropdown-menu" id="filterDropdown" style="display: none; position: absolute; top: 50px; left: 0; width: 80%; background-color: #191c24; padding: 10px; z-index: 1000;" onclick="event.stopPropagation();">
+            <div class="dropdown-menu" id="filterDropdown"
+              style="display: none; position: absolute; top: 50px; left: 0; width: 80%; background-color: #191c24; padding: 10px; z-index: 1000;"
+              onclick="event.stopPropagation();">
               <div style="display: flex; justify-content: space-between;">
                 <label class="dropdown-item" style="color: white;">
                   <input type="checkbox" value="Pesquisa"> Pesquisa
@@ -47,7 +52,9 @@
           </div>
         </li>
       </ul>
-      <button title="Criar curso" class="btn" id="criarCursoBtn" style="background-color: transparent; border: none; display: flex; align-items: center;" onclick="openCursoModal()">
+      <button title="Criar curso" class="btn" id="criarCursoBtn"
+        style="background-color: transparent; border: none; display: flex; align-items: center;"
+        onclick="openCursoModal()">
         <i class="mdi mdi-book-open-page-variant" style="color: white; margin-right: 5px;"></i>
       </button>
       <ul class="navbar-nav navbar-nav-right">
@@ -57,12 +64,9 @@
             <h6 class="p-3 mb-0">Projetos</h6>
           </div>
         </li>
-        </a>
-        </li>
         <li class="nav-item dropdown">
           <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
             <div class="navbar-profile">
-              <!--Além de colocar a tag <i> dentro da tag <p>, troquei a class d-sm-block para d-sm-inline-block-->
               <p class="mb-0 d-none d-sm-block navbar-profile-name">Usuario Master <i
                   class="mdi mdi-menu-down d-none d-sm-inline-block"></i></p>
             </div>
@@ -95,18 +99,17 @@
         </li>
       </ul>
     </div>
-    </nav>
-    <div class="main-panel" class="col-sm-12">
+
+    <div class="main-panel col-sm-12">
       <div class="content-wrapper">
         <div class="page-header">
           <h3 class="page-title"> Bem-vindo, Coordenador </h3>
         </div>
-        <!-- Nova seção de projetos -->
         <div class="projects-section">
           <div class="row">
             <div class="col-sm-4 grid-margin">
               <button class="card card-statistics" style="background-color: #ffffff; border: 1px solid #ddd;"
-                onclick="window.location.href='#'">
+                onclick="buscarDiscentesGerenciamento()">
                 <div class="card-body">
                   <h5>Total de Discentes</h5>
                   <div class="row">
@@ -165,10 +168,8 @@
           <div class="row">
             <div class="col-12 grid-margin">
               <div class="card-project">
-                <!-- Aqui irei pegar e colocar um ajax essa div -->
-
                 <div class="card-body" id="divTabela">
-                  <h4 class="card-title" style="text-align: center" id="tituloTabela">Projetos </h4>
+                  <h4 class="card-title" style="text-align: center" id="tituloTabela">Projetos</h4>
                   <div class="table-responsive">
                     <table class="table">
                       <thead id="tabelaInfo">
@@ -180,54 +181,27 @@
                               </label>
                             </div>
                           </th>
-                          <th> Titulo </th>
-                          <th> Tipo </th>
-                          <th> Responsável </th>
-                          <th> C/ Bolsa</th>
-                          <th> Opções </th>
+                          <th>Título</th>
+                          <th>Tipo</th>
+                          <th>Responsável</th>
+                          <th>C/ Bolsa</th>
+                          <th>Opções</th>
                         </tr>
                       </thead>
-                      <tbody id="linhaTabela">
-                        <tr>
-                          <td>
-                            <div class="form-check form-check-muted m-0">
-                              <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input">
-                              </label>
-                            </div>
-                          </td>
-                          <td> IF Esportes: Basquete </td>
-                          <td> Extensão </td>
-                          <td> Mariana </td>
-                          <td> Não </td>
-                          <td>
-                            <div class="action-buttons">
-                              <button title="Visualizar"
-                                onclick="openModal('IF Esportes: Basquete', 'Extensão', 'Mariana', 'Não')">
-                                <i class="mdi mdi-eye icon text-success ml-auto"></i>
-                              </button>
-                              <button title="Deletar" onclick="openDeleteModal('IF Esportes: Basquete')">
-                                <i class="mdi mdi-delete icon text-danger ml-auto"></i>
-                              </button>
-                            </div>
-                          </td>
-                        </tr>
-                      </tbody>
+                      <tbody id="linhaTabela"></tbody>
                     </table>
                   </div>
                 </div>
-
-                <!--Até aqui-->
               </div>
+              <div class="floating-button" onclick="window.location.href='projetoCadastrar.html'">
+                <i class="fas fa-plus"></i>
               </div>
-                  <div class="floating-button" onclick="window.location.href='projetoCadastrar.html'">
-                    <i class="fas fa-plus"></i>
-                  </div>
             </div>
           </div>
         </div>
       </div>
-      <!-- Modal -->
+
+      <!-- Modais -->
       <div id="projectModal" class="modal">
         <div class="modal-content">
           <span class="close">&times;</span>
@@ -239,7 +213,7 @@
           <p style="color: #000000;"><strong>Resumo:</strong> <span id="modalSummary"></span></p>
         </div>
       </div>
-      <!-- Modal de Confirmação de Exclusão -->
+
       <div id="deleteModal" class="modal">
         <div class="modal-content">
           <span class="close">&times;</span>
@@ -254,128 +228,151 @@
               style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
               onclick="closeDeleteModal()">Cancelar</button>
           </div>
-          </div>
+        </div>
       </div>
-          <div id="cursoModal" class="modal">
-            <div class="modal-content">
-              <span class="close" onclick="closeCursoModal()">&times;</span>
-              <h2 style="color: #000000;">Criação de Curso</h2>
-              <form id="cursoForm">
-                <label for="nomeCurso" style="color: #000000;">Nome do Curso:</label>
-                <input type="text" id="nomeCurso" style="width: 100%;" placeholder="Digite o nome do curso"><br>
-                <button type="button" style="padding: 8px 16px; background-color: #64ec9d; color: #fff; border: none; border-radius: 5px; cursor: pointer;" onclick="criarCurso()">Criar Curso</button>
-              </form>
-            </div>
-          </div>
 
-          <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
-          <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-          <script src="../js/req_gerenciamento.js"></script>
-          <script src="../js/verificaSessao.js"></script>
+      <div id="cursoModal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeCursoModal()">&times;</span>
+          <h2 style="color: #000000;">Criação de Curso</h2>
+          <form id="cursoForm">
+            <label for="nomeCurso" style="color: #000000;">Nome do Curso:</label>
+            <input type="text" id="nomeCurso" style="width: 100%;" placeholder="Digite o nome do curso"><br>
+            <button type="button"
+              style="padding: 8px 16px; background-color: #64ec9d; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+              onclick="criarCurso()">Criar Curso</button>
+          </form>
+        </div>
+      </div>
 
-          <script>
-            const projectModal = document.getElementById("projectModal");
-            const deleteModal = document.getElementById("deleteModal");
-
-            function openModal(title, type, responsible, grant, summary) {
-              document.getElementById("modalTitle").textContent = title;
-              document.getElementById("modalType").textContent = type;
-              document.getElementById("modalResponsible").textContent = responsible;
-              document.getElementById("modalGrant").textContent = grant;
-              document.getElementById("modalSummary").textContent = summary;
-              projectModal.style.display = "block";
-            }
-
-            function openDeleteModal(title, id) {
-              console.log(id);
-              idSelecionado = id;
-              document.getElementById("deleteTitle").textContent = title;
-              botaoDeletarProjeto.removeEventListener("onclick", deletarProjeto);
-
-              botaoDeletarProjeto.addEventListener("onclick", deletarProjeto.bind(id));
-              deleteModal.style.display = "block";
-            }
-
-            function closeDeleteModal() {
-              deleteModal.style.display = "none";
-            }
+      <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+      <script src="../js/req_gerenciamento.js"></script>
+      <script src="../../frontend/js/verificaSessao.js"></script>
 
 
-            const closeButtons = document.getElementsByClassName("close");
-            Array.from(closeButtons).forEach(function (btn) {
-              btn.onclick = function () {
-                projectModal.style.display = "none";
-                deleteModal.style.display = "none";
-              }
-            });
+      <script>
 
-            window.onclick = function (event) {
-              if (event.target == projectModal || event.target == deleteModal) {
-                projectModal.style.display = "none";
-                deleteModal.style.display = "none";
-              }
-            };
-          </script>
-           <script>
-            // Função para abrir/fechar o dropdown
-            function toggleDropdown() {
-              var dropdown = document.getElementById('filterDropdown');
-              dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
-            }
-        
-            // Fechar o dropdown ao clicar fora
-            window.onclick = function(event) {
-              if (!event.target.matches('.form-control')) {
-                var dropdown = document.getElementById('filterDropdown');
-                if (dropdown.style.display === 'block') {
-                  dropdown.style.display = 'none';
-                }
-              }
-            }
-          </script>
-        
-        <script>
-          function toggleDropdown() {
-            var dropdown = document.getElementById("filterDropdown");
-            if (dropdown.style.display === "none") {
-              dropdown.style.display = "block";
-            } else {
-              dropdown.style.display = "none";
+        const projectModal = document.getElementById("projectModal");
+        const deleteModal = document.getElementById("deleteModal");
+
+        function openModal(title, type, responsible, grant, summary) {
+          document.getElementById("modalTitle").textContent = title;
+          document.getElementById("modalType").textContent = type;
+          document.getElementById("modalResponsible").textContent = responsible;
+          document.getElementById("modalGrant").textContent = grant;
+          document.getElementById("modalSummary").textContent = summary;
+          projectModal.style.display = "block";
+        }
+
+        function openDeleteModal(title, id) {
+          console.log(id);
+          idSelecionado = id;
+          document.getElementById("deleteTitle").textContent = title;
+          botaoDeletarProjeto.removeEventListener("onclick", deletarProjeto);
+
+          botaoDeletarProjeto.addEventListener("onclick", deletarProjeto.bind(id));
+          deleteModal.style.display = "block";
+        }
+
+        function closeDeleteModal() {
+          deleteModal.style.display = "none";
+        }
+
+
+        const closeButtons = document.getElementsByClassName("close");
+        Array.from(closeButtons).forEach(function (btn) {
+          btn.onclick = function () {
+            projectModal.style.display = "none";
+            deleteModal.style.display = "none";
+          }
+        });
+
+        window.onclick = function (event) {
+          if (event.target == projectModal || event.target == deleteModal) {
+            projectModal.style.display = "none";
+            deleteModal.style.display = "none";
+          }
+        };
+      </script>
+      <script>
+        // Função para abrir/fechar o dropdown
+        function toggleDropdown() {
+          var dropdown = document.getElementById('filterDropdown');
+          dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
+        }
+
+        // Fechar o dropdown ao clicar fora
+        window.onclick = function (event) {
+          if (!event.target.matches('.form-control')) {
+            var dropdown = document.getElementById('filterDropdown');
+            if (dropdown.style.display === 'block') {
+              dropdown.style.display = 'none';
             }
           }
-        
-          // Prevent dropdown from closing on checkbox click
-          document.querySelector('.dropdown-menu').addEventListener('click', function (e) {
-            e.stopPropagation();
-          });
-        </script>
-        <script>
-          function openCursoModal() {
-            document.getElementById('cursoModal').style.display = 'block';
-          }
-        
-          function closeCursoModal() {
-            document.getElementById('cursoModal').style.display = 'none';
-          }
-        
-          function criarCurso() {
-            var nomeCurso = document.getElementById('nomeCurso').value;
-            if (nomeCurso) {
-              alert('Curso "' + nomeCurso + '" criado com sucesso!');
-              closeCursoModal();
-            } else {
-              alert('Por favor, insira o nome do curso.');
-            }
-          }
-        
-          // Fechar modal ao clicar fora dele
-          window.onclick = function(event) {
-            if (event.target == document.getElementById('cursoModal')) {
-              closeCursoModal();
-            }
-          };
-        </script>
+        }
+      </script>
 
+      <script>
+        function toggleDropdown() {
+          var dropdown = document.getElementById("filterDropdown");
+          if (dropdown.style.display === "none") {
+            dropdown.style.display = "block";
+          } else {
+            dropdown.style.display = "none";
+          }
+        }
+
+        // Prevent dropdown from closing on checkbox click
+        document.querySelector('.dropdown-menu').addEventListener('click', function (e) {
+          e.stopPropagation();
+        });
+      </script>
+      <script>
+        function openCursoModal() {
+          document.getElementById('cursoModal').style.display = 'block';
+        }
+
+        function closeCursoModal() {
+          document.getElementById('cursoModal').style.display = 'none';
+        }
+
+        function criarCurso() {
+          const nomeCurso = document.getElementById('nomeCurso').value;
+          if (nomeCurso) {
+            alert('Curso "' + nomeCurso + '" criado com sucesso!');
+            closeCursoModal();
+          } else {
+            alert('Por favor, insira o nome do curso.');
+          }
+        }
+
+        // Fechar modal ao clicar fora dele
+        window.onclick = function (event) {
+          if (event.target == document.getElementById('cursoModal')) {
+            closeCursoModal();
+          }
+        };
+
+         // Função para abrir/fechar o dropdown
+      function toggleDropdown() {
+        var dropdown = document.getElementById('filterDropdown');
+        dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
+      }
+        
+      function toggleDropdown() {
+        var dropdown = document.getElementById("filterDropdown");
+        if (dropdown.style.display === "none") {
+          dropdown.style.display = "block";
+        } else {
+          dropdown.style.display = "none";
+        }
+      }
+      document.querySelector('.dropdown-menu').addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
+
+      </script>
 </body>
 
 </html>

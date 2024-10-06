@@ -7,8 +7,6 @@
         <h3>Paginas</h3>
     <br>
     <a href="./frontend/pages/cadastroAluno.html" class="button">Cadastro: Discente</a><br>
-
-    <a href="./frontend/pages/cadastroCursoSupU.html" class="button">Cadastro: Curso Superior</a><br>
     
     <a href="./frontend/pages/cadastroProfessor.html" class="button">Cadastro: Docente</a><br>
     
