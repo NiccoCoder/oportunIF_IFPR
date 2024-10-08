@@ -58,9 +58,11 @@
             </div>
         </div>
     </div>
-
+    <script src="../../frontend/js/verificarSessaoAtiva.js"></script>
     <script src="../js/validacaoEmail.js"></script>
     <script>
+        document.addEventListener("DOMContentLoaded", verificarSessao);
+
         const urlParams = new URLSearchParams(window.location.search);
         const errorMessage = urlParams.get('error');
         const successMessage = urlParams.get('success');

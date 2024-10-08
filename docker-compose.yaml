@@ -6,7 +6,7 @@ services:
     container_name: php_apache
     volumes:
       - ./:/var/www/html
-      - ./frontend/js:/var/www/html/js  # Mapeando a pasta frontend/js para /var/www/html/js
+      - ./frontend/js:/var/www/html/frontend/js  # Mapeando a pasta frontend/js para /var/www/html/js
     ports:
       - "80:80"
     networks:

@@ -150,7 +150,7 @@
                 <label for="scholarship-requisition">Requisito para bolsa</label>
                 <textarea id="id_requisito_bolsa" name="requisito_bolsa"></textarea>
               </div>
-              <div class="form-group">
+              <div class="form-group">  
                 <label for="hourly-charge">Carga horária do bolsista</label>
                 <input type="text" id="id_carga_horaria" name="carga_horaria">
               </div>
@@ -166,7 +166,7 @@
     </div>
 
     <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
-    <script src="../../frontend/js/verificaSessao.js"></script>
+    <script src="../../frontend/js/verificarSessaoDocente.js"></script>
     
     <script>
       function toggleScholarshipFields() {
@@ -195,8 +195,7 @@
           }
         }
       }
-    </script>
-    <script>
+
       function toggleDropdown() {
         var dropdown = document.getElementById("filterDropdown");
         if (dropdown.style.display === "none") {

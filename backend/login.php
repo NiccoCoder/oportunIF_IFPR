@@ -23,6 +23,7 @@ if (isset($_POST['submit'])) {
     if ($resultado['status']) {
         // Armazenar informações do usuário na sessão
         $_SESSION['id'] = $resultado['id'];
+        $_SESSION['nome'] = $resultado['nome'];
         $_SESSION['email'] = $email;
         $_SESSION['tipoUsuario'] = $tipoUsuario;
         $_SESSION['super_usuario'] = $resultado['super_usuario'] ?? 0;

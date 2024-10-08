@@ -1,5 +1,5 @@
 <?php
-    echo "Paginas:"
+    header("Location: frontend/pages/paginavisitante.html");
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,9 +25,7 @@
     <a href="./frontend/pages/paginavisitante.html" class="button">Página Visitante</a><br>
     
     <a href="./frontend/pages/projetoCadastrar.html" class="button">Cadastrar Projeto</a><br>
-    
-    <a href="./frontend/pages/projetoEditar.html" class="button">Editar Projeto</a><br>
-    
+        
     <a href="./frontend/pages/teladereport.html" class="button">Tela de Report</a><br>
     
     <a href="./frontend/pages/verificacaoEmailCodigo.html" class="button">Verificação de Email</a><br>

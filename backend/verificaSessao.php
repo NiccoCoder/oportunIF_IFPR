@@ -9,6 +9,7 @@ if (isset($_SESSION['sessao_ativa']) && $_SESSION['sessao_ativa'] === true) {
     $response['sessaoAtiva'] = true;
     $response['user'] = array(
         'id' => $_SESSION['id'],
+        'nome' => $_SESSION['nome'],
         'email' => $_SESSION['email'],
         'tipoUsuario' => $_SESSION['tipoUsuario'],
         'superUsuario' => ($_SESSION['tipoUsuario'] === 'docente') ? ($_SESSION['super_usuario'] ?? 0) : null

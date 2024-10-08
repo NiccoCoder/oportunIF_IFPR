@@ -14,7 +14,7 @@
   <body>
 
     <div style="justify-content: space-between;" class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
-      <a class="navbar-brand" href="#">  <!-- coloquem o link da pagina index isso aqui e uma pagina para todos -->
+      <a class="navbar-brand" href="./login.html">
         <img src="../../frontend/images/OportunIF.png" alt="OportunIF" style="height: 40px;">
       </a>  
                   <ul class="navbar-nav w-100">
@@ -33,10 +33,11 @@
               <li class="nav-item dropdown">
                 <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
                   <div class="navbar-profile d-flex align-items-center">
-                    <p class="mb-0 d-none d-sm-block navbar-profile-name">Usuario</p>
-                    <i class="mdi mdi-menu-down d-none d-sm-block ml-2"></i>
-                  </div>
-                </a>
+                    <div class="d-flex align-items-center">
+                      <p id="nomeUsuario" class="mb-0 mr-2"></p>
+                      <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+                    </div>
+                  </div>                </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                   <h6 class="p-3 mb-0">Opções</h6>
                   <div class="dropdown-divider"></div>
@@ -93,7 +94,8 @@
         </div>
       </div>
     </div>
+    <script src="../js/atualizarNomeUsuario.js"></script>
     <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
-    <script src="../../frontend/js/verificaSessao.js"></script>
+    <script src="../../frontend/js/verificarSessaoUsuario.js"></script>
   </body>
 </html>

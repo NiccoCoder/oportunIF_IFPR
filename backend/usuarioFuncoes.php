@@ -205,7 +205,7 @@ function reenviarEmailRedefinicaoSenha($nome, $email, $id, $tipoUsuario) {
 
 function verificarCredenciaisDiscente($email, $senha, $conexao) {
     // Prepara a consulta SQL para buscar a senha e a situação
-    $query = "SELECT id_discente, senha, situacao FROM TB_DISCENTE WHERE EMAIL = ?";
+    $query = "SELECT id_discente, nome, senha, situacao FROM TB_DISCENTE WHERE EMAIL = ?";
     $stmt = $conexao->prepare($query);
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -227,6 +227,7 @@ function verificarCredenciaisDiscente($email, $senha, $conexao) {
         return [
             'status' => true,
             'id' => $row['id_discente'], // Retorna o ID do discente
+            'nome' => $row['nome'],
         ];
     } else {
         return ['status' => false, 'message' => 'Senha incorreta'];
@@ -235,7 +236,7 @@ function verificarCredenciaisDiscente($email, $senha, $conexao) {
 
 function verificarCredenciaisDocente($email, $senha, $conexao) {
     // Prepara a consulta SQL para buscar a senha, situação e super usuário
-    $query = "SELECT id_docente, senha, situacao, super_usuario FROM TB_DOCENTE WHERE email = ?";
+    $query = "SELECT id_docente, nome, senha, situacao, super_usuario FROM TB_DOCENTE WHERE email = ?";
     $stmt = $conexao->prepare($query);
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -259,6 +260,7 @@ function verificarCredenciaisDocente($email, $senha, $conexao) {
         return [
             'status' => true,
             'id' => $row['id_docente'], // Pegando o ID do Docente
+            'nome' => $row['nome'],
             'super_usuario' => $row['super_usuario'] // Pegando o status de super usuário
         ];
     } else {

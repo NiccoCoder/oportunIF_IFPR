@@ -58,6 +58,8 @@
     </div>
   </div>
 
+  <script src="../../frontend/js/verificarSessaoAtiva.js"></script>
+
   <script>
     document.getElementById('login').addEventListener('submit', function (event) {
       var email = document.getElementById('email').value;
@@ -116,6 +118,8 @@
         successDiv.style.display = 'none'; // Esconde a mensagem após 5 segundos
       }, 5000);
     }
+
+    document.addEventListener("DOMContentLoaded", verificarSessao);
   </script>
 
 </body>

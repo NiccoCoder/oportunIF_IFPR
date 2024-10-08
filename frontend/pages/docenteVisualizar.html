@@ -15,7 +15,7 @@
 </head>
 
 <body>
-  <div id="loader" style="display: none;">Carregando...</div>
+  <div id="loader"></div>
   <div id="content" style="display: none;">
     <div id="mensagem"></div>
     <div style="justify-content: space-between;" class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
@@ -63,8 +63,10 @@
         <li class="nav-item dropdown">
           <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
             <div class="navbar-profile d-flex align-items-center">
-              <p class="mb-0 d-none d-sm-block navbar-profile-name">Docente</p>
-              <i class="mdi mdi-menu-down d-none d-sm-block ml-2"></i>
+              <div class="d-flex align-items-center">
+                <p id="nomeUsuario" class="mb-0 mr-2"></p> 
+                <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+              </div>
             </div>
           </a>
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
@@ -99,7 +101,7 @@
     <div class="main-panel">
       <div class="content-wrapper">
         <div class="page-header">
-          <h3 class="page-title"> Bem-vindo, Docente </h3>
+          <h3 class="page-title"> Bem-vindo, docente</h3>
         </div>
         <!-- Nova seção de projetos -->
         <div class="projects-section">
@@ -248,8 +250,9 @@
     </div>
   </div>
 
+  <script src="../../frontend/js/atualizarNomeUsuario.js"></script>
   <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
-  <script src="../../frontend/js/verificaSessao.js"></script>
+  <script src="../../frontend/js/verificarSessaoDocente.js"></script>
 
   <script>
     const projectModal = document.getElementById("projectModal");

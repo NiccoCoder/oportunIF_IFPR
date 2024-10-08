@@ -66,9 +66,11 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
-            <div class="navbar-profile">
-              <p class="mb-0 d-none d-sm-block navbar-profile-name">Usuario Master <i
-                  class="mdi mdi-menu-down d-none d-sm-inline-block"></i></p>
+            <div class="navbar-profile d-flex align-items-center">
+              <div class="d-flex align-items-center">
+                <p id="nomeUsuario" class="mb-0 mr-2"></p>
+                <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+              </div>
             </div>
           </a>
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
@@ -248,7 +250,9 @@
       <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script src="../js/req_gerenciamento.js"></script>
-      <script src="../../frontend/js/verificaSessao.js"></script>
+      <script src="../../frontend/js/verificarSessaoSuperUsuario.js"></script>
+      <script src="../js/atualizarNomeUsuario.js"></script>
+      
 
 
       <script>

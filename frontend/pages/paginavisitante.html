@@ -61,7 +61,7 @@
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
                   <h6 class="p-2 mb-0">Opções</h6>
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item preview-item d-flex align-items-center" href="../../backend/logout.php">
+                  <a class="dropdown-item preview-item d-flex align-items-center" href="./login.html">
                     <div class="preview-thumbnail">
                       <div class="preview-icon bg-dark rounded-circle">
                         <i class="mdi mdi-account text-success"></i>
@@ -150,7 +150,10 @@
               </div>
             </div>
     <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../frontend/js/verificarSessaoAtiva.js"></script>
     <script>
+
+      document.addEventListener("DOMContentLoaded", verificarSessao);
       const projectModal = document.getElementById("projectModal");
   
       function openModal(title, type, responsible, grant) {

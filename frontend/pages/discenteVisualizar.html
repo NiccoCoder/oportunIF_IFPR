@@ -17,209 +17,216 @@
 <body>
   <div id="loader" style="display: none;">Carregando...</div>
   <div id="content" style="display: none;">
-  <div id="mensagem"></div>
-  <div style="justify-content: space-between;" class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
-    <!-- Adicione a imagem OportunIF.png -->
-    <a class="navbar-brand" href="#">
-      <img src="../../frontend/images/OportunIF.png" alt="OportunIF" style="height: 40px;">
-    </a>  
-    <ul class="navbar-nav w-100">
-      <li class="nav-item w-100">
-        <div class="search-dropdown">
-          <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-            <input type="text" style="color: white;" class="form-control" placeholder="Pesquisar" onclick="toggleDropdown()">
-          </form>
-          <div class="dropdown-menu" id="filterDropdown" style="display: none; position: absolute; top: 50px; left: 0; width: 80%; background-color: #191c24; padding: 10px; z-index: 1000;" onclick="event.stopPropagation();">
-            <div style="display: flex; justify-content: space-between;">
-              <label class="dropdown-item" style="color: white;">
-                <input type="checkbox" value="Pesquisa"> Pesquisa
-              </label>
-              <label class="dropdown-item" style="color: white;">
-                <input type="checkbox" value="Inovação"> Inovação
-              </label>
-              <label class="dropdown-item" style="color: white;">
-                <input type="checkbox" value="Ensino"> Ensino
-              </label>
-              <label class="dropdown-item" style="color: white;">
-                <input type="checkbox" value="Extensão"> Extensão
-              </label>
-              <label class="dropdown-item" style="color: white;">
-                <input type="checkbox" value="Possui Bolsa"> Possui Bolsa
-              </label>
-            </div>
-          </div>
-        </div>
-      </li>
-    </ul>
-    <ul class="navbar-nav navbar-nav-right">
-      <li class="nav-item dropdown d-none d-lg-block">
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-          aria-labelledby="createbuttonDropdown">
-          <h6 class="p-3 mb-0">Projetos</h6>
-        </div>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
-          <div class="navbar-profile d-flex align-items-center">
-            <p class="mb-0 d-none d-sm-block navbar-profile-name">Discente</p>
-            <i class="mdi mdi-menu-down d-none d-sm-block ml-2"></i>
-          </div>
-        </a>
-        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
-          <h6 class="p-2 mb-0">Opções</h6>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item preview-item d-flex align-items-center" href="./teladereport.html">
-            <div class="preview-thumbnail">
-              <div class="preview-icon bg-dark rounded-circle">
-                <i class="mdi mdi-account text-success"></i>
+    <div id="mensagem"></div>
+    <div style="justify-content: space-between;" class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+      <!-- Adicione a imagem OportunIF.png -->
+      <a class="navbar-brand" href="#">
+        <img src="../../frontend/images/OportunIF.png" alt="OportunIF" style="height: 40px;">
+      </a>
+      <ul class="navbar-nav w-100">
+        <li class="nav-item w-100">
+          <div class="search-dropdown">
+            <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+              <input type="text" style="color: white;" class="form-control" placeholder="Pesquisar"
+                onclick="toggleDropdown()">
+            </form>
+            <div class="dropdown-menu" id="filterDropdown"
+              style="display: none; position: absolute; top: 50px; left: 0; width: 80%; background-color: #191c24; padding: 10px; z-index: 1000;"
+              onclick="event.stopPropagation();">
+              <div style="display: flex; justify-content: space-between;">
+                <label class="dropdown-item" style="color: white;">
+                  <input type="checkbox" value="Pesquisa"> Pesquisa
+                </label>
+                <label class="dropdown-item" style="color: white;">
+                  <input type="checkbox" value="Inovação"> Inovação
+                </label>
+                <label class="dropdown-item" style="color: white;">
+                  <input type="checkbox" value="Ensino"> Ensino
+                </label>
+                <label class="dropdown-item" style="color: white;">
+                  <input type="checkbox" value="Extensão"> Extensão
+                </label>
+                <label class="dropdown-item" style="color: white;">
+                  <input type="checkbox" value="Possui Bolsa"> Possui Bolsa
+                </label>
               </div>
             </div>
-            <div class="preview-item-content ml-2">
-              <p class="preview-subject mb-1">Report</p>
-            </div>
-          </a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item preview-item d-flex align-items-center" href="../../backend/logout.php">
-            <div class="preview-thumbnail">
-              <div class="preview-icon bg-dark rounded-circle">
-                <i class="mdi mdi-exit-to-app text-danger"></i>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav navbar-nav-right">
+        <li class="nav-item dropdown d-none d-lg-block">
+          <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+            aria-labelledby="createbuttonDropdown">
+            <h6 class="p-3 mb-0">Projetos</h6>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
+            <div class="navbar-profile d-flex align-items-center">
+              <div class="d-flex align-items-center">
+                <p id="nomeUsuario" class="mb-0 mr-2"></p>
+                <i class="mdi mdi-menu-down d-none d-sm-block"></i>
               </div>
             </div>
-            <div class="preview-item-content ml-2">
-              <p class="preview-subject mb-1">Saída</p>
-            </div>
           </a>
+          <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+            <h6 class="p-2 mb-0">Opções</h6>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item preview-item d-flex align-items-center" href="./teladereport.html">
+              <div class="preview-thumbnail">
+                <div class="preview-icon bg-dark rounded-circle">
+                  <i class="mdi mdi-account text-success"></i>
+                </div>
+              </div>
+              <div class="preview-item-content ml-2">
+                <p class="preview-subject mb-1">Report</p>
+              </div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item preview-item d-flex align-items-center" href="../../backend/logout.php">
+              <div class="preview-thumbnail">
+                <div class="preview-icon bg-dark rounded-circle">
+                  <i class="mdi mdi-exit-to-app text-danger"></i>
+                </div>
+              </div>
+              <div class="preview-item-content ml-2">
+                <p class="preview-subject mb-1">Saída</p>
+              </div>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    </nav>
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="page-header">
+          <h3 class="page-title"> Bem-vindo, Discentes </h3>
         </div>
-      </li>
-    </ul>
-  </div>
-  </nav>
-  <div class="main-panel">
-    <div class="content-wrapper">
-      <div class="page-header">
-        <h3 class="page-title"> Bem-vindo, Discentes </h3>
-      </div>
-      <div class="row">
-        <div class="col-12 grid-margin">
-          <div class="card-project">
-            <div class="card-body">
-              <h4 class="card-title" style="text-align: center">Projetos </h4>
-              <div class="table-responsive">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>
-                        <div class="form-check form-check-muted m-0">
-                          <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                          </label>
-                        </div>
-                      </th>
-                      <th> Titulo </th>
-                      <th> Tipo   </th>
-                      <th> Responsável </th>
-                      <th> C/ Bolsa</th>
-                      <th> Opções </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <div class="form-check form-check-muted m-0">
-                          <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                          </label>
-                        </div>
-                      </td>
-                      <td> IF Esportes: Basquete </td>
-                      <td> Extensão </td>
-                      <td> Mariana </td>
-                      <td> Não </td>
-                      <td>
-                        <div class="action-buttons">
-                          <button title="Visualizar" onclick="openModal('IF Esportes: Basquete', 'Extensão', 'Mariana', 'Não')">
-                            <i class="mdi mdi-eye icon text-success ml-auto"></i>
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+        <div class="row">
+          <div class="col-12 grid-margin">
+            <div class="card-project">
+              <div class="card-body">
+                <h4 class="card-title" style="text-align: center">Projetos </h4>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>
+                          <div class="form-check form-check-muted m-0">
+                            <label class="form-check-label">
+                              <input type="checkbox" class="form-check-input">
+                            </label>
+                          </div>
+                        </th>
+                        <th> Titulo </th>
+                        <th> Tipo </th>
+                        <th> Responsável </th>
+                        <th> C/ Bolsa</th>
+                        <th> Opções </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>
+                          <div class="form-check form-check-muted m-0">
+                            <label class="form-check-label">
+                              <input type="checkbox" class="form-check-input">
+                            </label>
+                          </div>
+                        </td>
+                        <td> IF Esportes: Basquete </td>
+                        <td> Extensão </td>
+                        <td> Mariana </td>
+                        <td> Não </td>
+                        <td>
+                          <div class="action-buttons">
+                            <button title="Visualizar"
+                              onclick="openModal('IF Esportes: Basquete', 'Extensão', 'Mariana', 'Não')">
+                              <i class="mdi mdi-eye icon text-success ml-auto"></i>
+                            </button>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <!-- Modal -->
-  <div id="projectModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2 style="color: #000000;">Detalhes do Projeto</h2>
-      <p style="color:#000000"><strong>Título:</strong> <span id="modalTitle"></span></p>
-      <p style="color: #000000;"><strong>Tipo:</strong> <span id="modalType"></span></p>
-      <p style="color: #000000;"><strong>Responsável:</strong> <span id="modalResponsible"></span></p>
-      <p style="color: #000000;"><strong>Com Bolsa:</strong> <span id="modalGrant"></span></p>
+    <!-- Modal -->
+    <div id="projectModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 style="color: #000000;">Detalhes do Projeto</h2>
+        <p style="color:#000000"><strong>Título:</strong> <span id="modalTitle"></span></p>
+        <p style="color: #000000;"><strong>Tipo:</strong> <span id="modalType"></span></p>
+        <p style="color: #000000;"><strong>Responsável:</strong> <span id="modalResponsible"></span></p>
+        <p style="color: #000000;"><strong>Com Bolsa:</strong> <span id="modalGrant"></span></p>
+      </div>
     </div>
-  </div>
-  <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
-  <script src="../../frontend/js/verificaSessao.js"></script>
+    <script src="../../frontend/js/atualizarNomeUsuario.js"></script>
+    <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../frontend/js/verificarSessaoDiscente.js"></script>
 
-  <script>
-    const projectModal = document.getElementById("projectModal");
+    <script>
+      const projectModal = document.getElementById("projectModal");
 
-    function openModal(title, type, responsible, grant) {
-      document.getElementById("modalTitle").textContent = title;
-      document.getElementById("modalType").textContent = type;
-      document.getElementById("modalResponsible").textContent = responsible;
-      document.getElementById("modalGrant").textContent = grant;
-      projectModal.style.display = "block";
-    }
-
-    const closeButtons = document.getElementsByClassName("close");
-    Array.from(closeButtons).forEach(function (btn) {
-      btn.onclick = function () {
-        projectModal.style.display = "none";
+      function openModal(title, type, responsible, grant) {
+        document.getElementById("modalTitle").textContent = title;
+        document.getElementById("modalType").textContent = type;
+        document.getElementById("modalResponsible").textContent = responsible;
+        document.getElementById("modalGrant").textContent = grant;
+        projectModal.style.display = "block";
       }
-    });
 
-    window.onclick = function (event) {
-      if (event.target == projectModal) {
-        projectModal.style.display = "none";
-      }
-    };
-  </script>
-<script>
-  // Função para abrir/fechar o dropdown
-  function toggleDropdown() {
-    var dropdown = document.getElementById('filterDropdown');
-    dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
-  }
+      const closeButtons = document.getElementsByClassName("close");
+      Array.from(closeButtons).forEach(function (btn) {
+        btn.onclick = function () {
+          projectModal.style.display = "none";
+        }
+      });
 
-  // Fechar o dropdown ao clicar fora
-  window.onclick = function(event) {
-    if (!event.target.matches('.form-control')) {
-      var dropdown = document.getElementById('filterDropdown');
-      if (dropdown.style.display === 'block') {
-        dropdown.style.display = 'none';
+      window.onclick = function (event) {
+        if (event.target == projectModal) {
+          projectModal.style.display = "none";
+        }
+      };
+    </script>
+    <script>
+      // Função para abrir/fechar o dropdown
+      function toggleDropdown() {
+        var dropdown = document.getElementById('filterDropdown');
+        dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
       }
-    }
-  }
-</script>
-<script>
-  function toggleDropdown() {
-    var dropdown = document.getElementById("filterDropdown");
-    if (dropdown.style.display === "none") {
-      dropdown.style.display = "block";
-    } else {
-      dropdown.style.display = "none";
-    }
-  }
-  document.querySelector('.dropdown-menu').addEventListener('click', function (e) {
-    e.stopPropagation();
-  });
-</script>
+
+      // Fechar o dropdown ao clicar fora
+      window.onclick = function (event) {
+        if (!event.target.matches('.form-control')) {
+          var dropdown = document.getElementById('filterDropdown');
+          if (dropdown.style.display === 'block') {
+            dropdown.style.display = 'none';
+          }
+        }
+      }
+    </script>
+    <script>
+      function toggleDropdown() {
+        var dropdown = document.getElementById("filterDropdown");
+        if (dropdown.style.display === "none") {
+          dropdown.style.display = "block";
+        } else {
+          dropdown.style.display = "none";
+        }
+      }
+      document.querySelector('.dropdown-menu').addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
+    </script>
 </body>
 
 </html>
