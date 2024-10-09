@@ -212,13 +212,13 @@
     const projectModal = document.getElementById("projectModal");
     const deleteModal = document.getElementById("deleteModal");
 
-    function openModal(title, type, responsible, grant) {
-      document.getElementById("modalTitle").textContent = title;
-      document.getElementById("modalType").textContent = type;
-      document.getElementById("modalResponsible").textContent = responsible;
-      document.getElementById("modalGrant").textContent = grant;
-      projectModal.style.display = "block";
-    }
+    // function openModal(title, type, responsible, grant) {
+    //   document.getElementById("modalTitle").textContent = title;
+    //   document.getElementById("modalType").textContent = type;
+    //   document.getElementById("modalResponsible").textContent = responsible;
+    //   document.getElementById("modalGrant").textContent = grant;
+    //   projectModal.style.display = "block";
+    // }
 
     function openDeleteModal(title) {
       document.getElementById("deleteTitle").textContent = title;
@@ -253,11 +253,12 @@
   <script src="../../frontend/js/scripts.js"></script>
   <script>
     // Função para abrir o modal de visualização
-    function openModal(title, type, responsible, grant) {
+    function openModal(title, type, responsible, grant, summary) {
       document.getElementById("modalTitle").innerText = title;
       document.getElementById("modalType").innerText = type;
       document.getElementById("modalResponsible").innerText = responsible;
       document.getElementById("modalGrant").innerText = grant;
+      document.getElementById("modalSummary").textContent = summary;
       document.getElementById("projectModal").style.display = "block";
     }
 

@@ -64,8 +64,9 @@ function buscarProjetos() {
             // <p style="color: #000000;"><strong id="resumoModal">Requisitos</strong> <span id="modalSummary"></span></p>
             //   `);
 
-
+           
           }
+          
           $("#linhaTabela").append(
             `
               <tr>                  
@@ -88,6 +89,11 @@ function buscarProjetos() {
                                 <button title="Deletar" onclick="openDeleteModal('`+ item.TITULO + `',` + item.ID_PROJETO + `)">
                                   <i class="mdi mdi-delete icon text-danger ml-auto"></i>
                                 </button>
+                                <button title="Editar"
+                                  onclick="openEditModal('IF Esportes: Basquete', 'Extensão', 'Mariana', 'Não')"
+                                  style="display: flex; justify-content: center; align-items: center;">
+                                  <i class="mdi mdi-pencil icon text-primary ml-auto"></i>
+                                </button>
                               </div>
                             </td>
                           </tr>
@@ -109,7 +115,6 @@ function buscarProjetos() {
 
 
 function buscarTotalProjetos() {
-  console.log("testando");
   $.ajax({
     url: "../../backend/requisicoes/req_total_projeto_docente.php",
     dataType: "json",
@@ -176,11 +181,11 @@ const projectModal = document.getElementById("projectModal");
 const deleteModal = document.getElementById("deleteModal");
 
 function openModal(title, type, responsible, grant, summary) {
-  document.getElementById("modalTitle").textContent = title;
-  document.getElementById("modalType").textContent = type;
-  document.getElementById("modalResponsible").textContent = responsible;
-  document.getElementById("modalGrant").textContent = grant;
-  document.getElementById("modalSummary").textContent = summary;
+  // document.getElementById("modalTitle").textContent = title;
+  // document.getElementById("modalType").textContent = type;
+  // document.getElementById("modalResponsible").textContent = responsible;
+  // document.getElementById("modalGrant").textContent = grant;
+  // document.getElementById("modalSummary").textContent = summary;
   projectModal.style.display = "block";
 }
 
