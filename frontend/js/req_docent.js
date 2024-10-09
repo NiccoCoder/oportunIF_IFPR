@@ -1,7 +1,7 @@
 //var idSelecionado;
 $(document).ready(function () {
   buscarProjetos();
-  console.log("opa");
+  buscarTotalProjetos();
 });
 
 //  PROJETOS
@@ -11,6 +11,7 @@ function buscarProjetos() {
     dataType: "json",
     success: function (data) {
       console.log(data);
+
       //Zerando o titulo
       $("#tituloTabela").empty();
       //zerando a tabela
@@ -37,15 +38,22 @@ function buscarProjetos() {
         `);
 
       // //MODAL
-      // $("#nomeModal").text("Detalhes do Projeto");
-      // $("#tituloModal").text("Titulo:");
-      // $("#tipoModal").text("Tipo:");
-      // $("#responsavelModal").text("Responsavel:");
-      // $("#bolsaModal").text("Com bolsa:");
-      // $("#resumoModal").text("Resumo:");
+      $("#nomeModal").text("Detalhes do Projeto");
+      $("#tituloModal").text("Titulo:");
+      $("#tipoModal").text("Tipo:");
+      $("#responsavelModal").text("Responsavel:");
+      $("#bolsaModal").text("Com bolsa:");
+      $("#resumoModal").text("Resumo:");
 
       if (data.length > 0) {
         $.each(data, function (index, item) {
+          var possui;
+          if(item.POSSUI_BOLSA = 1){
+            possui = 'Não';
+          }else{
+            possui = 'Sim';
+          }
+
           $("#linhaTabela").append(
             `
               <tr>                  
@@ -57,9 +65,9 @@ function buscarProjetos() {
                               </div>
                             </td>
                             <td>` + item.TITULO + `</td>
-                            <td>`+ item.ID_TIPO_PROJETO + `</td>
+                            <td>`+ item.NOME_TIPO_PROJETO + `</td>
                             <td>`+ item.NOME + `</td>
-                            <td>` + `</td>
+                            <td>` + possui +`</td>
                             <td>
                               <div class="action-buttons">
                                 <button title="Visualizar" ">
@@ -86,6 +94,31 @@ function buscarProjetos() {
     }
   });
 }
+
+
+function buscarTotalProjetos() {
+  console.log("testando");
+  $.ajax({
+    url: "../../backend/requisicoes/req_total_projeto_docente.php",
+    dataType: "json",
+    success: function (data) {
+      console.log(data);
+      $("#totalProjetos").empty();
+      if (data.length > 0) {
+        $.each(data, function (index, item) {
+          $("#totalProjetos").append(item.NUMERO_PROJETOS);
+          console.log(item.NUMERO_PROJETOS);
+        });
+      }
+      else {
+        $("#totalProjetos").append("0");
+      }
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+    }
+  });
+}
+
 
 function deletarProjeto() {
 
