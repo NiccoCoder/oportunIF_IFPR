@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Visitante - OportunIF</title>
+    <link rel="stylesheet" href="../../frontend/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../frontend/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../frontend/css/style.css">
+    <link rel="stylesheet" href="../../frontend/css/discentevs.css">
+    <link rel="shortcut icon" href="../../frontend/images/favicon.png"/>
+</head>
+<body>
+    <div style="justify-content: space-between;" class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+        <a class="navbar-brand" href="#">
+            <img src="../../frontend/images/OportunIF.png" alt="OportunIF" style="height: 40px;">
+        </a>
+        <ul class="navbar-nav w-100">
+            <li class="nav-item w-100">
+                <div class="search-dropdown">
+                    <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+                        <input type="text" style="color: white; background-color: #2a2f3a; border: 1px solid #444; border-radius: 6px; padding: 8px; width: 55%;" class="form-control" placeholder="Pesquisar" onclick="toggleDropdown()">
+                    </form>
+                    <div class="dropdown-menu" id="filterDropdown" style="display: none; position: absolute; top: 55px; width: 55%; background-color: #1f232b; border-radius: 6px; padding: 10px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15); z-index: 1000;" onclick="event.stopPropagation();">
+                        <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                            <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
+                                <input type="checkbox" value="Pesquisa" style="margin-right: 6px;"> Pesquisa
+                            </label>
+                            <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
+                                <input type="checkbox" value="Inovação" style="margin-right: 6px;"> Inovação
+                            </label>
+                            <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
+                                <input type="checkbox" value="Ensino" style="margin-right: 6px;"> Ensino
+                            </label>
+                            <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
+                                <input type="checkbox" value="Extensão" style="margin-right: 6px;"> Extensão
+                            </label>
+                            <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
+                                <input type="checkbox" value="Possui Bolsa" style="margin-right: 6px;"> Possui Bolsa
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <ul class="navbar-nav navbar-nav-right">
+            <li class="nav-item dropdown d-none d-lg-block">
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">
+                    <h6 class="p-3 mb-0">Projetos</h6>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
+                    <div class="navbar-profile d-flex align-items-center">
+                        <p class="mb-0 d-none d-sm-block navbar-profile-name">Visitante</p>
+                        <i class="mdi mdi-menu-down d-none d-sm-block ml-2"></i>
+                    </div>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+                    <h6 class="p-2 mb-0">Opções</h6>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item preview-item d-flex align-items-center" href="./login.html">
+                        <div class="preview-thumbnail">
+                            <div class="preview-icon bg-dark rounded-circle">
+                                <i class="mdi mdi-account text-success"></i>
+                            </div>
+                        </div>
+                        <div class="preview-item-content ml-2">
+                            <p class="preview-subject mb-1">Login</p>
+                        </div>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="main-panel">
+        <div class="content-wrapper">
+            <div class="page-header">
+                <h3 class="page-title"> Bem-vindo, Visitante! </h3>
+            </div>
+            <p style="color:black;">Aqui você pode explorar projetos e descobrir mais sobre as oportunidades disponíveis no OportunIF. Crie uma conta ou entre para acessar funcionalidades adicionais.</p>
+            <div class="row">
+                <div class="projects-section">
+                    <div class="row">
+                      <div class="col-sm-4 grid-margin">
+                        <div class="card-project">
+                          <div class="card-body">
+                            <h5>Total de projetos</h5>
+                            <div class="row">
+                              <div class="col-8 col-sm-12 col-xl-8 my-auto">
+                                <div class="d-flex d-sm-block d-md-flex align-items-center">
+                                  <h2 class="mb-0" id="totalProjetos"></h2>
+                                </div>
+                                <h6 class="text-muted font-weight-normal"> Total de projetos registrados.</h6>
+                              </div>
+                              <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                                <i class="icon-lg fas fa-chalkboard-teacher text-success ml-auto"></i>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                <div class="row">
+                  <div class="col-12 grid-margin">
+                    <div class="card-project">
+                      <div class="card-body" id="divTabela">
+                        <h4 class="card-title" style="text-align: center" id="tituloTabela">Projetos</h4>
+                        <div class="table-responsive">
+                          <table class="table">
+                            <thead id="tabelaInfo">
+                              <tr>
+                                <th>
+                                  <div class="form-check form-check-muted m-0">
+                                    <label class="form-check-label">
+                                      <input type="checkbox" class="form-check-input">
+                                    </label>
+                                  </div>
+                                </th>
+                              </tr>
+                            </thead>
+                            <tbody id="linhaTabela"></tbody>
+                          </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+        <!-- Modal -->
+        <div id="projectModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2 style="color: #000000;">Detalhes do Projeto</h2>
+                <p style="color:#000000"><strong>Título:</strong> <span id="modalTitle"></span></p>
+                <p style="color: #000000;"><strong>Tipo:</strong> <span id="modalType"></span></p>
+                <p style="color: #000000;"><strong>Responsável:</strong> <span id="modalResponsible"></span></p>
+                <p style="color: #000000;"><strong>Com Bolsa:</strong> <span id="modalGrant"></span></p>
+            </div>
+        </div>
+        <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
+        <script src="../../frontend/js/verificarSessaoAtiva.js"></script>
+        <script src="../../frontend/js/req_projeto.js"></script>
+        
+        <script>
+            document.addEventListener("DOMContentLoaded", verificarSessao);
+            const projectModal = document.getElementById("projectModal");
+
+            function openModal(title, type, responsible, grant) {
+                document.getElementById("modalTitle").textContent = title;
+                document.getElementById("modalType").textContent = type;
+                document.getElementById("modalResponsible").textContent = responsible;
+                document.getElementById("modalGrant").textContent = grant;
+                projectModal.style.display = "block";
+            }
+
+            const closeButtons = document.getElementsByClassName("close");
+            Array.from(closeButtons).forEach(function (btn) {
+                btn.onclick = function () {
+                    projectModal.style.display = "none";
+                }
+            });
+
+            window.onclick = function (event) {
+                if (event.target == projectModal) {
+                    projectModal.style.display = "none";
+                }
+            };
+        </script>
+        <script>
+            function toggleDropdown() {
+                var dropdown = document.getElementById("filterDropdown");
+                dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
+            }
+
+            window.onclick = function (event) {
+                if (!event.target.matches('.form-control')) {
+                    var dropdown = document.getElementById('filterDropdown');
+                    if (dropdown.style.display === 'block') {
+                        dropdown.style.display = 'none';
+                    }
+                }
+            }
+        </script>
+    </div>
+</body>
+</html>

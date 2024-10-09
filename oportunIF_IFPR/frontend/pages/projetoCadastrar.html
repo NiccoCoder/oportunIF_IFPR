@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cadastro de projeto e bolsa - OportunIF</title>
+    <link rel="stylesheet" href="../../frontend/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="../../frontend/vendors/css/vendor.bundle.base.css">
+    <link rel="stylesheet" href="../../frontend/css/style.css">
+    <link rel="stylesheet" href="../../frontend/css/projetocd.css">
+    <link rel="shortcut icon" href="../../frontend/images/favicon.png"/>
+  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+            
+        $(document).ready(function ( ){
+            $.ajax({  
+      url: "../../backend/requisicoes/req_tipo_projeto.php",  
+      dataType: "json",
+      success: function(data) {
+        if (data.length > 0) {
+          $.each(data, function(index, item) {
+            $("#project-type").append('<option value="'+item.ID_TIPO_PROJETO+'">' + item.NOME_TIPO_PROJETO + '</option>');
+            console.log(item.ID_CURSO);
+          });
+        } else {
+        }
+      },
+    });
+        });
+    
+    </script>
+
+  </head>
+  <body>
+    <div id="loader" style="display: none;">Carregando...</div>
+    <div id="content" style="display: none;">
+    <div id="mensagem"></div>
+    <div style="justify-content: space-between;" class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
+      <a class="navbar-brand" href="#">
+        <img src="../../frontend/images/OportunIF.png" alt="OportunIF" style="height: 40px;">
+      </a>  
+      <ul class="navbar-nav w-100">
+        <li class="nav-item w-100">
+          <div class="search-dropdown">
+            <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+              <input type="text" style="color: white; background-color: #2a2f3a; border: 1px solid #444; border-radius: 6px; padding: 8px; width: 55%;" class="form-control" placeholder="Pesquisar" onclick="toggleDropdown()">
+            </form>
+            <div class="dropdown-menu" id="filterDropdown"
+              style="display: none; position: absolute; top: 55px; width: 55%; background-color: #1f232b; border-radius: 6px; padding: 10px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15); z-index: 1000;" 
+              onclick="event.stopPropagation();">
+              <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
+                  <input type="checkbox" value="Pesquisa" style="margin-right: 6px;"> Pesquisa
+                </label>
+                <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
+                  <input type="checkbox" value="Inovação" style="margin-right: 6px;"> Inovação
+                </label>
+                <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
+                  <input type="checkbox" value="Ensino" style="margin-right: 6px;"> Ensino
+                </label>
+                <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
+                  <input type="checkbox" value="Extensão" style="margin-right: 6px;"> Extensão
+                </label>
+                <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
+                  <input type="checkbox" value="Possui Bolsa" style="margin-right: 6px;"> Possui Bolsa
+                </label>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <ul class="navbar-nav navbar-nav-right">
+        <li class="nav-item dropdown d-none d-lg-block">
+          <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="createbuttonDropdown">
+            <h6 class="p-3 mb-0">Projetos</h6>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
+            <div class="navbar-profile d-flex align-items-center">
+              <p class="mb-0 d-none d-sm-block navbar-profile-name">Docente</p>
+              <i class="mdi mdi-menu-down d-none d-sm-block ml-2"></i>
+            </div>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+            <h6 class="p-2 mb-0">Opções</h6>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item preview-item d-flex align-items-center" href="./teladereport.html">
+              <div class="preview-thumbnail">
+                <div class="preview-icon bg-dark rounded-circle">
+                  <i class="mdi mdi-account text-success"></i>
+                </div>
+              </div>
+              <div class="preview-item-content ml-2">
+                <p class="preview-subject mb-1">Report</p>
+              </div>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a  class="dropdown-item preview-item d-flex align-items-center" href="../../backend/logout.php">
+              <div class="preview-thumbnail">
+                <div class="preview-icon bg-dark rounded-circle">
+                  <i class="mdi mdi-exit-to-app text-danger"></i>
+                </div>
+              </div>
+              <div class="preview-item-content ml-2">
+                <p class="preview-subject mb-1">Saída</p>
+              </div>
+            </a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="main-panel">
+      <div class="content-wrapper">
+        <div class="page-header">
+          <h3 class="page-title">Cadastro de projetos</h3>
+        </div>
+        <div class="project-form">
+          <h4 style="color:black">Sobre o projeto:</h4>
+          <form id="cadastroProjeto" action="../../backend/cadastroProjeto.php" method="POST">
+            <div class="form-group">
+              <label for="project-title">Título</label>
+              <input type="text" id="id_titulo" name="titulo" required>
+            </div>
+            <div class="form-group">
+              <label for="project-description">Resumo</label>
+              <textarea id="id_resumo" name="resumo" required></textarea>
+            </div>
+            <div class="form-group">
+              <label for="selection-criteria">Criterios de seleção</label>
+              <textarea id="id_criterios_selecao" name="criterios_selecao"></textarea>
+            </div>
+            <div class="form-group">
+              <label for="project-type">Tipo de projeto</label>
+              <select id="project-type" name="id_tipo_projeto" class="form-control-projetos" required>
+                <option value=""></option>
+              </select>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="id_bolsa_disponivel" name="bolsa_disponivel" onclick="toggleScholarshipFields()">
+              <label class="form-check-label" for="id_bolsa_disponivel">
+                O projeto possui bolsa
+              </label>
+            </div>
+            <div id="scholarship-fields" class="hidden">
+              <div class="form-group">
+                <label for="scholarship-description">Descrição da bolsa</label>
+                <textarea id="id_descricao_bolsa" name="descricao_bolsa"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="scholarship-requisition">Requisito para bolsa</label>
+                <textarea id="id_requisito_bolsa" name="requisito_bolsa"></textarea>
+              </div>
+              <div class="form-group">  
+                <label for="hourly-charge">Carga horária do bolsista</label>
+                <input type="text" id="id_carga_horaria" name="carga_horaria">
+              </div>
+              <div class="form-group">
+                <label for="scholarship-amount">Valor da bolsa</label>
+                <input type="text" id="id_valor_bolsa" name="valor_bolsa">
+              </div>
+            </div>
+            <button type="submit" class="btn-submit" name="submit">Enviar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
+    <script src="../../frontend/js/verificarSessaoDocente.js"></script>
+    
+    <script>
+      function toggleScholarshipFields() {
+        const checkbox = document.getElementById('id_bolsa_disponivel');
+        const scholarshipFields = document.getElementById('scholarship-fields');
+        if (checkbox.checked) {
+          scholarshipFields.classList.remove('hidden');
+        } else {
+          scholarshipFields.classList.add('hidden');
+        }
+      }
+    </script>
+     <script>
+      // Função para abrir/fechar o dropdown
+      function toggleDropdown() {
+        var dropdown = document.getElementById('filterDropdown');
+        dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
+      }
+    
+      // Fechar o dropdown ao clicar fora
+      window.onclick = function(event) {
+        if (!event.target.matches('.form-control')) {
+          var dropdown = document.getElementById('filterDropdown');
+          if (dropdown.style.display === 'block') {
+            dropdown.style.display = 'none';
+          }
+        }
+      }
+
+      function toggleDropdown() {
+        var dropdown = document.getElementById("filterDropdown");
+        if (dropdown.style.display === "none") {
+          dropdown.style.display = "block";
+        } else {
+          dropdown.style.display = "none";
+        }
+      }
+      document.querySelector('.dropdown-menu').addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Esqueceu a senha - OportunIF</title>
+  <link rel="stylesheet" href="../css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="../css/vendor.bundle.base.css">
+  <link rel="stylesheet" href="../css/cadelog.css">
+  <link rel="shortcut icon" href="../images/favicon.png"> 
+</head>
+<body>
+  <div class="container-scroller">
+    <div class="container-fluid page-body-wrapper full-page-wrapper">
+      <div class="row w-100 m-0">
+        <div class="content-wrapper full-page-wrapper d-flex align-items-center auth">
+          <div class="card col-lg-4">
+            <div class="card-body px-5 py-5">
+              <h3 class="card-title text-left mb-3">Esqueceu sua senha?</h3>
+              <p>Por favor, insira seu e-mail institucional. Enviaremos um link para redefinir sua senha.</p>
+              <form action="../../backend/esqueceuSenha.php" method="POST">
+                <div class="form-group">
+                  <label>Email:</label>
+                  <input type="email" class="form-control p_input" placeholder="email.Institucional@ifpr.edu.br" id="email" name="email" required>
+                </div>
+                <div class="text-center">
+                  <button type="submit" name="submit" class="btn btn-success btn-block enter-btn">Redefinir senha</button>
+                </div>
+              </form>
+              <p class="sign-up text-center">Lembrou sua senha?<a href="../../frontend/pages/login.html"> Voltar ao Login</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

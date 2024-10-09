@@ -1,0 +1,243 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  html, body {
+    height: 100%;
+    width: 100%;
+    background-color: #2f9e41; /* Fundo de toda a página */
+  }
+  
+  .content-wrapper {
+    height: 100vh; 
+    display: flex;
+    justify-content: center; /* Centraliza o card no centro da tela */
+    align-items: center;
+    padding: 0 20px; 
+  }
+  
+  .card {
+    background: rgba(253, 255, 254, 0.856); 
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+    width: 60%; /* Aumenta a largura do card */
+    max-height: 600px; /* Aumenta a altura máxima do card */
+    max-width: 600px; 
+    overflow: auto;
+    margin: auto; 
+  }
+  
+  .card-body {
+    color: black;
+    text-align: left; 
+    padding: 20px 40px; /* Aumenta o padding interno do card */
+    font-family: Arial, sans-serif; /* Fonte Arial aplicada */
+  }
+  
+  .form-control::placeholder {
+    color: black; 
+    opacity: 1; 
+  }
+  
+  .form-control {
+    color: black; 
+    background-color: white;
+    border: 1px solid black; 
+    border-radius: 5px; 
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+    width: 100%; 
+    padding: 12px; /* Aumenta o padding dentro das caixas de texto */
+    margin-bottom: 20px; /* Espaço entre as caixas */
+  }
+  
+  .form-control:focus {
+    background-color: #f2f2f2; 
+    border-color: #2f9e41; 
+  }
+  
+  .btn-success {
+    color: black; 
+    background-color: #00d25b; /* Verde mais claro */
+    border-radius: 25px; /* Bordas arredondadas */
+    border: 1px solid #00d25b; /* Borda mais sutil */
+    width: 100%; 
+    padding: 12px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .btn-success:hover {
+    background-color: #2f9e41; /* Cor mais clara ao passar o mouse */
+  }
+  
+  .form-group {
+    margin-bottom: 20px; /* Aumenta o espaçamento entre grupos de formulário */
+  }
+  
+  .form-check-label {
+    display: flex; 
+    align-items: center; 
+  }
+  
+  .forgot-pass {
+    margin-left: auto; 
+    color: black; 
+    text-decoration: none;
+  }
+  
+  .card-title {
+    color: black; 
+    font-size: 26px; /* Aumenta o tamanho da fonte do título */
+    margin-bottom: 25px; 
+    text-align: left; 
+    font-weight: normal; /* Remove o negrito do título */
+  }
+  
+  .sign-up {
+    margin-top: 10px; 
+    text-align: left; 
+  }
+  
+  .sign-up a {
+    color: black; 
+    text-decoration: none;
+  }
+  
+  .sign-up a:hover {
+    text-decoration: underline; 
+  }
+  
+  .error-message {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    display: none; /* Esconde por padrão */
+  }
+  
+  .success-message {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    display: none; /* Esconde por padrão */
+  }
+  /* Alinha o checkbox e o link "Esqueceu sua senha?" */
+.form-group.d-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px; /* Maior espaçamento entre o checkbox e os campos */
+}
+
+/* Estiliza o checkbox */
+.form-check {
+  display: flex;
+  align-items: center;
+}
+
+.form-check-input {
+  margin-right: 15px; /* Espaço maior entre o checkbox e o rótulo */
+}
+
+/* Estiliza o link "Esqueceu sua senha?" */
+.forgot-pass {
+  margin-left: auto;
+  color: black;
+  text-decoration: none;
+  margin-right: 10px; /* Espaço extra antes do link */
+}
+
+.forgot-pass:hover {
+  text-decoration: underline;
+}
+
+/* Ajusta a margem dos botões para que fiquem mais separados */
+.text-center .btn {
+  margin-bottom: 15px; /* Espaço maior entre os botões */
+}
+
+/* Adiciona mais espaçamento entre os campos de texto */
+.form-group {
+  margin-bottom: 25px; /* Maior separação entre os campos do formulário */
+}
+
+/* CSS para organizar a página "Esqueceu a senha" */
+
+/* Estilo geral da página */
+body {
+  background-color: #2f9e41; /* Fundo verde */
+  color: black; /* Cor do texto */
+  font-family: Arial, sans-serif; /* Fonte padrão */
+}
+
+.content-wrapper {
+  display: flex;
+  justify-content: center; /* Centraliza o card horizontalmente */
+  align-items: center; /* Centraliza o card verticalmente */
+  height: 100vh;
+  padding: 0 20px; 
+}
+
+.card {
+  background: rgba(253, 255, 254, 0.856); 
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); 
+  width: 100%;
+  max-width: 400px; /* Largura máxima do card */
+}
+
+.card-body {
+  padding: 20px; /* Padding interno do card */
+}
+
+.card-title {
+  font-size: 24px; /* Tamanho do título */
+  margin-bottom: 20px; /* Espaçamento abaixo do título */
+  color: black; 
+}
+
+p {
+  font-size: 16px; /* Tamanho da fonte do parágrafo */
+  margin-bottom: 20px; /* Espaçamento abaixo do parágrafo */
+}
+
+.form-group {
+  margin-bottom: 20px; /* Espaçamento entre o campo de formulário */
+}
+
+.btn-success {
+  background-color: #3e9643; /* Verde mais claro para o botão */
+  border-radius: 25px; /* Bordas arredondadas do botão */
+  border: 1px solid #4caf50; /* Borda do botão */
+  padding: 12px; /* Padding do botão */
+}
+
+.btn-success:hover {
+  background-color: #81c784; /* Cor do botão ao passar o mouse */
+}
+
+.sign-up {
+  margin-top: 20px; /* Espaçamento acima do texto de "Voltar ao Login" */
+}
+
+.sign-up a {
+  color: black;
+  text-decoration: none;
+}
+
+.sign-up a:hover {
+  text-decoration: underline; /* Sublinha o link ao passar o mouse */
+}
