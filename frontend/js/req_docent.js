@@ -1,4 +1,4 @@
-//var idSelecionado;
+var idSelecionado;
 $(document).ready(function () {
   buscarProjetos();
   buscarTotalProjetos();
@@ -11,7 +11,6 @@ function buscarProjetos() {
     dataType: "json",
     success: function (data) {
       console.log(data);
-
       //Zerando o titulo
       $("#tituloTabela").empty();
       //zerando a tabela
@@ -36,8 +35,9 @@ function buscarProjetos() {
                             <th> Opções </th>
                           </tr>
         `);
+      var possui = null;
 
-      // //MODAL
+      //MODAL
       $("#nomeModal").text("Detalhes do Projeto");
       $("#tituloModal").text("Titulo:");
       $("#tipoModal").text("Tipo:");
@@ -47,13 +47,25 @@ function buscarProjetos() {
 
       if (data.length > 0) {
         $.each(data, function (index, item) {
-          var possui;
-          if(item.POSSUI_BOLSA = 1){
-            possui = 'Não';
-          }else{
-            possui = 'Sim';
-          }
 
+
+          if (item.POSSUI_BOLSA == '0') {
+            possui = 'Não';
+            // $("#bolsa").empty();
+          }
+          else {
+            possui = 'Sim';
+
+            //se tiver bolsa aparece as informações dentro da div
+
+            // $("#bolsa").text(`
+            //   <p style="color: #000000;"><strong id="resumoModal">Criterios</strong> <span id="modalSummary"></span></p>
+            // <p style="color: #000000;"><strong id="resumoModal">Bolsa descição</strong> <span id="modalSummary"></span></p>
+            // <p style="color: #000000;"><strong id="resumoModal">Requisitos</strong> <span id="modalSummary"></span></p>
+            //   `);
+
+
+          }
           $("#linhaTabela").append(
             `
               <tr>                  
@@ -67,13 +79,13 @@ function buscarProjetos() {
                             <td>` + item.TITULO + `</td>
                             <td>`+ item.NOME_TIPO_PROJETO + `</td>
                             <td>`+ item.NOME + `</td>
-                            <td>` + possui +`</td>
+                            <td>`+ possui + `</td>
                             <td>
                               <div class="action-buttons">
-                                <button title="Visualizar" ">
+                                <button title="Visualizar" onclick="openModal('`+ item.TITULO + `', '` + item.NOME_TIPO_PROJETO + `','` + item.NOME + `','` + possui + `','` + item.RESUMO + `')">
                                   <i class="mdi mdi-eye icon text-success ml-auto"></i>
                                 </button>
-                                <button title="Deletar" >
+                                <button title="Deletar" onclick="openDeleteModal('`+ item.TITULO + `',` + item.ID_PROJETO + `)">
                                   <i class="mdi mdi-delete icon text-danger ml-auto"></i>
                                 </button>
                               </div>
@@ -120,6 +132,27 @@ function buscarTotalProjetos() {
 }
 
 
+function openDeleteModal(title, id) {
+  idSelecionado = id;
+  document.getElementById("deleteTitle").textContent = title;
+  botaoDeletarProjeto.removeEventListener("onclick", deletarProjeto);
+
+  $('#botaoDeletarProjeto').onclick(deletarProjeto());
+
+  //botaoDeletarProjeto.addEventListener("onclick", deletarProjeto.bind(id));
+  deleteModal.style.display = "block";
+}
+function openDeleteModal(title, id) {
+  console.log(id);
+  idSelecionado = id;
+  //document.getElementById("deleteTitle").textContent = title;
+
+
+  //botaoDeletarProjeto.removeEventListener("onclick", deletarProjeto);
+  deleteModal.style.display = "block";
+}
+
+
 function deletarProjeto() {
 
   $.ajax({
@@ -136,7 +169,6 @@ function deletarProjeto() {
     }
   });
 }
-
 
 
 
