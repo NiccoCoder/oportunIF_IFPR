@@ -28,27 +28,26 @@
         <li class="nav-item w-100">
           <div class="search-dropdown">
             <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-              <input type="text" style="color: white;" class="form-control" placeholder="Pesquisar"
-                onclick="toggleDropdown()">
+              <input type="text" style="color: white; background-color: #2a2f3a; border: 1px solid #444; border-radius: 6px; padding: 8px; width: 55%;" class="form-control" placeholder="Pesquisar" onclick="toggleDropdown()">
             </form>
             <div class="dropdown-menu" id="filterDropdown"
-              style="display: none; position: absolute; top: 50px; left: 0; width: 80%; background-color: #191c24; padding: 10px; z-index: 1000;"
+              style="display: none; position: absolute; top: 55px; width: 55%; background-color: #1f232b; border-radius: 6px; padding: 10px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15); z-index: 1000;" 
               onclick="event.stopPropagation();">
-              <div style="display: flex; justify-content: space-between;">
-                <label class="dropdown-item" style="color: white;">
-                  <input type="checkbox" value="Pesquisa"> Pesquisa
+              <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
+                  <input type="checkbox" value="Pesquisa" style="margin-right: 6px;"> Pesquisa
                 </label>
-                <label class="dropdown-item" style="color: white;">
-                  <input type="checkbox" value="Inovação"> Inovação
+                <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
+                  <input type="checkbox" value="Inovação" style="margin-right: 6px;"> Inovação
                 </label>
-                <label class="dropdown-item" style="color: white;">
-                  <input type="checkbox" value="Ensino"> Ensino
+                <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
+                  <input type="checkbox" value="Ensino" style="margin-right: 6px;"> Ensino
                 </label>
-                <label class="dropdown-item" style="color: white;">
-                  <input type="checkbox" value="Extensão"> Extensão
+                <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
+                  <input type="checkbox" value="Extensão" style="margin-right: 6px;"> Extensão
                 </label>
-                <label class="dropdown-item" style="color: white;">
-                  <input type="checkbox" value="Possui Bolsa"> Possui Bolsa
+                <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
+                  <input type="checkbox" value="Possui Bolsa" style="margin-right: 6px;"> Possui Bolsa
                 </label>
               </div>
             </div>
