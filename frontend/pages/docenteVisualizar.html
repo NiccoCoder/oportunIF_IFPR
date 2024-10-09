@@ -13,6 +13,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="/frontend/js/req_docente.js"></script>
 
 <body>
   <div id="loader"></div>
@@ -62,9 +64,9 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
-            <div class="navbar-profile d-flex align-items-center">
+            <div class="navbar-profile d-flex align-items-center" style="min-width: 200px; white-space: nowrap;">
               <div class="d-flex align-items-center">
-                <p id="nomeUsuario" class="mb-0 mr-2"></p> 
+                <p id="nomeUsuario" class="mb-0 mr-2"></p>
                 <i class="mdi mdi-menu-down d-none d-sm-block"></i>
               </div>
             </div>
@@ -127,11 +129,11 @@
             <div class="row">
               <div class="col-12 grid-margin">
                 <div class="card-project">
-                  <div class="card-body">
-                    <h4 class="card-title" style="text-align: center">Projetos </h4>
+                  <div class="card-body" id="divTabela">
+                    <h4 class="card-title" style="text-align: center" id="tituloTabela">Projetos</h4>
                     <div class="table-responsive">
                       <table class="table">
-                        <thead>
+                        <thead id="tabelaInfo">
                           <tr>
                             <th>
                               <div class="form-check form-check-muted m-0">
@@ -140,66 +142,21 @@
                                 </label>
                               </div>
                             </th>
-                            <th> Titulo </th>
-                            <th> Tipo </th>
-                            <th> Responsável </th>
-                            <th> C/ Bolsa</th>
-                            <th> Opções </th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <td>
-                              <div class="form-check form-check-muted m-0">
-                                <label class="form-check-label">
-                                  <input type="checkbox" class="form-check-input">
-                                </label>
-                              </div>
-                            </td>
-                            <td> IF Esportes: Basquete </td>
-                            <td> Extensão </td>
-                            <td> Mariana </td>
-                            <td> Não </td>
-                            <td>
-                              <div class="action-buttons">
-                                <button title="Visualizar"
-                                  onclick="openModal('IF Esportes: Basquete', 'Extensão', 'Mariana', 'Não')">
-                                  <i class="mdi mdi-eye icon text-success ml-auto"></i>
-                                </button>
-                                <button title="Deletar" onclick="openDeleteModal('IF Esportes: Basquete')">
-                                  <i class="mdi mdi-delete icon text-danger ml-auto"></i>
-                                </button>
-                                <button title="Editar"
-                                  onclick="openEditModal('IF Esportes: Basquete', 'Extensão', 'Mariana', 'Não')"
-                                  style="display: flex; justify-content: center; align-items: center;">
-                                  <i class="mdi mdi-pencil icon text-primary ml-auto"></i>
-                                </button>
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
+                        <tbody id="linhaTabela"></tbody>
                       </table>
                     </div>
-                  </div>
-                  <div class="floating-button" onclick="window.location.href='projetoCadastrar.html'">
-                    <i class="fas fa-plus"></i>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        </td>
-        </tr>
-        </tbody>
-        </table>
       </div>
     </div>
   </div>
-  </div>
-  </div>
-  </div>
-  </div>
+
   <!-- Modal -->
   <div id="projectModal" class="modal">
     <div class="modal-content">

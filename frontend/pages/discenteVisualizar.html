@@ -19,8 +19,7 @@
   <div id="content" style="display: none;">
     <div id="mensagem"></div>
     <div style="justify-content: space-between;" class="navbar-menu-wrapper flex-grow d-flex align-items-stretch">
-      <!-- Adicione a imagem OportunIF.png -->
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="discenteVisualizar.html">
         <img src="../../frontend/images/OportunIF.png" alt="OportunIF" style="height: 40px;">
       </a>
       <ul class="navbar-nav w-100">
@@ -63,7 +62,7 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
-            <div class="navbar-profile d-flex align-items-center">
+            <div class="navbar-profile d-flex align-items-center" style="min-width: 200px; white-space: nowrap;">
               <div class="d-flex align-items-center">
                 <p id="nomeUsuario" class="mb-0 mr-2"></p>
                 <i class="mdi mdi-menu-down d-none d-sm-block"></i>
@@ -107,11 +106,11 @@
         <div class="row">
           <div class="col-12 grid-margin">
             <div class="card-project">
-              <div class="card-body">
-                <h4 class="card-title" style="text-align: center">Projetos </h4>
+              <div class="card-body" id="divTabela">
+                <h4 class="card-title" style="text-align: center" id="tituloTabela">Projetos</h4>
                 <div class="table-responsive">
                   <table class="table">
-                    <thead>
+                    <thead id="tabelaInfo">
                       <tr>
                         <th>
                           <div class="form-check form-check-muted m-0">
@@ -120,36 +119,9 @@
                             </label>
                           </div>
                         </th>
-                        <th> Titulo </th>
-                        <th> Tipo </th>
-                        <th> Responsável </th>
-                        <th> C/ Bolsa</th>
-                        <th> Opções </th>
                       </tr>
                     </thead>
-                    <tbody>
-                      <tr>
-                        <td>
-                          <div class="form-check form-check-muted m-0">
-                            <label class="form-check-label">
-                              <input type="checkbox" class="form-check-input">
-                            </label>
-                          </div>
-                        </td>
-                        <td> IF Esportes: Basquete </td>
-                        <td> Extensão </td>
-                        <td> Mariana </td>
-                        <td> Não </td>
-                        <td>
-                          <div class="action-buttons">
-                            <button title="Visualizar"
-                              onclick="openModal('IF Esportes: Basquete', 'Extensão', 'Mariana', 'Não')">
-                              <i class="mdi mdi-eye icon text-success ml-auto"></i>
-                            </button>
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
+                    <tbody id="linhaTabela"></tbody>
                   </table>
                 </div>
               </div>
@@ -172,6 +144,7 @@
     <script src="../../frontend/js/atualizarNomeUsuario.js"></script>
     <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
     <script src="../../frontend/js/verificarSessaoDiscente.js"></script>
+    <script src="../../frontend/js/req_projetos.js"></script>
 
     <script>
       const projectModal = document.getElementById("projectModal");

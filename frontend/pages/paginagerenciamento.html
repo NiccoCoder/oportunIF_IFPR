@@ -14,11 +14,11 @@
 </head>
 
 <body>
-  <div id="loader" style="display: none;">Carregando...</div>
+  <div id="loader" style="display: none;"></div>
   <div id="content" style="display: none;">
     <div id="mensagem"></div>
     <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch" style="justify-content: space-between;">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" href="paginagerenciamento.html">
         <img src="../../frontend/images/OportunIF.png" alt="OportunIF" style="height: 40px;">
       </a>
       <ul class="navbar-nav w-100">
@@ -66,7 +66,7 @@
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
-            <div class="navbar-profile d-flex align-items-center">
+            <div class="navbar-profile d-flex align-items-center" style="min-width: 200px; white-space: nowrap;">
               <div class="d-flex align-items-center">
                 <p id="nomeUsuario" class="mb-0 mr-2"></p>
                 <i class="mdi mdi-menu-down d-none d-sm-block"></i>
@@ -183,11 +183,6 @@
                               </label>
                             </div>
                           </th>
-                          <th>Título</th>
-                          <th>Tipo</th>
-                          <th>Responsável</th>
-                          <th>C/ Bolsa</th>
-                          <th>Opções</th>
                         </tr>
                       </thead>
                       <tbody id="linhaTabela"></tbody>
@@ -195,14 +190,13 @@
                   </div>
                 </div>
               </div>
-              <div class="floating-button" onclick="window.location.href='projetoCadastrar.html'">
-                <i class="fas fa-plus"></i>
-              </div>
             </div>
           </div>
         </div>
       </div>
-
+      <div class="floating-button" onclick="window.location.href='projetoCadastrar.html'">
+        <i class="fas fa-plus"></i>
+      </div>
       <!-- Modais -->
       <div id="projectModal" class="modal">
         <div class="modal-content">
@@ -252,7 +246,7 @@
       <script src="../js/req_gerenciamento.js"></script>
       <script src="../../frontend/js/verificarSessaoSuperUsuario.js"></script>
       <script src="../js/atualizarNomeUsuario.js"></script>
-      
+
 
 
       <script>
@@ -358,23 +352,23 @@
           }
         };
 
-         // Função para abrir/fechar o dropdown
-      function toggleDropdown() {
-        var dropdown = document.getElementById('filterDropdown');
-        dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
-      }
-        
-      function toggleDropdown() {
-        var dropdown = document.getElementById("filterDropdown");
-        if (dropdown.style.display === "none") {
-          dropdown.style.display = "block";
-        } else {
-          dropdown.style.display = "none";
+        // Função para abrir/fechar o dropdown
+        function toggleDropdown() {
+          var dropdown = document.getElementById('filterDropdown');
+          dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
         }
-      }
-      document.querySelector('.dropdown-menu').addEventListener('click', function (e) {
-        e.stopPropagation();
-      });
+
+        function toggleDropdown() {
+          var dropdown = document.getElementById("filterDropdown");
+          if (dropdown.style.display === "none") {
+            dropdown.style.display = "block";
+          } else {
+            dropdown.style.display = "none";
+          }
+        }
+        document.querySelector('.dropdown-menu').addEventListener('click', function (e) {
+          e.stopPropagation();
+        });
 
       </script>
 </body>
