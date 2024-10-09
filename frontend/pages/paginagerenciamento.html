@@ -14,9 +14,7 @@
 </head>
 
 <body>
-  <div id="loader" style="display: none;"></div>
-  <div id="content" style="display: none;">
-    <div id="mensagem"></div>
+ 
     <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch" style="justify-content: space-between;">
       <a class="navbar-brand" href="paginagerenciamento.html">
         <img src="../../frontend/images/OportunIF.png" alt="OportunIF" style="height: 40px;">
@@ -180,22 +178,22 @@
                               <label class="form-check-label">
                                 <input type="checkbox" class="form-check-input">
                               </label>
-                            </div>
+                          </div>
                           </th>
                         </tr>
                       </thead>
                       <tbody id="linhaTabela"></tbody>
                     </table>
-                  </div>
-                </div>
+               </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="floating-button" onclick="window.location.href='projetoCadastrar.html'">
-        <i class="fas fa-plus"></i>
-      </div>
+    </div>
+    <div class="floating-button" onclick="window.location.href='projetoCadastrar.html'">
+      <i class="fas fa-plus"></i>
+    </div>
       <!-- Modais -->
       <div id="projectModal" class="modal">
         <div class="modal-content">
@@ -252,6 +250,7 @@
 
         const projectModal = document.getElementById("projectModal");
         const deleteModal = document.getElementById("deleteModal");
+        const cursoModal = document.getElementById("cursoModal");
 
         function openModal(title, type, responsible, grant, summary) {
           document.getElementById("modalTitle").textContent = title;
@@ -282,13 +281,17 @@
           btn.onclick = function () {
             projectModal.style.display = "none";
             deleteModal.style.display = "none";
+            cursoModal.style.display = "none";
+            }
           }
-        });
+        );
 
         window.onclick = function (event) {
           if (event.target == projectModal || event.target == deleteModal) {
             projectModal.style.display = "none";
             deleteModal.style.display = "none";
+            cursoModal.style.display = "none";
+
           }
         };
       </script>
@@ -309,25 +312,9 @@
           }
         }
       </script>
-
-      <script>
-        function toggleDropdown() {
-          var dropdown = document.getElementById("filterDropdown");
-          if (dropdown.style.display === "none") {
-            dropdown.style.display = "block";
-          } else {
-            dropdown.style.display = "none";
-          }
-        }
-
-        // Prevent dropdown from closing on checkbox click
-        document.querySelector('.dropdown-menu').addEventListener('click', function (e) {
-          e.stopPropagation();
-        });
-      </script>
       <script>
         function openCursoModal() {
-          document.getElementById('cursoModal').style.display = 'block';
+          document.getElementById('cursoModal').style.display = 'none';
         }
 
         function closeCursoModal() {
