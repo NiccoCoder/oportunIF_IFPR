@@ -1,7 +1,8 @@
-//var idSelecionado;
+var idSelecionado = null;
 $(document).ready(function () {
   buscarProjetos();
-  console.log("opa");
+  buscarTotalProjetos();
+
 });
 
 //  PROJETOS
@@ -35,17 +36,28 @@ function buscarProjetos() {
                             <th> Opções </th>
                           </tr>
         `);
+      var possui = null;
 
-      // //MODAL
-      // $("#nomeModal").text("Detalhes do Projeto");
-      // $("#tituloModal").text("Titulo:");
-      // $("#tipoModal").text("Tipo:");
-      // $("#responsavelModal").text("Responsavel:");
-      // $("#bolsaModal").text("Com bolsa:");
-      // $("#resumoModal").text("Resumo:");
+      //MODAL
+      $("#nomeModal").text("Detalhes do Projeto");
+      $("#tituloModal").text("Titulo:");
+      $("#tipoModal").text("Tipo:");
+      $("#responsavelModal").text("Responsavel:");
+      $("#bolsaModal").text("Com bolsa:");
+      $("#resumoModal").text("Resumo:");
 
       if (data.length > 0) {
         $.each(data, function (index, item) {
+
+
+          if (item.POSSUI_BOLSA == '0') {
+            possui = 'Não';
+            
+          }
+          else {
+            possui = 'Sim';
+          }
+          
           $("#linhaTabela").append(
             `
               <tr>                  
@@ -57,16 +69,21 @@ function buscarProjetos() {
                               </div>
                             </td>
                             <td>` + item.TITULO + `</td>
-                            <td>`+ item.ID_TIPO_PROJETO + `</td>
+                            <td>`+ item.NOME_TIPO_PROJETO + `</td>
                             <td>`+ item.NOME + `</td>
-                            <td>` + `</td>
+                            <td>`+ possui + `</td>
                             <td>
                               <div class="action-buttons">
-                                <button title="Visualizar" ">
+                                <button title="Visualizar" onclick="openModal('`+ item.TITULO + `', '` + item.NOME_TIPO_PROJETO + `','` + item.NOME + `','` + possui + `','` + item.RESUMO + `','` + item.CRITERIOS + `','` + item.DESCRICAO  + `','` + item.REQUISITOS + `')">
                                   <i class="mdi mdi-eye icon text-success ml-auto"></i>
                                 </button>
-                                <button title="Deletar" >
+                                <button title="Deletar" onclick="openDeleteModal('`+ item.TITULO + `',` + item.ID_PROJETO + `)">
                                   <i class="mdi mdi-delete icon text-danger ml-auto"></i>
+                                </button>
+                                <button title="Editar"
+                                  onclick="openEditModal('IF Esportes: Basquete', 'Extensão', 'Mariana', 'Não')"
+                                  style="display: flex; justify-content: center; align-items: center;">
+                                  <i class="mdi mdi-pencil icon text-primary ml-auto"></i>
                                 </button>
                               </div>
                             </td>
@@ -87,6 +104,51 @@ function buscarProjetos() {
   });
 }
 
+
+function buscarTotalProjetos() {
+  $.ajax({
+    url: "../../backend/requisicoes/req_total_projeto_docente.php",
+    dataType: "json",
+    success: function (data) {
+      console.log(data);
+      $("#totalProjetos").empty();
+      if (data.length > 0) {
+        $.each(data, function (index, item) {
+          $("#totalProjetos").append(item.NUMERO_PROJETOS);
+          console.log(item.NUMERO_PROJETOS);
+        });
+      }
+      else {
+        $("#totalProjetos").append("0");
+      }
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+    }
+  });
+}
+
+
+function openDeleteModal(title, id) {
+  idSelecionado = id;
+  document.getElementById("deleteTitle").textContent = title;
+  botaoDeletarProjeto.removeEventListener("onclick", deletarProjeto);
+
+  $('#botaoDeletarProjeto').onclick(deletarProjeto());
+
+  //botaoDeletarProjeto.addEventListener("onclick", deletarProjeto.bind(id));
+  deleteModal.style.display = "block";
+}
+function openDeleteModal(title, id) {
+  console.log(id);
+  idSelecionado = id;
+  //document.getElementById("deleteTitle").textContent = title;
+
+
+  //botaoDeletarProjeto.removeEventListener("onclick", deletarProjeto);
+  deleteModal.style.display = "block";
+}
+
+
 function deletarProjeto() {
 
   $.ajax({
@@ -102,22 +164,13 @@ function deletarProjeto() {
       //$("#resultado").append("<p>Erro ao buscar os projetos: " + errorThrown + "</p>");
     }
   });
+
 }
-
-
 
 
 const projectModal = document.getElementById("projectModal");
 const deleteModal = document.getElementById("deleteModal");
 
-function openModal(title, type, responsible, grant, summary) {
-  document.getElementById("modalTitle").textContent = title;
-  document.getElementById("modalType").textContent = type;
-  document.getElementById("modalResponsible").textContent = responsible;
-  document.getElementById("modalGrant").textContent = grant;
-  document.getElementById("modalSummary").textContent = summary;
-  projectModal.style.display = "block";
-}
 
 
 function closeDeleteModal() {

@@ -64,9 +64,20 @@ function buscarProjetosGerenciamento() {
 
           if (item.POSSUI_BOLSA == '0') {
             possui = 'Não';
+            // $("#bolsa").empty();
           }
           else {
             possui = 'Sim';
+
+            //se tiver bolsa aparece as informações dentro da div
+
+            // $("#bolsa").text(`
+            //   <p style="color: #000000;"><strong id="resumoModal">Criterios</strong> <span id="modalSummary"></span></p>
+            // <p style="color: #000000;"><strong id="resumoModal">Bolsa descição</strong> <span id="modalSummary"></span></p>
+            // <p style="color: #000000;"><strong id="resumoModal">Requisitos</strong> <span id="modalSummary"></span></p>
+            //   `);
+
+
           }
           $("#linhaTabela").append(
             `
@@ -227,7 +238,8 @@ function buscarDiscentesGerenciamento() {
           $("#nomeModal").text("Detalhes do Discente");
           $("#tituloModal").text("Nome:");
           $("#tipoModal").text("Email:");
-          $("#bolsaModal").text("Situação");
+          $("#responsavelModal").text("Situação:");
+          $("#bolsaModal").empty();
           $("#resumoModal").empty();
 
           if (data.length > 0) {
