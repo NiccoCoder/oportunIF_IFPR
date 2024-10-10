@@ -1,3 +1,9 @@
+$(document).ready(function () {
+  console.log("opa");
+  buscarProjetos();
+});
+
+
 function buscarProjetos() {
     $.ajax({
       url: "../../backend/requisicoes/req_projeto.php",
@@ -82,6 +88,7 @@ function buscarProjetos() {
       },
       error: function (jqXHR, textStatus, errorThrown) {
         $("#resultado").append("<p>Erro ao buscar os projetos: " + errorThrown + "</p>");
+        console.log("deu ruim" + errorThrown);
       }
     });
   }

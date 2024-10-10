@@ -1,7 +1,8 @@
-var idSelecionado;
+var idSelecionado = null;
 $(document).ready(function () {
   buscarProjetos();
   buscarTotalProjetos();
+
 });
 
 //  PROJETOS
@@ -51,20 +52,10 @@ function buscarProjetos() {
 
           if (item.POSSUI_BOLSA == '0') {
             possui = 'Não';
-            // $("#bolsa").empty();
+            
           }
           else {
             possui = 'Sim';
-
-            //se tiver bolsa aparece as informações dentro da div
-
-            // $("#bolsa").text(`
-            //   <p style="color: #000000;"><strong id="resumoModal">Criterios</strong> <span id="modalSummary"></span></p>
-            // <p style="color: #000000;"><strong id="resumoModal">Bolsa descição</strong> <span id="modalSummary"></span></p>
-            // <p style="color: #000000;"><strong id="resumoModal">Requisitos</strong> <span id="modalSummary"></span></p>
-            //   `);
-
-           
           }
           
           $("#linhaTabela").append(
@@ -83,7 +74,7 @@ function buscarProjetos() {
                             <td>`+ possui + `</td>
                             <td>
                               <div class="action-buttons">
-                                <button title="Visualizar" onclick="openModal('`+ item.TITULO + `', '` + item.NOME_TIPO_PROJETO + `','` + item.NOME + `','` + possui + `','` + item.RESUMO + `')">
+                                <button title="Visualizar" onclick="openModal('`+ item.TITULO + `', '` + item.NOME_TIPO_PROJETO + `','` + item.NOME + `','` + possui + `','` + item.RESUMO + `','` + item.CRITERIOS + `','` + item.DESCRICAO  + `','` + item.REQUISITOS + `')">
                                   <i class="mdi mdi-eye icon text-success ml-auto"></i>
                                 </button>
                                 <button title="Deletar" onclick="openDeleteModal('`+ item.TITULO + `',` + item.ID_PROJETO + `)">
@@ -173,21 +164,13 @@ function deletarProjeto() {
       //$("#resultado").append("<p>Erro ao buscar os projetos: " + errorThrown + "</p>");
     }
   });
-}
 
+}
 
 
 const projectModal = document.getElementById("projectModal");
 const deleteModal = document.getElementById("deleteModal");
 
-function openModal(title, type, responsible, grant, summary) {
-  // document.getElementById("modalTitle").textContent = title;
-  // document.getElementById("modalType").textContent = type;
-  // document.getElementById("modalResponsible").textContent = responsible;
-  // document.getElementById("modalGrant").textContent = grant;
-  // document.getElementById("modalSummary").textContent = summary;
-  projectModal.style.display = "block";
-}
 
 
 function closeDeleteModal() {
