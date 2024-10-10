@@ -130,7 +130,7 @@ agens, utilizado para interpretar php.
 
 **c. Recursos para monitoração e acompanhamento**
 
-### 5. REPOSITORIO COM OS DOCUMENTOS DE TOPICOS DA TECNOLOGIA DA INFORMAÇÂO
+### 5. Repositorio com os documentos de topicos da tecnologia da informação
 
 [**git@github.com:CaioRTl22/Documenta-o-OportunIF.git**](https://github.com/CaioRTl22/Documenta-o-OportunIF)
 
