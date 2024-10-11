@@ -11,7 +11,7 @@ function verificarSessao() {
                 } else if (data.user.tipoUsuario === 'docente') {
                     // Se o usuário é docente, verifica o super usuário
                     if (data.user.superUsuario === 1) {
-                        window.location.href = './paginagerenciamento.html'; // Redireciona para a página de gerenciamento
+                        window.location.href = './superUsuarioPrincipal.html'; // Redireciona para a página de gerenciamento
                     } else {
                         window.location.href = './docenteVisualizar.html'; // Redireciona para a página do docente
                     }

@@ -35,7 +35,7 @@ if (isset($_POST['submit'])) {
         } elseif ($tipoUsuario === 'docente') {
             // Verifica se é super usuário
             if ($_SESSION['super_usuario'] == 1) {
-                header("Location: ../frontend/pages/paginagerenciamento.html");
+                header("Location: ../frontend/pages/superUsuarioPrincipal.html");
             } else {
                 header("Location: ../frontend/pages/docenteVisualizar.html");
             }

@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
     $curso = $_POST['cursoDiscente'];
 
     if (!$nome || !$email || !$senha || !$curso) {
-        header("Location: ../frontend/pages/cadastroAluno.html?error=" . urlencode('Todos os campos são obrigatórios'));
+        header("Location: ../frontend/pages/discenteCadastro.html?error=" . urlencode('Todos os campos são obrigatórios'));
         exit();
     }
 
@@ -27,12 +27,12 @@ if (isset($_POST['submit'])) {
         if (is_array($resposta) && isset($resposta['status']) && $resposta['status']) {
             header("Location: ../frontend/pages/login.html");
         } else {
-            header("Location: ../frontend/pages/cadastroAluno.html" . urlencode($resposta['message']));
+            header("Location: ../frontend/pages/discenteCadastro.html" . urlencode($resposta['message']));
         }
     } else {
-        header("Location: ../frontend/pages/cadastroAluno.html?error=" . urlencode($resultado['message']));
+        header("Location: ../frontend/pages/discenteCadastro.html?error=" . urlencode($resultado['message']));
     }
 } else {
-    header("Location: ../frontend/pages/cadastroAluno.html");
+    header("Location: ../frontend/pages/discenteCadastro.html");
 }
 ?>

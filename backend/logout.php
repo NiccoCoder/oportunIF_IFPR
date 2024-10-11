@@ -8,6 +8,6 @@ if (isset($_SESSION['sessao_ativa'])) {
 }
 
 // Redireciona para a página de login ou outra página desejada
-header("Location: ../frontend/pages/paginavisitante.html");
+header("Location: ../frontend/pages/visitantePrincipal.html");
 exit();
 ?>
