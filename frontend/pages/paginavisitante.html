@@ -89,7 +89,7 @@
                             <div class="row">
                               <div class="col-8 col-sm-12 col-xl-8 my-auto">
                                 <div class="d-flex d-sm-block d-md-flex align-items-center">
-                                  <h2 class="mb-0">0</h2>
+                                  <h2 class="mb-0" id="totalProjeto"></h2>
                                 </div>
                                 <h6 class="text-muted font-weight-normal"> Total de projetos registrados.</h6>
                               </div>
@@ -135,24 +135,58 @@
                 <p style="color:#000000"><strong>Título:</strong> <span id="modalTitle"></span></p>
                 <p style="color: #000000;"><strong>Tipo:</strong> <span id="modalType"></span></p>
                 <p style="color: #000000;"><strong>Responsável:</strong> <span id="modalResponsible"></span></p>
+                <p style="color: #000000;"><strong>E-mail:</strong> <span id="modalEmail"></span></p>
                 <p style="color: #000000;"><strong>Com Bolsa:</strong> <span id="modalGrant"></span></p>
+                <p style="color: #000000;" ><strong id="resumoModal">Resumo:</strong> <span id="modalSummary"></span></p>
+            <div id="bolsa">
+                <p style="color: #000000;"><strong>Criterios da Bolsa:</strong> <span id="modalCriteria"></span></p>
+                <p style="color: #000000;"><strong>Descrição da Bolsa:</strong> <span id="modalDescription"></span></p>
+                <p style="color: #000000;"><strong>Requisitos da Bolsa:</strong> <span id="modalRequirements"></span></p>
+            </div>
             </div>
         </div>
         <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
         <script src="../../frontend/js/verificarSessaoAtiva.js"></script>
-        <script src="../../frontend/js/req_projetos.js"></script>
+        <script src="../../frontend/js/req_projeto.js"></script>
         
         <script>
+
+            $.ajax({
+                url: "../../backend/requisicoes/req_gerenciamento.php",
+                dataType: "json",
+                success: function (data) {
+                  if (data.length > 0) {
+                    $.each(data, function (index, item) {
+                      $("#totalProjeto").append(item.NUMERO_PROJETOS);
+                    });
+                  }
+                },
+              });
+
+
             document.addEventListener("DOMContentLoaded", verificarSessao);
             const projectModal = document.getElementById("projectModal");
 
-            function openModal(title, type, responsible, grant) {
-                document.getElementById("modalTitle").textContent = title;
-                document.getElementById("modalType").textContent = type;
-                document.getElementById("modalResponsible").textContent = responsible;
-                document.getElementById("modalGrant").textContent = grant;
-                projectModal.style.display = "block";
-            }
+            function openModal(title, type, responsible, email , grant, summary, criteria, description, requirements) {
+                document.getElementById("modalTitle").innerText = title;
+                document.getElementById("modalType").innerText = type;
+                document.getElementById("modalResponsible").innerText = responsible;
+                document.getElementById("modalEmail").innerText = email;
+                document.getElementById("modalGrant").innerText = grant;
+                document.getElementById("modalSummary").textContent = summary;
+                document.getElementById("projectModal").style.display = "block";
+                //Caso exista bolsa ele ira mostrar a div "bolsa" e mostra a descrição, criterio e requisitos
+                if(grant == "Sim"){
+                  $("#bolsa").show();
+                  document.getElementById("modalCriteria").innerText = criteria;
+                  document.getElementById("modalDescription").innerText = description;
+                  document.getElementById("modalRequirements").innerText = requirements;
+                }
+                //esconde a div bolsa
+                else{
+                  $("#bolsa").hide();
+                }
+              }
 
             const closeButtons = document.getElementsByClassName("close");
             Array.from(closeButtons).forEach(function (btn) {
