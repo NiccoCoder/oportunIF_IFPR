@@ -244,77 +244,24 @@
           </form>
         </div>
       </div>
-
-      <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-      <script src="../js/req_gerenciamento.js"></script>
-      <script src="../../frontend/js/verificarSessaoSuperUsuario.js"></script>
-      <script src="../js/atualizarNomeUsuario.js"></script>
-
-
-
       <script>
-
-        const projectModal = document.getElementById("projectModal");
-        const deleteModal = document.getElementById("deleteModal");
-        const cursoModal = document.getElementById("cursoModal");
-
-       
-
-        function openDeleteModal(title, id) {
-          console.log(id);
-          idSelecionado = id;
-          document.getElementById("deleteTitle").textContent = title;
-          botaoDeletarProjeto.removeEventListener("onclick", deletarProjeto);
-
-          botaoDeletarProjeto.addEventListener("onclick", deletarProjeto.bind(id));
-          deleteModal.style.display = "block";
-        }
-
-        function closeDeleteModal() {
-          deleteModal.style.display = "none";
-        }
-
-
-        const closeButtons = document.getElementsByClassName("close");
-        Array.from(closeButtons).forEach(function (btn) {
-          btn.onclick = function () {
-            projectModal.style.display = "none";
-            deleteModal.style.display = "none";
-            cursoModal.style.display = "none";
-            }
-          }
-        );
-
-        window.onclick = function (event) {
-          if (event.target == projectModal || event.target == deleteModal) {
-            projectModal.style.display = "none";
-            deleteModal.style.display = "none";
-            cursoModal.style.display = "none";
-
-          }
-        };
-      </script>
-      <script>
-        // Função para abrir/fechar o dropdown
         function toggleDropdown() {
-          var dropdown = document.getElementById('filterDropdown');
-          dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
-        }
-
-        // Fechar o dropdown ao clicar fora
-        window.onclick = function (event) {
-          if (!event.target.matches('.form-control')) {
-            var dropdown = document.getElementById('filterDropdown');
-            if (dropdown.style.display === 'block') {
-              dropdown.style.display = 'none';
-            }
+          var dropdown = document.getElementById("filterDropdown");
+          if (dropdown.style.display === "none") {
+            dropdown.style.display = "block";
+          } else {
+            dropdown.style.display = "none";
           }
         }
+
+        // Prevent dropdown from closing on checkbox click
+        document.querySelector('.dropdown-menu').addEventListener('click', function (e) {
+          e.stopPropagation();
+        });
       </script>
       <script>
         function openCursoModal() {
-          document.getElementById('cursoModal').style.display = 'none';
+          document.getElementById('cursoModal').style.display = 'block';
         }
 
         function closeCursoModal() {
@@ -357,6 +304,85 @@
         });
 
       </script>
+      <script>
+       // Função para abrir o modal de visualização
+function abrirModal(titulo, tipo, responsavel, bolsa, resumo, criterios, descricao, requisitos) {
+    document.getElementById("modalTitle").innerText = titulo;
+    document.getElementById("modalType").innerText = tipo;
+    document.getElementById("modalResponsible").innerText = responsavel;
+    document.getElementById("modalGrant").innerText = bolsa;
+    document.getElementById("modalSummary").textContent = resumo;
+    document.getElementById("projectModal").style.display = "block";
+
+    // Caso exista bolsa, mostra a div "bolsa"
+    if (bolsa == "Sim") {
+        $("#bolsa").show();
+        document.getElementById("modalCriteria").innerText = criterios;
+        document.getElementById("modalDescription").innerText = descricao;
+        document.getElementById("modalRequirements").innerText = requisitos;
+    } else {
+        // Esconde a div bolsa
+        $("#bolsa").hide();
+    }
+}
+
+// Função para abrir o modal de exclusão
+function abrirModalExclusao(titulo, id) {
+    idSelecionado = id;
+    console.log(id);
+    document.getElementById("deleteTitle").textContent = titulo;
+    botaoDeletarProjeto.removeEventListener("click", deletarProjeto);
+    botaoDeletarProjeto.addEventListener("click", deletarProjeto.bind(null, id));
+    deleteModal.style.display = "block";
+}
+
+// Função para fechar todos os modais
+function fecharModais() {
+    document.getElementById("projectModal").style.display = "none";
+    document.getElementById("deleteModal").style.display = "none";
+    document.getElementById("cursoModal").style.display = "none";
+}
+
+// Fechar modais ao clicar no 'X'
+var botoesFecharModal = document.querySelectorAll(".close");
+botoesFecharModal.forEach(botao => {
+    botao.onclick = fecharModais;
+});
+
+// Fechar modais ao clicar fora deles
+window.onclick = function (evento) {
+    if (evento.target == document.getElementById("projectModal") || 
+        evento.target == document.getElementById("deleteModal") || 
+        evento.target == document.getElementById("cursoModal")) {
+        fecharModais();
+    }
+};
+
+// Função para confirmar exclusão
+function confirmarExclusao() {
+    // Lógica para confirmar a exclusão do projeto
+    fecharModalExclusao();
+}
+
+// Funções para abrir e fechar o modal de edição
+function abrirModalEdicao(titulo, tipo, responsavel, bolsa) {
+    document.getElementById("editTitle").value = titulo;
+    document.getElementById("editType").value = tipo;
+    document.getElementById("editResponsible").value = responsavel;
+    document.getElementById("editGrant").value = bolsa;
+    document.getElementById("editModal").style.display = "block";
+}
+
+function fecharModalEdicao() {
+    document.getElementById("editModal").style.display = "none";
+}
+
+// Função para salvar alterações
+function salvarAlteracoes() {
+    // Aqui você pode adicionar a lógica para salvar as alterações
+    fecharModalEdicao();
+}
+        </script>
 </body>
 
 </html>
