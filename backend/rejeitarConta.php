@@ -26,16 +26,16 @@ if (!empty($chave) && !empty($tipoUsuario)) {
 
     if ($stmt->execute()) {
         $_SESSION['mensagem'] = "<div class='alert alert-success' role='alert'> Conta rejeitada e registro removido com sucesso!</div>";
-        header("Location: ../../frontend/pages/paginavisitante.html");
+        header("Location: ../../frontend/pages/visitantePrincipal.html");
         exit();
     } else {
         $_SESSION['mensagem'] = "<div class='alert alert-danger' role='alert'> Erro: Não foi possível excluir a conta</div>";
-        header("Location: ../../frontend/pages/paginavisitante.html");
+        header("Location: ../../frontend/pages/visitantePrincipal.html");
         exit();
     }
 } else {
     $_SESSION['mensagem'] = "<div class='alert alert-danger' role='alert'> Erro: Chave ou tipo de usuário não fornecidos</div>";
-    header("Location: ../../frontend/pages/paginavisitante.html");
+    header("Location: ../../frontend/pages/visitantePrincipal.html");
     exit();
 }
 ?>

@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
     
 
     if (!$nome || !$email || !$senha) {
-        header("Location: ../frontend/pages/cadastroProfessor.html?error=Todos os campos são obrigatórios");
+        header("Location: ../frontend/pages/docenteCadastro.html?error=Todos os campos são obrigatórios");
         exit;
     }
 
@@ -26,10 +26,10 @@ if (isset($_POST['submit'])) {
         if (is_array($resposta) && isset($resposta['status']) && $resposta['status']) {
             header("Location: ../frontend/pages/login.html");
         } else {
-            header("Location: ../frontend/pages/cadastroProfessor.html" . urlencode($resposta['message']));
+            header("Location: ../frontend/pages/docenteCadastro.html" . urlencode($resposta['message']));
         }
     } else {
-        header("Location: ../frontend/pages/cadastroProfessor.html?error=" . urlencode($resultado['message']));
+        header("Location: ../frontend/pages/docenteCadastro.html?error=" . urlencode($resultado['message']));
     }
 }
 ?>

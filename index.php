@@ -1,14 +1,14 @@
 <?php
-    header("Location: frontend/pages/paginavisitante.html");
+    header("Location: frontend/pages/visitantePrincipal.html");
 ?>
 <!DOCTYPE html>
 <html>
     <body>
         <h3>Paginas</h3>
     <br>
-    <a href="./frontend/pages/cadastroAluno.html" class="button">Cadastro: Discente</a><br>
+    <a href="./frontend/pages/discenteCadastro.html" class="button">Cadastro: Discente</a><br>
     
-    <a href="./frontend/pages/cadastroProfessor.html" class="button">Cadastro: Docente</a><br>
+    <a href="./frontend/pages/docenteCadastro.html" class="button">Cadastro: Docente</a><br>
     
     <a href="./frontend/pages/discenteVisualizar.html" class="button">Visualizar Discente</a><br>
     
@@ -20,13 +20,13 @@
     
     <a href="./frontend/pages/paginadebolsavisitante.html" class="button">Página de Bolsa (Visitante)</a><br>
     
-    <a href="./frontend/pages/paginagerenciamento.html" class="button">Página de Gerenciamento</a><br>
+    <a href="./frontend/pages/superUsuarioPrincipal.html" class="button">Página de Gerenciamento</a><br>
     
-    <a href="./frontend/pages/paginavisitante.html" class="button">Página Visitante</a><br>
+    <a href="./frontend/pages/visitantePrincipal.html" class="button">Página Visitante</a><br>
     
-    <a href="./frontend/pages/projetoCadastrar.html" class="button">Cadastrar Projeto</a><br>
+    <a href="./frontend/pages/projetoCadastro.html" class="button">Cadastrar Projeto</a><br>
         
-    <a href="./frontend/pages/teladereport.html" class="button">Tela de Report</a><br>
+    <a href="./frontend/pages/report.html" class="button">Tela de Report</a><br>
     
     <a href="./frontend/pages/verificacaoEmailCodigo.html" class="button">Verificação de Email</a><br>
 
