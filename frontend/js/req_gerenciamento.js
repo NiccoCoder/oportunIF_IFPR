@@ -1,5 +1,7 @@
 var idSelecionado;
 $(document).ready(function () {
+
+  console.log("opa");
   $.ajax({
     url: "../../backend/requisicoes/req_gerenciamento.php",
     dataType: "json",
@@ -44,7 +46,7 @@ function buscarProjetosGerenciamento() {
                             <th> Titulo </th>
                             <th> Tipo   </th>
                             <th> Responsável </th>
-                            <th> C/ Bolsa</th>
+                            <th> E-mail</th>
                             <th> Opções </th>
                           </tr>
         `);
@@ -57,6 +59,7 @@ function buscarProjetosGerenciamento() {
       $("#responsavelModal").text("Responsavel:");
       $("#bolsaModal").text("Com bolsa:");
       $("#resumoModal").text("Resumo:");
+      $("#emailModal").show();
 
       if (data.length > 0) {
         $.each(data, function (index, item) {
@@ -68,15 +71,6 @@ function buscarProjetosGerenciamento() {
           }
           else {
             possui = 'Sim';
-
-            //se tiver bolsa aparece as informações dentro da div
-
-            // $("#bolsa").text(`
-            //   <p style="color: #000000;"><strong id="resumoModal">Criterios</strong> <span id="modalSummary"></span></p>
-            // <p style="color: #000000;"><strong id="resumoModal">Bolsa descição</strong> <span id="modalSummary"></span></p>
-            // <p style="color: #000000;"><strong id="resumoModal">Requisitos</strong> <span id="modalSummary"></span></p>
-            //   `);
-
 
           }
           $("#linhaTabela").append(
@@ -92,10 +86,10 @@ function buscarProjetosGerenciamento() {
                             <td>` + item.TITULO + `</td>
                             <td>`+ item.NOME_TIPO_PROJETO + `</td>
                             <td>`+ item.NOME + `</td>
-                            <td>`+ possui + `</td>
+                            <td>`+ item.EMAIL + `</td>
                             <td>
                               <div class="action-buttons">
-                                <button title="Visualizar" onclick="openModal('`+ item.TITULO + `', '` + item.NOME_TIPO_PROJETO + `','` + item.NOME + `','` + possui + `','` + item.RESUMO + `')">
+                                <button title="Visualizar" onclick="openModal('`+ item.TITULO + `', '` + item.NOME_TIPO_PROJETO + `','` + item.NOME + `','` + possui + `','` + item.RESUMO + `','` +item.EMAIL + `','` + item.CRITERIOS + `','` + item.DESCRICAO  + `','` + item.REQUISITOS + `')">
                                   <i class="mdi mdi-eye icon text-success ml-auto"></i>
                                 </button>
                                 <button title="Deletar" onclick="openDeleteModal('`+ item.TITULO + `',` + item.ID_PROJETO + `)">
@@ -145,7 +139,7 @@ function buscarDocentesGerenciamento() {
                               </div>
                             </th>
                             <th> Nome </th>
-                            <th> Email   </th>
+                            <th> E-mail   </th>
                             <th> Situação </th>
                             <th> Numero de projetos </th>
                             <th> Opções </th>
@@ -160,6 +154,7 @@ function buscarDocentesGerenciamento() {
       $("#responsavelModal").text("Numero de projetos:");
       $("#bolsaModal").text("Situação")
       $("#resumoModal").empty();
+      $("#emailModal").hide();
 
       if (data.length > 0) {
         $.each(data, function (index, item) {
@@ -229,6 +224,7 @@ function buscarDiscentesGerenciamento() {
                   </th>
                   <th> Nome </th>
                   <th> Email </th>
+                  <th> Curso </th>
                   <th> Situação </th>
                   <th> Opções </th>
               </tr>
@@ -238,8 +234,8 @@ function buscarDiscentesGerenciamento() {
           $("#nomeModal").text("Detalhes do Discente");
           $("#tituloModal").text("Nome:");
           $("#tipoModal").text("Email:");
-          $("#responsavelModal").text("Situação:");
-          $("#bolsaModal").empty();
+          $("#responsavelModal").text("Curso:");
+          $("#bolsaModal").text("Situação:");
           $("#resumoModal").empty();
 
           if (data.length > 0) {
@@ -256,10 +252,11 @@ function buscarDiscentesGerenciamento() {
                           </td>
                           <td>${item.NOME}</td>
                           <td>${item.EMAIL}</td>
+                          <td>${item.CURSO}</td>
                           <td>${item.SITUACAO}</td>
                           <td>
                               <div class="action-buttons">
-                                  <button title="Visualizar" onclick="openModal('${item.NOME}', '${item.EMAIL}', '${item.SITUACAO}', null)">
+                                  <button title="Visualizar" onclick="openModal('${item.NOME}', '${item.EMAIL}', '${item.CURSO}', '${item.SITUACAO}')">
                                       <i class="mdi mdi-eye icon text-success ml-auto"></i>
                                   </button>
                                   <button title="Deletar" onclick="openDeleteModal('${item.NOME}', ${item.ID_DISCENTE})">
@@ -328,13 +325,27 @@ function deletarProjeto() {
 const projectModal = document.getElementById("projectModal");
 const deleteModal = document.getElementById("deleteModal");
 
-function openModal(title, type, responsible, grant, summary) {
+function openModal(title, type, responsible, grant, summary, email, criteria, description, requirements) {
   document.getElementById("modalTitle").textContent = title;
   document.getElementById("modalType").textContent = type;
   document.getElementById("modalResponsible").textContent = responsible;
+  document.getElementById("modalEmail").textContent = email;
   document.getElementById("modalGrant").textContent = grant;
   document.getElementById("modalSummary").textContent = summary;
   projectModal.style.display = "block";
+  console.log("OPAAAAAAAaa");
+  if(grant == "Sim"){
+    console.log("esta chegando no sim");
+    $("#bolsa").show();
+    document.getElementById("modalCriteria").innerText = criteria;
+    document.getElementById("modalDescription").innerText = description;
+    document.getElementById("modalRequirements").innerText = requirements;
+  }
+  //esconde a div bolsa
+  else{
+    console.log("nao chegando");
+    $("#bolsa").hide();
+  }
 }
 
 

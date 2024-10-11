@@ -30,7 +30,7 @@ function buscarProjetos() {
                               <th> Titulo </th>
                               <th> Tipo   </th>
                               <th> Responsável </th>
-                              <th> C/ Bolsa</th>
+                              <th> E-mail</th>
                               <th> Opções </th>
                             </tr>
           `);
@@ -67,10 +67,10 @@ function buscarProjetos() {
                               <td>` + item.TITULO + `</td>
                               <td>`+ item.NOME_TIPO_PROJETO + `</td>
                               <td>`+ item.NOME + `</td>
-                              <td>`+ possui + `</td>
+                              <td>`+ item.EMAIL   + `</td>
                               <td>
                                 <div class="action-buttons">
-                                  <button title="Visualizar" onclick="openModal('`+ item.TITULO + `', '` + item.NOME_TIPO_PROJETO + `','` + item.NOME + `','` + possui + `','` + item.RESUMO + `')">
+                                  <button title="Visualizar" onclick="openModal('`+ item.TITULO + `', '` + item.NOME_TIPO_PROJETO + `','` + item.NOME + `','` + item.EMAIL + `','` +possui + `','` + item.RESUMO + `','` + item.CRITERIOS + `','` + item.DESCRICAO  + `','` + item.REQUISITOS + `')">
                                     <i class="mdi mdi-eye icon text-success ml-auto"></i>
                                   </button>
                                 </div>

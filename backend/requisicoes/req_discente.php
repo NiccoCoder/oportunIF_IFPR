@@ -9,14 +9,16 @@ if ($conexao->connect_error) {
 
 // SQL para buscar discentes
 $sql = "SELECT 
-    d.ID_DISCENTE AS ID_DISCENTE,
-    d.EMAIL AS EMAIL,
-    d.SITUACAO AS SITUACAO,
-    d.NOME AS NOME
-FROM
-    TB_DISCENTE d
-GROUP BY 
-    d.ID_DISCENTE, d.NOME, d.EMAIL, d.SITUACAO"; // Agrupando pelos campos necessários
+        `tb_discente`.`ID_DISCENTE` AS `ID_DISCENTE`,
+        `tb_discente`.`EMAIL` AS `EMAIL`,
+        `tb_discente`.`SITUACAO` AS `SITUACAO`,
+        `tb_discente`.`NOME` AS `NOME`,
+        `tb_curso`.`NOME_CURSO` AS `CURSO`
+    FROM
+        (`tb_discente`
+        JOIN `tb_curso`)
+    WHERE
+        (`tb_curso`.`ID_CURSO` = `tb_discente`.`ID_CURSO`)"; // Agrupando pelos campos necessários
 
 $result = $conexao->query($sql);
 

@@ -202,8 +202,15 @@
           <p style="color: #000000" ><strong id="tituloModal">Título:</strong> <span id="modalTitle"></span></p>
           <p style="color: #000000;" ><strong id="tipoModal">Tipo:</strong> <span id="modalType"></span></p>
           <p style="color: #000000;" ><strong id="responsavelModal">Responsável:</strong> <span id="modalResponsible"></span></p>
+          <div id="emailModal"> <p style="color: #000000;"><strong >E-mail:</strong> <span id="modalEmail"></span></p></div>
           <p style="color: #000000;" ><strong id="bolsaModal">Com Bolsa:</strong> <span id="modalGrant"></span></p>
           <p style="color: #000000;" ><strong id="resumoModal">Resumo:</strong> <span id="modalSummary"></span></p>
+          
+          <div id="bolsa">
+            <p style="color: #000000;"><strong>Criterios da Bolsa:</strong> <span id="modalCriteria"></span></p>
+            <p style="color: #000000;"><strong>Descrição da Bolsa:</strong> <span id="modalDescription"></span></p>
+            <p style="color: #000000;"><strong>Requisitos da Bolsa:</strong> <span id="modalRequirements"></span></p>
+          </div>
         </div>
       </div>
 
@@ -240,7 +247,7 @@
 
       <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-      <script src="../js/req_gerenciament.js"></script>
+      <script src="../js/req_gerenciamento.js"></script>
       <script src="../../frontend/js/verificarSessaoSuperUsuario.js"></script>
       <script src="../js/atualizarNomeUsuario.js"></script>
 
@@ -252,14 +259,7 @@
         const deleteModal = document.getElementById("deleteModal");
         const cursoModal = document.getElementById("cursoModal");
 
-        function openModal(title, type, responsible, grant, summary) {
-          document.getElementById("modalTitle").textContent = title;
-          document.getElementById("modalType").textContent = type;
-          document.getElementById("modalResponsible").textContent = responsible;
-          document.getElementById("modalGrant").textContent = grant;
-          document.getElementById("modalSummary").textContent = summary;
-          projectModal.style.display = "block";
-        }
+       
 
         function openDeleteModal(title, id) {
           console.log(id);
