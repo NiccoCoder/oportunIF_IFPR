@@ -84,9 +84,9 @@ c. Link da Prototipação
 - **Junho:** Greve
 - **Julho:** Back-End e Front-End
 - **Agosto:** Apresentação pre-projeto
-- **Setembro:** 
-- **Outubro:** 
-- **Novembro:** 
+- **Setembro:** Desenvolvimento do projeto
+- **Outubro:** Desenvolvimento e Defesa do tcc - interna 
+- **Novembro:** Correção e SCiTec
 - **Dezembro:** 
 
  **b. Organização da Equipe**
