@@ -101,6 +101,12 @@ c. Link da Prototipação
 - **SCITec:** Alan, Caio, Nicolas
 - **Correção artigo e projeto:** Alan, Caio, Nicolas
 - **Defesa do TCC:** Alan, Caio, Nicolas
+- **Bootstrap (v. 5.2.3):** Desenvolvimento da interface.
+- **jQuery:** Facilitação de manipulação de DOM, eventos e AJAX.
+- **Ajax:** Realização de requisições assíncronas para atualização de dados em tempo real.
+- **.ENV:** Gestão de variáveis de ambiente.
+- **PHPMailer:** Envio de emails.
+- **draw.io:** Criação de diagramas e fluxogramas.
 
 **c. Link do Trello/Jira**
 
