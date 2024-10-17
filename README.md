@@ -95,18 +95,12 @@ c. Link da Prototipação
 - **Levantamento de requisitos:** Alan, Caio e Nicolas
 - **Analise e projeto:** Alan, Caio e Nicolas
 - **Banco de dados:** Alan e Nicolas
-- **Front-end:** Caio e Nicolas
-- **Back-end:** Alan
+- **Front-end:** Alan
+- **Back-end:** Caio e Nicolas
 - **Artigo:** Alan, Caio, Nicolas
 - **SCITec:** Alan, Caio, Nicolas
 - **Correção artigo e projeto:** Alan, Caio, Nicolas
 - **Defesa do TCC:** Alan, Caio, Nicolas
-- **Bootstrap (v. 5.2.3):** Desenvolvimento da interface.
-- **jQuery:** Facilitação de manipulação de DOM, eventos e AJAX.
-- **Ajax:** Realização de requisições assíncronas para atualização de dados em tempo real.
-- **.ENV:** Gestão de variáveis de ambiente.
-- **PHPMailer:** Envio de emails.
-- **draw.io:** Criação de diagramas e fluxogramas.
 
 **c. Link do Trello/Jira**
 
@@ -123,10 +117,14 @@ c. Link da Prototipação
 - **HTML (v. 5):** Marcação do website.
 - **CSS (v. CSS3):** Estilização dos elementos.
 - **GitHub:** Desenvolvimento colaborativo.
-- **Docker (v.25.0.4):** Software de virtualização e leitura de im
-agens, utilizado para interpretar php. 
+- **Docker (v.25.0.4):** Software de virtualização e leitura de imagens, utilizado para interpretar php. 
 - **SQL:** Programação do banco de dados.
 - **Bootstrap (v. 5.2.3):** Desenvolvimento da interface.
+- **jQuery:** Facilitação de manipulação de DOM, eventos e AJAX.
+- **Ajax:** Realização de requisições assíncronas para atualização de dados em tempo real.
+- **.ENV:** Gestão de variáveis de ambiente.
+- **PHPMailer:** Envio de emails.
+- **draw.io:** Criação de diagramas e fluxogramas.
 
 **b. Resultados esperados**
 
