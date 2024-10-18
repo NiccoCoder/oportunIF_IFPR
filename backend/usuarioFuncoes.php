@@ -50,7 +50,7 @@ function cadastrarDocente($nome, $email, $senha, $conexao) {
     $resultado = $stmt->get_result();
 
     if ($resultado->num_rows > 0) {
-        return ['status' => false, 'message' => 'Este e-mail já está cadastrado.', 'chave' => $chave];
+        return ['status' => false, 'message' => 'Este e-mail já está cadastrado.'];
     }
 
     // Criptografia da senha e criação de uma chave para a validação

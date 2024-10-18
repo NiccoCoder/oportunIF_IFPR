@@ -1,3 +1,5 @@
 # arquivos a serem ignoradas no git push
 .env
 lembrar.txt
+OportunIF.png
+Oportunif caso e uso.png

@@ -98,18 +98,18 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 
--- -- Inserindo valores na tabela TB_CURSO
--- INSERT INTO `db_oportunif`.`TB_CURSO` (`NOME_CURSO`) VALUES
--- ('Técnico em Informática'),
--- ('Técnico em Administração'),
--- ('Curso Superior em Gestão da Tecnologia da Informação'),
--- ('Bacharelado em Administração'),
--- ('Bacharelado em Ciência da Computação');
+-- Inserindo valores na tabela TB_CURSO
+INSERT INTO `db_oportunif`.`TB_CURSO` (`NOME_CURSO`) VALUES
+('Técnico em Informática'),
+('Técnico em Administração'),
+('Curso Superior em Gestão da Tecnologia da Informação'),
+('Bacharelado em Administração'),
+('Bacharelado em Ciência da Computação');
 
--- -- Inserindo valores na tabela TB_TIPO_PROJETO
--- INSERT INTO `db_oportunif`.`TB_TIPO_PROJETO` (`NOME_TIPO_PROJETO`, `DESCRICAO`) VALUES
--- ('Extensão', 'Projeto de extensão'),
--- ('Pesquisa', 'Projeto de pesquisa'),
--- ('Inovação', 'Projeto de inovação'),
--- ('Ensino', 'Projeto de ensino');
+-- Inserindo valores na tabela TB_TIPO_PROJETO
+INSERT INTO `db_oportunif`.`TB_TIPO_PROJETO` (`NOME_TIPO_PROJETO`, `DESCRICAO`) VALUES
+('Extensão', 'Projeto de extensão'),
+('Pesquisa', 'Projeto de pesquisa'),
+('Inovação', 'Projeto de inovação'),
+('Ensino', 'Projeto de ensino');
 
