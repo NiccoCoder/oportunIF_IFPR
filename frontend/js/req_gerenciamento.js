@@ -1,7 +1,5 @@
 var idSelecionado;
 $(document).ready(function () {
-
-  console.log("opa");
   $.ajax({
     url: "../../backend/requisicoes/req_gerenciamento.php",
     dataType: "json",

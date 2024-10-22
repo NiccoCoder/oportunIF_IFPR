@@ -65,7 +65,7 @@ function cadastrarDocente($nome, $email, $senha, $conexao) {
     $stmt->bind_param("ssss", $nome, $email, $senha_cripto, $chave);
     
     if ($stmt->execute()) {
-        return ['status' => true, 'message' => 'Cadastro realizado com sucesso'];
+        return ['status' => true, 'message' => 'Cadastro realizado com sucesso', 'chave' => $chave];
     } else {
         return ['status' => false, 'message' => 'Falha ao registrar docente: ' . $stmt->error];
     }
