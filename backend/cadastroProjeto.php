@@ -3,6 +3,8 @@ session_start();
 include_once('config.php');
 include_once('projetoFuncoes.php');
 
+$response = ['success' => false, 'message' => ''];
+
 // Verifica se a sessão está ativa e se o usuário é um docente
 if (isset($_SESSION['id']) && isset($_SESSION['tipoUsuario'])) {
     $id_docente = $_SESSION['id']; // Armazena o ID do usuário
@@ -10,12 +12,13 @@ if (isset($_SESSION['id']) && isset($_SESSION['tipoUsuario'])) {
 
     // Verifica se o usuário é um docente
     if ($tipoUsuario !== 'docente') {
-        header("Location: ../frontend/pages/cadastroProjeto.html?error=" . urlencode('Acesso negado. Apenas docentes podem cadastrar projetos.'));
+        $response['message'] = 'Acesso negado. Apenas docentes podem cadastrar projetos.';
+        echo json_encode($response);
         exit();
     }
 
     // Processa o formulário somente se o botão de envio foi pressionado
-    if (isset($_POST['submit'])) {
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $titulo = $_POST['titulo'];
         $id_tipo_projeto = $_POST['id_tipo_projeto'];
         $criterios_selecao = $_POST['criterios_selecao'];
@@ -27,27 +30,29 @@ if (isset($_SESSION['id']) && isset($_SESSION['tipoUsuario'])) {
        
         // Valida os campos obrigatórios
         if (empty($titulo) || empty($id_tipo_projeto) || empty($criterios_selecao) || empty($resumo)) {
-            header("Location: ../frontend/pages/cadastroProjeto.html?error=" . urlencode('Todos os campos são obrigatórios'));
+            $response['message'] = 'Todos os campos são obrigatórios';
+            echo json_encode($response);
             exit();
         }
 
-        
         // Cadastra o projeto
         $resultado = cadastrarProjeto($id_docente, $titulo, $id_tipo_projeto, $criterios_selecao, $resumo, $conexao, $bolsa_disponivel, $descricao_bolsa, $requisito_bolsa);
 
         // Verifica o resultado do cadastro
         if (is_array($resultado) && isset($resultado['status']) && $resultado['status']) {
             $_SESSION['message'] = 'Projeto cadastrado com sucesso!';
-
-            header("Location: ../frontend/pages/docenteVisualizar.html");
-            exit(); 
-        } else {
-            header("Location: ../frontend/pages/cadastroProjeto.html?error=" . urlencode($resultado['message']));
+            $_SESSION['showModal'] = true;
+            header('Location: ../frontend/pages/projetoCadastro.html?showModal=true');
             exit();
+        } else {
+            $response['message'] = $resultado['message'] ?? 'Erro ao cadastrar o projeto.';
         }
+    } else {
+        $response['message'] = 'Método não permitido.';
     }
 } else {
-    // Redireciona se a sessão não estiver ativa
-    header("Location: ../frontend/pages/cadastroProjeto.html?error=" . urlencode('Sessão não está ativa'));
-    exit();
+    $response['message'] = 'Sessão não está ativa';
 }
+
+// Retorna a resposta em formato JSON
+echo json_encode($response);
