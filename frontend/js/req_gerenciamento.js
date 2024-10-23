@@ -175,7 +175,7 @@ function buscarDocentesGerenciamento() {
                                 <button title="Visualizar" onclick="openModal('`+ item.NOME + `', '` + item.EMAIL + `','` + item.TOTAL_PROJETOS + `','` + item.SITUACAO + `', null )">
                                   <i class="mdi mdi-eye icon text-success ml-auto"></i>
                                 </button>
-                                <button title="Deletar" onclick="openDeleteModal('`+ item.TITULO + `',` + item.ID_PROJETO + `)">
+                                <button title="Deletar" onclick="openDeleteModalDocente('`+ item.NOME + `',` + item.ID_DOCENTE + `)">
                                   <i class="mdi mdi-delete icon text-danger ml-auto"></i>
                                 </button>
                               </div>
@@ -257,7 +257,7 @@ function buscarDiscentesGerenciamento() {
                                   <button title="Visualizar" onclick="openModal('${item.NOME}', '${item.EMAIL}', '${item.CURSO}', '${item.SITUACAO}')">
                                       <i class="mdi mdi-eye icon text-success ml-auto"></i>
                                   </button>
-                                  <button title="Deletar" onclick="openDeleteModal('${item.NOME}', ${item.ID_DISCENTE})">
+                                  <button title="Deletar" onclick="openDeleteModalDiscente('${item.NOME}', ${item.ID_DISCENTE})">
                                       <i class="mdi mdi-delete icon text-danger ml-auto"></i>
                                   </button>
                               </div>
@@ -279,20 +279,12 @@ function buscarDiscentesGerenciamento() {
 }
 
 
-function openDeleteModal(title, id) {
-  idSelecionado = id;
-  document.getElementById("deleteTitle").textContent = title;
-  botaoDeletarProjeto.removeEventListener("onclick", deletarProjeto);
+ //// MODAL DELETAR Projeto
 
-  $('#botaoDeletarProjeto').onclick(deletarProjeto());
-
-  //botaoDeletarProjeto.addEventListener("onclick", deletarProjeto.bind(id));
-  deleteModal.style.display = "block";
-}
 function openDeleteModal(title, id) {
   console.log(id);
   idSelecionado = id;
-  //document.getElementById("deleteTitle").textContent = title;
+  document.getElementById("deleteTitle").textContent = title;
 
 
   //botaoDeletarProjeto.removeEventListener("onclick", deletarProjeto);
@@ -300,16 +292,75 @@ function openDeleteModal(title, id) {
 }
 
 
-function deletarProjeto() {
+////MODAL DELETAR DOCENTE
+function openDeleteModalDocente(name, id) {
+  console.log(id);
+  idSelecionado = id;
+  document.getElementById("deleteTitle").textContent = name;
 
+
+  //botaoDeletarProjeto.removeEventListener("onclick", deletarProjeto);
+  deleteModalDocente.style.display = "block";
+}
+
+ //// MODAL DELETAR DOCENTE
+function openDeleteModalDiscente(name, id) {
+  console.log(id);
+  idSelecionado = id;
+  document.getElementById("deleteTitle").textContent = name;
+
+
+  //botaoDeletarProjeto.removeEventListener("onclick", deletarProjeto);
+  deleteModalDiscente.style.display = "block";
+}
+
+ // DELETAR PROJETO
+function deletarProjeto() {
   $.ajax({
     type: "POST",
     url: "../../backend/requisicoes/req_deletar_projeto.php",
     data: "id=" + idSelecionado,
     success: function (data) {
-      alert("Projeto deletado com sucesso!" + data);
+      alert("Projeto deletado com sucesso!" + idSelecionado);
       console.log(idSelecionado);
       closeDeleteModal();
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      //$("#resultado").append("<p>Erro ao buscar os projetos: " + errorThrown + "</p>");
+    }
+  });
+}
+
+// DELETAR Docente
+function deletarDocente() {
+  console.log(idSelecionado);
+  $.ajax({
+    type: "POST",
+    url: "../../backend/requisicoes/req_deletar_docente.php",
+    data: "id=" + idSelecionado,
+    success: function (data) {
+      alert("Docente deletado com sucesso!");
+      console.log(idSelecionado);
+      closeDeleteModalDocente();
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      //$("#resultado").append("<p>Erro ao buscar os projetos: " + errorThrown + "</p>");
+    }
+  });
+}
+
+
+// DELETAR Discente
+function deletarDiscente() {
+
+  $.ajax({
+    type: "POST",
+    url: "../../backend/requisicoes/req_deletar_discente.php",
+    data: "id=" + idSelecionado,
+    success: function (data) {
+      alert("Discente deletado com sucesso!");
+      console.log(idSelecionado);
+      closeDeleteModalDiscente();
     },
     error: function (jqXHR, textStatus, errorThrown) {
       //$("#resultado").append("<p>Erro ao buscar os projetos: " + errorThrown + "</p>");
@@ -320,8 +371,12 @@ function deletarProjeto() {
 
 
 
+
 const projectModal = document.getElementById("projectModal");
 const deleteModal = document.getElementById("deleteModal");
+const deleteModalDocente = document.getElementById("deleteModalDocente");
+const deleteModalDiscente = document.getElementById("deleteModalDiscente");
+
 
 function openModal(title, type, responsible, grant, summary, email, criteria, description, requirements) {
   document.getElementById("modalTitle").textContent = title;
@@ -346,10 +401,24 @@ function openModal(title, type, responsible, grant, summary, email, criteria, de
   }
 }
 
-
+// fechar modal deletar projeto
 function closeDeleteModal() {
   deleteModal.style.display = "none";
 }
+
+// fechar modal deletar projeto
+function closeDeleteModalDocente() {
+  deleteModalDocente.style.display = "none";
+}
+
+
+// fechar modal deletar projeto
+function closeDeleteModalDiscente() {
+  deleteModalDiscente .style.display = "none";
+}
+
+
+
 
 const closeButtons = document.getElementsByClassName("close");
 Array.from(closeButtons).forEach(function (btn) {
