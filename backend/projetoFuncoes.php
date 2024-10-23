@@ -13,19 +13,19 @@ function cadastrarProjeto($id_docente, $titulo, $id_tipo_projeto, $criterios_sel
         return ['status' => false, 'message' => 'Este docente não está cadastrado.'];
     }
     
-    // Prepare a query de inserção com os novos campos
+    // Prepare a query de inserção
     $insert_script = "INSERT INTO TB_PROJETO (ID_DOCENTE, TITULO, ID_TIPO_PROJETO, CRITERIOS_SELECAO, RESUMO, POSSUI_BOLSA, BOLSA_DESCRICAO, BOLSA_REQUISITOS) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     
-    // Se a bolsa não estiver disponível, passar null para os campos relacionados à bolsa
+    // Prepare o statement
+    $stmt = $conexao->prepare($insert_script);
+
+    // Se a bolsa estiver disponível
     if ($bolsa_disponivel == '1') {
-        $stmt = $conexao->prepare($insert_script);
-        $stmt->bind_param("issssssss", $id_docente, $titulo, $id_tipo_projeto, $criterios_selecao, $resumo, $bolsa_disponivel, $descricao_bolsa, $requisito_bolsa);
+        $stmt->bind_param("isssssss", $id_docente, $titulo, $id_tipo_projeto, $criterios_selecao, $resumo, $bolsa_disponivel, $descricao_bolsa, $requisito_bolsa);
     } else {
         // Se não há bolsa, os campos de descrição e requisitos ficam nulos
         $descricao_bolsa = null;
         $requisito_bolsa = null;
-        $insert_script = "INSERT INTO TB_PROJETO (ID_DOCENTE, TITULO, ID_TIPO_PROJETO, CRITERIOS_SELECAO, RESUMO, POSSUI_BOLSA, BOLSA_DESCRICAO, BOLSA_REQUISITOS) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        $stmt = $conexao->prepare($insert_script);
         $stmt->bind_param("isssssss", $id_docente, $titulo, $id_tipo_projeto, $criterios_selecao, $resumo, $bolsa_disponivel, $descricao_bolsa, $requisito_bolsa);
     }
 
