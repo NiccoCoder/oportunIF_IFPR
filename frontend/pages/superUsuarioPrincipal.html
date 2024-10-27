@@ -318,10 +318,22 @@
         }
 
         function criarCurso() {
-          const nomeCurso = document.getElementById('nomeCurso').value;
+          var nomeCurso = document.getElementById('nomeCurso').value;
           if (nomeCurso) {
-            alert('Curso "' + nomeCurso + '" criado com sucesso!');
-            closeCursoModal();
+
+            $.ajax({
+              type: "POST",
+               url: "../../backend/requisicoes/req_criar_cursos.php",
+              data: "id=" + nomeCurso,
+              success: function (data) {
+                alert('Curso "' + nomeCurso + '" criado com sucesso!');
+                closeCursoModal();
+               },
+              error: function (jqXHR, textStatus, errorThrown) {
+                alert(errorThrown)
+              }
+            });
+            
           } else {
             alert('Por favor, insira o nome do curso.');
           }
