@@ -321,7 +321,7 @@ function deletarProjeto() {
     url: "../../backend/requisicoes/req_deletar_projeto.php",
     data: "id=" + idSelecionado,
     success: function (data) {
-      alert("Projeto deletado com sucesso!" + idSelecionado);
+      alert("Projeto deletado com sucesso!");
       console.log(idSelecionado);
       closeDeleteModal();
     },
