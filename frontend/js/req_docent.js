@@ -81,7 +81,7 @@ function buscarProjetos() {
                                   <i class="mdi mdi-delete icon text-danger ml-auto"></i>
                                 </button>
                                 <button title="Editar"
-                                  onclick="openEditModal('IF Esportes: Basquete', 'Extensão', 'Mariana', 'Não')"
+                                  onclick="openEditModal('`+ item.TITULO + `', '` + item.NOME_TIPO_PROJETO +  `','` + possui + `','` + item.RESUMO + `','` + item.CRITERIOS + `','` + item.DESCRICAO  + `','` + item.REQUISITOS + `')"
                                   style="display: flex; justify-content: center; align-items: center;">
                                   <i class="mdi mdi-pencil icon text-primary ml-auto"></i>
                                 </button>

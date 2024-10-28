@@ -160,11 +160,11 @@
       <h2 style="color: #000000;" id="nomeModal">Detalhes do Projeto</h2>
       <p style="color: #000000" ><strong id="tituloModal">Título:</strong> <span id="modalTitle"></span></p>
       <p style="color: #000000;" ><strong id="tipoModal">Tipo:</strong> <span id="modalType"></span></p>
+      <p style="color: #000000;"><strong>Criterios de seleção:</strong> <span id="modalCriteria"></span></p>
       <p style="color: #000000;" ><strong id="responsavelModal">Responsável:</strong> <span id="modalResponsible"></span></p>
       <p style="color: #000000;" ><strong id="bolsaModal">Com Bolsa:</strong> <span id="modalGrant"></span></p>
       <p style="color: #000000;" ><strong id="resumoModal">Resumo:</strong> <span id="modalSummary"></span></p>
       <div id="bolsa">
-        <p style="color: #000000;"><strong>Criterios da Bolsa:</strong> <span id="modalCriteria"></span></p>
         <p style="color: #000000;"><strong>Descrição da Bolsa:</strong> <span id="modalDescription"></span></p>
         <p style="color: #000000;"><strong>Requisitos da Bolsa:</strong> <span id="modalRequirements"></span></p>
       </div>
@@ -198,10 +198,24 @@
         <input type="text" id="editTitle" style="width: 100%;"><br>
         <label for="editType" style="color: #000000;">Tipo:</label>
         <input type="text" id="editType" style="width: 100%;"><br>
-        <label for="editResponsible" style="color: #000000;">Responsável:</label>
-        <input type="text" id="editResponsible" style="width: 100%;"><br>
-        <label for="editGrant" style="color: #000000;">Com Bolsa:</label>
-        <input type="text" id="editGrant" style="width: 100%;"><br>
+        <label for="editCriteria" style="color: #000000;">Criterios de seleção: </label>
+        <input type="text" id="editCriteria" style="width: 100%;"><br>
+        <label for="editGrant" style="color: #000000;">Resumo:</label>
+        <input type="text" id="editSummary" style="width: 100%;"><br>
+        <!-- <label for="editGrant" style="color: #000000;">Com Bolsa:</label> -->
+        <!-- <input type="text" id="editGrant" style="width: 100%;"><br> -->
+        <label for="checkboxCbolsa" style="color: #000000;">C/bolsa: </label> 
+        <br>
+         <input type="checkbox"  id="checkboxCbolsa">
+        
+        <div id="editBolsa">
+          
+          <label for="editDescription" style="color: #000000;">Descrição:</label>
+          <input type="text" id="editDescription" style="width: 100%;"><br>
+          <label for="editRequirements" style="color: #000000;">Requisitos</label>
+          <input type="text" id="editRequirements" style="width: 100%;"><br>
+        </div>
+        <br>
         <button type="button"
           style="padding: 8px 16px; background-color: #64ec9d; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
           onclick="saveChanges()">Salvar</button>
@@ -217,7 +231,7 @@
     const projectModal = document.getElementById("projectModal");
     const deleteModal = document.getElementById("deleteModal");
 
-
+    var cBolsa;
     function closeDeleteModal() {
       deleteModal.style.display = "none";
     }
@@ -251,13 +265,14 @@
       document.getElementById("modalTitle").innerText = title;
       document.getElementById("modalType").innerText = type;
       document.getElementById("modalResponsible").innerText = responsible;
+      document.getElementById("modalCriteria").innerText = criteria;
       document.getElementById("modalGrant").innerText = grant;
       document.getElementById("modalSummary").textContent = summary;
       document.getElementById("projectModal").style.display = "block";
       //Caso exista bolsa ele ira mostrar a div "bolsa" e mostra a descrição, criterio e requisitos
       if(grant == "Sim"){
         $("#bolsa").show();
-        document.getElementById("modalCriteria").innerText = criteria;
+        
         document.getElementById("modalDescription").innerText = description;
         document.getElementById("modalRequirements").innerText = requirements;
       }
@@ -298,13 +313,35 @@
       closeDeleteModal();
     }
 
+
+
     // Funções para abrir e fechar o modal de edição
-    function openEditModal(title, type, responsible, grant) {
+    function openEditModal(title, type, grant, summary, criteria, description, requirements) {
       document.getElementById("editTitle").value = title;
       document.getElementById("editType").value = type;
-      document.getElementById("editResponsible").value = responsible;
-      document.getElementById("editGrant").value = grant;
+      document.getElementById("editCriteria").value = criteria;
+      // document.getElementById("editGrant").value = grant;
+      document.getElementById("editSummary").value = summary;
+      
       document.getElementById("editModal").style.display = "block";
+
+      if(grant == "Sim"){
+        document.getElementById("checkboxCbolsa").checked = true;
+      }
+      else{
+        document.getElementById("checkboxCbolsa").checked = false;
+      }
+      if(comBolsa){
+        $("#editBolsa").show();
+
+        document.getElementById("editDescription").value = description;
+        document.getElementById("editRequirements").value = requirements;
+      }
+      //esconde a div bolsa
+      else{
+        
+        $("#editBolsa").hide();
+      }
     }
 
     function closeEditModal() {
