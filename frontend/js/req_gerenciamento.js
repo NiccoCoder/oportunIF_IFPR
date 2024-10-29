@@ -235,6 +235,7 @@ function buscarDiscentesGerenciamento() {
           $("#responsavelModal").text("Curso:");
           $("#bolsaModal").text("Situação:");
           $("#resumoModal").empty();
+          $("#emailModal").hide();
 
           if (data.length > 0) {
               $.each(data, function (index, item) {

@@ -21,7 +21,8 @@
         JOIN `TB_PROJETO`)
         JOIN `TB_TIPO_PROJETO`)
     WHERE
-        ((`TB_PROJETO`.`ID_DOCENTE` = ?)
+        ((`TB_DOCENTE`.`ID_DOCENTE` = `TB_PROJETO`.`ID_DOCENTE`)
+        AND(`TB_PROJETO`.`ID_DOCENTE` = ?)
             AND (`TB_TIPO_PROJETO`.`ID_TIPO_PROJETO` = `TB_PROJETO`.`ID_TIPO_PROJETO`))";
     $stmt = $conexao->prepare($sql);
 $stmt->bind_param("i", $idDocente);

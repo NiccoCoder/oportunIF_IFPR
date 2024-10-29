@@ -327,6 +327,8 @@
 
       if(grant == "Sim"){
         document.getElementById("checkboxCbolsa").checked = true;
+        document.getElementById("editDescription").value = description;
+        document.getElementById("editRequirements").value = requirements;
       }
       else{
         document.getElementById("checkboxCbolsa").checked = false;
@@ -334,8 +336,7 @@
       if(comBolsa){
         $("#editBolsa").show();
 
-        document.getElementById("editDescription").value = description;
-        document.getElementById("editRequirements").value = requirements;
+        
       }
       //esconde a div bolsa
       else{

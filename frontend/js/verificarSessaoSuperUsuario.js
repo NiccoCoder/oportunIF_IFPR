@@ -13,6 +13,7 @@ function verificarSessao() {
                 window.location.href = './discenteVisualizar.html'; // Redireciona para a página do discente
             } else if (data.user.tipoUsuario === 'docente') {
                 // Se o usuário é docente, verifica o super usuário
+                alert('olA');
                 if (data.user.superUsuario === 1) {
                     // Docente com super usuário
                     document.getElementById("content").style.display = "block"; // Mostra o conteúdo
