@@ -22,6 +22,7 @@
       <a class="navbar-brand" href="login.html">
         <img src="../../frontend/images/OportunIF.png" alt="OportunIF" style="height: 40px;">
       </a>
+
       <ul class="navbar-nav w-100">
         <li class="nav-item w-100">
           <div class="search-dropdown">
@@ -52,6 +53,17 @@
           </div>
         </li>
       </ul>
+  <!-- pessoal do back- end faz esse botão aparecer so quando estiver logado no super usuario nn sei como faz -->
+      <button title="Ver Super usuario" class="btn" id="outrosProjbtn"
+      style="background-color: transparent; border: none; display: flex; align-items: center;"
+      onclick="window.location.href='superUsuarioPrincipal.html'">
+      <i class="mdi mdi-compass" style="color: white; margin-right: 5px;"></i>
+      </button>
+      <button title="Visualizar todos projetos." class="btn" id="visualizarProjbtn"
+      style="background-color: transparent; border: none; display: flex; align-items: center;"
+      onclick="window.location.href='discenteVisualizar.html'">
+      <i class="mdi mdi-monitor" style="color: white; margin-right: 5px;"></i>
+      </button>
       <ul class="navbar-nav navbar-nav-right">
         <li class="nav-item dropdown d-none d-lg-block">
           <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
@@ -78,7 +90,7 @@
                 </div>
               </div>
               <div class="preview-item-content ml-2">
-                <p class="preview-subject mb-1">Reportar</p>
+                <p class="preview-subject mb-1">Denuncia</p>
               </div>
             </a>
             <div class="dropdown-divider"></div>

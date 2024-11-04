@@ -13,7 +13,7 @@
         .position-relative {
             position: relative;
         }
-        
+
         #togglePassword {
             z-index: 10; /* Garante que o ícone fique acima do input */
             cursor: pointer;
@@ -30,17 +30,14 @@
                     <div class="card col-lg-4">
                         <div class="card-body">
                             <h3 class="card-title" style="color: black;">Cadastro (Discente)</h3>
-                            <form action="../../backend/cadastroDiscente.php" method="POST" id="cadastroDiscente" onsubmit="return validarEmailDiscente('emailDiscente')">
+                            <form action="../../backend/cadastroDiscente.php" method="POST" id="cadastroDiscente" onsubmit="return validarFormulario()">
                                 <div class="form-group">
                                     <label>Nome Completo:</label>
-                                    <input type="text" class="form-control p_input" placeholder="Nome completo"
-                                        id="nomeDiscente" name="nomeDiscente" required>
+                                    <input type="text" class="form-control p_input" placeholder="Nome completo" id="nomeDiscente" name="nomeDiscente" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Email:</label>
-                                    <input type="email" class="form-control p_input"
-                                        placeholder="email.Institucional@estudantes.ifpr.edu.br" id="emailDiscente"
-                                        name="emailDiscente" required>
+                                    <input type="email" class="form-control p_input" placeholder="email.Institucional@estudantes.ifpr.edu.br" id="emailDiscente" name="emailDiscente" required>
                                 </div>
                                 <div class="form-group">
                                     <label>Curso:</label>
@@ -72,7 +69,6 @@
     <script src="../js/validacaoEmail.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        
         document.addEventListener("DOMContentLoaded", verificarSessao);
         const urlParams = new URLSearchParams(window.location.search);
         const errorMessage = urlParams.get('error');
@@ -111,6 +107,23 @@
                 },
             });
         });
+
+        // Função para validar a senha
+        function validarFormulario() {
+            const senha = document.getElementById('senhaDiscente').value;
+            const regex = /^(?=.*[0-9].*[0-9])(?=.*[!@#$%^&*]).{8,}$/; // Mínimo 8 caracteres, 2 números, 1 caractere especial
+
+            if (!regex.test(senha)) {
+                const errorDiv = document.getElementById('error-message');
+                errorDiv.textContent = 'A senha deve ter pelo menos 8 caracteres, incluindo pelo menos 2 números e 1 caractere especial.';
+                errorDiv.style.display = 'block';
+                setTimeout(() => {
+                    errorDiv.style.display = 'none'; // Esconde a mensagem após 3 segundos
+                }, 3000);
+                return false; // Impede o envio do formulário
+            }
+            return true; // Permite o envio do formulário
+        }
 
         // Função para alternar a visibilidade da senha
         const togglePassword = document.querySelector('#togglePassword');

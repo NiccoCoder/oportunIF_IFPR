@@ -29,7 +29,7 @@
                     <div class="card col-lg-4">
                         <div class="card-body">
                             <h3 class="card-title" style="color: black;">Cadastro (Docente)</h3>
-                            <form action="../../backend/cadastroDocente.php" method="POST" id="cadastroDocente" onsubmit="return validarEmailDocente(emailDocente.value)">
+                            <form action="../../backend/cadastroDocente.php" method="POST" id="cadastroDocente" onsubmit="return validarFormulario()">
                                 <div class="form-group">
                                     <label>Nome Completo:</label>
                                     <input type="text" class="form-control p_input" placeholder="Nome completo" id="nomeDocente" name="nomeDocente" required>
@@ -90,14 +90,27 @@
         const passwordInput = document.querySelector('#senhaDocente');
 
         togglePassword.addEventListener('click', function () {
-            // Toggle the type attribute
             const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
             passwordInput.setAttribute('type', type);
-            // Toggle the eye icon
             this.classList.toggle('mdi-eye');
             this.classList.toggle('mdi-eye-off');
         });
+
+        // Função para validar o formulário
+        function validarFormulario() {
+            const senha = passwordInput.value;
+            const errorDiv = document.getElementById('error-message');
+
+            // Regex para validar a senha
+            const senhaValida = /^(?=.*[0-9].*[0-9])(?=.*[!@#$%^&*])[A-Za-z0-9!@#$%^&*]{8,}$/;
+
+            if (!senhaValida.test(senha)) {
+                errorDiv.textContent = "A senha deve ter pelo menos 8 caracteres, incluindo pelo menos 2 números e 1 caractere especial.";
+                errorDiv.style.display = 'block';  // Exibe a mensagem de erro
+                return false; // Impede o envio do formulário
+            }
+            return true; // Permite o envio do formulário
+        }
     </script>
 </body>
-
 </html>

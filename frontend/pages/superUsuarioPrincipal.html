@@ -48,10 +48,25 @@
           </div>
         </li>
       </ul>
+      <button title="Seus projetos" class="btn" id="outrosProjbtn"
+      style="background-color: transparent; border: none; display: flex; align-items: center;"
+      onclick="window.location.href='docenteVisualizar.html'">
+      <i class="mdi mdi-compass" style="color: white; margin-right: 5px;"></i>
+      </button>
+      <button title="Visualizar todos projetos." class="btn" id="visualizarProjbtn"
+      style="background-color: transparent; border: none; display: flex; align-items: center;"
+      onclick="window.location.href='discenteVisualizar.html'">
+      <i class="mdi mdi-monitor" style="color: white; margin-right: 5px;"></i>
+      </button>
       <button title="Criar curso" class="btn" id="criarCursoBtn"
         style="background-color: transparent; border: none; display: flex; align-items: center;"
         onclick="openCursoModal()">
         <i class="mdi mdi-book-open-page-variant" style="color: white; margin-right: 5px;"></i>
+      </button>
+      <button title="Criar tipo de projeto" class="btn" id="tipoprojetoBtn"
+        style="background-color: transparent; border: none; display: flex; align-items: center;"
+        onclick="openTipodeprojetoModal()">
+        <i class="mdi mdi-book-multiple" style="color: white; margin-right: 5px;"></i>
       </button>
       <ul class="navbar-nav navbar-nav-right">
         <li class="nav-item dropdown d-none d-lg-block">
@@ -79,7 +94,7 @@
                 </div>
               </div>
               <div class="preview-item-content ml-2">
-                <p class="preview-subject mb-1">Report</p>
+                <p class="preview-subject mb-1">Denuncia</p>
               </div>
             </a>
             <div class="dropdown-divider"></div>
@@ -273,21 +288,36 @@
           </div>
         </div>
       </div>
-
-
-      <div id="cursoModal" class="modal">
-        <div class="modal-content">
-          <span class="close" onclick="closeCursoModal()">&times;</span>
-          <h2 style="color: #000000;">Criação de Curso</h2>
-          <form id="cursoForm">
-            <label for="nomeCurso" style="color: #000000;">Nome do Curso:</label>
-            <input type="text" id="nomeCurso" style="width: 100%;" placeholder="Digite o nome do curso"><br>
-            <button type="button"
-              style="padding: 8px 16px; background-color: #64ec9d; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+<!-- Modal de criação de curso -->
+<div id="cursoModal" class="modal">
+  <div class="modal-content">
+      <span class="close" onclick="closeCursoModal()">&times;</span>
+      <h2 style="color: #000000;">Criação de Curso</h2>
+      <form id="cursoForm">
+          <label for="nomeCurso" style="color: #000000;">Nome do Curso:</label>
+          <input type="text" id="nomeCurso" placeholder="Digite o nome do curso" required>
+          <button type="button"
+              style="margin-top: 15px; padding: 10px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;"
               onclick="criarCurso()">Criar Curso</button>
-          </form>
-        </div>
-      </div>
+      </form>
+  </div>
+</div>
+
+<!-- Modal de criação de tipo de projeto -->
+<div id="tipoprojetoModal" class="modal" style="display: none;">
+  <div class="modal-content">
+      <span class="close" onclick="closeTipodeprojetoModal()">&times;</span>
+      <h2 style="color: #000000;">Criação de Tipo de Projeto</h2>
+      <form id="tipoprojetoForm">
+          <label for="nomeTipodeprojeto" style="color: #000000;">Nome do Tipo de Projeto:</label>
+          <input type="text" id="nomeTipodeprojeto" placeholder="Digite o nome do tipo de projeto" required>
+          <button type="button"
+              style="margin-top: 15px; padding: 10px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;"
+              onclick="criarTipodeprojeto()">Criar Tipo de Projeto</button>
+      </form>
+  </div>
+</div>
+
       <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
       <script src="../js/req_gerenciamento.js"></script>
@@ -448,6 +478,144 @@ function salvarAlteracoes() {
     fecharModalEdicao();
 }
         </script>
+        <script>
+    function openTipodeprojetoModal() {
+        document.getElementById("tipoprojetoModal").style.display = "block";
+    }
+
+    function closeTipodeprojetoModal() {
+        document.getElementById("tipoprojetoModal").style.display = "none";
+    }
+
+    function criarTipodeprojeto() {
+        // Função de criação do tipo de projeto
+        alert("Tipo de Projeto criado com sucesso!");
+        closeTipodeprojetoModal();
+    }
+</script>
+<script>
+  // Funções de modal
+  function openModal(modalId) {
+      document.getElementById(modalId).style.display = 'block';
+  }
+
+  function closeModal(modalId) {
+      document.getElementById(modalId).style.display = 'none';
+  }
+
+  function closeAllModals() {
+      closeModal('projectModal');
+      closeModal('deleteModal');
+      closeModal('deleteModalDocente');
+      closeModal('deleteModalDiscente');
+      closeModal('cursoModal');
+      closeModal('tipoprojetoModal');
+      closeModal('editModal');
+  }
+
+  // Fechar modais ao clicar no 'X'
+  document.querySelectorAll('.close').forEach(botao => {
+      botao.onclick = () => closeAllModals();
+  });
+
+  // Fechar modais ao clicar fora deles
+  window.onclick = function(event) {
+      const modais = ['projectModal', 'deleteModal', 'deleteModalDocente', 'deleteModalDiscente', 'cursoModal', 'tipoprojetoModal'];
+      modais.forEach(modalId => {
+          if (event.target == document.getElementById(modalId)) {
+              closeModal(modalId);
+          }
+      });
+  };
+
+  // Funções para criar curso
+  function criarCurso() {
+      const nomeCurso = document.getElementById('nomeCurso').value;
+      if (nomeCurso) {
+          $.ajax({
+              type: "POST",
+              url: "../../backend/requisicoes/req_criar_cursos.php",
+              data: "id=" + nomeCurso,
+              success: function () {
+                  alert('Curso "' + nomeCurso + '" criado com sucesso!');
+                  closeModal('cursoModal');
+              },
+              error: function (jqXHR, textStatus, errorThrown) {
+                  alert(errorThrown);
+              }
+          });
+      } else {
+          alert('Por favor, insira o nome do curso.');
+      }
+  }
+
+  // Funções para criar tipo de projeto
+  function criarTipodeprojeto() {
+      const nomeTipoProjeto = document.getElementById('nomeTipoProjeto').value;
+      if (nomeTipoProjeto) {
+          $.ajax({
+              type: "POST",
+              url: "../../backend/requisicoes/req_criar_tipodeprojeto.php", // Atualize para a URL correta
+              data: "id=" + nomeTipoProjeto,
+              success: function () {
+                  alert('Tipo de Projeto "' + nomeTipoProjeto + '" criado com sucesso!');
+                  closeModal('tipoprojetoModal');
+              },
+              error: function (jqXHR, textStatus, errorThrown) {
+                  alert(errorThrown);
+              }
+          });
+      } else {
+          alert('Por favor, insira o nome do tipo de projeto.');
+      }
+  }
+
+  // Funções para dropdown
+  function toggleDropdown() {
+      const dropdown = document.getElementById('filterDropdown');
+      dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
+  }
+
+  // Impedir que o dropdown feche ao clicar dentro
+  document.querySelector('.dropdown-menu').addEventListener('click', function (e) {
+      e.stopPropagation();
+  });
+
+  // Função para abrir o modal de visualização
+  function abrirModal(titulo, tipo, responsavel, bolsa, resumo, criterios, descricao, requisitos) {
+      document.getElementById("modalTitle").innerText = titulo;
+      document.getElementById("modalType").innerText = tipo;
+      document.getElementById("modalResponsible").innerText = responsavel;
+      document.getElementById("modalGrant").innerText = bolsa;
+      document.getElementById("modalSummary").textContent = resumo;
+      document.getElementById("projectModal").style.display = "block";
+
+      // Mostrar ou esconder a div "bolsa" dependendo do valor
+      if (bolsa === "Sim") {
+          $("#bolsa").show();
+          document.getElementById("modalCriteria").innerText = criterios;
+          document.getElementById("modalDescription").innerText = descricao;
+          document.getElementById("modalRequirements").innerText = requisitos;
+      } else {
+          $("#bolsa").hide();
+      }
+  }
+
+  // Funções de edição
+  function abrirModalEdicao(titulo, tipo, responsavel, bolsa) {
+      document.getElementById("editTitle").value = titulo;
+      document.getElementById("editType").value = tipo;
+      document.getElementById("editResponsible").value = responsavel;
+      document.getElementById("editGrant").value = bolsa;
+      openModal('editModal');
+  }
+
+  function salvarAlteracoes() {
+      // Aqui você pode adicionar a lógica para salvar as alterações
+      closeModal('editModal');
+  }
+</script>
+
 </body>
 
 </html>

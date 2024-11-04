@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../css/vendor.bundle.base.css">
   <link rel="stylesheet" href="../css/cadelog.css">
   <link rel="shortcut icon" href="../images/favicon.png">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font/css/materialdesignicons.min.css">
 </head>
 
 <body>
@@ -25,10 +26,11 @@
                   <input type="email" class="form-control p_input" style="color: black;"
                     placeholder="email.Institucional@ifpr.edu.br" id="email" name="email" required>
                 </div>
-                <div class="form-group">
+                <div class="form-group position-relative">
                   <label style="color: black;">Senha:</label>
                   <input type="password" class="form-control p_input" style="color: black;" placeholder="••••••••"
                     id="senha" name="senha" required>
+                  <i class="mdi mdi-eye" id="togglePassword" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></i>
                 </div>
                 <div class="form-group">
                   <div id="error-message" class="error-message" style="display: none;"></div>
@@ -71,11 +73,9 @@
         return;
       }
 
-      // Identificar o tipo de usuário com base no e-mail
       var tipoUsuario = identificarTipoUsuario(email);
       tipoUsuarioField.value = tipoUsuario;
 
-      // Verifica se o tipo de usuário é conhecido
       if (tipoUsuario === 'desconhecido') {
         alert('Tipo de usuário não reconhecido. Insira um email institucional válido.');
         event.preventDefault();
@@ -92,36 +92,43 @@
       }
     }
 
+    const togglePassword = document.querySelector('#togglePassword');
+    const passwordInput = document.querySelector('#senha');
+
+    togglePassword.addEventListener('click', function () {
+      const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+      passwordInput.setAttribute('type', type);
+    });
+
     const urlParams = new URLSearchParams(window.location.search);
     const errorMessage = urlParams.get('error');
-    const id = urlParams.get('id'); // Obtém o ID da URL
+    const id = urlParams.get('id');
 
     if (errorMessage) {
       const errorDiv = document.getElementById('error-message');
       errorDiv.textContent = decodeURIComponent(errorMessage);
-      errorDiv.style.display = 'block';  // Exibe a mensagem de erro
+      errorDiv.style.display = 'block';
 
       if (errorMessage.includes('pendente')) {
-        errorDiv.innerHTML += " <a href='../../backend/reenviarEmail.php?id=" + encodeURIComponent(id) + "'>Reenviar e-mail</a>."; // Usar o ID da URL
+        errorDiv.innerHTML += " <a href='../../backend/reenviarEmail.php?id=" + encodeURIComponent(id) + "'>Reenviar e-mail</a>.";
       }
 
       setTimeout(() => {
-        errorDiv.style.display = 'none'; // Esconde a mensagem após 5 segundos
+        errorDiv.style.display = 'none';
       }, 5000);
     }
 
     if (successMessage) {
       const successDiv = document.getElementById('success-message');
       successDiv.textContent = decodeURIComponent(successMessage);
-      successDiv.style.display = 'block';  // Exibe a mensagem de sucesso
+      successDiv.style.display = 'block';
       setTimeout(() => {
-        successDiv.style.display = 'none'; // Esconde a mensagem após 5 segundos
+        successDiv.style.display = 'none';
       }, 5000);
     }
 
     document.addEventListener("DOMContentLoaded", verificarSessao);
   </script>
-
 </body>
 
 </html>
