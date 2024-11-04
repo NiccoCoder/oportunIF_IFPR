@@ -241,3 +241,12 @@ p {
 .sign-up a:hover {
   text-decoration: underline; /* Sublinha o link ao passar o mouse */
 }
+.position-relative {
+  position: relative;
+}
+
+#togglePassword {
+  z-index: 10;
+  cursor: pointer;
+  color: #6c757d;
+}
