@@ -129,34 +129,34 @@ function buscarTotalProjetos() {
 
 
 function openDeleteModal(title, id) {
-  idSelecionado = id;
-  document.getElementById("deleteTitle").textContent = title;
-  botaoDeletarProjeto.removeEventListener("onclick", deletarProjeto);
-
-  $('#botaoDeletarProjeto').onclick(deletarProjeto());
-
-  //botaoDeletarProjeto.addEventListener("onclick", deletarProjeto.bind(id));
-  deleteModal.style.display = "block";
-}
-function openDeleteModal(title, id) {
   console.log(id);
   idSelecionado = id;
-  //document.getElementById("deleteTitle").textContent = title;
+  document.getElementById("deleteTitle").textContent = title;
 
+  document.getElementById("deleteModal").style.display = "block";
 
   //botaoDeletarProjeto.removeEventListener("onclick", deletarProjeto);
   deleteModal.style.display = "block";
 }
 
+// function openDeleteModal(title, id) {
+//   console.log(id);
+//   idSelecionado = id;
+//   //document.getElementById("deleteTitle").textContent = title;
+
+
+//   //botaoDeletarProjeto.removeEventListener("onclick", deletarProjeto);
+//   deleteModal.style.display = "block";
+// }
+
 
 function deletarProjeto() {
-
   $.ajax({
     type: "POST",
     url: "../../backend/requisicoes/req_deletar_projeto.php",
     data: "id=" + idSelecionado,
     success: function (data) {
-      alert("Projeto deletado com sucesso!" + data);
+      alert("Projeto deletado com sucesso!");
       console.log(idSelecionado);
       closeDeleteModal();
     },
@@ -164,9 +164,7 @@ function deletarProjeto() {
       //$("#resultado").append("<p>Erro ao buscar os projetos: " + errorThrown + "</p>");
     }
   });
-
 }
-
 
 const projectModal = document.getElementById("projectModal");
 const deleteModal = document.getElementById("deleteModal");

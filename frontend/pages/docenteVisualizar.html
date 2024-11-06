@@ -294,16 +294,16 @@
       }
     }
 
-    function openDeleteModal(title, id) {
+     //function openDeleteModal(title, id) {
       
-      idSelecionado = id;
-      console.log(id);
-      document.getElementById("deleteTitle").textContent = title;
-      botaoDeletarProjeto.removeEventListener("onclick", deletarProjeto);
+      //idSelecionado = id;
+      //console.log(id);
+      //document.getElementById("deleteTitle").textContent = title;
+      //botaoDeletarProjeto.removeEventListener("onclick", deletarProjeto);
 
-      botaoDeletarProjeto.addEventListener("onclick", deletarProjeto.bind(id));
-      deleteModal.style.display = "block";
-    }
+    //  botaoDeletarProjeto.addEventListener("onclick", deletarProjeto.bind(id));
+    //  deleteModal.style.display = "block";
+    //} 
 
     // Função para fechar o modal de visualização
     function closeModal() {
@@ -311,10 +311,10 @@
     }
 
     // Funções para abrir e fechar o modal de exclusão
-    function openDeleteModal(title) {
-      document.getElementById("deleteTitle").innerText = title;
-      document.getElementById("deleteModal").style.display = "block";
-    }
+    //function openDeleteModal(title) {
+    //  document.getElementById("deleteTitle").innerText = title;
+    //  document.getElementById("deleteModal").style.display = "block";
+    //}
 
     function closeDeleteModal() {
       document.getElementById("deleteModal").style.display = "none";
