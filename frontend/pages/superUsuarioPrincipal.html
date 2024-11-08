@@ -14,191 +14,194 @@
 </head>
 
 <body>
-    <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch" style="justify-content: space-between;">
-      <a class="navbar-brand" href="login.html">
-        <img src="../../frontend/images/OportunIF.png" alt="OportunIF" style="height: 40px;">
-      </a>
-      <ul class="navbar-nav w-100">
-        <li class="nav-item w-100">
-          <div class="search-dropdown">
-            <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-              <input type="text" style="color: white; background-color: #2a2f3a; border: 1px solid #444; border-radius: 6px; padding: 8px; width: 55%;" class="form-control" placeholder="Pesquisar" onclick="toggleDropdown()">
-            </form>
-            <div class="dropdown-menu" id="filterDropdown"
-              style="display: none; position: absolute; top: 55px; width: 55%; background-color: #1f232b; border-radius: 6px; padding: 10px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15); z-index: 1000;" 
-              onclick="event.stopPropagation();">
-              <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
-                  <input type="checkbox" value="Pesquisa" style="margin-right: 6px;"> Pesquisa
-                </label>
-                <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
-                  <input type="checkbox" value="Inovação" style="margin-right: 6px;"> Inovação
-                </label>
-                <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
-                  <input type="checkbox" value="Ensino" style="margin-right: 6px;"> Ensino
-                </label>
-                <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
-                  <input type="checkbox" value="Extensão" style="margin-right: 6px;"> Extensão
-                </label>
-                <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
-                  <input type="checkbox" value="Possui Bolsa" style="margin-right: 6px;"> Possui Bolsa
-                </label>
-              </div>
+  <div id="loader" style="display:none;">Carregando...</div>
+  <div class="navbar-menu-wrapper flex-grow d-flex align-items-stretch" style="justify-content: space-between;">
+    <a class="navbar-brand" href="login.html">
+      <img src="../../frontend/images/OportunIF.png" alt="OportunIF" style="height: 40px;">
+    </a>
+    <ul class="navbar-nav w-100">
+      <li class="nav-item w-100">
+        <div class="search-dropdown">
+          <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
+            <input type="text"
+              style="color: white; background-color: #2a2f3a; border: 1px solid #444; border-radius: 6px; padding: 8px; width: 55%;"
+              class="form-control" placeholder="Pesquisar" onclick="toggleDropdown()">
+          </form>
+          <div class="dropdown-menu" id="filterDropdown"
+            style="display: none; position: absolute; top: 55px; width: 55%; background-color: #1f232b; border-radius: 6px; padding: 10px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15); z-index: 1000;"
+            onclick="event.stopPropagation();">
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+              <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
+                <input type="checkbox" value="Pesquisa" style="margin-right: 6px;"> Pesquisa
+              </label>
+              <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
+                <input type="checkbox" value="Inovação" style="margin-right: 6px;"> Inovação
+              </label>
+              <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
+                <input type="checkbox" value="Ensino" style="margin-right: 6px;"> Ensino
+              </label>
+              <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
+                <input type="checkbox" value="Extensão" style="margin-right: 6px;"> Extensão
+              </label>
+              <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
+                <input type="checkbox" value="Possui Bolsa" style="margin-right: 6px;"> Possui Bolsa
+              </label>
             </div>
           </div>
-        </li>
-      </ul>
-      <button title="Seus projetos" class="btn" id="outrosProjbtn"
+        </div>
+      </li>
+    </ul>
+    <button title="Seus projetos" class="btn" id="outrosProjbtn"
       style="background-color: transparent; border: none; display: flex; align-items: center;"
       onclick="window.location.href='docenteVisualizar.html'">
       <i class="mdi mdi-compass" style="color: white; margin-right: 5px;"></i>
-      </button>
-      <button title="Visualizar todos projetos." class="btn" id="visualizarProjbtn"
+    </button>
+    <button title="Visualizar todos projetos." class="btn" id="visualizarProjbtn"
       style="background-color: transparent; border: none; display: flex; align-items: center;"
       onclick="window.location.href='discenteVisualizar.html'">
       <i class="mdi mdi-monitor" style="color: white; margin-right: 5px;"></i>
-      </button>
-      <button title="Criar curso" class="btn" id="criarCursoBtn"
-        style="background-color: transparent; border: none; display: flex; align-items: center;"
-        onclick="openCursoModal()">
-        <i class="mdi mdi-book-open-page-variant" style="color: white; margin-right: 5px;"></i>
-      </button>
-      <button title="Criar tipo de projeto" class="btn" id="tipoprojetoBtn"
-        style="background-color: transparent; border: none; display: flex; align-items: center;"
-        onclick="openTipodeprojetoModal()">
-        <i class="mdi mdi-book-multiple" style="color: white; margin-right: 5px;"></i>
-      </button>
-      <ul class="navbar-nav navbar-nav-right">
-        <li class="nav-item dropdown d-none d-lg-block">
-          <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-            aria-labelledby="createbuttonDropdown">
-            <h6 class="p-3 mb-0">Projetos</h6>
+    </button>
+    <button title="Criar curso" class="btn" id="criarCursoBtn"
+      style="background-color: transparent; border: none; display: flex; align-items: center;"
+      onclick="openCursoModal()">
+      <i class="mdi mdi-book-open-page-variant" style="color: white; margin-right: 5px;"></i>
+    </button>
+    <button title="Criar tipo de projeto" class="btn" id="tipoprojetoBtn"
+      style="background-color: transparent; border: none; display: flex; align-items: center;"
+      onclick="openTipodeprojetoModal()">
+      <i class="mdi mdi-book-multiple" style="color: white; margin-right: 5px;"></i>
+    </button>
+    <ul class="navbar-nav navbar-nav-right">
+      <li class="nav-item dropdown d-none d-lg-block">
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
+          aria-labelledby="createbuttonDropdown">
+          <h6 class="p-3 mb-0">Projetos</h6>
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
+          <div class="navbar-profile d-flex align-items-center" style="white-space: nowrap;">
+            <div class="d-flex align-items-center">
+              <p id="nomeUsuario" class="mb-0 mr-2"></p>
+              <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+            </div>
           </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link" id="profileDropdown" href="#" data-bs-toggle="dropdown">
-            <div class="navbar-profile d-flex align-items-center" style="white-space: nowrap;">
-              <div class="d-flex align-items-center">
-                <p id="nomeUsuario" class="mb-0 mr-2"></p>
-                <i class="mdi mdi-menu-down d-none d-sm-block"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
+          <h6 class="p-2 mb-0">Opções</h6>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item preview-item d-flex align-items-center" href="./denunciar.html">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-dark rounded-circle">
+                <i class="mdi mdi-account text-success"></i>
               </div>
+            </div>
+            <div class="preview-item-content ml-2">
+              <p class="preview-subject mb-1">Denúncia</p>
             </div>
           </a>
-          <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="profileDropdown">
-            <h6 class="p-2 mb-0">Opções</h6>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item preview-item d-flex align-items-center" href="./denunciar.html">
-              <div class="preview-thumbnail">
-                <div class="preview-icon bg-dark rounded-circle">
-                  <i class="mdi mdi-account text-success"></i>
-                </div>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item preview-item d-flex align-items-center" href="../../backend/logout.php">
+            <div class="preview-thumbnail">
+              <div class="preview-icon bg-dark rounded-circle">
+                <i class="mdi mdi-exit-to-app text-danger"></i>
               </div>
-              <div class="preview-item-content ml-2">
-                <p class="preview-subject mb-1">Denúncia</p>
-              </div>
-            </a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item preview-item d-flex align-items-center" href="../../backend/logout.php">
-              <div class="preview-thumbnail">
-                <div class="preview-icon bg-dark rounded-circle">
-                  <i class="mdi mdi-exit-to-app text-danger"></i>
-                </div>
-              </div>
-              <div class="preview-item-content ml-2">
-                <p class="preview-subject mb-1">Sair</p>
-              </div>
-            </a>
-          </div>
-        </li>
-      </ul>
-    </div>
-
-    <div class="main-panel col-sm-12">
-      <div class="content-wrapper">
-        <div class="page-header">
-          <h3 class="page-title"> Bem-vindo, Coordenador </h3>
+            </div>
+            <div class="preview-item-content ml-2">
+              <p class="preview-subject mb-1">Sair</p>
+            </div>
+          </a>
         </div>
-        <div class="projects-section">
-          <div class="row">
-            <div class="col-sm-4 grid-margin">
-              <button class="card card-statistics" style="background-color: #ffffff; border: 1px solid #ddd;"
-                onclick="buscarDiscentesGerenciamento()">
-                <div class="card-body">
-                  <h5>Total de Discentes</h5>
-                  <div class="row">
-                    <div class="col-8 col-sm-12 col-xl-8 my-auto">
-                      <div class="d-flex d-sm-block d-md-flex align-items-center">
-                        <h2 class="mb-0" id="totalDiscente"></h2>
-                      </div>
-                      <h6 class="text-muted font-weight-normal">Número total de discentes no sistema.</h6>
+      </li>
+    </ul>
+  </div>
+
+  <div class="main-panel col-sm-12">
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h3 class="page-title"> Bem-vindo, Coordenador </h3>
+      </div>
+      <div class="projects-section">
+        <div class="row">
+          <div class="col-sm-4 grid-margin">
+            <button class="card card-statistics" style="background-color: #ffffff; border: 1px solid #ddd;"
+              onclick="buscarDiscentesGerenciamento()">
+              <div class="card-body">
+                <h5>Total de Discentes</h5>
+                <div class="row">
+                  <div class="col-8 col-sm-12 col-xl-8 my-auto">
+                    <div class="d-flex d-sm-block d-md-flex align-items-center">
+                      <h2 class="mb-0" id="totalDiscente"></h2>
                     </div>
-                    <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                      <i class="icon-lg fas fa-users text-success ml-auto"></i>
-                    </div>
+                    <h6 class="text-muted font-weight-normal">Número total de discentes no sistema.</h6>
+                  </div>
+                  <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                    <i class="icon-lg fas fa-users text-success ml-auto"></i>
                   </div>
                 </div>
-              </button>
-            </div>
-            <div class="col-sm-4 grid-margin">
-              <button class="card card-statistics" style="background-color: #ffffff; border: 1px solid #ddd;"
-                onclick="buscarDocentesGerenciamento()">
-                <div class="card-body">
-                  <h5>Total de Docentes</h5>
-                  <div class="row">
-                    <div class="col-8 col-sm-12 col-xl-8 my-auto">
-                      <div class="d-flex d-sm-block d-md-flex align-items-center">
-                        <h2 class="mb-0" id="totalDocente"></h2>
-                      </div>
-                      <h6 class="text-muted font-weight-normal">Total de docentes registrados.</h6>
-                    </div>
-                    <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                      <i class="icon-lg fas fa-chalkboard-teacher text-success ml-auto"></i>
-                    </div>
-                  </div>
-                </div>
-              </button>
-            </div>
-            <div class="col-sm-4 grid-margin">
-              <button class="card card-statistics" style="background-color: #ffffff; border: 1px solid #ddd;"
-                onclick="buscarProjetosGerenciamento()">
-                <div class="card-body">
-                  <h5>Total de Projetos</h5>
-                  <div class="row">
-                    <div class="col-8 col-sm-12 col-xl-8 my-auto">
-                      <div class="d-flex d-sm-block d-md-flex align-items-center">
-                        <h2 class="mb-0" id="totalProjeto"></h2>
-                      </div>
-                      <h6 class="text-muted font-weight-normal">Total de Projetos Registrados</h6>
-                    </div>
-                    <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                      <i class="icon-lg fas fa-book text-success ml-auto"></i>
-                    </div>
-                  </div>
-                </div>
-              </button>
-            </div>
+              </div>
+            </button>
           </div>
-          <div class="row">
-            <div class="col-12 grid-margin">
-              <div class="card-project">
-                <div class="card-body" id="divTabela">
-                  <h4 class="card-title" style="text-align: center" id="tituloTabela">Projetos</h4>
-                  <div class="table-responsive">
-                    <table class="table">
-                      <thead id="tabelaInfo">
-                        <tr>
-                          <th>
-                            <div class="form-check form-check-muted m-0">
-                              <label class="form-check-label">
-                                <input type="checkbox" class="form-check-input">
-                              </label>
+          <div class="col-sm-4 grid-margin">
+            <button class="card card-statistics" style="background-color: #ffffff; border: 1px solid #ddd;"
+              onclick="buscarDocentesGerenciamento()">
+              <div class="card-body">
+                <h5>Total de Docentes</h5>
+                <div class="row">
+                  <div class="col-8 col-sm-12 col-xl-8 my-auto">
+                    <div class="d-flex d-sm-block d-md-flex align-items-center">
+                      <h2 class="mb-0" id="totalDocente"></h2>
+                    </div>
+                    <h6 class="text-muted font-weight-normal">Total de docentes registrados.</h6>
+                  </div>
+                  <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                    <i class="icon-lg fas fa-chalkboard-teacher text-success ml-auto"></i>
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+          <div class="col-sm-4 grid-margin">
+            <button class="card card-statistics" style="background-color: #ffffff; border: 1px solid #ddd;"
+              onclick="buscarProjetosGerenciamento()">
+              <div class="card-body">
+                <h5>Total de Projetos</h5>
+                <div class="row">
+                  <div class="col-8 col-sm-12 col-xl-8 my-auto">
+                    <div class="d-flex d-sm-block d-md-flex align-items-center">
+                      <h2 class="mb-0" id="totalProjeto"></h2>
+                    </div>
+                    <h6 class="text-muted font-weight-normal">Total de Projetos Registrados</h6>
+                  </div>
+                  <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                    <i class="icon-lg fas fa-book text-success ml-auto"></i>
+                  </div>
+                </div>
+              </div>
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 grid-margin">
+            <div class="card-project">
+              <div class="card-body" id="divTabela">
+                <h4 class="card-title" style="text-align: center" id="tituloTabela">Projetos</h4>
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead id="tabelaInfo">
+                      <tr>
+                        <th>
+                          <div class="form-check form-check-muted m-0">
+                            <label class="form-check-label">
+                              <input type="checkbox" class="form-check-input">
+                            </label>
                           </div>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody id="linhaTabela"></tbody>
-                    </table>
-               </div>
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody id="linhaTabela"></tbody>
+                  </table>
+                </div>
               </div>
             </div>
           </div>
@@ -208,413 +211,416 @@
     <div class="floating-button" onclick="window.location.href='projetoCadastro.html'">
       <i class="fas fa-plus"></i>
     </div>
-      <!-- Modais -->
-      <div id="projectModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2 style="color: #000000;" id="nomeModal">Detalhes do Projeto</h2>
-          <p style="color: #000000" ><strong id="tituloModal">Título:</strong> <span id="modalTitle"></span></p>
-          <p style="color: #000000;" ><strong id="tipoModal">Tipo:</strong> <span id="modalType"></span></p>
-          <p style="color: #000000;" ><strong id="responsavelModal">Responsável:</strong> <span id="modalResponsible"></span></p>
-          <div id="emailModal"> <p style="color: #000000;"><strong >E-mail:</strong> <span id="modalEmail"></span></p></div>
-          <p style="color: #000000;" ><strong id="bolsaModal">Com Bolsa:</strong> <span id="modalGrant"></span></p>
-          <p style="color: #000000;" ><strong id="resumoModal">Resumo:</strong> <span id="modalSummary"></span></p>
-          
-          <div id="bolsa">
-            <p style="color: #000000;"><strong>Criterios da Bolsa:</strong> <span id="modalCriteria"></span></p>
-            <p style="color: #000000;"><strong>Descrição da Bolsa:</strong> <span id="modalDescription"></span></p>
-            <p style="color: #000000;"><strong>Requisitos da Bolsa:</strong> <span id="modalRequirements"></span></p>
-          </div>
+    <!-- Modais -->
+    <div id="projectModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 style="color: #000000;" id="nomeModal">Detalhes do Projeto</h2>
+        <p style="color: #000000"><strong id="tituloModal">Título:</strong> <span id="modalTitle"></span></p>
+        <p style="color: #000000;"><strong id="tipoModal">Tipo:</strong> <span id="modalType"></span></p>
+        <p style="color: #000000;"><strong id="responsavelModal">Responsável:</strong> <span
+            id="modalResponsible"></span></p>
+        <div id="emailModal">
+          <p style="color: #000000;"><strong>E-mail:</strong> <span id="modalEmail"></span></p>
+        </div>
+        <p style="color: #000000;"><strong id="bolsaModal">Com Bolsa:</strong> <span id="modalGrant"></span></p>
+        <p style="color: #000000;"><strong id="resumoModal">Resumo:</strong> <span id="modalSummary"></span></p>
+
+        <div id="bolsa">
+          <p style="color: #000000;"><strong>Criterios da Bolsa:</strong> <span id="modalCriteria"></span></p>
+          <p style="color: #000000;"><strong>Descrição da Bolsa:</strong> <span id="modalDescription"></span></p>
+          <p style="color: #000000;"><strong>Requisitos da Bolsa:</strong> <span id="modalRequirements"></span></p>
         </div>
       </div>
+    </div>
 
 
 
-      <!-- DELETAR MODAL PROJETO -->
+    <!-- DELETAR MODAL PROJETO -->
 
-      <div id="deleteModal" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2 style="color: #000000;">Confirmar Exclusão</h2>
-          <p style="color:#000000">Tem certeza que deseja excluir o projeto <strong><span
-                id="deleteTitle"></span></strong>?</p>
-          <div style="display: flex; justify-content: flex-end; gap: 10px;">
-            <button
-              style="padding: 8px 16px; background-color: #64ec9d; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
-              id="botaoDeletarProjeto" onclick="deletarProjeto()">Sim, excluir</button>
-            <button
-              style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
-              onclick="closeDeleteModal()">Cancelar</button>
-          </div>
+    <div id="deleteModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 style="color: #000000;">Confirmar Exclusão</h2>
+        <p style="color:#000000">Tem certeza que deseja excluir o projeto <strong><span
+              id="deleteTitle"></span></strong>?</p>
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <button
+            style="padding: 8px 16px; background-color: #64ec9d; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+            id="botaoDeletarProjeto" onclick="deletarProjeto()">Sim, excluir</button>
+          <button
+            style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+            onclick="closeDeleteModal()">Cancelar</button>
         </div>
       </div>
+    </div>
 
 
-       <!-- DELETAR MODAL DISCENTE -->
+    <!-- DELETAR MODAL DISCENTE -->
 
-       <div id="deleteModalDiscente" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2 style="color: #000000;">Confirmar Exclusão</h2>
-          <p style="color:#000000">Tem certeza que deseja excluir o discente <strong><span
-                id="deleteTitle"></span></strong>?</p>
-          <div style="display: flex; justify-content: flex-end; gap: 10px;">
-            <button
-              style="padding: 8px 16px; background-color: #64ec9d; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
-              id="botaoDeletarProjeto" onclick="deletarDiscente()">Sim, excluir</button>
-            <button
-              style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
-              onclick="closeDeleteModal()">Cancelar</button>
-          </div>
+    <div id="deleteModalDiscente" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 style="color: #000000;">Confirmar Exclusão</h2>
+        <p style="color:#000000">Tem certeza que deseja excluir o discente <strong><span
+              id="deleteTitle"></span></strong>?</p>
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <button
+            style="padding: 8px 16px; background-color: #64ec9d; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+            id="botaoDeletarProjeto" onclick="deletarDiscente()">Sim, excluir</button>
+          <button
+            style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+            onclick="closeDeleteModal()">Cancelar</button>
         </div>
       </div>
+    </div>
 
 
-       <!-- DELETAR MODAL DOCENTE -->
+    <!-- DELETAR MODAL DOCENTE -->
 
-       <div id="deleteModalDocente" class="modal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2 style="color: #000000;">Confirmar Exclusão</h2>
-          <p style="color:#000000">Tem certeza que deseja excluir o docente<strong><span
-                id="deleteTitle"></span></strong>?</p>
-          <div style="display: flex; justify-content: flex-end; gap: 10px;">
-            <button
-              style="padding: 8px 16px; background-color: #64ec9d; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
-              id="botaoDeletarProjeto" onclick="deletarDocente()">Sim, excluir</button>
-            <button
-              style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
-              onclick="closeDeleteModal()">Cancelar</button>
-          </div>
+    <div id="deleteModalDocente" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 style="color: #000000;">Confirmar Exclusão</h2>
+        <p style="color:#000000">Tem certeza que deseja excluir o docente<strong><span
+              id="deleteTitle"></span></strong>?</p>
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <button
+            style="padding: 8px 16px; background-color: #64ec9d; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+            id="botaoDeletarProjeto" onclick="deletarDocente()">Sim, excluir</button>
+          <button
+            style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+            onclick="closeDeleteModal()">Cancelar</button>
         </div>
       </div>
-<!-- Modal de criação de curso -->
-<div id="cursoModal" class="modal">
-  <div class="modal-content">
-      <span class="close" onclick="closeCursoModal()">&times;</span>
-      <h2 style="color: #000000;">Criação de Curso</h2>
-      <form id="cursoForm">
+    </div>
+    <div id="cursoModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeCursoModal()">&times;</span>
+        <h2 style="color: #000000;">Criação de Curso</h2>
+        <form id="cursoForm" action="../../backend/cadastroCurso.php" method="POST">
           <label for="nomeCurso" style="color: #000000;">Nome do Curso:</label>
-          <input type="text" id="nomeCurso" placeholder="Digite o nome do curso" required>
-          <button type="button"
-              style="margin-top: 15px; padding: 10px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;"
-              onclick="criarCurso()">Criar Curso</button>
-      </form>
-  </div>
-</div>
+          <input type="text" id="nomeCurso" name="nomeCurso" placeholder="Digite o nome do curso" required>
+          <button type="submit"
+            style="margin-top: 15px; padding: 10px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
+            Criar Curso
+          </button>
+        </form>
+      </div>
+    </div>
 
-<!-- Modal de criação de tipo de projeto -->
-<div id="tipoprojetoModal" class="modal" style="display: none;">
-  <div class="modal-content">
-      <span class="close" onclick="closeTipodeprojetoModal()">&times;</span>
-      <h2 style="color: #000000;">Criação de Tipo de Projeto</h2>
-      <form id="tipoprojetoForm">
-          <label for="nomeTipodeprojeto" style="color: #000000;">Nome do Tipo de Projeto:</label>
-          <input type="text" id="nomeTipodeprojeto" placeholder="Digite o nome do tipo de projeto" required>
-          <button type="button"
-              style="margin-top: 15px; padding: 10px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;"
-              onclick="criarTipodeprojeto()">Criar Tipo de Projeto</button>
-      </form>
-  </div>
-</div>
+    <div id="tipoprojetoModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeTipodeprojetoModal()">&times;</span>
+        <h2 style="color: #000000;">Criação de Tipo de Projeto</h2>
+        <form id="tipoprojetoForm" action="../../backend/cadastroTipoProjeto.php" method="POST">
+          <label for="nomeTipoProjeto" style="color: #000000;">Nome do Tipo de Projeto:</label>
+          <input type="text" id="nomeTipoProjeto" name="nomeTipoProjeto" placeholder="Digite o nome do tipo de projeto" required>
+          <button type="submit"
+            style="margin-top: 15px; padding: 10px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
+            Criar Tipo de Projeto
+          </button>
+        </form>
+      </div>
+    </div>    
 
-      <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-      <script src="../js/req_gerenciamento.js"></script>
-      <script src="../../frontend/js/verificarSessaoSuperUsuario.js"></script>
-      <script src="../js/atualizarNomeUsuario.js"></script>
-      <script>
-        function toggleDropdown() {
-          var dropdown = document.getElementById("filterDropdown");
-          if (dropdown.style.display === "none") {
-            dropdown.style.display = "block";
-          } else {
-            dropdown.style.display = "none";
-          }
+    <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="../js/req_gerenciamento.js"></script>
+    <script src="../../frontend/js/verificarSessaoSuperUsuario.js"></script>
+    <script src="../js/atualizarNomeUsuario.js"></script>
+    <script>
+      function toggleDropdown() {
+        var dropdown = document.getElementById("filterDropdown");
+        if (dropdown.style.display === "none") {
+          dropdown.style.display = "block";
+        } else {
+          dropdown.style.display = "none";
         }
+      }
 
-        // Prevent dropdown from closing on checkbox click
-        document.querySelector('.dropdown-menu').addEventListener('click', function (e) {
-          e.stopPropagation();
-        });
-      </script>
-      <script>
-        function openCursoModal() {
-          document.getElementById('cursoModal').style.display = 'block';
-        }
-
-        function closeCursoModal() {
-          document.getElementById('cursoModal').style.display = 'none';
-        }
-
-        function criarCurso() {
-          var nomeCurso = document.getElementById('nomeCurso').value;
-          if (nomeCurso) {
-
-            $.ajax({
-              type: "POST",
-               url: "../../backend/requisicoes/req_criar_cursos.php",
-              data: "id=" + nomeCurso,
-              success: function (data) {
-                alert('Curso "' + nomeCurso + '" criado com sucesso!');
-                closeCursoModal();
-               },
-              error: function (jqXHR, textStatus, errorThrown) {
-                alert(errorThrown)
-              }
-            });
-            
-          } else {
-            alert('Por favor, insira o nome do curso.');
-          }
-        }
-
-        // Fechar modal ao clicar fora dele
-        window.onclick = function (event) {
-          if (event.target == document.getElementById('cursoModal')) {
-            closeCursoModal();
-          }
-        };
-
-        // Função para abrir/fechar o dropdown
-        function toggleDropdown() {
-          var dropdown = document.getElementById('filterDropdown');
-          dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
-        }
-
-        function toggleDropdown() {
-          var dropdown = document.getElementById("filterDropdown");
-          if (dropdown.style.display === "none") {
-            dropdown.style.display = "block";
-          } else {
-            dropdown.style.display = "none";
-          }
-        }
-        document.querySelector('.dropdown-menu').addEventListener('click', function (e) {
-          e.stopPropagation();
-        });
-
-      </script>
-      <script>
-       // Função para abrir o modal de visualização
-function abrirModal(titulo, tipo, responsavel, bolsa, resumo, criterios, descricao, requisitos) {
-    document.getElementById("modalTitle").innerText = titulo;
-    document.getElementById("modalType").innerText = tipo;
-    document.getElementById("modalResponsible").innerText = responsavel;
-    document.getElementById("modalGrant").innerText = bolsa;
-    document.getElementById("modalSummary").textContent = resumo;
-    document.getElementById("projectModal").style.display = "block";
-
-    // Caso exista bolsa, mostra a div "bolsa"
-    if (bolsa == "Sim") {
-        $("#bolsa").show();
-        document.getElementById("modalCriteria").innerText = criterios;
-        document.getElementById("modalDescription").innerText = descricao;
-        document.getElementById("modalRequirements").innerText = requisitos;
-    } else {
-        // Esconde a div bolsa
-        $("#bolsa").hide();
-    }
-}
-
-// Função para abrir o modal de exclusão
-//function abrirModalExclusao(titulo, id) {
-    //idSelecionado = id;
-    //console.log(id + "abacate");
-    //document.getElementById("deleteTitle").textContent = titulo;
-    //botaoDeletarProjeto.removeEventListener("click", deletarProjeto);
-  //  botaoDeletarProjeto.addEventListener("click", deletarProjeto.bind(null, id));
- //   deleteModal.style.display = "block";
-//}
-
-// Função para fechar todos os modais
-function fecharModais() {
-    document.getElementById("projectModal").style.display = "none";
-    document.getElementById("deleteModal").style.display = "none";
-    document.getElementById("deleteModalDocente").style.display = "none";
-    document.getElementById("deleteModalDiscente").style.display = "none";
-    document.getElementById("cursoModal").style.display = "none";
-}
-
-// Fechar modais ao clicar no 'X'
-var botoesFecharModal = document.querySelectorAll(".close");
-botoesFecharModal.forEach(botao => {
-    botao.onclick = fecharModais;
-});
-
-// Fechar modais ao clicar fora deles
-window.onclick = function (evento) {
-    if (evento.target == document.getElementById("projectModal") || 
-        evento.target == document.getElementById("deleteModal") || 
-        evento.target == document.getElementById("deleteModalDocente") || 
-        evento.target == document.getElementById("deleteModalDiscente") || 
-        evento.target == document.getElementById("cursoModal")) {
-        fecharModais();
-    }
-};
-
-// Função para confirmar exclusão
-function confirmarExclusao() {
-    // Lógica para confirmar a exclusão do projeto
-    fecharModalExclusao();
-}
-
-// Funções para abrir e fechar o modal de edição
-function abrirModalEdicao(titulo, tipo, responsavel, bolsa) {
-    document.getElementById("editTitle").value = titulo;
-    document.getElementById("editType").value = tipo;
-    document.getElementById("editResponsible").value = responsavel;
-    document.getElementById("editGrant").value = bolsa;
-    document.getElementById("editModal").style.display = "block";
-}
-
-function fecharModalEdicao() {
-    document.getElementById("editModal").style.display = "none";
-}
-
-// Função para salvar alterações
-function salvarAlteracoes() {
-    // Aqui você pode adicionar a lógica para salvar as alterações
-    fecharModalEdicao();
-}
-        </script>
-        <script>
-    function openTipodeprojetoModal() {
-        document.getElementById("tipoprojetoModal").style.display = "block";
-    }
-
-    function closeTipodeprojetoModal() {
-        document.getElementById("tipoprojetoModal").style.display = "none";
-    }
-
-    function criarTipodeprojeto() {
-        // Função de criação do tipo de projeto
-        alert("Tipo de Projeto criado com sucesso!");
-        closeTipodeprojetoModal();
-    }
-</script>
-<script>
-  // Funções de modal
-  function openModal(modalId) {
-      document.getElementById(modalId).style.display = 'block';
-  }
-
-  function closeModal(modalId) {
-      document.getElementById(modalId).style.display = 'none';
-  }
-
-  function closeAllModals() {
-      closeModal('projectModal');
-      closeModal('deleteModal');
-      closeModal('deleteModalDocente');
-      closeModal('deleteModalDiscente');
-      closeModal('cursoModal');
-      closeModal('tipoprojetoModal');
-      closeModal('editModal');
-  }
-
-  // Fechar modais ao clicar no 'X'
-  document.querySelectorAll('.close').forEach(botao => {
-      botao.onclick = () => closeAllModals();
-  });
-
-  // Fechar modais ao clicar fora deles
-  window.onclick = function(event) {
-      const modais = ['projectModal', 'deleteModal', 'deleteModalDocente', 'deleteModalDiscente', 'cursoModal', 'tipoprojetoModal'];
-      modais.forEach(modalId => {
-          if (event.target == document.getElementById(modalId)) {
-              closeModal(modalId);
-          }
+      // Prevent dropdown from closing on checkbox click
+      document.querySelector('.dropdown-menu').addEventListener('click', function (e) {
+        e.stopPropagation();
       });
-  };
+    </script>
+    <script>
+      function openCursoModal() {
+        document.getElementById('cursoModal').style.display = 'block';
+      }
 
-  // Funções para criar curso
-  function criarCurso() {
-      const nomeCurso = document.getElementById('nomeCurso').value;
-      if (nomeCurso) {
+      function closeCursoModal() {
+        document.getElementById('cursoModal').style.display = 'none';
+      }
+
+      function criarCurso() {
+        var nomeCurso = document.getElementById('nomeCurso').value;
+        if (nomeCurso) {
+
           $.ajax({
-              type: "POST",
-              url: "../../backend/requisicoes/req_criar_cursos.php",
-              data: "id=" + nomeCurso,
-              success: function () {
-                  alert('Curso "' + nomeCurso + '" criado com sucesso!');
-                  closeModal('cursoModal');
-              },
-              error: function (jqXHR, textStatus, errorThrown) {
-                  alert(errorThrown);
-              }
+            type: "POST",
+            url: "../../backend/requisicoes/req_criar_cursos.php",
+            data: "id=" + nomeCurso,
+            success: function (data) {
+              alert('Curso "' + nomeCurso + '" criado com sucesso!');
+              closeCursoModal();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+              alert(errorThrown)
+            }
           });
-      } else {
+
+        } else {
           alert('Por favor, insira o nome do curso.');
+        }
       }
-  }
 
-  // Funções para criar tipo de projeto
-  function criarTipodeprojeto() {
-      const nomeTipoProjeto = document.getElementById('nomeTipoProjeto').value;
-      if (nomeTipoProjeto) {
-          $.ajax({
-              type: "POST",
-              url: "../../backend/requisicoes/req_criar_tipodeprojeto.php", // Atualize para a URL correta
-              data: "id=" + nomeTipoProjeto,
-              success: function () {
-                  alert('Tipo de Projeto "' + nomeTipoProjeto + '" criado com sucesso!');
-                  closeModal('tipoprojetoModal');
-              },
-              error: function (jqXHR, textStatus, errorThrown) {
-                  alert(errorThrown);
-              }
-          });
-      } else {
-          alert('Por favor, insira o nome do tipo de projeto.');
+      // Fechar modal ao clicar fora dele
+      window.onclick = function (event) {
+        if (event.target == document.getElementById('cursoModal')) {
+          closeCursoModal();
+        }
+      };
+
+      // Função para abrir/fechar o dropdown
+      function toggleDropdown() {
+        var dropdown = document.getElementById('filterDropdown');
+        dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
       }
-  }
 
-  // Funções para dropdown
-  function toggleDropdown() {
-      const dropdown = document.getElementById('filterDropdown');
-      dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
-  }
+      function toggleDropdown() {
+        var dropdown = document.getElementById("filterDropdown");
+        if (dropdown.style.display === "none") {
+          dropdown.style.display = "block";
+        } else {
+          dropdown.style.display = "none";
+        }
+      }
+      document.querySelector('.dropdown-menu').addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
 
-  // Impedir que o dropdown feche ao clicar dentro
-  document.querySelector('.dropdown-menu').addEventListener('click', function (e) {
-      e.stopPropagation();
-  });
+    </script>
+    <script>
+      // Função para abrir o modal de visualização
+      function abrirModal(titulo, tipo, responsavel, bolsa, resumo, criterios, descricao, requisitos) {
+        document.getElementById("modalTitle").innerText = titulo;
+        document.getElementById("modalType").innerText = tipo;
+        document.getElementById("modalResponsible").innerText = responsavel;
+        document.getElementById("modalGrant").innerText = bolsa;
+        document.getElementById("modalSummary").textContent = resumo;
+        document.getElementById("projectModal").style.display = "block";
 
-  // Função para abrir o modal de visualização
-  function abrirModal(titulo, tipo, responsavel, bolsa, resumo, criterios, descricao, requisitos) {
-      document.getElementById("modalTitle").innerText = titulo;
-      document.getElementById("modalType").innerText = tipo;
-      document.getElementById("modalResponsible").innerText = responsavel;
-      document.getElementById("modalGrant").innerText = bolsa;
-      document.getElementById("modalSummary").textContent = resumo;
-      document.getElementById("projectModal").style.display = "block";
-
-      // Mostrar ou esconder a div "bolsa" dependendo do valor
-      if (bolsa === "Sim") {
+        // Caso exista bolsa, mostra a div "bolsa"
+        if (bolsa == "Sim") {
           $("#bolsa").show();
           document.getElementById("modalCriteria").innerText = criterios;
           document.getElementById("modalDescription").innerText = descricao;
           document.getElementById("modalRequirements").innerText = requisitos;
-      } else {
+        } else {
+          // Esconde a div bolsa
           $("#bolsa").hide();
+        }
       }
-  }
 
-  // Funções de edição
-  function abrirModalEdicao(titulo, tipo, responsavel, bolsa) {
-      document.getElementById("editTitle").value = titulo;
-      document.getElementById("editType").value = tipo;
-      document.getElementById("editResponsible").value = responsavel;
-      document.getElementById("editGrant").value = bolsa;
-      openModal('editModal');
-  }
+      // Função para abrir o modal de exclusão
+      //function abrirModalExclusao(titulo, id) {
+      //idSelecionado = id;
+      //console.log(id + "abacate");
+      //document.getElementById("deleteTitle").textContent = titulo;
+      //botaoDeletarProjeto.removeEventListener("click", deletarProjeto);
+      //  botaoDeletarProjeto.addEventListener("click", deletarProjeto.bind(null, id));
+      //   deleteModal.style.display = "block";
+      //}
 
-  function salvarAlteracoes() {
-      // Aqui você pode adicionar a lógica para salvar as alterações
-      closeModal('editModal');
-  }
-</script>
+      // Função para fechar todos os modais
+      function fecharModais() {
+        document.getElementById("projectModal").style.display = "none";
+        document.getElementById("deleteModal").style.display = "none";
+        document.getElementById("deleteModalDocente").style.display = "none";
+        document.getElementById("deleteModalDiscente").style.display = "none";
+        document.getElementById("cursoModal").style.display = "none";
+      }
+
+      // Fechar modais ao clicar no 'X'
+      var botoesFecharModal = document.querySelectorAll(".close");
+      botoesFecharModal.forEach(botao => {
+        botao.onclick = fecharModais;
+      });
+
+      // Fechar modais ao clicar fora deles
+      window.onclick = function (evento) {
+        if (evento.target == document.getElementById("projectModal") ||
+          evento.target == document.getElementById("deleteModal") ||
+          evento.target == document.getElementById("deleteModalDocente") ||
+          evento.target == document.getElementById("deleteModalDiscente") ||
+          evento.target == document.getElementById("cursoModal")) {
+          fecharModais();
+        }
+      };
+
+      // Função para confirmar exclusão
+      function confirmarExclusao() {
+        // Lógica para confirmar a exclusão do projeto
+        fecharModalExclusao();
+      }
+
+      // Funções para abrir e fechar o modal de edição
+      function abrirModalEdicao(titulo, tipo, responsavel, bolsa) {
+        document.getElementById("editTitle").value = titulo;
+        document.getElementById("editType").value = tipo;
+        document.getElementById("editResponsible").value = responsavel;
+        document.getElementById("editGrant").value = bolsa;
+        document.getElementById("editModal").style.display = "block";
+      }
+
+      function fecharModalEdicao() {
+        document.getElementById("editModal").style.display = "none";
+      }
+
+      // Função para salvar alterações
+      function salvarAlteracoes() {
+        // Aqui você pode adicionar a lógica para salvar as alterações
+        fecharModalEdicao();
+      }
+    </script>
+    <script>
+      function openTipodeprojetoModal() {
+        document.getElementById("tipoprojetoModal").style.display = "block";
+      }
+
+      function closeTipodeprojetoModal() {
+        document.getElementById("tipoprojetoModal").style.display = "none";
+      }
+
+      function criarTipodeprojeto() {
+        // Função de criação do tipo de projeto
+        alert("Tipo de Projeto criado com sucesso!");
+        closeTipodeprojetoModal();
+      }
+    </script>
+    <script>
+      // Funções de modal
+      function openModal(modalId) {
+        document.getElementById(modalId).style.display = 'block';
+      }
+
+      function closeModal(modalId) {
+        document.getElementById(modalId).style.display = 'none';
+      }
+
+      function closeAllModals() {
+        closeModal('projectModal');
+        closeModal('deleteModal');
+        closeModal('deleteModalDocente');
+        closeModal('deleteModalDiscente');
+        closeModal('cursoModal');
+        closeModal('tipoprojetoModal');
+        closeModal('editModal');
+      }
+
+      // Fechar modais ao clicar no 'X'
+      document.querySelectorAll('.close').forEach(botao => {
+        botao.onclick = () => closeAllModals();
+      });
+
+      // Fechar modais ao clicar fora deles
+      window.onclick = function (event) {
+        const modais = ['projectModal', 'deleteModal', 'deleteModalDocente', 'deleteModalDiscente', 'cursoModal', 'tipoprojetoModal'];
+        modais.forEach(modalId => {
+          if (event.target == document.getElementById(modalId)) {
+            closeModal(modalId);
+          }
+        });
+      };
+
+      // Funções para criar curso
+      function criarCurso() {
+        const nomeCurso = document.getElementById('nomeCurso').value;
+        if (nomeCurso) {
+          $.ajax({
+            type: "POST",
+            url: "../../backend/requisicoes/req_criar_cursos.php",
+            data: "id=" + nomeCurso,
+            success: function () {
+              alert('Curso "' + nomeCurso + '" criado com sucesso!');
+              closeModal('cursoModal');
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+              alert(errorThrown);
+            }
+          });
+        } else {
+          alert('Por favor, insira o nome do curso.');
+        }
+      }
+
+      // Funções para criar tipo de projeto
+      function criarTipodeprojeto() {
+        const nomeTipoProjeto = document.getElementById('nomeTipoProjeto').value;
+        if (nomeTipoProjeto) {
+          $.ajax({
+            type: "POST",
+            url: "../../backend/requisicoes/req_criar_tipodeprojeto.php", // Atualize para a URL correta
+            data: "id=" + nomeTipoProjeto,
+            success: function () {
+              alert('Tipo de Projeto "' + nomeTipoProjeto + '" criado com sucesso!');
+              closeModal('tipoprojetoModal');
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+              alert(errorThrown);
+            }
+          });
+        } else {
+          alert('Por favor, insira o nome do tipo de projeto.');
+        }
+      }
+
+      // Funções para dropdown
+      function toggleDropdown() {
+        const dropdown = document.getElementById('filterDropdown');
+        dropdown.style.display = (dropdown.style.display === 'none' || dropdown.style.display === '') ? 'block' : 'none';
+      }
+
+      // Impedir que o dropdown feche ao clicar dentro
+      document.querySelector('.dropdown-menu').addEventListener('click', function (e) {
+        e.stopPropagation();
+      });
+
+      // Função para abrir o modal de visualização
+      function abrirModal(titulo, tipo, responsavel, bolsa, resumo, criterios, descricao, requisitos) {
+        document.getElementById("modalTitle").innerText = titulo;
+        document.getElementById("modalType").innerText = tipo;
+        document.getElementById("modalResponsible").innerText = responsavel;
+        document.getElementById("modalGrant").innerText = bolsa;
+        document.getElementById("modalSummary").textContent = resumo;
+        document.getElementById("projectModal").style.display = "block";
+
+        // Mostrar ou esconder a div "bolsa" dependendo do valor
+        if (bolsa === "Sim") {
+          $("#bolsa").show();
+          document.getElementById("modalCriteria").innerText = criterios;
+          document.getElementById("modalDescription").innerText = descricao;
+          document.getElementById("modalRequirements").innerText = requisitos;
+        } else {
+          $("#bolsa").hide();
+        }
+      }
+
+      // Funções de edição
+      function abrirModalEdicao(titulo, tipo, responsavel, bolsa) {
+        document.getElementById("editTitle").value = titulo;
+        document.getElementById("editType").value = tipo;
+        document.getElementById("editResponsible").value = responsavel;
+        document.getElementById("editGrant").value = bolsa;
+        openModal('editModal');
+      }
+
+      function salvarAlteracoes() {
+        // Aqui você pode adicionar a lógica para salvar as alterações
+        closeModal('editModal');
+      }
+    </script>
 
 </body>
 

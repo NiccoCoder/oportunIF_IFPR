@@ -139,9 +139,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `db_oportunif`;
-INSERT INTO `db_oportunif`.`TB_TIPO_PROJETO` (`ID_TIPO_PROJETO`, `NOME_TIPO_PROJETO`, `DESCRICAO`) VALUES (1, 'Extensão', 'Projeto de extensão');
-INSERT INTO `db_oportunif`.`TB_TIPO_PROJETO` (`ID_TIPO_PROJETO`, `NOME_TIPO_PROJETO`, `DESCRICAO`) VALUES (2, 'Pesquisa', 'Projeto de pesquisa');
-INSERT INTO `db_oportunif`.`TB_TIPO_PROJETO` (`ID_TIPO_PROJETO`, `NOME_TIPO_PROJETO`, `DESCRICAO`) VALUES (3, 'Inovação', 'Projeto de inovação');
-INSERT INTO `db_oportunif`.`TB_TIPO_PROJETO` (`ID_TIPO_PROJETO`, `NOME_TIPO_PROJETO`, `DESCRICAO`) VALUES (4, 'Ensino', 'Projeto de ensino');
+INSERT INTO `db_oportunif`.`TB_TIPO_PROJETO` (`ID_TIPO_PROJETO`, `NOME_TIPO_PROJETO`) VALUES (1, 'Extensão');
+INSERT INTO `db_oportunif`.`TB_TIPO_PROJETO` (`ID_TIPO_PROJETO`, `NOME_TIPO_PROJETO`) VALUES (2, 'Pesquisa');
+INSERT INTO `db_oportunif`.`TB_TIPO_PROJETO` (`ID_TIPO_PROJETO`, `NOME_TIPO_PROJETO`) VALUES (3, 'Inovação');
+INSERT INTO `db_oportunif`.`TB_TIPO_PROJETO` (`ID_TIPO_PROJETO`, `NOME_TIPO_PROJETO`) VALUES (4, 'Ensino');
 
 COMMIT;
