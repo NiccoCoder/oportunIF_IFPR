@@ -19,7 +19,7 @@
             <li class="nav-item w-100">
                 <div class="search-dropdown">
                     <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
-                        <input type="text" style="color: white; background-color: #2a2f3a; border: 1px solid #444; border-radius: 6px; padding: 8px; width: 55%;" class="form-control" placeholder="Pesquisar" onclick="toggleDropdown()">
+                        <input type="text" id="busca" style="color: white; background-color: #2a2f3a; border: 1px solid #444; border-radius: 6px; padding: 8px; width: 55%;" class="form-control" placeholder="Pesquisar" onclick="toggleDropdown()">
                     </form>
                     <div class="dropdown-menu" id="filterDropdown" style="display: none; position: absolute; top: 55px; width: 55%; background-color: #1f232b; border-radius: 6px; padding: 10px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15); z-index: 1000;" onclick="event.stopPropagation();">
                         <div style="display: flex; flex-wrap: wrap; gap: 10px;">
@@ -148,6 +148,7 @@
         <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
         <script src="../../frontend/js/verificarSessaoAtiva.js"></script>
         <script src="../../frontend/js/req_projeto.js"></script>
+        <script src="../js/busca.js"></script>
         
         <script>
 
