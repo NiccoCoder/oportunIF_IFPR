@@ -26,7 +26,7 @@
     
     <a href="./frontend/pages/projetoCadastro.html" class="button">Cadastrar Projeto</a><br>
         
-    <a href="./frontend/pages/report.html" class="button">Tela de Report</a><br>
+    <a href="./frontend/pages/denunciar.html" class="button">Tela de denunciar</a><br>
     
     <a href="./frontend/pages/verificacaoEmailCodigo.html" class="button">Verificação de Email</a><br>
 
