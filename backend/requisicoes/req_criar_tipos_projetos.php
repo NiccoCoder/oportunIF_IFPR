@@ -1,15 +1,14 @@
 <?php
 
-    include_once('../config.php');
+include_once('../config.php');
 
-    $id = $_POST['id'];
+$nomeTipoProjeto = $_POST['nomeTipoProjeto'];
 
-    $sql = "INSERT INTO TB_CURSO (NOME_CURSO) VALUE (?);";
-    $stmt = $conexao->prepare($sql);
-    $stmt->bind_param("s", $id);
-        
-    $stmt->execute();
-    $result = $stmt->get_result();
+$sql = "INSERT INTO TB_TIPO_PROJETO (NOME_TIPO_PROJETO) VALUES (?);";
+$stmt = $conexao->prepare($sql);
+$stmt->bind_param("s", $nomeTipoProjeto);
 
+$stmt->execute();
+$conexao->close();
 
-    $conexao->close();
+?>

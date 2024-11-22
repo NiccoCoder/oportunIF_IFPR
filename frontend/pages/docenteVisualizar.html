@@ -31,27 +31,6 @@
               style="color: white; background-color: #2a2f3a; border: 1px solid #444; border-radius: 6px; padding: 8px; width: 55%;"
               class="form-control" placeholder="Pesquisar" onclick="toggleDropdown()">
           </form>
-          <div class="dropdown-menu" id="filterDropdown"
-            style="display: none; position: absolute; top: 55px; width: 55%; background-color: #1f232b; border-radius: 6px; padding: 10px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15); z-index: 1000;"
-            onclick="event.stopPropagation();">
-            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-              <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
-                <input type="checkbox" value="Pesquisa" style="margin-right: 6px;"> Pesquisa
-              </label>
-              <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
-                <input type="checkbox" value="Inovação" style="margin-right: 6px;"> Inovação
-              </label>
-              <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
-                <input type="checkbox" value="Ensino" style="margin-right: 6px;"> Ensino
-              </label>
-              <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
-                <input type="checkbox" value="Extensão" style="margin-right: 6px;"> Extensão
-              </label>
-              <label class="dropdown-item" style="color: white; font-weight: 500; font-size: 0.9rem; cursor: pointer;">
-                <input type="checkbox" value="Possui Bolsa" style="margin-right: 6px;"> Possui Bolsa
-              </label>
-            </div>
-          </div>
         </div>
       </li>
     </ul>
@@ -208,7 +187,7 @@
         <div class="modal-content">
           <span class="close" onclick="closeEditModal()">&times;</span>
           <h2 style="color: #000000;">Editar Projeto</h2>
-          <form id="editForm" action="editar_projeto.php" method="POST">
+          <form id="editForm" action="editarProjeto.php" method="POST">
 
             <label for="editTitle" style="color: #000000;">Título:</label>
             <input type="text" id="editTitle" name="title" style="width: 100%;" required><br>
@@ -217,7 +196,6 @@
             <select id="editType" name="type" style="width: 100%;" required>
               <option value="" disabled selected>Selecione o tipo de projeto</option>
             </select><br>
-            
 
             <label for="editCriteria" style="color: #000000;">Critérios de seleção:</label>
             <input type="text" id="editCriteria" name="criteria" style="width: 100%;" required><br>
