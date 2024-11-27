@@ -21,7 +21,8 @@
         JOIN `TB_TIPO_PROJETO` ON ((`TB_TIPO_PROJETO`.`ID_TIPO_PROJETO` = `TB_PROJETO`.`ID_TIPO_PROJETO`)))
     WHERE
         (`TB_PROJETO`.`TITULO` LIKE '%$busca%') or
-        (`TB_DOCENTE`.`NOME` LIKE '%$busca%')";
+        (`TB_DOCENTE`.`NOME` LIKE '%$busca%') or
+        (`TB_TIPO_PROJETO`.`NOME_TIPO_PROJETO` LIKE '%$busca%')";
     $stmt = $conexao->prepare($sql);
 
 if ($stmt->execute()) {

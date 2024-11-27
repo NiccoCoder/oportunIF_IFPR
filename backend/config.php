@@ -1,14 +1,14 @@
 <?php
 
-$servername = getenv('DB_HOST');
-$username = getenv('DB_USER');
-$password = getenv('DB_PASSWORD');
-$dbname = getenv('DB_NAME');
+// $servername = getenv('DB_HOST');
+// $username = getenv('DB_USER');
+// $password = getenv('DB_PASSWORD');
+// $dbname = getenv('DB_NAME');
 
-// $servername = 'Localhost';
-// $username = 'root';
-// $password = '';
-// $dbname = 'db_oportunif';
+$servername = 'Localhost';
+$username = 'root';
+$password = '';
+$dbname = 'db_oportunif';
 
 // Criar conexão
 mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT); // Desativa relatórios de erros

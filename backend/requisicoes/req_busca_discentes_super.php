@@ -5,21 +5,20 @@
     $busca = $_POST['busca'];
 
     $sql = "SELECT 
-    d.ID_DOCENTE AS ID_DOCENTE,
+    d.ID_DISCENTE AS ID_DISCENTE,
     d.EMAIL AS EMAIL,
     d.SITUACAO AS SITUACAO,
     d.NOME AS NOME,
-    COUNT(dp.ID_PROJETO) AS TOTAL_PROJETOS
+    c.NOME_CURSO AS CURSO
 FROM
-    TB_DOCENTE d
-     
-LEFT JOIN 
-    TB_PROJETO dp ON d.ID_DOCENTE = dp.ID_DOCENTE
-    WHERE
-    
-		 NOME LIKE '%$busca%'
-GROUP BY 
-    d.ID_DOCENTE, d.NOME, d.EMAIL, d.SITUACAO";
+    TB_DISCENTE d
+JOIN 
+    TB_CURSO c ON d.ID_CURSO = c.ID_CURSO
+     WHERE
+		 
+         
+         (NOME LIKE '%$busca%') or
+        (c.NOME_CURSO LIKE '%$busca%');";
     $stmt = $conexao->prepare($sql);
 
 if ($stmt->execute()) {
