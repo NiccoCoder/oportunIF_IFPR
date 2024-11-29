@@ -438,6 +438,112 @@ function buscarCursos() {
   busca();
 }
 
+
+function buscarProjetosDocenteGerenciamento() {
+  buscaBotao;
+  $.ajax({
+    url: "../../backend/requisicoes/req_projeto_docente.php",
+    dataType: "json",
+    success: function (data) {
+      console.log(data);
+      //Zerando o titulo
+      $("#tituloTabela").empty();
+      //zerando a tabela
+      $('#tabelaInfo').empty();
+
+      $('#linhaTabela').empty();
+      //Dando nome a tabela
+      $("#tituloTabela").append("Meus projetos");
+      //começar a tabela
+      $('#tabelaInfo').append(`
+        <tr><th>
+                              <div class="form-check form-check-muted m-0">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input">
+                                </label>
+                              </div>
+                            </th>
+                            <th> Titulo </th>
+                            <th> Tipo   </th>
+                            <th> Responsável </th>
+                            <th> E-mail</th>
+                            <th> Opções </th>
+                          </tr>
+        `);
+      var possui = null;
+
+      //MODAL
+      $("#nomeModal").text("Detalhes do Projeto");
+      $("#tituloModal").text("Titulo:");
+      $("#tipoModal").text("Tipo:");
+      $("#responsavelModal").text("Responsavel:");
+      $("#bolsaModal").text("Com bolsa:");
+      $("#resumoModal").text("Resumo:");
+      $("#emailModal").show();
+
+      if (data.length > 0) {
+        $.each(data, function (index, item) {
+
+
+          if (item.POSSUI_BOLSA == '0') {
+            possui = 'Não';
+            // $("#bolsa").empty();
+          }
+          else {
+            possui = 'Sim';
+
+          }
+          $("#linhaTabela").append(
+            `
+              <tr>                  
+                            <td>
+                              <div class="form-check form-check-muted m-0">
+                                <label class="form-check-label">
+                                  <input type="checkbox" class="form-check-input">
+                                </label>
+                              </div>
+                            </td>
+                            <td>` + item.TITULO + `</td>
+                            <td>`+ item.NOME_TIPO_PROJETO + `</td>
+                            <td>`+ item.NOME + `</td>
+                            <td>`+ possui + `</td>
+                            <td>
+                              <div class="action-buttons">
+                                <button title="Visualizar" onclick="openModal('`+ item.TITULO + `', '` + item.NOME_TIPO_PROJETO + `','` + item.NOME + `','` + possui + `','` + item.RESUMO + `','` + item.CRITERIOS + `','` + item.DESCRICAO  + `','` + item.REQUISITOS + `')">
+                                  <i class="mdi mdi-eye icon text-success ml-auto"></i>
+                                </button>
+                                <button title="Deletar" onclick="openDeleteModal('`+ item.TITULO + `',` + item.ID_PROJETO + `)">
+                                  <i class="mdi mdi-delete icon text-danger ml-auto"></i>
+                                </button>
+                                <button title="Editar"
+                                  onclick="openEditModal('`+ item.TITULO + `', '` + item.NOME_TIPO_PROJETO +  `','` + possui + `','` + item.RESUMO + `','` + item.CRITERIOS + `','` + item.DESCRICAO  + `','` + item.REQUISITOS + `')"
+                                  style="display: flex; justify-content: center; align-items: center;">
+                                  <i class="mdi mdi-pencil icon text-primary ml-auto"></i>
+                                </button>
+                              </div>
+                            </td>
+                          </tr>
+              `
+          );
+        });
+      }
+      else {
+        $("#tituloTabela").empty();
+        $("#tituloTabela").append("Nenhum projeto encontrado!");
+        $('#tabelaInfo').empty();
+      }
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      $("#resultado").append("<p>Erro ao buscar os projetos: " + errorThrown + "</p>");
+    }
+  });
+  busca();
+}
+
+
+
+
+
 //// MODAL DELETAR Projeto
 
 function openDeleteModal(title, id) {
