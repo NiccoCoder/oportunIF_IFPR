@@ -271,6 +271,46 @@
         </div>
       </div>
     </div>
+
+    <!-- DELETAR MODAL CURSO -->
+
+    <div id="deleteModalCurso" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 style="color: #000000;">Confirmar Exclusão</h2>
+        <p style="color:#000000">Tem certeza que deseja excluir o Curso<strong><span
+              id="deleteTitle"></span></strong>?</p>
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <button
+            style="padding: 8px 16px; background-color: #64ec9d; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+            id="botaoDeletarCurso" onclick="deletarDocente()">Sim, excluir</button>
+          <button
+            style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+            onclick="closeDeleteModal()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- DELETAR MODAL TIPO PROJETO -->
+
+    <div id="deleteModalTipoProjeto" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeDeleteModalTipoProjeto()" >&times;</span>
+        <h2 style="color: #000000;">Confirmar Exclusão</h2>
+        <p style="color:#000000">Tem certeza que deseja excluir o tipo de projeto<strong><span
+              id="deleteTitle"></span></strong>?</p>
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <button
+            style="padding: 8px 16px; background-color: #64ec9d; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+            id="botaoDeletarProjeto" onclick="deletarDocente()">Sim, excluir</button>
+          <button
+            style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+            onclick="closeDeleteModalTipoProjeto()">Cancelar</button>
+        </div>
+      </div>
+    </div>
+
     <div id="cursoModal" class="modal">
       <div class="modal-content">
         <span class="close" onclick="closeCursoModal()">&times;</span>
@@ -417,6 +457,7 @@
         document.getElementById("deleteModalDocente").style.display = "none";
         document.getElementById("deleteModalDiscente").style.display = "none";
         document.getElementById("cursoModal").style.display = "none";
+        document.getElementById("deleteModalTipoProjeto");style.display = "none";
       }
 
       // Fechar modais ao clicar no 'X'
@@ -431,6 +472,8 @@
           evento.target == document.getElementById("deleteModal") ||
           evento.target == document.getElementById("deleteModalDocente") ||
           evento.target == document.getElementById("deleteModalDiscente") ||
+          evento.target == document.getElementById("deleteModalTipoProjeto") ||
+          evento.target == document.getElementById("deleteModalCurso") ||
           evento.target == document.getElementById("cursoModal")) {
           fecharModais();
         }
@@ -494,6 +537,9 @@
         closeModal('cursoModal');
         closeModal('tipoprojetoModal');
         closeModal('editModal');
+        closeModal('deleteModalCurso');
+        closeModal('deleteModalTipoProjeto');
+        
       }
 
       // Fechar modais ao clicar no 'X'
@@ -503,7 +549,7 @@
 
       // Fechar modais ao clicar fora deles
       window.onclick = function (event) {
-        const modais = ['projectModal', 'deleteModal', 'deleteModalDocente', 'deleteModalDiscente', 'cursoModal', 'tipoprojetoModal'];
+        const modais = ['projectModal', 'deleteModal', 'deleteModalDocente', 'deleteModalDiscente', 'cursoModal', 'deleteModalTipProjeto', 'deleteModalCurso','tipoprojetoModal'];
         modais.forEach(modalId => {
           if (event.target == document.getElementById(modalId)) {
             closeModal(modalId);

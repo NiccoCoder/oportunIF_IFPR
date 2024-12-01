@@ -342,7 +342,7 @@ function buscarTiposProjeto() {
                                   <button title="Editar" onclick="editarTipoProjeto(${item.ID_TIPO_PROJETO}, '${item.NOME_TIPO_PROJETO}')">
                                       <i class="mdi mdi-pencil icon text-primary ml-auto"></i>
                                   </button>
-                                  <button title="Deletar" onclick="deletarTipoProjeto(${item.ID_TIPO_PROJETO})">
+                                  <button title="Deletar" onclick="openDeleteModalTipoProjeto('${item.NOME_TIPO_PROJETO}', ${item.ID_TIPO_PROJETO})">
                                       <i class="mdi mdi-delete icon text-danger ml-auto"></i>
                                   </button>
                               </div>
@@ -417,7 +417,7 @@ function buscarCursos() {
                                   <button title="Editar" onclick="editarCurso(${item.ID_CURSO}, '${item.NOME_CURSO}')">
                                       <i class="mdi mdi-pencil icon text-primary ml-auto"></i>
                                   </button>
-                                  <button title="Deletar" onclick="deletarCurso(${item.ID_CURSO})">
+                                  <button title="Deletar" onclick="openDeleteModalCurso(${item.ID_CURSO})">
                                       <i class="mdi mdi-delete icon text-danger ml-auto"></i>
                                   </button>
                               </div>
@@ -579,6 +579,31 @@ function openDeleteModalDiscente(name, id) {
   deleteModalDiscente.style.display = "block";
 }
 
+//// MODAL DELETAR CURSO
+function openDeleteModalCurso(name, id) {
+  console.log(id);
+  idSelecionado = id;
+  document.getElementById("deleteTitle").textContent = name;
+
+
+  //botaoDeletarProjeto.removeEventListener("onclick", deletarProjeto);
+  deleteModalCurso.style.display = "block";
+}
+
+//// MODAL DELETAR TIPO PROJETO
+function openDeleteModalTipoProjeto(name, id) {
+  console.log("chegando");
+  idSelecionado = id;
+  document.getElementById("deleteTitle").textContent = name;
+
+
+  //botaoDeletarProjeto.removeEventListener("onclick", deletarProjeto);
+  deleteModalTipoProjeto.style.display = "block";
+}
+
+
+
+
 // DELETAR PROJETO
 function deletarProjeto() {
   $.ajax({
@@ -633,6 +658,40 @@ function deletarDiscente() {
   });
 }
 
+function deletarCurso() {
+
+  $.ajax({
+    type: "POST",
+    url: "../../backend/requisicoes/req_deletar_discente.php",
+    data: "id=" + idSelecionado,
+    success: function (data) {
+      alert("Discente deletado com sucesso!");
+      console.log(idSelecionado);
+      closeDeleteModalDiscente();
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      //$("#resultado").append("<p>Erro ao buscar os projetos: " + errorThrown + "</p>");
+    }
+  });
+}
+
+function deletarTipoProjeto() {
+
+  $.ajax({
+    type: "POST",
+    url: "../../backend/requisicoes/req_deletar_discente.php",
+    data: "id=" + idSelecionado,
+    success: function (data) {
+      alert("Discente deletado com sucesso!");
+      console.log(idSelecionado);
+      closeDeleteModalDiscente();
+    },
+    error: function (jqXHR, textStatus, errorThrown) {
+      //$("#resultado").append("<p>Erro ao buscar os projetos: " + errorThrown + "</p>");
+    }
+  });
+}
+
 
 
 
@@ -641,6 +700,8 @@ const projectModal = document.getElementById("projectModal");
 const deleteModal = document.getElementById("deleteModal");
 const deleteModalDocente = document.getElementById("deleteModalDocente");
 const deleteModalDiscente = document.getElementById("deleteModalDiscente");
+const deleteModalTipoProjeto = document.getElementById("deleteModalTipoProjeto");
+const deleteModalCurso = document.getElementById("deleteModalCurso");
 
 
 function openModal(title, type, responsible, grant, summary, email, criteria, description, requirements) {
@@ -680,6 +741,14 @@ function closeDeleteModalDocente() {
 // fechar modal deletar projeto
 function closeDeleteModalDiscente() {
   deleteModalDiscente.style.display = "none";
+}
+
+function closeDeleteModalTipoProjeto() {
+  deleteModalTipoProjeto.style.display = "none";
+}
+
+function closeDeleteModalCurso() {
+  deleteModalCurso.style.display = "none";
 }
 
 
