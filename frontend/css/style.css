@@ -13244,8 +13244,8 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
 
 .btn-success {
   color: #000;
-  background-color: #00d25b;
-  border-color: #00d25b;
+  background-color: #28a745;
+  border-color: #28a745;
 }
 
 .btn-success:hover {
@@ -13283,8 +13283,8 @@ fieldset:disabled .swal2-modal .swal2-buttonswrapper .swal2-styled,
 .btn-success:disabled,
 .btn-success.disabled {
   color: #000;
-  background-color: #00d25b;
-  border-color: #00d25b;
+  background-color: #28a745;
+  border-color: #28a745;
 }
 
 .btn-info {
@@ -24401,8 +24401,8 @@ code {
 
 .btn-success:not(.btn-light):not(.btn-secondary):focus,
 .btn-success:not(.btn-light):not(.btn-secondary):active {
-  background: #00d25b;
-  border-color: #00d25b;
+  background: #28a745;
+  border-color: #28a745;
 }
 
 .btn-inverse-info {
