@@ -144,3 +144,25 @@ INSERT INTO `db_oportunif`.`TB_TIPO_PROJETO` (`ID_TIPO_PROJETO`, `NOME_TIPO_PROJ
 INSERT INTO `db_oportunif`.`TB_TIPO_PROJETO` (`ID_TIPO_PROJETO`, `NOME_TIPO_PROJETO`) VALUES (4, 'Ensino');
 
 COMMIT;
+-- -----------------------------------------------------
+-- Inserindo dados na tabela `TB_DOCENTE` 
+-- -----------------------------------------------------
+START TRANSACTION;
+USE 'db_oportunif';
+INSERT INTO `db_oportunif`.`TB_DOCENTE` (`ID_DOCENTE`, `NOME`, `EMAIL`, `SENHA`, `CHAVE`, `SITUACAO`, `SUPER_USUARIO`) VALUES (5, 'Cleverton Juliano Alves Vesentini', ' cleverton.vesentini@ifpr.edu.br', 'abc123!@', 'CHAVE123', 'confirmado', 1);
+INSERT INTO `db_oportunif`.`TB_DOCENTE` (`ID_DOCENTE`, `NOME`, `EMAIL`, `SENHA`, `CHAVE`, `SITUACAO`, `SUPER_USUARIO`) VALUES (6, 'Marlon de Oliveira Vaz', 'marlon.vaz@ifpr.edu.br', 'def456#$', 'CHAVE456', 'confirmado', 1);
+INSERT INTO `db_oportunif`.`TB_DOCENTE` (`ID_DOCENTE`, `NOME`, `EMAIL`, `SENHA`, `CHAVE`, `SITUACAO`, `SUPER_USUARIO`) VALUES (7, 'Ana Maria de Fátima Leme Tarini', 'ana.tarini@ifpr.edu.br', 'ghi789&*', 'CHAVE789', 'confirmado', 1);
+INSERT INTO `db_oportunif`.`TB_DOCENTE` (`ID_DOCENTE`, `NOME`, `EMAIL`, `SENHA`, `CHAVE`, `SITUACAO`, `SUPER_USUARIO`) VALUES (8, 'Aleffer Rocha', 'aleffer.rocha@ifpr.edu.br', 'jkl012@$!', 'CHAVE012', 'pendente', 0);
+INSERT INTO `db_oportunif`.`TB_DOCENTE` (`ID_DOCENTE`, `NOME`, `EMAIL`, `SENHA`, `CHAVE`, `SITUACAO`, `SUPER_USUARIO`) VALUES (9, 'Alessandra Beatriz Pachas Zavala', 'alessandra.zavala@ifpr.edu.br', 'mno345%^', 'CHAVE345', 'pendente', 0);
+INSERT INTO `db_oportunif`.`TB_DOCENTE` (`ID_DOCENTE`, `NOME`, `EMAIL`, `SENHA`, `CHAVE`, `SITUACAO`, `SUPER_USUARIO`) VALUES (10, 'Alexandre Peres Arias', 'alexandre.arias@ifpr.edu.br', 'pqr678**', 'CHAVE678', 'pendente', 0);
+INSERT INTO `db_oportunif`.`TB_DOCENTE` (`ID_DOCENTE`, `NOME`, `EMAIL`, `SENHA`, `CHAVE`, `SITUACAO`, `SUPER_USUARIO`) VALUES (11, 'Allan Niels de Oliveira', 'allan.oliveira@ifpr.edu.br', 'stu901!@#', 'CHAVE901', 'pendente', 0);
+INSERT INTO `db_oportunif`.`TB_DOCENTE` (`ID_DOCENTE`, `NOME`, `EMAIL`, `SENHA`, `CHAVE`, `SITUACAO`, `SUPER_USUARIO`) VALUES (12, 'Álvaro Rogério Cantieri', 'alvaro.cantieri@ifpr.edu.br', 'vwx234$%', 'CHAVE234', 'pendente', 0);
+INSERT INTO `db_oportunif`.`TB_DOCENTE` (`ID_DOCENTE`, `NOME`, `EMAIL`, `SENHA`, `CHAVE`, `SITUACAO`, `SUPER_USUARIO`) VALUES (13, 'Ana Carolina Vilela de Carvalho', 'carolina.carvalho@ifpr.edu.br', 'yz567#@!', 'CHAVE567', 'pendente', 0);
+INSERT INTO `db_oportunif`.`TB_DOCENTE` (`ID_DOCENTE`, `NOME`, `EMAIL`, `SENHA`, `CHAVE`, `SITUACAO`, `SUPER_USUARIO`) VALUES (14, 'Ana Maria de Fátima Leme Tarini', 'ana.tarini@ifpr.edu.br', 'abc890!$', 'CHAVE890', 'pendente', 0);
+INSERT INTO `db_oportunif`.`TB_DOCENTE` (`ID_DOCENTE`, `NOME`, `EMAIL`, `SENHA`, `CHAVE`, `SITUACAO`, `SUPER_USUARIO`) VALUES (15, 'Anderson Ribeiro de Almeida', 'anderson.almeida@ifpr.edu.br', 'def123#&', 'CHAVE123A', 'pendente', 0);
+INSERT INTO `db_oportunif`.`TB_DOCENTE` (`ID_DOCENTE`, `NOME`, `EMAIL`, `SENHA`, `CHAVE`, `SITUACAO`, `SUPER_USUARIO`) VALUES (16, 'Anieli de Fátima Miguel', 'anieli.miguel@ifpr.edu.br', 'ghi456*@', 'CHAVE456A', 'pendente', 0);
+INSERT INTO `db_oportunif`.`TB_DOCENTE` (`ID_DOCENTE`, `NOME`, `EMAIL`, `SENHA`, `CHAVE`, `SITUACAO`, `SUPER_USUARIO`) VALUES (17, 'Anny Mirleni Almeida Silva', 'anny.silva@ifpr.edu.br', 'jkl789$%', 'CHAVE789A', 'pendente', 0);
+INSERT INTO `db_oportunif`.`TB_DOCENTE` (`ID_DOCENTE`, `NOME`, `EMAIL`, `SENHA`, `CHAVE`, `SITUACAO`, `SUPER_USUARIO`) VALUES (18, 'Aryel Marlus Repula de Oliveira', 'aryel.oliveira@ifpr.edu.br', 'mno012&!', 'CHAVE012A', 'pendente', 0);
+INSERT INTO `db_oportunif`.`TB_DOCENTE` (`ID_DOCENTE`, `NOME`, `EMAIL`, `SENHA`, `CHAVE`, `SITUACAO`, `SUPER_USUARIO`) VALUES (19, 'Atila de Paiva Teles', 'atila.teles@ifpr.edu.br', 'pqr345!#', 'CHAVE345A', 'pendente', 0);
+
+COMMIT;
