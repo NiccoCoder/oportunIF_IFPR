@@ -16,6 +16,38 @@ $(document).ready(function () {
     },
   });
   // PADRAO DA PAGINA MOSTRAR OS PROJETOS
+  
+  var tipoProjetoAtual = "";
+  $.ajax({
+    
+    url: "../../backend/requisicoes/req_tipo_projeto.php",
+    dataType: "json",
+    success: function (data) {
+      if (data.length > 0) {
+        // Adiciona a opção inicial "SELECIONE >>>" caso ela ainda não esteja no select
+        if ($("#editTypeProjeto option[value='']").length === 0) {
+          $("#editTypeProjeto").append('<option value="" selected disabled>SELECIONE >>></option>');
+        }
+
+        // Itera sobre os dados e adiciona as opções
+        $.each(data, function (index, item) {
+          // Verifica se o tipo de projeto é o atual e marca como 'selected'
+          var selected = item.ID_TIPO_PROJETO == tipoProjetoAtual ? "selected" : "";
+
+          // Adiciona a opção ao select
+          $("#editTypeProjeto").append(
+            `<option value="${item.ID_TIPO_PROJETO}" ${selected}>${item.NOME_TIPO_PROJETO}</option>`
+          );
+        });
+      } else {
+        console.error("Nenhum tipo de projeto encontrado.");
+      }
+    },
+    error: function (xhr, status, error) {
+      console.error("Erro ao buscar tipos de projeto:", error);
+    }
+  });
+
   buscarProjetosGerenciamento();
   busca();
 });
@@ -521,7 +553,7 @@ function buscarProjetosDocenteGerenciamento() {
                                   <i class="mdi mdi-delete icon text-danger ml-auto"></i>
                                 </button>
                                 <button title="Editar"
-                                  onclick="openEditModalDocente('`+ item.TITULO + `', '` + item.NOME_TIPO_PROJETO +  `','` + possui + `','` + item.RESUMO + `','` + item.CRITERIOS + `','` + item.DESCRICAO  + `','` + item.REQUISITOS + `')"
+                                  onclick="openEditModalDocente('`+ item.TITULO + `', '` + item.NOME_TIPO_PROJETO +  `','` + possui + `','` + item.RESUMO + `','` + item.CRITERIOS + `','` + item.DESCRICAO  + `','` + item.REQUISITOS + `','` + item.ID_PROJETO + `')"
                                   style="display: flex; justify-content: center; align-items: center;">
                                   <i class="mdi mdi-pencil icon text-primary ml-auto"></i>
                                 </button>
@@ -627,22 +659,22 @@ function deletarProjeto() {
 }
 
 // DELETAR Docente
-function deletarDocente() {
-  console.log(idSelecionado);
-  $.ajax({
-    type: "POST",
-    url: "../../backend/requisicoes/req_deletar_docente.php",
-    data: "id=" + idSelecionado,
-    success: function (data) {
-      alert("Docente deletado com sucesso!");
-      console.log(idSelecionado);
-      closeDeleteModalDocente();
-    },
-    error: function (jqXHR, textStatus, errorThrown) {
-      //$("#resultado").append("<p>Erro ao buscar os projetos: " + errorThrown + "</p>");
-    }
-  });
-}
+// function deletarDocente() {
+//   console.log(idSelecionado);
+//   $.ajax({
+//     type: "POST",
+//     url: "../../backend/requisicoes/req_deletar_docente.php",
+//     data: "id=" + idSelecionado,
+//     success: function (data) {
+//       alert("Docente deletado com sucesso!");
+//       console.log(idSelecionado);
+//       closeDeleteModalDocente();
+//     },
+//     error: function (jqXHR, textStatus, errorThrown) {
+//       //$("#resultado").append("<p>Erro ao buscar os projetos: " + errorThrown + "</p>");
+//     }
+//   });
+// }
 
 
 // DELETAR Discente
@@ -663,6 +695,7 @@ function deletarDiscente() {
   });
 }
 
+//DELETAR CURSO
 function deletarCurso() {
 
   $.ajax({
@@ -679,7 +712,7 @@ function deletarCurso() {
     }
   });
 }
-
+//DELETAR TIPO DE PROJETO
 function deletarTipoProjeto() {
 
   $.ajax({

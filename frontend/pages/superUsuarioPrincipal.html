@@ -348,36 +348,36 @@
       <div class="modal-content" style="width: 50%; margin: 5% auto; padding: 20px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
         <span class="close" onclick="closeEditModal()" style="font-size: 20px; color: #333; cursor: pointer; position: absolute; top: 10px; right: 15px;">&times;</span>
         <h2 style="color: #000000; text-align: center; margin-bottom: 20px;">Editar Projeto</h2>
-        <form id="editForm" action="editarProjeto.php" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+        <div id="editForm" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
           <label for="editTitle" style="color: #000000; font-weight: bold;">Título:</label>
-          <input type="text" id="editTitle" name="title" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
+          <input type="text" id="editTitleProjeto" name="title" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
     
-          <label for="editType" style="color: #000000; font-weight: bold;">Tipo:</label>
-          <select id="editType" name="type" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
+          <label for="editTypeProjeto" style="color: #000000; font-weight: bold;">Tipo:</label>
+          <select id="editTypeProjeto" name="type" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
             <option value="" disabled selected>Selecione o tipo de projeto</option>
           </select>
     
           <label for="editCriteria" style="color: #000000; font-weight: bold;">Critérios de seleção:</label>
-          <input type="text" id="editCriteria" name="criteria" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
+          <input type="text" id="editCriteriaProjeto" name="criteria" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
     
           <label for="editSummary" style="color: #000000; font-weight: bold;">Resumo:</label>
-          <input type="text" id="editSummary" name="summary" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
+          <input type="text" id="editSummaryProjeto" name="summary" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
     
           <div style="display: flex; align-items: center; gap: 10px;">
-            <input type="checkbox" id="checkboxCbolsa" name="with_scholarship" style="transform: scale(1.2);">
+            <input type="checkbox" id="checkboxCbolsaProjeto" name="with_scholarship" style="transform: scale(1.2);">
             <label for="checkboxCbolsa" style="color: #000000; font-weight: bold;">C/bolsa:</label>
           </div>
     
           <div id="editBolsa" style="display: flex; flex-direction: column; gap: 15px;">
             <label for="editDescription" style="color: #000000; font-weight: bold;">Descrição:</label>
-            <input type="text" id="editDescription" name="description" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
+            <input type="text" id="editDescriptionProjeto" name="description" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
     
             <label for="editRequirements" style="color: #000000; font-weight: bold;">Requisitos:</label>
-            <input type="text" id="editRequirements" name="requirements" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
+            <input type="text" id="editRequirementsProjeto" name="requirements" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
           </div>
     
-          <button type="submit" style="padding: 12px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Salvar</button>
-        </form>
+          <button onclick="editarProjeto()" style="padding: 12px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Salvar</button>
+        </div>
       </div>
     </div>
 
@@ -388,11 +388,11 @@
       <div class="modal-content" style="width: 50%; margin: 5% auto; padding: 20px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
         <span class="close"  style="font-size: 20px; color: #333; cursor: pointer; position: absolute; top: 10px; right: 15px;">&times;</span>
         <h2 style="color: #000000; text-align: center; margin-bottom: 20px;">Editar Curso</h2>
-        <form id="editForm" action="editarProjeto.php" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
-          <label for="editTitle" style="color: #000000; font-weight: bold;">Título:</label>
+        <div id="editForm" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+          <label id="editFormCurso" for="editTitle" style="color: #000000; font-weight: bold;">Título:</label>
           <input type="text" id="editTitleCurso" name="title" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
-          <button type="submit" style="padding: 12px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Salvar</button>
-        </form>
+          <button onclick="editarCurso();" style="padding: 12px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Salvar</button>
+        </div>
       </div>
     </div>
 
@@ -402,11 +402,11 @@
       <div class="modal-content" style="width: 50%; margin: 5% auto; padding: 20px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
         <span class="close" style="font-size: 20px; color: #333; cursor: pointer; position: absolute; top: 10px; right: 15px;">&times;</span>
         <h2 style="color: #000000; text-align: center; margin-bottom: 20px;">Editar Tipo de Projeto</h2>
-        <form id="editForm" action="editarProjeto.php" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+        <div id="editForm" action="editarProjeto.php" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
           <label for="editTitle" style="color: #000000; font-weight: bold;">Título:</label>
           <input type="text" id="editTitleTipoProjeto" name="title" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
-          <button type="submit" style="padding: 12px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Salvar</button>
-        </form>
+          <button onclick="editarTipoProjeto()" style="padding: 12px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Salvar</button>
+        </div>
       </div>
     </div>
 
@@ -543,7 +543,7 @@
       // Funções para abrir e fechar o modal de edição
       function openModalEdicao(titulo, tipo, responsavel, bolsa) {
         document.getElementById("editTitle").value = titulo;
-        document.getElementById("editType").value = tipo;
+        document.getElementById("editTypeProjeto").value = tipo;
         document.getElementById("editResponsible").value = responsavel;
         document.getElementById("editGrant").value = bolsa;
         document.getElementById("editModal").style.display = "block";
@@ -553,11 +553,97 @@
         document.getElementById("editModal").style.display = "none";
       }
 
+
       // Função para salvar alterações
-      function salvarAlteracoes() {
+      function editarCurso() {
         // Aqui você pode adicionar a lógica para salvar as alterações
-        fecharModalEdicao();
+              nome = document.getElementById("editTitleCurso").value;
+            
+        console.log(idSelecionado);
+        $.ajax({
+          type: "POST",
+          url: "../../backend/requisicoes/req_editar_cursos.php",
+          data: {
+            id: idSelecionado,
+            nome: nome
+          },
+          success: function (data){
+            alert("Curso editado com sucesso!");
+            location.reload();
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+          }
+        });
+  
+      
       }
+
+      function editarTipoProjeto() {
+        // Aqui você pode adicionar a lógica para salvar as alterações
+        nome = document.getElementById("editTitleTipoProjeto").value;
+            
+            console.log(idSelecionado);
+            $.ajax({
+              type: "POST",
+              url: "../../backend/requisicoes/req_editar_tipos_projetos.php",
+              data: {
+                id: idSelecionado,
+                nome: nome
+              },
+              success: function (data){
+                alert("Tipo de projeto editado com sucesso!");
+                location.reload();
+              },
+              error: function (jqXHR, textStatus, errorThrown) {
+                alert(errorThrown);
+              }
+            });
+      }
+
+      function editarProjeto() {
+        // Aqui você pode adicionar a lógica para salvar as alterações
+        title = document.getElementById("editTitleProjeto").value;
+        criteria = document.getElementById("editCriteriaProjeto").value;
+        type = document.getElementById("editTypeProjeto").value;
+        summary = document.getElementById("editSummaryProjeto").value;
+        if(document.getElementById("checkboxCbolsaProjeto").value){
+          cBolsa = 1;
+        }else{
+          cBolsa = 0;
+        }
+        description = document.getElementById("editDescriptionProjeto").value;
+        requirements = document.getElementById("editRequirementsProjeto").value;
+        
+            
+            console.log(idSelecionado);
+            $.ajax({
+              type: "POST",
+              url: "../../backend/requisicoes/req_editar_projetos.php",
+              data: {
+                id: idSelecionado,
+                title: title,
+                criteria: criteria,
+                type: type,
+                summary: summary,
+                cBolsa: cBolsa,
+                description: description,
+                requirements:requirements
+              },
+              success: function (data){
+                alert("Tipo de projeto editado com sucesso!");
+                location.reload();
+              },
+              error: function (jqXHR, textStatus, errorThrown) {
+                alert(errorThrown);
+              }
+            });
+      }
+
+
+
+
+
     </script>
     <script>
       function openTipodeprojetoModal() {
@@ -686,7 +772,7 @@
       // Funções de edição
       function openModalEdicao(titulo, tipo, responsavel, bolsa) {
         document.getElementById("editTitle").value = titulo;
-        document.getElementById("editType").value = tipo;
+        document.getElementById("editTypeProjeto").value = tipo;
         document.getElementById("editResponsible").value = responsavel;
         document.getElementById("editGrant").value = bolsa;
         openModal('editModalDocente');
@@ -701,39 +787,43 @@
       // ------ MODAIS DE EDIÇÂO
 
         //MODAL DE DOCENTE
-      function openEditModalDocente(title, type, grant, summary, criteria, description, requirements) {
-          document.getElementById("editTitle").value = title;
-          document.getElementById("editType").value = type;
-          document.getElementById("editCriteria").value = criteria;
-          document.getElementById("editDescription").value = description;
+      function openEditModalDocente(title, type, grant, summary, criteria, description, requirements, id) {
+        idSelecionado = id;
+          document.getElementById("editTitleProjeto").value = title;
+          document.getElementById("editTypeProjeto").value = type;
+          document.getElementById("editCriteriaProjeto").value = criteria;
+          document.getElementById("editDescriptionProjeto").value = description;
           // document.getElementById("editGrant").value = grant;
-          document.getElementById("editSummary").value = summary;
+          document.getElementById("editSummaryProjeto").value = summary;
 
           document.getElementById("editModalDocente").style.display = "block";
 
-          if (grant == "Sim") {
-            document.getElementById("checkboxCbolsa").checked = true;
-            document.getElementById("editDescription").value = description;
-            document.getElementById("editRequirements").value = requirements;
-          }
-          else {
-            document.getElementById("checkboxCbolsa").checked = false;
-          }
-          if (comBolsa) {
-            $("#editBolsa").show();
+          // if (grant == "Sim") {
+          //   document.getElementById("checkboxCbolsaProjeto").checked = true;
+          //   document.getElementById("editDescriptionProjeto").value = description;
+          //   document.getElementById("editRequirementsProjeto").value = requirements;
+          //   comBolsa = true;
+          // }
+          // else {
+          //   document.getElementById("checkboxCbolsaProjeto").checked = false;
+          //   comBolsa = false;
+          // }
+          // if (comBolsa) {
+          //   $("#editBolsa").show();
 
 
-          }
-          //esconde a div bolsa
-          else {
+          // }
+          // //esconde a div bolsa
+          // else {
 
-            $("#editBolsa").hide();
-          }
+          //   $("#editBolsa").hide();
+          // }
         }
 
 
         // MODAL CURSO EDIÇÃO
         function openEditModalCurso(id,title) {
+          idSelecionado = id;
           document.getElementById("editTitleCurso").value = title;
           console.log(title);
 
@@ -743,6 +833,7 @@
 
         // MODAL TIPO PROOJETO EDIÇÃO
         function openEditModalTipoProjeto(id,title) {
+          idSelecionado = id;
           document.getElementById("editTitleTipoProjeto").value = title;
           console.log(title);
 

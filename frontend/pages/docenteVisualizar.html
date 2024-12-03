@@ -363,9 +363,11 @@
             document.getElementById("checkboxCbolsa").checked = true;
             document.getElementById("editDescription").value = description;
             document.getElementById("editRequirements").value = requirements;
+            comBolsa = true;
           }
           else {
             document.getElementById("checkboxCbolsa").checked = false;
+            comBolsa = false;
           }
           if (comBolsa) {
             $("#editBolsa").show();
