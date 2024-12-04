@@ -286,7 +286,7 @@
             id="botaoDeletarCurso" onclick="deletarDocente()">Sim, excluir</button>
           <button
             style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
-            onclick="closeDeleteModal()">Cancelar</button>
+            onclick="closeAllModals()">Cancelar</button>
         </div>
       </div>
     </div>
@@ -304,7 +304,7 @@
             id="botaoDeletarProjeto" onclick="deletarDocente()">Sim, excluir</button>
           <button
             style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
-            onclick="closeDeleteModalTipoProjeto()">Cancelar</button>
+            onclick="closeAllModals()">Cancelar</button>
         </div>
       </div>
     </div>
@@ -346,9 +346,9 @@
 
     <div id="editModalDocente" class="modal">
       <div class="modal-content" style="width: 50%; margin: 5% auto; padding: 20px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-        <span class="close" onclick="closeEditModal()" style="font-size: 20px; color: #333; cursor: pointer; position: absolute; top: 10px; right: 15px;">&times;</span>
+        <span class="close"  style="font-size: 20px; color: #333; cursor: pointer; position: absolute; top: 10px; right: 15px;">&times;</span>
         <h2 style="color: #000000; text-align: center; margin-bottom: 20px;">Editar Projeto</h2>
-        <div id="editForm" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+        <div id="editForm" style="display: flex; flex-direction: column; gap: 15px;">
           <label for="editTitle" style="color: #000000; font-weight: bold;">Título:</label>
           <input type="text" id="editTitleProjeto" name="title" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
     
@@ -546,11 +546,11 @@
         document.getElementById("editTypeProjeto").value = tipo;
         document.getElementById("editResponsible").value = responsavel;
         document.getElementById("editGrant").value = bolsa;
-        document.getElementById("editModal").style.display = "block";
+        document.getElementById("editModalProjeto").style.display = "block";
       }
 
       function fecharModalEdicao() {
-        document.getElementById("editModal").style.display = "none";
+        document.getElementById("editModalProjeto").style.display = "none";
       }
 
 
@@ -670,12 +670,12 @@
     </script>
     <script>
       // Funções de modal
-      function openModal(modalId) {
-        document.getElementById(modalId).style.display = 'block';
-      }
+      //function openModal(modalId) {
+      //  document.getElementById(modalId).style.display = 'block';
+      //}
 
       function closeModal(modalId) {
-        document.getElementById(modalId).style.display = 'none';
+        document.getElementById(modalId).style.display = "none";
       }
 
       function closeAllModals() {
@@ -685,11 +685,12 @@
         closeModal('deleteModalDiscente');
         closeModal('cursoModal');
         closeModal('tipoprojetoModal');
-        closeModal('editModal');
+        //closeModal('editModal');
         closeModal('deleteModalCurso');
         closeModal('deleteModalTipoProjeto');
         closeModal('editModalTipoProjeto');
         closeModal('editModalCurso');
+        closeModal('editModalDocente');
       }
 
       // Fechar modais ao clicar no 'X'
@@ -699,7 +700,7 @@
 
       // Fechar modais ao clicar fora deles
       window.onclick = function (event) {
-        const modais = ['projectModal', 'deleteModal', 'deleteModalDocente', 'deleteModalDiscente', 'cursoModal', 'deleteModalTipProjeto', 'deleteModalCurso', 'tipoprojetoModal', 'editModalCurso', 'editModalTipoProjeto'];
+        const modais = ['projectModal', 'deleteModal', 'deleteModalDocente', 'deleteModalDiscente', 'cursoModal', 'deleteModalTipProjeto', 'deleteModalCurso', 'tipoprojetoModal', 'editModalCurso', 'editModalTipoProjeto', 'editModalDocente'];
         modais.forEach(modalId => {
           if (event.target == document.getElementById(modalId)) {
             closeModal(modalId);
@@ -775,12 +776,12 @@
         document.getElementById("editTypeProjeto").value = tipo;
         document.getElementById("editResponsible").value = responsavel;
         document.getElementById("editGrant").value = bolsa;
-        openModal('editModalDocente');
+        openModal('editModalProjeto');
       }
 
       function salvarAlteracoes() {
         // Aqui você pode adicionar a lógica para salvar as alterações
-        closeModal('editModal');
+        closeModal('editModalProjeto');
       }
 
 

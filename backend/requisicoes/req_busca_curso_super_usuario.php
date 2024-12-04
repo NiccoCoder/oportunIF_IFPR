@@ -5,7 +5,7 @@
     $busca = $_POST['busca'];
 
     $sql = "SELECT * FROM TB_CURSO WHERE
-		      (NOME_CURSO LIKE '%$busca%') ;";
+		      (NOME_CURSO LIKE '%$busca%');";
 
     $stmt = $conexao->prepare($sql);
 
