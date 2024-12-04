@@ -190,121 +190,225 @@
     </div>
 
     <!-- Modais -->
-<div id="projectModal" class="modal">
-  <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2 style="color: #000000;" id="nomeModal">Detalhes do Projeto</h2>
-      <p style="color: #000000"><strong id="tituloModal">Título:</strong> <span id="modalTitle"></span></p>
-      <p style="color: #000000;"><strong id="tipoModal">Tipo:</strong> <span id="modalType"></span></p>
-      <p style="color: #000000;"><strong id="responsavelModal">Responsável:</strong> <span id="modalResponsible"></span></p>
-      <div id="emailModal">
+    <div id="projectModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 style="color: #000000;" id="nomeModal">Detalhes do Projeto</h2>
+        <p style="color: #000000"><strong id="tituloModal">Título:</strong> <span id="modalTitle"></span></p>
+        <p style="color: #000000;"><strong id="tipoModal">Tipo:</strong> <span id="modalType"></span></p>
+        <p style="color: #000000;"><strong id="responsavelModal">Responsável:</strong> <span
+            id="modalResponsible"></span></p>
+        <div id="emailModal">
           <p style="color: #000000;"><strong>E-mail:</strong> <span id="modalEmail"></span></p>
-      </div>
-      <p style="color: #000000;"><strong id="bolsaModal">Com Bolsa:</strong> <span id="modalGrant"></span></p>
-      <p style="color: #000000;"><strong id="resumoModal">Resumo:</strong> <span id="modalSummary"></span></p>
+        </div>
+        <p style="color: #000000;"><strong id="bolsaModal">Com Bolsa:</strong> <span id="modalGrant"></span></p>
+        <p style="color: #000000;"><strong id="resumoModal">Resumo:</strong> <span id="modalSummary"></span></p>
 
-      <div id="bolsa">
+        <div id="bolsa">
           <p style="color: #000000;"><strong>Criterios da Bolsa:</strong> <span id="modalCriteria"></span></p>
           <p style="color: #000000;"><strong>Descrição da Bolsa:</strong> <span id="modalDescription"></span></p>
           <p style="color: #000000;"><strong>Requisitos da Bolsa:</strong> <span id="modalRequirements"></span></p>
+        </div>
       </div>
-  </div>
-</div>
+    </div>
 
-<!-- MODAL DE CONFIRMAÇÃO DE EXCLUSÃO DO PROJETO -->
-<div id="deleteModal" class="modal">
-  <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2 style="color: #000000;">Confirmar Exclusão</h2>
-      <p style="color:#000000">Tem certeza que deseja excluir o projeto <strong><span id="deleteTitle"></span></strong>?</p>
-      <div style="display: flex; justify-content: flex-end; gap: 10px;">
-          <button style="padding: 8px 16px; background-color: #28a745; color: #fff; border: none; border-radius: 5px; cursor: pointer;" id="botaoDeletarProjeto" onclick="deletarProjeto()">Sim, excluir</button>
-          <button style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;" onclick="closeDeleteModal()">Cancelar</button>
+
+
+    <!-- DELETAR MODAL PROJETO -->
+
+    <div id="deleteModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 style="color: #000000;">Confirmar Exclusão</h2>
+        <p style="color:#000000">Tem certeza que deseja excluir o projeto <strong><span
+              id="deleteTitle"></span></strong>?</p>
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <button
+            style="padding: 8px 16px; background-color: #28a745; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+            id="botaoDeletarProjeto" onclick="deletarProjeto()">Sim, excluir</button>
+          <button
+            style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+            onclick="closeDeleteModal()">Cancelar</button>
+        </div>
       </div>
-  </div>
-</div>
+    </div>
 
-<!-- MODAL DE EXCLUSÃO DO DISCENTE -->
-<div id="deleteModalDiscente" class="modal">
-  <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2 style="color: #000000;">Confirmar Exclusão</h2>
-      <p style="color:#000000">Tem certeza que deseja excluir o discente <strong><span id="deleteTitle"></span></strong>?</p>
-      <div style="display: flex; justify-content: flex-end; gap: 10px;">
-          <button style="padding: 8px 16px; background-color: #28a745; color: #fff; border: none; border-radius: 5px; cursor: pointer;" id="botaoDeletarProjeto" onclick="deletarDiscente()">Sim, excluir</button>
-          <button style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;" onclick="closeDeleteModal()">Cancelar</button>
+
+    <!-- DELETAR MODAL DISCENTE -->
+
+    <div id="deleteModalDiscente" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 style="color: #000000;">Confirmar Exclusão</h2>
+        <p style="color:#000000">Tem certeza que deseja excluir o discente <strong><span
+              id="deleteTitle"></span></strong>?</p>
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <button
+            style="padding: 8px 16px; background-color: #28a745; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+            id="botaoDeletarProjeto" onclick="deletarDiscente()">Sim, excluir</button>
+          <button
+            style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+            onclick="closeDeleteModal()">Cancelar</button>
+        </div>
       </div>
-  </div>
-</div>
+    </div>
 
-<!-- MODAL DE EXCLUSÃO DO DOCENTE -->
-<div id="deleteModalDocente" class="modal">
-  <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2 style="color: #000000;">Confirmar Exclusão</h2>
-      <p style="color:#000000">Tem certeza que deseja excluir o docente <strong><span id="deleteTitle"></span></strong>?</p>
-      <div style="display: flex; justify-content: flex-end; gap: 10px;">
-          <button style="padding: 8px 16px; background-color: #28a745; color: #fff; border: none; border-radius: 5px; cursor: pointer;" id="botaoDeletarProjeto" onclick="deletarDocente()">Sim, excluir</button>
-          <button style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;" onclick="closeDeleteModal()">Cancelar</button>
+
+    <!-- DELETAR MODAL DOCENTE -->
+
+    <div id="deleteModalDocente" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 style="color: #000000;">Confirmar Exclusão</h2>
+        <p style="color:#000000">Tem certeza que deseja excluir o docente<strong><span
+              id="deleteTitle"></span></strong>?</p>
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <button
+            style="padding: 8px 16px; background-color: #28a745; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+            id="botaoDeletarProjeto" onclick="deletarDocente()">Sim, excluir</button>
+          <button
+            style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+            onclick="closeDeleteModal()">Cancelar</button>
+        </div>
       </div>
-  </div>
-</div>
+    </div>
 
-<!-- MODAL DE EXCLUSÃO DO CURSO -->
-<div id="deleteModalCurso" class="modal">
-  <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2 style="color: #000000;">Confirmar Exclusão</h2>
-      <p style="color:#000000">Tem certeza que deseja excluir o Curso <strong><span id="deleteTitle"></span></strong>?</p>
-      <div style="display: flex; justify-content: flex-end; gap: 10px;">
-          <button style="padding: 8px 16px; background-color: #28a745; color: #fff; border: none; border-radius: 5px; cursor: pointer;" id="botaoDeletarCurso" onclick="deletarCurso()">Sim, excluir</button>
-          <button style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;" onclick="closeDeleteModal()">Cancelar</button>
+    <!-- DELETAR MODAL CURSO -->
+    <div id="deleteModalCurso" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 style="color: #000000;">Confirmar Exclusão</h2>
+        <p style="color:#000000">Tem certeza que deseja excluir o Curso<strong><span
+              id="deleteTitle"></span></strong>?</p>
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <button
+            style="padding: 8px 16px; background-color: #28a745; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+            id="botaoDeletarCurso" onclick="deletarDocente()">Sim, excluir</button>
+          <button
+            style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+            onclick="closeDeleteModal()">Cancelar</button>
+        </div>
       </div>
-  </div>
-</div>
+    </div>
 
-<!-- MODAL DE EXCLUSÃO DO TIPO DE PROJETO -->
-<div id="deleteModalTipoProjeto" class="modal">
-  <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2 style="color: #000000;">Confirmar Exclusão</h2>
-      <p style="color:#000000">Tem certeza que deseja excluir o tipo de projeto <strong><span id="deleteTitle"></span></strong>?</p>
-      <div style="display: flex; justify-content: flex-end; gap: 10px;">
-          <button style="padding: 8px 16px; background-color: #28a745; color: #fff; border: none; border-radius: 5px; cursor: pointer;" id="botaoDeletarTipoProjeto" onclick="deletarTipoProjeto()">Sim, excluir</button>
-          <button style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;" onclick="closeDeleteModalTipoProjeto()">Cancelar</button>
+    <!-- DELETAR MODAL TIPO PROJETO -->
+    <div id="deleteModalTipoProjeto" class="modal">
+      <div class="modal-content">
+        <span class="close" >&times;</span>
+        <h2 style="color: #000000;">Confirmar Exclusão</h2>
+        <p style="color:#000000">Tem certeza que deseja excluir o tipo de projeto<strong><span
+              id="deleteTitle"></span></strong>?</p>
+        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+          <button
+            style="padding: 8px 16px; background-color: #28a745; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+            id="botaoDeletarProjeto" onclick="deletarDocente()">Sim, excluir</button>
+          <button
+            style="padding: 8px 16px; background-color: #f00707; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
+            onclick="closeDeleteModalTipoProjeto()">Cancelar</button>
+        </div>
       </div>
-  </div>
-</div>
+    </div>
 
-<!-- MODAL DE CRIAÇÃO DE CURSO -->
-<div id="cursoModal" class="modal">
-  <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2 style="color: #000000;">Criação de Curso</h2>
-      <form id="cursoForm" action="../../backend/cadastroCurso.php" method="POST">
+    <div id="cursoModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 style="color: #000000;">Criação de Curso</h2>
+        <form id="cursoForm" action="../../backend/cadastroCurso.php" method="POST">
           <label for="nomeCurso" style="color: #000000;">Nome do Curso:</label>
           <input type="text" id="nomeCurso" name="nomeCurso" placeholder="Digite o nome do curso" required>
-          <button type="submit" style="margin-top: 15px; padding: 10px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
-              Criar Curso
+          <button type="submit"
+            style="margin-top: 15px; padding: 10px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
+            Criar Curso
           </button>
-      </form>
-  </div>
-</div>
+        </form>
+      </div>
+    </div>
 
-<!-- MODAL DE CRIAÇÃO DE TIPO DE PROJETO -->
-<div id="tipoprojetoModal" class="modal">
-  <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2 style="color: #000000;">Criação de Tipo de Projeto</h2>
-      <form id="tipoprojetoForm" action="../../backend/cadastroTipoProjeto.php" method="POST">
+    <div id="tipoprojetoModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 style="color: #000000;">Criação de Tipo de Projeto</h2>
+        <form id="tipoprojetoForm" action="../../backend/cadastroTipoProjeto.php" method="POST">
           <label for="nomeTipoProjeto" style="color: #000000;">Nome do Tipo de Projeto:</label>
           <input type="text" id="nomeTipoProjeto" name="nomeTipoProjeto" placeholder="Digite o nome do tipo de projeto" required>
-          <button type="submit" style="margin-top: 15px; padding: 10px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
-              Criar Tipo de Projeto
+          <button type="submit"
+            style="margin-top: 15px; padding: 10px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
+            Criar Tipo de Projeto
           </button>
-      </form>
-  </div>
-</div>
+        </form>
+      </div>
+    </div>    
+
+
+    <!-- MODAIS DE EDIÇÃO -->
+
+      <!-- EDIT MODAL PROJETOS DO PROPRIO DOCENTE -->
+
+    <div id="editModalDocente" class="modal">
+      <div class="modal-content" style="width: 50%; margin: 5% auto; padding: 20px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+        <span class="close" onclick="closeEditModal()" style="font-size: 20px; color: #333; cursor: pointer; position: absolute; top: 10px; right: 15px;">&times;</span>
+        <h2 style="color: #000000; text-align: center; margin-bottom: 20px;">Editar Projeto</h2>
+        <div id="editForm" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+          <label for="editTitle" style="color: #000000; font-weight: bold;">Título:</label>
+          <input type="text" id="editTitleProjeto" name="title" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
+    
+          <label for="editTypeProjeto" style="color: #000000; font-weight: bold;">Tipo:</label>
+          <select id="editTypeProjeto" name="type" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
+            <option value="" disabled selected>Selecione o tipo de projeto</option>
+          </select>
+    
+          <label for="editCriteria" style="color: #000000; font-weight: bold;">Critérios de seleção:</label>
+          <input type="text" id="editCriteriaProjeto" name="criteria" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
+    
+          <label for="editSummary" style="color: #000000; font-weight: bold;">Resumo:</label>
+          <input type="text" id="editSummaryProjeto" name="summary" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
+    
+          <div style="display: flex; align-items: center; gap: 10px;">
+            <input type="checkbox" id="checkboxCbolsaProjeto" name="with_scholarship" style="transform: scale(1.2);">
+            <label for="checkboxCbolsa" style="color: #000000; font-weight: bold;">C/bolsa:</label>
+          </div>
+    
+          <div id="editBolsa" style="display: flex; flex-direction: column; gap: 15px;">
+            <label for="editDescription" style="color: #000000; font-weight: bold;">Descrição:</label>
+            <input type="text" id="editDescriptionProjeto" name="description" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
+    
+            <label for="editRequirements" style="color: #000000; font-weight: bold;">Requisitos:</label>
+            <input type="text" id="editRequirementsProjeto" name="requirements" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
+          </div>
+    
+          <button onclick="editarProjeto()" style="padding: 12px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Salvar</button>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- EDIT MODAL CURSOS -->
+
+    <div id="editModalCurso" class="modal">
+      <div class="modal-content" style="width: 50%; margin: 5% auto; padding: 20px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+        <span class="close"  style="font-size: 20px; color: #333; cursor: pointer; position: absolute; top: 10px; right: 15px;">&times;</span>
+        <h2 style="color: #000000; text-align: center; margin-bottom: 20px;">Editar Curso</h2>
+        <div id="editForm" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+          <label id="editFormCurso" for="editTitle" style="color: #000000; font-weight: bold;">Título:</label>
+          <input type="text" id="editTitleCurso" name="title" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
+          <button onclick="editarCurso();" style="padding: 12px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Salvar</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- EDIT MODAL TPO PROJETOS -->
+
+    <div id="editModalTipoProjeto" class="modal">
+      <div class="modal-content" style="width: 50%; margin: 5% auto; padding: 20px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+        <span class="close" style="font-size: 20px; color: #333; cursor: pointer; position: absolute; top: 10px; right: 15px;">&times;</span>
+        <h2 style="color: #000000; text-align: center; margin-bottom: 20px;">Editar Tipo de Projeto</h2>
+        <div id="editForm" action="editarProjeto.php" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+          <label for="editTitle" style="color: #000000; font-weight: bold;">Título:</label>
+          <input type="text" id="editTitleTipoProjeto" name="title" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
+          <button onclick="editarTipoProjeto()" style="padding: 12px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Salvar</button>
+        </div>
+      </div>
+    </div>
 
     <script src="../../frontend/vendors/js/vendor.bundle.base.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -312,229 +416,443 @@
     <script src="../../frontend/js/verificarSessaoSuperUsuario.js"></script>
     <script src="../js/atualizarNomeUsuario.js"></script>
     <script>
-      const modals = document.querySelectorAll('.modal');
-      const closeButtons = document.querySelectorAll('.close');
-  
-      closeButtons.forEach(button => {
-          button.addEventListener('click', () => {
-              modals.forEach(modal => modal.style.display = 'none');
-          });
+
+
+
+      
+
+      // Prevent dropdown from closing on checkbox click
+      document.querySelector('.dropdown-menu').addEventListener('click', function (e) {
+        e.stopPropagation();
       });
-  
-      function closeDeleteModal() {
-          document.getElementById('deleteModal').style.display = 'none';
-      }
-  
-      function closeDeleteModalTipoProjeto() {
-          document.getElementById('deleteModalTipoProjeto').style.display = 'none';
-      }
-  
-      function closeDeleteModalDiscente() {
-          document.getElementById('deleteModalDiscente').style.display = 'none';
-      }
-  
-      function closeDeleteModalDocente() {
-          document.getElementById('deleteModalDocente').style.display = 'none';
-      }
-  
-      function closeDeleteModalCurso() {
-          document.getElementById('deleteModalCurso').style.display = 'none';
-      }
-  </script>
+    </script>
     <script>
-  // Função para abrir/fechar o dropdown sem fechar ao clicar no checkbox
-  document.querySelector('.dropdown-menu').addEventListener('click', function (e) {
-    e.stopPropagation();
-  });
+      function openCursoModal() {
+        document.getElementById('cursoModal').style.display = 'block';
+      }
 
-  // Funções para abrir e fechar o modal de curso
-  function openCursoModal() {
-    document.getElementById('cursoModal').style.display = 'block';
-  }
+      function closeCursoModal() {
+        document.getElementById('cursoModal').style.display = 'none';
+      }
 
-  function closeCursoModal() {
-    document.getElementById('cursoModal').style.display = 'none';
-  }
+      function criarCurso() {
+        var nomeCurso = document.getElementById('nomeCurso').value;
+        if (nomeCurso) {
 
-  // Função para criar curso
-  function criarCurso() {
-    var nomeCurso = document.getElementById('nomeCurso').value;
-    if (nomeCurso) {
-      $.ajax({
-        type: "POST",
-        url: "../../backend/requisicoes/req_criar_cursos.php",
-        data: { id: nomeCurso },
-        success: function () {
-          alert('Curso "' + nomeCurso + '" criado com sucesso!');
+          $.ajax({
+            type: "POST",
+            url: "../../backend/requisicoes/req_criar_cursos.php",
+            data: "id=" + nomeCurso,
+            success: function (data) {
+              alert('Curso "' + nomeCurso + '" criado com sucesso!');
+              closeCursoModal();
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+              alert(errorThrown)
+            }
+          });
+
+        } else {
+          alert('Por favor, insira o nome do curso.');
+        }
+      }
+
+      // Fechar modal ao clicar fora dele
+      window.onclick = function (event) {
+        if (event.target == document.getElementById('cursoModal')) {
           closeCursoModal();
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-          alert(errorThrown);
         }
-      });
-    } else {
-      alert('Por favor, insira o nome do curso.');
-    }
-  }
+      };
 
-  // Função para abrir o modal de visualização de projeto
-  function openModal(titulo, tipo, responsavel, bolsa, resumo, criterios, descricao, requisitos) {
-    document.getElementById("modalTitle").innerText = titulo;
-    document.getElementById("modalType").innerText = tipo;
-    document.getElementById("modalResponsible").innerText = responsavel;
-    document.getElementById("modalGrant").innerText = bolsa;
-    document.getElementById("modalSummary").textContent = resumo;
-    document.getElementById("projectModal").style.display = "block";
+      // Função para abrir/fechar o dropdown
+     
 
-    // Mostrar ou esconder a div "bolsa"
-    if (bolsa === "Sim") {
-      $("#bolsa").show();
-      document.getElementById("modalCriteria").innerText = criterios;
-      document.getElementById("modalDescription").innerText = descricao;
-      document.getElementById("modalRequirements").innerText = requisitos;
-    } else {
-      $("#bolsa").hide();
-    }
-  }
+    </script>
+    <script>
+      // Função para abrir o modal de visualização
+      function openModal(titulo, tipo, responsavel, bolsa, resumo, criterios, descricao, requisitos) {
+        document.getElementById("modalTitle").innerText = titulo;
+        document.getElementById("modalType").innerText = tipo;
+        document.getElementById("modalResponsible").innerText = responsavel;
+        document.getElementById("modalGrant").innerText = bolsa;
+        document.getElementById("modalSummary").textContent = resumo;
+        document.getElementById("projectModal").style.display = "block";
 
-  // Funções de edição de curso
-  function openModalEdicao(titulo, tipo, responsavel, bolsa) {
-    document.getElementById("editTitle").value = titulo;
-    document.getElementById("editTypeProjeto").value = tipo;
-    document.getElementById("editResponsible").value = responsavel;
-    document.getElementById("editGrant").value = bolsa;
-    document.getElementById("editModal").style.display = "block";
-  }
-
-  function fecharModalEdicao() {
-    document.getElementById("editModal").style.display = "none";
-  }
-
-  // Função para salvar alterações de curso
-  function editarCurso() {
-    var nome = document.getElementById("editTitleCurso").value;
-    $.ajax({
-      type: "POST",
-      url: "../../backend/requisicoes/req_editar_cursos.php",
-      data: { id: idSelecionado, nome: nome },
-      success: function () {
-        alert("Curso editado com sucesso!");
-        location.reload();
-      },
-      error: function (jqXHR, textStatus, errorThrown) {
-        alert(errorThrown);
-      }
-    });
-  }
-
-  // Função para editar tipo de projeto
-  function editarTipoProjeto() {
-    var nome = document.getElementById("editTitleTipoProjeto").value;
-    $.ajax({
-      type: "POST",
-      url: "../../backend/requisicoes/req_editar_tipos_projetos.php",
-      data: { id: idSelecionado, nome: nome },
-      success: function () {
-        alert("Tipo de projeto editado com sucesso!");
-        location.reload();
-      },
-      error: function (jqXHR, textStatus, errorThrown) {
-        alert(errorThrown);
-      }
-    });
-  }
-
-  // Função para editar projeto
-  function editarProjeto() {
-    var title = document.getElementById("editTitleProjeto").value;
-    var criteria = document.getElementById("editCriteriaProjeto").value;
-    var type = document.getElementById("editTypeProjeto").value;
-    var summary = document.getElementById("editSummaryProjeto").value;
-    var cBolsa = document.getElementById("checkboxCbolsaProjeto").checked ? 1 : 0;
-    var description = document.getElementById("editDescriptionProjeto").value;
-    var requirements = document.getElementById("editRequirementsProjeto").value;
-
-    $.ajax({
-      type: "POST",
-      url: "../../backend/requisicoes/req_editar_projetos.php",
-      data: { id: idSelecionado, title, criteria, type, summary, cBolsa, description, requirements },
-      success: function () {
-        alert("Projeto editado com sucesso!");
-        location.reload();
-      },
-      error: function (jqXHR, textStatus, errorThrown) {
-        alert(errorThrown);
-      }
-    });
-  }
-
-  // Funções de modal de tipo de projeto
-  function openTipodeprojetoModal() {
-    document.getElementById("tipoprojetoModal").style.display = "block";
-  }
-
-  function closeTipodeprojetoModal() {
-    document.getElementById("tipoprojetoModal").style.display = "none";
-  }
-
-  // Função para criar tipo de projeto
-  function criarTipodeprojeto() {
-    var nomeTipoProjeto = document.getElementById('nomeTipoProjeto').value;
-    if (nomeTipoProjeto) {
-      $.ajax({
-        type: "POST",
-        url: "../../backend/requisicoes/req_criar_tipodeprojeto.php",
-        data: { id: nomeTipoProjeto },
-        success: function () {
-          alert('Tipo de Projeto "' + nomeTipoProjeto + '" criado com sucesso!');
-          closeTipodeprojetoModal();
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-          alert(errorThrown);
+        // Caso exista bolsa, mostra a div "bolsa"
+        if (bolsa == "Sim") {
+          $("#bolsa").show();
+          document.getElementById("modalCriteria").innerText = criterios;
+          document.getElementById("modalDescription").innerText = descricao;
+          document.getElementById("modalRequirements").innerText = requisitos;
+        } else {
+          // Esconde a div bolsa
+          $("#bolsa").hide();
         }
-      });
-    } else {
-      alert('Por favor, insira o nome do tipo de projeto.');
-    }
-  }
-
-  // Funções de modal geral
-  function openModal(modalId) {
-    document.getElementById(modalId).style.display = 'block';
-  }
-
-  function closeModal(modalId) {
-    document.getElementById(modalId).style.display = 'none';
-  }
-
-  function closeAllModals() {
-    const modais = [
-      'projectModal', 'deleteModal', 'deleteModalDocente', 'deleteModalDiscente',
-      'cursoModal', 'tipoprojetoModal', 'editModal', 'deleteModalCurso',
-      'deleteModalTipoProjeto', 'editModalTipoProjeto', 'editModalCurso'
-    ];
-    modais.forEach(modalId => closeModal(modalId));
-  }
-
-  // Fechar modais ao clicar no 'X'
-  document.querySelectorAll('.close').forEach(botao => {
-    botao.onclick = () => closeAllModals();
-  });
-
-  // Fechar modais ao clicar fora deles
-  window.onclick = function (event) {
-    const modais = [
-      'projectModal', 'deleteModal', 'deleteModalDocente', 'deleteModalDiscente',
-      'cursoModal', 'tipoprojetoModal', 'editModal', 'deleteModalCurso',
-      'deleteModalTipoProjeto', 'editModalTipoProjeto', 'editModalCurso'
-    ];
-    modais.forEach(modalId => {
-      if (event.target == document.getElementById(modalId)) {
-        closeModal(modalId);
       }
-    });
-  };
-</script>
+
+      // Função para abrir o modal de exclusão
+      //function openModalExclusao(titulo, id) {
+      //idSelecionado = id;
+      //console.log(id + "abacate");
+      //document.getElementById("deleteTitle").textContent = titulo;
+      //botaoDeletarProjeto.removeEventListener("click", deletarProjeto);
+      //  botaoDeletarProjeto.addEventListener("click", deletarProjeto.bind(null, id));
+      //   deleteModal.style.display = "block";
+      //}
+
+      // Função para fechar todos os modais
+      // function fecharModais() {
+      //   document.getElementById("projectModal").style.display = "none";
+      //   document.getElementById("deleteModal").style.display = "none";
+      //   document.getElementById("deleteModalDocente").style.display = "none";
+      //   document.getElementById("deleteModalDiscente").style.display = "none";
+      //   document.getElementById("cursoModal").style.display = "none";
+      //   document.getElementById("deleteModalTipoProjeto");style.display = "none";
+      //   document.getElementById("editModalTipoProjeto");style.display = "none";
+      //   document.getElementById("editModalCurso");style.display = "none";
+
+      // }
+
+      // Fechar modais ao clicar no 'X'
+      // var botoesFecharModal = document.querySelectorAll(".close");
+      // botoesFecharModal.forEach(botao => {
+      //   botao.onclick = fecharModais;
+      // });
+
+      // // Fechar modais ao clicar fora deles
+      // window.onclick = function (evento) {
+      //   if (evento.target == document.getElementById("projectModal") ||
+      //     evento.target == document.getElementById("deleteModal") ||
+      //     evento.target == document.getElementById("deleteModalDocente") ||
+      //     evento.target == document.getElementById("deleteModalDiscente") ||
+      //     evento.target == document.getElementById("deleteModalTipoProjeto") ||
+      //     evento.target == document.getElementById("deleteModalCurso") ||
+      //     evento.target == document.getElementById("editModalCurso") ||
+      //     evento.target == document.getElementById("editModalTipoProjeto") ||
+      //     evento.target == document.getElementById("cursoModal")) {
+      //     fecharModais();
+      //   }
+      // };
+
+      // Função para confirmar exclusão
+      function confirmarExclusao() {
+        // Lógica para confirmar a exclusão do projeto
+        fecharModalExclusao();
+      }
+
+      // Funções para abrir e fechar o modal de edição
+      function openModalEdicao(titulo, tipo, responsavel, bolsa) {
+        document.getElementById("editTitle").value = titulo;
+        document.getElementById("editTypeProjeto").value = tipo;
+        document.getElementById("editResponsible").value = responsavel;
+        document.getElementById("editGrant").value = bolsa;
+        document.getElementById("editModal").style.display = "block";
+      }
+
+      function fecharModalEdicao() {
+        document.getElementById("editModal").style.display = "none";
+      }
+
+
+      // Função para salvar alterações
+      function editarCurso() {
+        // Aqui você pode adicionar a lógica para salvar as alterações
+              nome = document.getElementById("editTitleCurso").value;
+            
+        console.log(idSelecionado);
+        $.ajax({
+          type: "POST",
+          url: "../../backend/requisicoes/req_editar_cursos.php",
+          data: {
+            id: idSelecionado,
+            nome: nome
+          },
+          success: function (data){
+            alert("Curso editado com sucesso!");
+            location.reload();
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+          }
+        });
+  
+      
+      }
+
+      function editarTipoProjeto() {
+        // Aqui você pode adicionar a lógica para salvar as alterações
+        nome = document.getElementById("editTitleTipoProjeto").value;
+            
+            console.log(idSelecionado);
+            $.ajax({
+              type: "POST",
+              url: "../../backend/requisicoes/req_editar_tipos_projetos.php",
+              data: {
+                id: idSelecionado,
+                nome: nome
+              },
+              success: function (data){
+                alert("Tipo de projeto editado com sucesso!");
+                location.reload();
+              },
+              error: function (jqXHR, textStatus, errorThrown) {
+                alert(errorThrown);
+              }
+            });
+      }
+
+      function editarProjeto() {
+        // Aqui você pode adicionar a lógica para salvar as alterações
+        title = document.getElementById("editTitleProjeto").value;
+        criteria = document.getElementById("editCriteriaProjeto").value;
+        type = document.getElementById("editTypeProjeto").value;
+        summary = document.getElementById("editSummaryProjeto").value;
+        if(document.getElementById("checkboxCbolsaProjeto").value){
+          cBolsa = 1;
+        }else{
+          cBolsa = 0;
+        }
+        description = document.getElementById("editDescriptionProjeto").value;
+        requirements = document.getElementById("editRequirementsProjeto").value;
+        
+            
+            console.log(idSelecionado);
+            $.ajax({
+              type: "POST",
+              url: "../../backend/requisicoes/req_editar_projetos.php",
+              data: {
+                id: idSelecionado,
+                title: title,
+                criteria: criteria,
+                type: type,
+                summary: summary,
+                cBolsa: cBolsa,
+                description: description,
+                requirements:requirements
+              },
+              success: function (data){
+                alert("Tipo de projeto editado com sucesso!");
+                location.reload();
+              },
+              error: function (jqXHR, textStatus, errorThrown) {
+                alert(errorThrown);
+              }
+            });
+      }
+
+
+
+
+
+    </script>
+    <script>
+      function openTipodeprojetoModal() {
+        document.getElementById("tipoprojetoModal").style.display = "block";
+      }
+
+      function closeEditModalCurso() {
+        document.getElementById("tipoprojetoModal").style.display = "none";
+      }
+
+      function closeTipodeprojetoModal() {
+        document.getElementById("tipoprojetoModal").style.display = "none";
+      }
+
+      function closeTipodeprojetoModal() {
+        document.getElementById("tipoprojetoModal").style.display = "none";
+      }
+
+      function criarTipodeprojeto() {
+        // Função de criação do tipo de projeto
+        alert("Tipo de Projeto criado com sucesso!");
+        closeTipodeprojetoModal();
+      }
+    </script>
+    <script>
+      // Funções de modal
+      function openModal(modalId) {
+        document.getElementById(modalId).style.display = 'block';
+      }
+
+      function closeModal(modalId) {
+        document.getElementById(modalId).style.display = 'none';
+      }
+
+      function closeAllModals() {
+        closeModal('projectModal');
+        closeModal('deleteModal');
+        closeModal('deleteModalDocente');
+        closeModal('deleteModalDiscente');
+        closeModal('cursoModal');
+        closeModal('tipoprojetoModal');
+        closeModal('editModal');
+        closeModal('deleteModalCurso');
+        closeModal('deleteModalTipoProjeto');
+        closeModal('editModalTipoProjeto');
+        closeModal('editModalCurso');
+      }
+
+      // Fechar modais ao clicar no 'X'
+      document.querySelectorAll('.close').forEach(botao => {
+        botao.onclick = () => closeAllModals();
+      });
+
+      // Fechar modais ao clicar fora deles
+      window.onclick = function (event) {
+        const modais = ['projectModal', 'deleteModal', 'deleteModalDocente', 'deleteModalDiscente', 'cursoModal', 'deleteModalTipProjeto', 'deleteModalCurso', 'tipoprojetoModal', 'editModalCurso', 'editModalTipoProjeto'];
+        modais.forEach(modalId => {
+          if (event.target == document.getElementById(modalId)) {
+            closeModal(modalId);
+          }
+        });
+      };
+
+      // Funções para criar curso
+      function criarCurso() {
+        const nomeCurso = document.getElementById('nomeCurso').value;
+        if (nomeCurso) {
+          $.ajax({
+            type: "POST",
+            url: "../../backend/requisicoes/req_criar_cursos.php",
+            data: "id=" + nomeCurso,
+            success: function () {
+              alert('Curso "' + nomeCurso + '" criado com sucesso!');
+              closeModal('cursoModal');
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+              alert(errorThrown);
+            }
+          });
+        } else {
+          alert('Por favor, insira o nome do curso.');
+        }
+      }
+
+      // Funções para criar tipo de projeto
+      function criarTipodeprojeto() {
+        const nomeTipoProjeto = document.getElementById('nomeTipoProjeto').value;
+        if (nomeTipoProjeto) {
+          $.ajax({
+            type: "POST",
+            url: "../../backend/requisicoes/req_criar_tipodeprojeto.php", // Atualize para a URL correta
+            data: "id=" + nomeTipoProjeto,
+            success: function () {
+              alert('Tipo de Projeto "' + nomeTipoProjeto + '" criado com sucesso!');
+              closeModal('tipoprojetoModal');
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+              alert(errorThrown);
+            }
+          });
+        } else {
+          alert('Por favor, insira o nome do tipo de projeto.');
+        }
+      }
+
+      // Função para abrir o modal de visualização
+      function openModal(titulo, tipo, responsavel, bolsa, resumo, criterios, descricao, requisitos) {
+        document.getElementById("modalTitle").innerText = titulo;
+        document.getElementById("modalType").innerText = tipo;
+        document.getElementById("modalResponsible").innerText = responsavel;
+        document.getElementById("modalGrant").innerText = bolsa;
+        document.getElementById("modalSummary").textContent = resumo;
+        document.getElementById("projectModal").style.display = "block";
+
+        // Mostrar ou esconder a div "bolsa" dependendo do valor
+        if (bolsa === "Sim") {
+          $("#bolsa").show();
+          document.getElementById("modalCriteria").innerText = criterios;
+          document.getElementById("modalDescription").innerText = descricao;
+          document.getElementById("modalRequirements").innerText = requisitos;
+        } else {
+          $("#bolsa").hide();
+        }
+      }
+
+      // Funções de edição
+      function openModalEdicao(titulo, tipo, responsavel, bolsa) {
+        document.getElementById("editTitle").value = titulo;
+        document.getElementById("editTypeProjeto").value = tipo;
+        document.getElementById("editResponsible").value = responsavel;
+        document.getElementById("editGrant").value = bolsa;
+        openModal('editModalDocente');
+      }
+
+      function salvarAlteracoes() {
+        // Aqui você pode adicionar a lógica para salvar as alterações
+        closeModal('editModal');
+      }
+
+
+      // ------ MODAIS DE EDIÇÂO
+
+        //MODAL DE DOCENTE
+      function openEditModalDocente(title, type, grant, summary, criteria, description, requirements, id) {
+        idSelecionado = id;
+          document.getElementById("editTitleProjeto").value = title;
+          document.getElementById("editTypeProjeto").value = type;
+          document.getElementById("editCriteriaProjeto").value = criteria;
+          document.getElementById("editDescriptionProjeto").value = description;
+          // document.getElementById("editGrant").value = grant;
+          document.getElementById("editSummaryProjeto").value = summary;
+
+          document.getElementById("editModalDocente").style.display = "block";
+
+          // if (grant == "Sim") {
+          //   document.getElementById("checkboxCbolsaProjeto").checked = true;
+          //   document.getElementById("editDescriptionProjeto").value = description;
+          //   document.getElementById("editRequirementsProjeto").value = requirements;
+          //   comBolsa = true;
+          // }
+          // else {
+          //   document.getElementById("checkboxCbolsaProjeto").checked = false;
+          //   comBolsa = false;
+          // }
+          // if (comBolsa) {
+          //   $("#editBolsa").show();
+
+
+          // }
+          // //esconde a div bolsa
+          // else {
+
+          //   $("#editBolsa").hide();
+          // }
+        }
+
+
+        // MODAL CURSO EDIÇÃO
+        function openEditModalCurso(id,title) {
+          idSelecionado = id;
+          document.getElementById("editTitleCurso").value = title;
+          console.log(title);
+
+          document.getElementById("editModalCurso").style.display = "block";
+
+        }
+
+        // MODAL TIPO PROOJETO EDIÇÃO
+        function openEditModalTipoProjeto(id,title) {
+          idSelecionado = id;
+          document.getElementById("editTitleTipoProjeto").value = title;
+          console.log(title);
+
+          document.getElementById("editModalTipoProjeto").style.display = "block";
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+
 </body>
 
 </html>
