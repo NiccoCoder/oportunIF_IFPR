@@ -23,7 +23,7 @@ BOLSA_DESCRICAO = ?,
 BOLSA_REQUISITOS = ?
 	WHERE ID_PROJETO = ?;";
 $stmt = $conexao->prepare($sql);
-$stmt->bind_param("ssisissi", $id, $title, $criteria, $type, $summary, $cBolsa, $description, $requirements, $id);
+$stmt->bind_param("ssisissi",$title, $criteria, $type, $summary, $cBolsa, $description, $requirements, $id);
 
 $stmt->execute();
 $conexao->close();
