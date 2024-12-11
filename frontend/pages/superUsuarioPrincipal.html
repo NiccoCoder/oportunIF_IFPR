@@ -607,11 +607,13 @@
         criteria = document.getElementById("editCriteriaProjeto").value;
         type = document.getElementById("editTypeProjeto").value;
         summary = document.getElementById("editSummaryProjeto").value;
-        if(document.getElementById("checkboxCbolsaProjeto").value){
-          cBolsa = 1;
-        }else{
+        if($('#checkboxCbolsaProjeto').is(':checked')){
           cBolsa = 0;
+        }else{
+          cBolsa = 1;
         }
+        
+          
         description = document.getElementById("editDescriptionProjeto").value;
         requirements = document.getElementById("editRequirementsProjeto").value;
         
@@ -796,29 +798,9 @@
           document.getElementById("editDescriptionProjeto").value = description;
           // document.getElementById("editGrant").value = grant;
           document.getElementById("editSummaryProjeto").value = summary;
+          document.getElementById("editRequirementsProjeto").value = requirements;
 
           document.getElementById("editModalDocente").style.display = "block";
-
-          // if (grant == "Sim") {
-          //   document.getElementById("checkboxCbolsaProjeto").checked = true;
-          //   document.getElementById("editDescriptionProjeto").value = description;
-          //   document.getElementById("editRequirementsProjeto").value = requirements;
-          //   comBolsa = true;
-          // }
-          // else {
-          //   document.getElementById("checkboxCbolsaProjeto").checked = false;
-          //   comBolsa = false;
-          // }
-          // if (comBolsa) {
-          //   $("#editBolsa").show();
-
-
-          // }
-          // //esconde a div bolsa
-          // else {
-
-          //   $("#editBolsa").hide();
-          // }
         }
 
 
