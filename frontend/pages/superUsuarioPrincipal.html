@@ -25,7 +25,7 @@
           <form class="nav-link mt-2 mt-md-0 d-none d-lg-flex search">
             <input type="text" id="busca"
               style="color: white; background-color: #2a2f3a; border: 1px solid #444; border-radius: 6px; padding: 8px; width: 55%;"
-              class="form-control" placeholder="Pesquisar" >
+              class="form-control" placeholder="Pesquisar">
           </form>
         </div>
       </li>
@@ -35,9 +35,8 @@
       onclick="buscarProjetosDocenteGerenciamento()">
       <i class="mdi mdi-compass" style="color: white; margin-right: 5px;"></i>
     </button>
-    <button title="Ver Cursos" class="btn" id="criarCursoBtn" 
-      style="background-color: transparent; border: none; display: flex; align-items: center;"
-      onclick="buscarCursos()">
+    <button title="Ver Cursos" class="btn" id="criarCursoBtn"
+      style="background-color: transparent; border: none; display: flex; align-items: center;" onclick="buscarCursos()">
       <i class="mdi mdi-book-open-page-variant" style="color: white; margin-right: 5px;"></i>
     </button>
     <button title="Ver tipos de projeto" class="btn" id="tipoprojetoBtn"
@@ -69,9 +68,10 @@
               <div class="preview-icon bg-dark rounded-circle">
                 <i class="mdi mdi-account text-success"></i>
               </div>
+              
             </div>
             <div class="preview-item-content ml-2">
-              <p class="preview-subject mb-1">Denúncia</p>
+              <p class="preview-subject mb-1">Denúnciar</p>
             </div>
           </a>
           <div class="dropdown-divider"></div>
@@ -278,8 +278,8 @@
       <div class="modal-content">
         <span class="close">&times;</span>
         <h2 style="color: #000000;">Confirmar Exclusão</h2>
-        <p style="color:#000000">Tem certeza que deseja excluir o Curso<strong><span
-              id="deleteTitle"></span></strong>?</p>
+        <p style="color:#000000">Tem certeza que deseja excluir o Curso<strong><span id="deleteTitle"></span></strong>?
+        </p>
         <div style="display: flex; justify-content: flex-end; gap: 10px;">
           <button
             style="padding: 8px 16px; background-color: #28a745; color: #fff; border: none; border-radius: 5px; cursor: pointer;"
@@ -294,7 +294,7 @@
     <!-- DELETAR MODAL TIPO PROJETO -->
     <div id="deleteModalTipoProjeto" class="modal">
       <div class="modal-content">
-        <span class="close" >&times;</span>
+        <span class="close">&times;</span>
         <h2 style="color: #000000;">Confirmar Exclusão</h2>
         <p style="color:#000000">Tem certeza que deseja excluir o tipo de projeto<strong><span
               id="deleteTitle"></span></strong>?</p>
@@ -330,68 +330,93 @@
         <h2 style="color: #000000;">Criação de Tipo de Projeto</h2>
         <form id="tipoprojetoForm" action="../../backend/cadastroTipoProjeto.php" method="POST">
           <label for="nomeTipoProjeto" style="color: #000000;">Nome do Tipo de Projeto:</label>
-          <input type="text" id="nomeTipoProjeto" name="nomeTipoProjeto" placeholder="Digite o nome do tipo de projeto" required>
+          <input type="text" id="nomeTipoProjeto" name="nomeTipoProjeto" placeholder="Digite o nome do tipo de projeto"
+            required>
           <button type="submit"
             style="margin-top: 15px; padding: 10px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s;">
             Criar Tipo de Projeto
           </button>
         </form>
       </div>
-    </div>    
+    </div>
 
 
     <!-- MODAIS DE EDIÇÃO -->
 
-      <!-- EDIT MODAL PROJETOS DO PROPRIO DOCENTE -->
-
-    <div id="editModalDocente" class="modal">
+    <!-- EDIT MODAL PROJETOS DO PROPRIO DOCENTE -->
+    <div id="editModal" class="modal">
       <div class="modal-content" style="width: 50%; margin: 5% auto; padding: 20px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-        <span class="close"  style="font-size: 20px; color: #333; cursor: pointer; position: absolute; top: 10px; right: 15px;">&times;</span>
+        <span class="close" onclick="closeEditModal()" style="font-size: 20px; color: #333; cursor: pointer; position: absolute; top: 10px; right: 15px;">&times;</span>
         <h2 style="color: #000000; text-align: center; margin-bottom: 20px;">Editar Projeto</h2>
-        <div id="editForm" style="display: flex; flex-direction: column; gap: 15px;">
+        <form id="editForm" action="../../backend/editarProjeto.php" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+          <!-- Campo oculto para o ID do projeto -->
+          <input type="hidden" id="editIdProjeto" name="id_projeto">
+      
           <label for="editTitle" style="color: #000000; font-weight: bold;">Título:</label>
-          <input type="text" id="editTitleProjeto" name="title" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
-    
-          <label for="editTypeProjeto" style="color: #000000; font-weight: bold;">Tipo:</label>
-          <select id="editTypeProjeto" name="type" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
+          <input type="text" id="editTitle" name="titulo" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
+      
+          <label for="editType" style="color: #000000; font-weight: bold;">Tipo:</label>
+          <select id="editType" name="id_tipo_projeto" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
             <option value="" disabled selected>Selecione o tipo de projeto</option>
           </select>
-    
+      
           <label for="editCriteria" style="color: #000000; font-weight: bold;">Critérios de seleção:</label>
-          <input type="text" id="editCriteriaProjeto" name="criteria" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
-    
+          <input type="text" id="editCriteria" name="criterios_selecao" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
+      
           <label for="editSummary" style="color: #000000; font-weight: bold;">Resumo:</label>
-          <input type="text" id="editSummaryProjeto" name="summary" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
-    
+          <input type="text" id="editSummary" name="resumo" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
+      
           <div style="display: flex; align-items: center; gap: 10px;">
-            <input type="checkbox" id="checkboxCbolsaProjeto" name="with_scholarship" style="transform: scale(1.2);">
+            <input type="checkbox" id="checkboxCbolsa" name="bolsa_disponivel" style="transform: scale(1.2);">
             <label for="checkboxCbolsa" style="color: #000000; font-weight: bold;">C/bolsa:</label>
           </div>
-    
-          <div id="editBolsa" style="display: flex; flex-direction: column; gap: 15px;">
+      
+          <!-- Div de bolsa com os campos ocultos inicialmente -->
+          <div id="editBolsa" style="display: none; flex-direction: column; gap: 15px;">
             <label for="editDescription" style="color: #000000; font-weight: bold;">Descrição:</label>
-            <input type="text" id="editDescriptionProjeto" name="description" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
-    
+            <input type="text" id="editDescription" name="descricao_bolsa" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
+      
             <label for="editRequirements" style="color: #000000; font-weight: bold;">Requisitos:</label>
-            <input type="text" id="editRequirementsProjeto" name="requirements" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
+            <input type="text" id="editRequirements" name="requisito_bolsa" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
           </div>
-    
-          <button onclick="editarProjeto()" style="padding: 12px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Salvar</button>
-        </div>
+      
+          <button type="submit" style="padding: 12px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Salvar</button>
+        </form>
       </div>
     </div>
-
+    
+    
+    <script>
+    // Script para mostrar/ocultar os campos de bolsa
+    document.getElementById('checkboxCbolsa').addEventListener('change', function() {
+        var editBolsa = document.getElementById('editBolsa');
+        if (this.checked) {
+            editBolsa.style.display = 'flex'; // Exibe os campos de descrição e requisitos
+        } else {
+            editBolsa.style.display = 'none'; // Esconde os campos de descrição e requisitos
+        }
+    });
+    
+    </script>
+    
+    
+    
 
     <!-- EDIT MODAL CURSOS -->
 
     <div id="editModalCurso" class="modal">
-      <div class="modal-content" style="width: 50%; margin: 5% auto; padding: 20px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-        <span class="close"  style="font-size: 20px; color: #333; cursor: pointer; position: absolute; top: 10px; right: 15px;">&times;</span>
+      <div class="modal-content"
+        style="width: 50%; margin: 5% auto; padding: 20px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+        <span class="close"
+          style="font-size: 20px; color: #333; cursor: pointer; position: absolute; top: 10px; right: 15px;">&times;</span>
         <h2 style="color: #000000; text-align: center; margin-bottom: 20px;">Editar Curso</h2>
         <div id="editForm" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
           <label id="editFormCurso" for="editTitle" style="color: #000000; font-weight: bold;">Título:</label>
-          <input type="text" id="editTitleCurso" name="title" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
-          <button onclick="editarCurso();" style="padding: 12px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Salvar</button>
+          <input type="text" id="editTitleCurso" name="title"
+            style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;"
+            required>
+          <button onclick="editarCurso();"
+            style="padding: 12px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Salvar</button>
         </div>
       </div>
     </div>
@@ -399,13 +424,19 @@
     <!-- EDIT MODAL TPO PROJETOS -->
 
     <div id="editModalTipoProjeto" class="modal">
-      <div class="modal-content" style="width: 50%; margin: 5% auto; padding: 20px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-        <span class="close" style="font-size: 20px; color: #333; cursor: pointer; position: absolute; top: 10px; right: 15px;">&times;</span>
+      <div class="modal-content"
+        style="width: 50%; margin: 5% auto; padding: 20px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+        <span class="close"
+          style="font-size: 20px; color: #333; cursor: pointer; position: absolute; top: 10px; right: 15px;">&times;</span>
         <h2 style="color: #000000; text-align: center; margin-bottom: 20px;">Editar Tipo de Projeto</h2>
-        <div id="editForm" action="editarProjeto.php" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+        <div id="editForm" action="editarProjeto.php" method="POST"
+          style="display: flex; flex-direction: column; gap: 15px;">
           <label for="editTitle" style="color: #000000; font-weight: bold;">Título:</label>
-          <input type="text" id="editTitleTipoProjeto" name="title" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
-          <button onclick="editarTipoProjeto()" style="padding: 12px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Salvar</button>
+          <input type="text" id="editTitleTipoProjeto" name="title"
+            style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;"
+            required>
+          <button onclick="editarTipoProjeto()"
+            style="padding: 12px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Salvar</button>
         </div>
       </div>
     </div>
@@ -419,7 +450,7 @@
 
 
 
-      
+
 
       // Prevent dropdown from closing on checkbox click
       document.querySelector('.dropdown-menu').addEventListener('click', function (e) {
@@ -465,7 +496,7 @@
       };
 
       // Função para abrir/fechar o dropdown
-     
+
 
     </script>
     <script>
@@ -557,8 +588,8 @@
       // Função para salvar alterações
       function editarCurso() {
         // Aqui você pode adicionar a lógica para salvar as alterações
-              nome = document.getElementById("editTitleCurso").value;
-            
+        nome = document.getElementById("editTitleCurso").value;
+
         console.log(idSelecionado);
         $.ajax({
           type: "POST",
@@ -567,7 +598,7 @@
             id: idSelecionado,
             nome: nome
           },
-          success: function (data){
+          success: function (data) {
             alert("Curso editado com sucesso!");
             location.reload();
           },
@@ -575,30 +606,30 @@
             alert(errorThrown);
           }
         });
-  
-      
+
+
       }
 
       function editarTipoProjeto() {
         // Aqui você pode adicionar a lógica para salvar as alterações
         nome = document.getElementById("editTitleTipoProjeto").value;
-            
-            console.log(idSelecionado);
-            $.ajax({
-              type: "POST",
-              url: "../../backend/requisicoes/req_editar_tipos_projetos.php",
-              data: {
-                id: idSelecionado,
-                nome: nome
-              },
-              success: function (data){
-                alert("Tipo de projeto editado com sucesso!");
-                location.reload();
-              },
-              error: function (jqXHR, textStatus, errorThrown) {
-                alert(errorThrown);
-              }
-            });
+
+        console.log(idSelecionado);
+        $.ajax({
+          type: "POST",
+          url: "../../backend/requisicoes/req_editar_tipos_projetos.php",
+          data: {
+            id: idSelecionado,
+            nome: nome
+          },
+          success: function (data) {
+            alert("Tipo de projeto editado com sucesso!");
+            location.reload();
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+          }
+        });
       }
 
       function editarProjeto() {
@@ -607,43 +638,43 @@
         criteria = document.getElementById("editCriteriaProjeto").value;
         type = document.getElementById("editTypeProjeto").value;
         summary = document.getElementById("editSummaryProjeto").value;
-        if($('#checkboxCbolsaProjeto').is(':checked')){
+
+        if ($('#checkboxCbolsaProjeto').is(':checked')) {
           cBolsa = 0;
-        }else{
+          alert("Checkbox 'C/bolsa' está ativa.");
+        } else {
           cBolsa = 1;
+          alert("Checkbox 'C/bolsa' não está ativa.");
         }
-        
-          
+
         description = document.getElementById("editDescriptionProjeto").value;
         requirements = document.getElementById("editRequirementsProjeto").value;
-        
-            
-            console.log(idSelecionado);
-            $.ajax({
-              type: "POST",
-              url: "../../backend/requisicoes/req_editar_projetos.php",
-              data: {
-                id: idSelecionado,
-                title: title,
-                criteria: criteria,
-                type: type,
-                summary: summary,
-                cBolsa: cBolsa,
-                description: description,
-                requirements:requirements
-              },
-              success: function (data){
-                alert("Tipo de projeto editado com sucesso!");
-                location.reload();
-              },
-              error: function (jqXHR, textStatus, errorThrown) {
-                alert(errorThrown);
-              }
-            });
+
+        console.log(idSelecionado);
+        $.ajax({
+          type: "POST",
+          url: "../../backend/requisicoes/req_editar_projetos.php",
+          data: {
+            id: idSelecionado,
+            title: title,
+            criteria: criteria,
+            type: type,
+            summary: summary,
+            cBolsa: cBolsa,
+            description: description,
+            requirements: requirements
+          },
+          success: function (data) {
+            alert("Tipo de projeto editado com sucesso!");
+            console.log(data); // Log de resposta
+            location.reload();
+          },
+          error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+            console.log(textStatus, errorThrown); // Log de erro
+          }
+        });
       }
-
-
-
 
 
     </script>
@@ -789,40 +820,40 @@
 
       // ------ MODAIS DE EDIÇÂO
 
-        //MODAL DE DOCENTE
+      //MODAL DE DOCENTE
       function openEditModalDocente(title, type, grant, summary, criteria, description, requirements, id) {
         idSelecionado = id;
-          document.getElementById("editTitleProjeto").value = title;
-          document.getElementById("editTypeProjeto").value = type;
-          document.getElementById("editCriteriaProjeto").value = criteria;
-          document.getElementById("editDescriptionProjeto").value = description;
-          // document.getElementById("editGrant").value = grant;
-          document.getElementById("editSummaryProjeto").value = summary;
-          document.getElementById("editRequirementsProjeto").value = requirements;
+        document.getElementById("editTitleProjeto").value = title;
+        document.getElementById("editTypeProjeto").value = type;
+        document.getElementById("editCriteriaProjeto").value = criteria;
+        document.getElementById("editDescriptionProjeto").value = description;
+        // document.getElementById("editGrant").value = grant;
+        document.getElementById("editSummaryProjeto").value = summary;
+        document.getElementById("editRequirementsProjeto").value = requirements;
 
-          document.getElementById("editModalDocente").style.display = "block";
-        }
+        document.getElementById("editModalDocente").style.display = "block";
+      }
 
 
-        // MODAL CURSO EDIÇÃO
-        function openEditModalCurso(id,title) {
-          idSelecionado = id;
-          document.getElementById("editTitleCurso").value = title;
-          console.log(title);
+      // MODAL CURSO EDIÇÃO
+      function openEditModalCurso(id, title) {
+        idSelecionado = id;
+        document.getElementById("editTitleCurso").value = title;
+        console.log(title);
 
-          document.getElementById("editModalCurso").style.display = "block";
+        document.getElementById("editModalCurso").style.display = "block";
 
-        }
+      }
 
-        // MODAL TIPO PROOJETO EDIÇÃO
-        function openEditModalTipoProjeto(id,title) {
-          idSelecionado = id;
-          document.getElementById("editTitleTipoProjeto").value = title;
-          console.log(title);
+      // MODAL TIPO PROOJETO EDIÇÃO
+      function openEditModalTipoProjeto(id, title) {
+        idSelecionado = id;
+        document.getElementById("editTitleTipoProjeto").value = title;
+        console.log(title);
 
-          document.getElementById("editModalTipoProjeto").style.display = "block";
+        document.getElementById("editModalTipoProjeto").style.display = "block";
 
-        }
+      }
 
 
 

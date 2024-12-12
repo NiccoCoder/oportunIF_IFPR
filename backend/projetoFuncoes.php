@@ -124,4 +124,55 @@ function enviarEmailNotificacao($nome, $email, $tituloProjeto) {
     }
 }
 
+function editarProjeto($id_projeto, $id_docente, $titulo, $id_tipo_projeto, $criterios_selecao, $resumo, $conexao, $bolsa_disponivel, $descricao_bolsa = null, $requisito_bolsa = null) {
+    // Verificação de registros vazios com id 
+    $check_docente_query = "SELECT * FROM TB_DOCENTE WHERE ID_DOCENTE = ?";
+    $stmt = $conexao->prepare($check_docente_query);
+    $stmt->bind_param("i", $id_docente);
+    $stmt->execute();
+    $resultado = $stmt->get_result();
+    
+    if ($resultado->num_rows < 1) {
+        return ['status' => false, 'message' => 'Este docente não está cadastrado.'];
+    }
+
+    // Atualiza o campo POSSUI_BOLSA
+    $update_bolsa_query = "UPDATE TB_PROJETO SET POSSUI_BOLSA = ? WHERE ID_PROJETO = ?";
+    $stmt = $conexao->prepare($update_bolsa_query);
+    $stmt->bind_param("ii", $bolsa_disponivel, $id_projeto);
+
+    if (!$stmt->execute()) {
+        return ['status' => false, 'message' => 'Erro ao atualizar o status da bolsa: ' . $stmt->error];
+    }
+
+    // Prepare a query de atualização para os outros campos
+    $update_script = "UPDATE TB_PROJETO SET 
+                        TITULO = ?, 
+                        ID_TIPO_PROJETO = ?, 
+                        CRITERIOS_SELECAO = ?, 
+                        RESUMO = ?, 
+                        BOLSA_DESCRICAO = ?, 
+                        BOLSA_REQUISITOS = ? 
+                      WHERE ID_PROJETO = ? AND ID_DOCENTE = ?";
+
+    // Prepare o statement para os outros campos
+    $stmt = $conexao->prepare($update_script);
+
+    // Verifique se os campos opcionais (descrição e requisitos da bolsa) são nulos
+    $descricao_bolsa = $descricao_bolsa ?? null;
+    $requisito_bolsa = $requisito_bolsa ?? null;
+
+    // Aqui, o número de tipos deve corresponder ao número de parâmetros
+    $stmt->bind_param("sissssssi", $titulo, $id_tipo_projeto, $criterios_selecao, $resumo, $descricao_bolsa, $requisito_bolsa, $id_projeto, $id_docente);
+
+    if ($stmt->execute()) {
+        $stmt->close(); // Fechar o stmt
+        return ['status' => true, 'message' => 'Projeto editado com sucesso'];
+    } else {
+        return ['status' => false, 'message' => 'Falha ao editar projeto: ' . $stmt->error];
+    }
+}
+
+
+
 ?>

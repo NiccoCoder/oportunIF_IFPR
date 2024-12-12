@@ -71,7 +71,7 @@
               </div>
             </div>
             <div class="preview-item-content ml-2">
-              <p class="preview-subject mb-1">Denúncia</p>
+              <p class="preview-subject mb-1">Denúnciar</p>
             </div>
           </a>
           <div class="dropdown-divider"></div>
@@ -182,43 +182,62 @@
         </div>
       </div>
 
-      <!-- Modal de Edição -->
-     <div id="editModal" class="modal">
-  <div class="modal-content" style="width: 50%; margin: 5% auto; padding: 20px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
-    <span class="close" onclick="closeEditModal()" style="font-size: 20px; color: #333; cursor: pointer; position: absolute; top: 10px; right: 15px;">&times;</span>
-    <h2 style="color: #000000; text-align: center; margin-bottom: 20px;">Editar Projeto</h2>
-    <form id="editForm" action="editarProjeto.php" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
-      <label for="editTitle" style="color: #000000; font-weight: bold;">Título:</label>
-      <input type="text" id="editTitle" name="title" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
-
-      <label for="editType" style="color: #000000; font-weight: bold;">Tipo:</label>
-      <select id="editType" name="type" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
-        <option value="" disabled selected>Selecione o tipo de projeto</option>
-      </select>
-
-      <label for="editCriteria" style="color: #000000; font-weight: bold;">Critérios de seleção:</label>
-      <input type="text" id="editCriteria" name="criteria" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
-
-      <label for="editSummary" style="color: #000000; font-weight: bold;">Resumo:</label>
-      <input type="text" id="editSummary" name="summary" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
-
-      <div style="display: flex; align-items: center; gap: 10px;">
-        <input type="checkbox" id="checkboxCbolsa" name="with_scholarship" style="transform: scale(1.2);">
-        <label for="checkboxCbolsa" style="color: #000000; font-weight: bold;">C/bolsa:</label>
+      <div id="editModal" class="modal">
+        <div class="modal-content" style="width: 50%; margin: 5% auto; padding: 20px; border-radius: 10px; background-color: #ffffff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);">
+          <span class="close" onclick="closeEditModal()" style="font-size: 20px; color: #333; cursor: pointer; position: absolute; top: 10px; right: 15px;">&times;</span>
+          <h2 style="color: #000000; text-align: center; margin-bottom: 20px;">Editar Projeto</h2>
+          <form id="editForm" action="../../backend/editarProjeto.php" method="POST" style="display: flex; flex-direction: column; gap: 15px;">
+            <!-- Campo oculto para o ID do projeto -->
+            <input type="hidden" id="editIdProjeto" name="id_projeto">
+        
+            <label for="editTitle" style="color: #000000; font-weight: bold;">Título:</label>
+            <input type="text" id="editTitle" name="titulo" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
+        
+            <label for="editType" style="color: #000000; font-weight: bold;">Tipo:</label>
+            <select id="editType" name="id_tipo_projeto" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
+              <option value="" disabled selected>Selecione o tipo de projeto</option>
+            </select>
+        
+            <label for="editCriteria" style="color: #000000; font-weight: bold;">Critérios de seleção:</label>
+            <input type="text" id="editCriteria" name="criterios_selecao" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
+        
+            <label for="editSummary" style="color: #000000; font-weight: bold;">Resumo:</label>
+            <input type="text" id="editSummary" name="resumo" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;" required>
+        
+            <div style="display: flex; align-items: center; gap: 10px;">
+              <input type="checkbox" id="checkboxCbolsa" name="bolsa_disponivel" style="transform: scale(1.2);">
+              <label for="checkboxCbolsa" style="color: #000000; font-weight: bold;">C/bolsa:</label>
+            </div>
+        
+            <!-- Div de bolsa com os campos ocultos inicialmente -->
+            <div id="editBolsa" style="display: none; flex-direction: column; gap: 15px;">
+              <label for="editDescription" style="color: #000000; font-weight: bold;">Descrição:</label>
+              <input type="text" id="editDescription" name="descricao_bolsa" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
+        
+              <label for="editRequirements" style="color: #000000; font-weight: bold;">Requisitos:</label>
+              <input type="text" id="editRequirements" name="requisito_bolsa" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
+            </div>
+        
+            <button type="submit" style="padding: 12px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Salvar</button>
+          </form>
+        </div>
       </div>
-
-      <div id="editBolsa" style="display: flex; flex-direction: column; gap: 15px;">
-        <label for="editDescription" style="color: #000000; font-weight: bold;">Descrição:</label>
-        <input type="text" id="editDescription" name="description" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
-
-        <label for="editRequirements" style="color: #000000; font-weight: bold;">Requisitos:</label>
-        <input type="text" id="editRequirements" name="requirements" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box;">
-      </div>
-
-      <button type="submit" style="padding: 12px 20px; background-color: #28a745; color: #fff; border: none; border-radius: 8px; cursor: pointer; font-weight: bold;">Salvar</button>
-    </form>
-  </div>
-</div>
+      
+      
+      <script>
+      // Script para mostrar/ocultar os campos de bolsa
+      document.getElementById('checkboxCbolsa').addEventListener('change', function() {
+          var editBolsa = document.getElementById('editBolsa');
+          if (this.checked) {
+              editBolsa.style.display = 'flex'; // Exibe os campos de descrição e requisitos
+          } else {
+              editBolsa.style.display = 'none'; // Esconde os campos de descrição e requisitos
+          }
+      });
+      
+      </script>
+      
+      
 
 
       <script src="../../frontend/js/atualizarNomeUsuario.js"></script>
